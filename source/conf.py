@@ -378,4 +378,4 @@ linkcheck_timeout = 15
 mathjax_path = ('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/'
                 'MathJax.js?config=TeX-AMS-MML_HTMLorMML')
 
-html_baseurl = os.environ.get('BASE_URL', 'example.com')
+html_baseurl = os.environ.get('BASE_URL', 'https://ladnerlab.github.io/pepsirf-q2-plugin-docs/')
