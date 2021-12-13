@@ -1,7 +1,10 @@
-QIIME 2 user documentation
-==========================
+PepSIRF Plugins for QIIME 2 User Documentation
+==============================================
 
-This site is the official user documentation for QIIME™ 2, including installation instructions, tutorials, and other important information. Visit http://qiime.org for information on QIIME™ 1.
+This site contains the official user documentation for PepSIRF-related plugins for QIIME™ 2: pepsirf, 
+ps-plot, and autopepsirf. This documentation includes installation instructions, tutorials, 
+and other important information.
+
 Table of contents
 -----------------
 
