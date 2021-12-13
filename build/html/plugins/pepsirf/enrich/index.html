@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>enrich: pepsirf enrich module &#8212; Q2 Pepsirf Plugin Docs  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/external-links.js"></script>
+    <script src="../../../_static/usage.js"></script>
+    <link rel="canonical" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/plugins/pepsirf/enrich.html" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="infoSNPN: pepsirf info (samples/peptide names) module" href="../infoSNPN/" />
+    <link rel="prev" title="bin: pepsirf bin module" href="../bin/" />
+  <script src="../../../_static/bootstrap.min.js"></script>
+  <script src="../../../_static/clipboard.min.js"></script>
+  <link rel="icon" href="../../../_static/favicon.ico" type="image/png" />
+  <link rel="stylesheet" href="../../../_static/css/bootstrap.min.css" media="screen" />
+  <link rel="stylesheet" href="../../../_static/css/normalize.css" media="screen">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  </head><body>
+  <div id="wrapper" class="container clearfix">
+    <div id="header">
+      <a href="/">
+        <img
+          class="img-responsive"
+          src="../../../_static/q2docs.png" alt="QIIME 2 Docs"
+        />
+      </a>
+    </div>
+    <div id="content">
+      
+      <div id="body" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 main pull-right">
+        
+  <section id="enrich-pepsirf-enrich-module">
+<h1>enrich: pepsirf enrich module<a class="headerlink" href="#enrich-pepsirf-enrich-module" title="Permalink to this headline">¶</a></h1>
+<div class="tabbed">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#cli">Command line interface</a></li>
+    <li><a data-toggle="tab" href="#api">Artifact API</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="cli" class="tab-pane fade in active">
+      <h4>Docstring:</h4>
+      <pre>Usage: qiime pepsirf enrich [OPTIONS]
+
+  Determines which peptides are enriched in samples with pepsirf's enrich
+  module
+
+Inputs:
+  --i-thresh-file ARTIFACT
+    EnrichThresh        The name of a tab-delimited file containing one
+                        tab-delimited matrix filename and threshold(s), one
+                        per line. If providing more than z score matrix.
+                                                                    [optional]
+  --i-zscores ARTIFACT FeatureTable[Zscore]
+                        FeatureTable containing z scores of the normalized
+                        read counts. Fist column header must be 'Sequence
+                        Name' as produced by pepsirf.               [optional]
+  --i-raw-scores ARTIFACT FeatureTable[RawCounts]
+                        This matrix must contain the raw counts for each
+                        Peptide for every sample of interest. If included,
+                        '--raw_score_constraint' must also be specified.
+                                                                    [optional]
+Parameters:
+  --m-source-file METADATA
+  --m-source-column COLUMN  MetadataColumn[Categorical]
+                        Metadata file containing all sample names and their
+                        source groups. Used to create pairs tsv to run pepsirf
+                        enrich module.                              [required]
+  --p-exact-z-thresh TEXT
+                        Exact z score thresholds either individual or
+                        combined.                                   [optional]
+  --p-raw-constraint INTEGER
+    Range(0, None)      The minimum total raw count across all peptides for a
+                        sample to be included in the analysis.This provides a
+                        way to impose a minimum read count for a sample to be
+                        evaluated.                                  [optional]
+  --p-enrichment-failure / --p-no-enrichment-failure
+                        For each sample set that does not result in the
+                        generation of an enriched peptide file, a row of two
+                        tab-delimited columns is provided: the first column
+                        contains the replicate names (comma-delimited) and the
+                        second column provides the reason why the sample did
+                        not result in an enriched peptide file. This file is
+                        output to the same directory as the enriched peptide
+                        files. The 'Reason' column will contain one of the
+                        following: 'Raw read count threshold' or 'No enriched
+                        peptides'.                            [default: False]
+  --p-truncate / --p-no-truncate
+                        By default each filename in the output directory will
+                        include every replicate name joined by the 'join_on'
+                        value. Alternatively, if more than two replicates are
+                        being evaluated, then you may include this flag to
+                        stop the filenames from including more than 3
+                        samplenames in the output. When this flag is used, the
+                        output names will be of the form 'A~B~C~1more', for
+                        example.                              [default: False]
+  --p-pepsirf-binary TEXT
+                        The binary to call pepsirf on your system.
+                                                          [default: 'pepsirf']
+Outputs:
+  --o-dir-fmt-output ARTIFACT
+    PairwiseEnrichment  Directory formatted qza containing lists of enriched
+                        peptides                                    [required]
+Miscellaneous:
+  --output-dir PATH     Output unspecified results to a directory
+  --verbose / --quiet   Display verbose output to stdout and/or stderr during
+                        execution of this action. Or silence output if
+                        execution is successful (silence is golden).
+  --example-data PATH   Write example data and exit.
+  --citations           Show citations and exit.
+  --help                Show this message and exit.</pre>
+    </div>
+    <div id="api" class="tab-pane fade">
+    <h4>Import:</h4><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>from qiime2.plugins.pepsirf.methods import enrich
+</pre></div>
+</div>
+    <h4>Docstring:</h4>
+      <pre>pepsirf enrich module
+
+Determines which peptides are enriched in samples with pepsirf's enrich
+module
+
+Parameters
+----------
+source : MetadataColumn[Categorical]
+    Metadata file containing all sample names and their source groups. Used
+    to create pairs tsv to run pepsirf enrich module.
+thresh_file : EnrichThresh, optional
+     The name of a tab-delimited file containing one tab-delimited matrix
+    filename and threshold(s), one per line. If providing more than z score
+    matrix.
+zscores : FeatureTable[Zscore], optional
+    FeatureTable containing z scores of the normalized read counts. Fist
+    column header must be 'Sequence Name' as produced by pepsirf.
+exact_z_thresh : Str, optional
+    Exact z score thresholds either individual or combined.
+raw_scores : FeatureTable[RawCounts], optional
+    This matrix must contain the raw counts for each Peptide for every
+    sample of interest. If included, '--raw_score_constraint' must also be
+    specified.
+raw_constraint : Int % Range(0, None), optional
+    The minimum total raw count across all peptides for a sample to be
+    included in the analysis.This provides a way to impose a minimum read
+    count for a sample to be evaluated.
+enrichment_failure : Bool, optional
+    For each sample set that does not result in the generation of an
+    enriched peptide file, a row of two tab-delimited columns is provided:
+    the first column contains the replicate names (comma-delimited) and the
+    second column provides the reason why the sample did not result in an
+    enriched peptide file. This file is output to the same directory as the
+    enriched peptide files. The 'Reason' column will contain one of the
+    following: 'Raw read count threshold' or 'No enriched peptides'.
+truncate : Bool, optional
+    By default each filename in the output directory will include every
+    replicate name joined by the 'join_on' value. Alternatively, if more
+    than two replicates are being evaluated, then you may include this flag
+    to stop the filenames from including more than 3 samplenames in the
+    output. When this flag is used, the output names will be of the form
+    'A~B~C~1more', for example.
+pepsirf_binary : Str, optional
+    The binary to call pepsirf on your system.
+
+Returns
+-------
+dir_fmt_output : PairwiseEnrichment
+    Directory formatted qza containing lists of enriched peptides</pre>
+    </div>
+  </div>
+</div></section>
+
+
+      </div>
+      
+
+      
+      <div id="sidebar" class="col-lg-2 col-md-2 col-sm-12 col-xs-12 side pull-left">
+        
+<h3><a href="../../../">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Available plugins</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../autopepsirf/">autopepsirf</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../">pepsirf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ps-plot/">ps-plot</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Pepsirf_Plugins/">Installation</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+      </div>
+      
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Ladner Labs.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.1.
+    </div>
+  </div>
+  <script src="../../../_static/clipboard-driver.js"></script>
+  <script src="/versions.js" charset="utf-8"></script>
+  </body>
+</html>

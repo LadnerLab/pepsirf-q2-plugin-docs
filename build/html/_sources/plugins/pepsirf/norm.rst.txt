@@ -1,0 +1,134 @@
+norm: pepsirf norm module
+=========================
+
+
+
+.. raw:: html
+
+   <div class="tabbed">
+     <ul class="nav nav-tabs">
+       <li class="active"><a data-toggle="tab" href="#cli">Command line interface</a></li>
+       <li><a data-toggle="tab" href="#api">Artifact API</a></li>
+     </ul>
+     <div class="tab-content">
+       <div id="cli" class="tab-pane fade in active">
+         <h4>Docstring:</h4>
+         <pre>Usage: qiime pepsirf norm [OPTIONS]
+
+     Normalize raw count data with pepsirf's norm module
+
+   Inputs:
+     --i-peptide-scores ARTIFACT FeatureTable[RawCounts | Normed]
+                            Name of FeatureTable matrix file containing peptide
+                            scores. This file should be in the same format as the
+                            output from the demux module.              [required]
+     --i-negative-control ARTIFACT FeatureTable[RawCounts | Normed]
+                            Name of FeatureTable matrix file containing data for
+                            sb samples.                                [optional]
+   Parameters:
+     --p-normalize-approach VALUE Str % Choices('col_sum')¹ | Str %
+       Choices('diff')² | Str % Choices('diff_ratio')³ | Str % Choices('ratio')⁴
+       | Str % Choices('size_factors')⁵
+                            'col_sum': Normalize the scores using a column-sum
+                            method. Output per peptide is the score per million
+                            for the sample (i.e., summed across all peptides).
+                            'size_factors': Normalize the scores using the size
+                            factors method (Anders and Huber 2010). 'diff':
+                            Normalize the scores using the difference method. For
+                            each peptide and sample, the difference between the
+                            score and the respective peptide's mean score in the
+                            negative controls is determined. 'ratio': Normalize
+                            the scores using the ratio method. For each peptide
+                            and sample, the ratio of score to the respective
+                            peptide's mean score in the negative controls is
+                            determined. 'diff_ratio': Normalize the scores using
+                            the difference-ratio method. For each peptide and
+                            sample, the difference between the score and the
+                            respective peptide's mean score in the negative
+                            controls is first determined. This difference is then
+                            divided by the respective peptide's mean score in the
+                            negative controls.               [default: 'col_sum']
+     --p-negative-id TEXT   Optional approach for identifying negative controls.
+                            Provide a unique string at the start of all negative
+                            control samples.                           [optional]
+     --p-negative-names TEXT...
+       List[Str]            Optional approach for identifying negative controls.
+                            Space-separated list of negative control sample
+                            names.                                     [optional]
+     --p-precision INTEGER  Output score precision. The scores written to the
+       Range(0, None)       output will be output to this many decimal places.
+                                                                     [default: 2]
+     --p-pepsirf-binary TEXT
+                            The binary to call pepsirf on your system.
+                                                             [default: 'pepsirf']
+   Outputs:
+     --o-qza-output ARTIFACT FeatureTable[Normed¹ | NormedDifference² |
+       NormedDiffRatio³ | NormedRatio⁴ | NormedSized⁵]
+                            the FeatureTable (.qza) output based on the
+                            normalized approach given by user          [required]
+   Miscellaneous:
+     --output-dir PATH      Output unspecified results to a directory
+     --verbose / --quiet    Display verbose output to stdout and/or stderr
+                            during execution of this action. Or silence output if
+                            execution is successful (silence is golden).
+     --example-data PATH    Write example data and exit.
+     --citations            Show citations and exit.
+     --help                 Show this message and exit.</pre>
+       </div>
+       <div id="api" class="tab-pane fade">
+       <h4>Import:</h4>
+
+.. command-block::
+   :no-exec:
+
+   from qiime2.plugins.pepsirf.methods import norm
+
+.. raw:: html
+
+       <h4>Docstring:</h4>
+         <pre>pepsirf norm module
+
+   Normalize raw count data with pepsirf's norm module
+
+   Parameters
+   ----------
+   peptide_scores : FeatureTable[RawCounts | Normed]
+       Name of FeatureTable matrix file containing peptide scores. This file
+       should be in the same format as the output from the demux module.
+   normalize_approach : Str % Choices('col_sum')¹ | Str % Choices('diff')² | Str % Choices('diff_ratio')³ | Str % Choices('ratio')⁴ | Str % Choices('size_factors')⁵, optional
+       'col_sum': Normalize the scores using a column-sum method. Output per
+       peptide is the score per million for the sample (i.e., summed across
+       all peptides). 'size_factors': Normalize the scores using the size
+       factors method (Anders and Huber 2010). 'diff': Normalize the scores
+       using the difference method. For each peptide and sample, the
+       difference between the score and the respective peptide's mean score in
+       the negative controls is determined. 'ratio': Normalize the scores
+       using the ratio method. For each peptide and sample, the ratio of score
+       to the respective peptide's mean score in the negative controls is
+       determined. 'diff_ratio': Normalize the scores using the difference-
+       ratio method. For each peptide and sample, the difference between the
+       score and the respective peptide's mean score in the negative controls
+       is first determined. This difference is then divided by the respective
+       peptide's mean score in the negative controls.
+   negative_control : FeatureTable[RawCounts | Normed], optional
+       Name of FeatureTable matrix file containing data for sb samples.
+   negative_id : Str, optional
+       Optional approach for identifying negative controls. Provide a unique
+       string at the start of all negative control samples.
+   negative_names : List[Str], optional
+       Optional approach for identifying negative controls. Space-separated
+       list of negative control sample names.
+   precision : Int % Range(0, None), optional
+       Output score precision. The scores written to the output will be output
+       to this many decimal places.
+   pepsirf_binary : Str, optional
+       The binary to call pepsirf on your system.
+
+   Returns
+   -------
+   qza_output : FeatureTable[Normed¹ | NormedDifference² | NormedDiffRatio³ | NormedRatio⁴ | NormedSized⁵]
+       the FeatureTable (.qza) output based on the normalized approach given
+       by user</pre>
+       </div>
+     </div>
+   </div>

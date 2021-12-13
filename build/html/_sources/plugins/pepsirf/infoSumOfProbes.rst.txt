@@ -1,0 +1,76 @@
+infoSumOfProbes: pepsirf info (sum of probes) module
+====================================================
+
+
+
+.. raw:: html
+
+   <div class="tabbed">
+     <ul class="nav nav-tabs">
+       <li class="active"><a data-toggle="tab" href="#cli">Command line interface</a></li>
+       <li><a data-toggle="tab" href="#api">Artifact API</a></li>
+     </ul>
+     <div class="tab-content">
+       <div id="cli" class="tab-pane fade in active">
+         <h4>Docstring:</h4>
+         <pre>Usage: qiime pepsirf infoSumOfProbes [OPTIONS]
+
+     Gathers the sum of probes per sample in the matrix using pepsirf's info
+     module
+
+   Inputs:
+     --i-input ARTIFACT FeatureTable[Normed | NormedDifference |
+       NormedDiffRatio | RawCounts | NormedSized]
+                          An input score matrix to gather information from.
+                                                                       [required]
+   Parameters:
+     --p-pepsirf-binary TEXT
+                          The binary to call pepsirf on your system.
+                                                             [default: 'pepsirf']
+   Outputs:
+     --o-sum-of-probes-output ARTIFACT
+       InfoSumOfProbes    InfoSumOfProbes file, The first entry in each column
+                          will be the name of the sample, and the second will be
+                          the sum of the peptide/probe scores for the sample.
+                                                                       [required]
+   Miscellaneous:
+     --output-dir PATH    Output unspecified results to a directory
+     --verbose / --quiet  Display verbose output to stdout and/or stderr during
+                          execution of this action. Or silence output if
+                          execution is successful (silence is golden).
+     --example-data PATH  Write example data and exit.
+     --citations          Show citations and exit.
+     --help               Show this message and exit.</pre>
+       </div>
+       <div id="api" class="tab-pane fade">
+       <h4>Import:</h4>
+
+.. command-block::
+   :no-exec:
+
+   from qiime2.plugins.pepsirf.methods import infoSumOfProbes
+
+.. raw:: html
+
+       <h4>Docstring:</h4>
+         <pre>pepsirf info (sum of probes) module
+
+   Gathers the sum of probes per sample in the matrix using pepsirf's info
+   module
+
+   Parameters
+   ----------
+   input : FeatureTable[Normed | NormedDifference | NormedDiffRatio | RawCounts | NormedSized]
+       An input score matrix to gather information from.
+   pepsirf_binary : Str, optional
+       The binary to call pepsirf on your system.
+
+   Returns
+   -------
+   sum_of_probes_output : InfoSumOfProbes
+       InfoSumOfProbes file, The first entry in each column will be the name
+       of the sample, and the second will be the sum of the peptide/probe
+       scores for the sample.</pre>
+       </div>
+     </div>
+   </div>

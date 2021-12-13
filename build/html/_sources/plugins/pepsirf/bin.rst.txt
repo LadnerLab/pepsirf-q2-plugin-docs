@@ -1,0 +1,108 @@
+bin: pepsirf bin module
+=======================
+
+
+
+.. raw:: html
+
+   <div class="tabbed">
+     <ul class="nav nav-tabs">
+       <li class="active"><a data-toggle="tab" href="#cli">Command line interface</a></li>
+       <li><a data-toggle="tab" href="#api">Artifact API</a></li>
+     </ul>
+     <div class="tab-content">
+       <div id="cli" class="tab-pane fade in active">
+         <h4>Docstring:</h4>
+         <pre>Usage: qiime pepsirf bin [OPTIONS]
+
+     Creates groups of peptides with similar starting abundances with pepsirf's
+     bin module
+
+   Inputs:
+     --i-scores ARTIFACT FeatureTable[Normed¹ | NormedDifference |
+       NormedDiffRatio | NormedRatio | NormedSized²]
+                           Input tab-delimited normalized score matrix file to
+                           use for peptide binning. This matrix should only
+                           contain info for the negative control samples that
+                           should be used to generate bins (see subjoin module
+                           for help generatinig input matrix). Peptides with
+                           similar scores, summed across the negative controls,
+                           will be binned together.                    [required]
+   Parameters:
+     --p-allow-other-normalization VALUE Bool % Choices(False)¹ | Bool %
+       Choices(True)²                                            [default: False]
+     --p-bin-size INTEGER  The minimum number of peptides that a bin must
+       Range(1, None)      contain. If a bin would be created with fewer than
+                           bin-size peptides, it will be combined with the next
+                           bin until at least bin-size peptides are found.
+                                                                   [default: 300]
+     --p-round-to INTEGER  The 'rounding factor' for the scores parsed from the
+       Range(0, None)      score matrix prior to binning. Scores found in the
+                           matrix will be rounded to the nearest 1/10^x for a
+                           rounding factor x. For example, a rounding factor of 0
+                           will result in rounding to the nearest integer, while
+                           a rounding factor of 1 will result in rounding to the
+                           nearest tenth.                            [default: 0]
+     --p-pepsirf-binary TEXT
+                           The binary to call pepsirf on your system.
+                                                             [default: 'pepsirf']
+   Outputs:
+     --o-bin-output ARTIFACT
+       PeptideBins¹'²      PeptideBins file that contains  one bin per line and
+                           each bin will be a tab-delimited list of the names of
+                           the peptides in the bin.                    [required]
+   Miscellaneous:
+     --output-dir PATH     Output unspecified results to a directory
+     --verbose / --quiet   Display verbose output to stdout and/or stderr during
+                           execution of this action. Or silence output if
+                           execution is successful (silence is golden).
+     --example-data PATH   Write example data and exit.
+     --citations           Show citations and exit.
+     --help                Show this message and exit.</pre>
+       </div>
+       <div id="api" class="tab-pane fade">
+       <h4>Import:</h4>
+
+.. command-block::
+   :no-exec:
+
+   from qiime2.plugins.pepsirf.methods import bin
+
+.. raw:: html
+
+       <h4>Docstring:</h4>
+         <pre>pepsirf bin module
+
+   Creates groups of peptides with similar starting abundances with pepsirf's
+   bin module
+
+   Parameters
+   ----------
+   scores : FeatureTable[Normed¹ | NormedDifference | NormedDiffRatio | NormedRatio | NormedSized²]
+       Input tab-delimited normalized score matrix file to use for peptide
+       binning. This matrix should only contain info for the negative control
+       samples that should be used to generate bins (see subjoin module for
+       help generatinig input matrix). Peptides with similar scores, summed
+       across the negative controls, will be binned together.
+   allow_other_normalization : Bool % Choices(False)¹ | Bool % Choices(True)², optional
+   bin_size : Int % Range(1, None), optional
+       The minimum number of peptides that a bin must contain. If a bin would
+       be created with fewer than bin_size peptides, it will be combined with
+       the next bin until at least bin_size peptides are found.
+   round_to : Int % Range(0, None), optional
+       The 'rounding factor' for the scores parsed from the score matrix prior
+       to binning. Scores found in the matrix will be rounded to the nearest
+       1/10^x for a rounding factor x. For example, a rounding factor of 0
+       will result in rounding to the nearest integer, while a rounding factor
+       of 1 will result in rounding to the nearest tenth.
+   pepsirf_binary : Str, optional
+       The binary to call pepsirf on your system.
+
+   Returns
+   -------
+   bin_output : PeptideBins¹'²
+       PeptideBins file that contains  one bin per line and each bin will be a
+       tab-delimited list of the names of the peptides in the bin.</pre>
+       </div>
+     </div>
+   </div>
