@@ -9,13 +9,13 @@ autopepsirf
          <th scope="row">Description</th>
          <td>
            
-           No description available. See plugin website: <a href="https://github.com/LadnerLab/q2-autopepsirf" rel="noopener">https://github.com/LadnerLab/q2-autopepsirf</a><br/>
+           foo<br/>
            
          </td>
        </tr>
        <tr>
          <th scope="row">Version</th>
-         <td>0.0.1.dev</td>
+         <td>0+untagged.10.g1a1599e.dirty</td>
        </tr>
        <tr>
          <th scope="row">Website</th>
