@@ -1,5 +1,5 @@
-"q2-pepsirf and q2-autopepsirf" tutorial - Multiple Interface Edition
-=====================================================================
+PepSIRF Qiime 2 Plugin tutorial - Multiple Interface Edition
+============================================================
 
 Description
 -----------
@@ -17,8 +17,8 @@ Sample Raw Data
 .. usage-selector::
 
 Before starting the analysis, download the raw data and bin files. These
-``IM0032-pA_PV1_subset.qza`` and ``pA_PV1.5_r1bins_IM25-26.qza`` 
-files are used throughout the rest of the tutorial.
+``IM0032-pA_PV1_subset.qza``, ``pA_PV1.5_r1bins_IM25-26.qza``, and 
+``samples_source.tsv`` files are used throughout the rest of the tutorial.
 
 .. usage::
   
@@ -33,6 +33,12 @@ files are used throughout the rest of the tutorial.
       return qiime2.Artifact.load("source/data/pA_PV1.5_r1bins_IM25-26.qza")
 
    bin_data = use.init_artifact("pA_PV1.5_r1bins_IM25-26", bin_factory)
+
+   def metadata_factory():
+      import qiime2
+      return qiime2.Metadata.load("source/data/samples_source.tsv")
+
+   metadata = use.init_metadata('samples_source', metadata_factory)
 
 All data that is used as input to QIIME 2 is in form of QIIME 2 artifacts,
 which contain information about the type of data and the source of the data.
@@ -55,24 +61,29 @@ command (replace pepsirf_binary with how you call pepsirf on your machine):
         bins = bin_data,
         negative_id = "SB_",
         exact_z_thresh = "6,10",
+        pepsirf_tsv_dir = "./testingTSV",
+        tsv_base_str = "IM0032-pA_PV1_subset",
         pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
     ),
     use.UsageOutputNames(
-        col_sum = "colsum1",
-        diff = "diff1",
-        diff_ratio = "diff_ratio1",
-        zscore = "zscore1",
-        zscore_nan = "zscore_nan1",
-        sample_names = "sample_names1",
-        read_counts = "RC1",
-        rc_boxplot = "rcBoxplot1",
-        enrich = "enrichDir1",
-        enrich_count_boxplot = "enrichBoxplot1",
-        zscore_scatter = "zScatter1",
-        colsum_scatter = "csScatter1",
-        zenrich_scatter = "zenrich1"
+        col_sum = "colsum",
+        diff = "diff",
+        diff_ratio = "diff_ratio",
+        zscore = "zscore",
+        zscore_nan = "zscore_nan",
+        sample_names = "sample_names",
+        read_counts = "read_counts",
+        rc_boxplot = "rcBoxplot",
+        enrich = "enrich",
+        enrich_count_boxplot = "enrichBoxplot",
+        zscore_scatter = "zScatter",
+        colsum_scatter = "csScatter",
+        zenrich_scatter = "zenrich"
     )
     ) 
+
+.. note::
+    TSV outputs will not show up on this page. They are just duplicates of the .qza files in a .tsv format.
 
 Pepsirf Normalization
 ---------------------
@@ -97,23 +108,26 @@ call pepsirf on your machine):
     )
     )
 
-Ps-plot tutorial
-----------------
+Ps-plot repScatters
+-------------------
 
 .. usage-selector::
 
-Here we wil test q2-ps-plot's norm module by running the following command:
+Here we will test q2-ps-plot's repScatters module by running the following command:
 
 .. usage::
 
-   rc_boxplot, = use.action(
-    use.UsageAction(plugin_id='ps_plot', action_id='readCountsBoxplot'),
+   samples_col = use.get_metadata_column('samples_col', 'source', metadata)
+
+   zScatter, = use.action(
+    use.UsageAction(plugin_id='ps_plot', action_id='repScatters'),
     use.UsageInputs(
-        read_counts = read_counts,
+        zscore = zscore,
+        source = samples_col,
     ),
     use.UsageOutputNames(
-        visualization = "rcBoxplot"
+        visualization = "ZRepScatter"
     )
     )
 
-Another ps-plot tutorial is available here: https://github.com/LadnerLab/q2-ps-plot#tutorial
+A ps-plot zenrich module tutorial is available here: https://github.com/LadnerLab/q2-ps-plot#tutorial

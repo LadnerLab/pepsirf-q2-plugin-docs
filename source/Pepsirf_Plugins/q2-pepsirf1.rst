@@ -34,7 +34,7 @@ You can replace qiime2-2021.11 above with whichever version of QIIME 2 you have 
 
 Now you are ready to install q2-pepsirf. Run the following commands:
 
-``pip install git+https://github.com/LadnerLab/q2-pepsirf1.git``
+``pip install git+https://github.com/LadnerLab/q2-pepsirf.git``
 
 Run qiime info to check for a successful installation. If installation was successful, you should see pepsirf: version in the list of installed plugins.
 
@@ -43,4 +43,4 @@ Updating
 
 To update q2-pepsirf, run the following command:
 
-``pip install -U git+https://github.com/LadnerLab/q2-pepsirf1.git``
+``pip install -U git+https://github.com/LadnerLab/q2-pepsirf.git``
