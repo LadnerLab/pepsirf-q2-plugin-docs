@@ -91,7 +91,7 @@ which contain information about the type of data and the source of the data.</p>
 <h2>Autopepsirf Automation<a class="headerlink" href="#autopepsirf-automation" title="Permalink to this headline">¶</a></h2>
 <span class="usage-selector"></span><p>Once you have downloaded the file, you can automatically run q2-pepsirf and
 q2-ps-plot with q2-autopepsirf. This can be done by running the following
-command:</p>
+command (replace pepsirf_binary with how you call pepsirf on your machine):</p>
 <div class="artifact-usage highlight-default notranslate" id="usage-3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiime2.plugins.autopepsirf.actions</span> <span class="k">as</span> <span class="nn">autopepsirf_actions</span>
 
 <span class="n">action_results</span> <span class="o">=</span> <span class="n">autopepsirf_actions</span><span class="o">.</span><span class="n">diffEnrich</span><span class="p">(</span>
@@ -147,7 +147,8 @@ command:</p>
 <h2>Pepsirf Normalization<a class="headerlink" href="#pepsirf-normalization" title="Permalink to this headline">¶</a></h2>
 <span class="usage-selector"></span><p>You can also run q2-pepsirf and q2-ps-plot by themseleves to get
 individual files. Here we wil test q2-pepsirf’s norm module by
-running the following command:</p>
+running the following command (replace pepsirf_binary with how you
+call pepsirf on your machine):</p>
 <div class="artifact-usage highlight-default notranslate" id="usage-6"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiime2.plugins.pepsirf.actions</span> <span class="k">as</span> <span class="nn">pepsirf_actions</span>
 
 <span class="n">IM0032_pA_PV1_subset_CS</span><span class="p">,</span> <span class="o">=</span> <span class="n">pepsirf_actions</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span>
@@ -170,8 +171,25 @@ running the following command:</p>
 </section>
 <section id="ps-plot-tutorial">
 <h2>Ps-plot tutorial<a class="headerlink" href="#ps-plot-tutorial" title="Permalink to this headline">¶</a></h2>
-<p>A q2-ps-plot zenrich module tutorial can be located here:
-<a class="reference external" href="https://github.com/LadnerLab/q2-ps-plot.git">https://github.com/LadnerLab/q2-ps-plot.git</a></p>
+<span class="usage-selector"></span><p>Here we wil test q2-ps-plot’s norm module by running the following command:</p>
+<div class="artifact-usage highlight-default notranslate" id="usage-9"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiime2.plugins.ps_plot.actions</span> <span class="k">as</span> <span class="nn">ps_plot_actions</span>
+
+<span class="n">rcBoxplot_viz</span><span class="p">,</span> <span class="o">=</span> <span class="n">ps_plot_actions</span><span class="o">.</span><span class="n">readCountsBoxplot</span><span class="p">(</span>
+    <span class="n">read_counts</span><span class="o">=</span><span class="n">RC1</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="cli-usage highlight-default notranslate" id="usage-10"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">ps</span><span class="o">-</span><span class="n">plot</span> <span class="n">readCountsBoxplot</span> \
+  <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">read</span><span class="o">-</span><span class="n">counts</span> <span class="n">autopepsirf</span><span class="o">-</span><span class="n">diffEnrich</span><span class="o">/</span><span class="n">read_counts</span><span class="o">.</span><span class="n">qza</span> \
+  <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">visualization</span> <span class="n">rcBoxplot</span><span class="o">.</span><span class="n">qzv</span>
+</pre></div>
+</div>
+<div class="exec-usage compound" id="usage-11">
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rcBoxplot.qzv</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf-tutorial%2FrcBoxplot.qzv"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/rcBoxplot.qzv"><span>download</span></a></p></li>
+</ul>
+</div>
+<p>Another ps-plot tutorial is available here: <a class="reference external" href="https://github.com/LadnerLab/q2-ps-plot#tutorial">https://github.com/LadnerLab/q2-ps-plot#tutorial</a></p>
 </section>
 </section>
 

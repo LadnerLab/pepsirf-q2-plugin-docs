@@ -9,13 +9,13 @@ ps-plot
          <th scope="row">Description</th>
          <td>
            
-           No description available. See plugin website: <a href="https://github.com/LadnerLab/q2-ps-plot" rel="noopener">https://github.com/LadnerLab/q2-ps-plot</a><br/>
+           Qiime2 Plug-in for the creation of visualizations from PepSIRF outputs.<br/>
            
          </td>
        </tr>
        <tr>
          <th scope="row">Version</th>
-         <td>2021.11.12+12.g45f8d64</td>
+         <td>2021.11.12+17.g880e253</td>
        </tr>
        <tr>
          <th scope="row">Website</th>

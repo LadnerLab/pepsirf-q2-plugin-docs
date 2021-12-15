@@ -9,13 +9,13 @@ autopepsirf
          <th scope="row">Description</th>
          <td>
            
-           foo<br/>
+           Qiime2 plugin used for the automation of q2-pepsirf and q2-ps-plot.<br/>
            
          </td>
        </tr>
        <tr>
          <th scope="row">Version</th>
-         <td>0+untagged.10.g1a1599e.dirty</td>
+         <td>0+untagged.11.g6d264e6</td>
        </tr>
        <tr>
          <th scope="row">Website</th>

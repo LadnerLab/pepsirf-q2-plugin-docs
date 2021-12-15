@@ -44,7 +44,7 @@ Autopepsirf Automation
 
 Once you have downloaded the file, you can automatically run q2-pepsirf and 
 q2-ps-plot with q2-autopepsirf. This can be done by running the following 
-command:
+command (replace pepsirf_binary with how you call pepsirf on your machine):
 
 .. usage::
 
@@ -81,7 +81,8 @@ Pepsirf Normalization
 
 You can also run q2-pepsirf and q2-ps-plot by themseleves to get
 individual files. Here we wil test q2-pepsirf's norm module by 
-running the following command:
+running the following command (replace pepsirf_binary with how you 
+call pepsirf on your machine):
 
 .. usage::
 
@@ -99,5 +100,20 @@ running the following command:
 Ps-plot tutorial
 ----------------
 
-A q2-ps-plot zenrich module tutorial can be located here:
-https://github.com/LadnerLab/q2-ps-plot.git
+.. usage-selector::
+
+Here we wil test q2-ps-plot's norm module by running the following command:
+
+.. usage::
+
+   rc_boxplot, = use.action(
+    use.UsageAction(plugin_id='ps_plot', action_id='readCountsBoxplot'),
+    use.UsageInputs(
+        read_counts = read_counts,
+    ),
+    use.UsageOutputNames(
+        visualization = "rcBoxplot"
+    )
+    )
+
+Another ps-plot tutorial is available here: https://github.com/LadnerLab/q2-ps-plot#tutorial
