@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>“q2-pepsirf and q2-autopepsirf” tutorial - Multiple Interface Edition &#8212; Q2 Pepsirf Plugin Docs  documentation</title>
+    <title>PepSIRF Qiime 2 Plugin tutorial - Multiple Interface Edition &#8212; Q2 Pepsirf Plugin Docs  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
@@ -40,8 +40,8 @@
       
       <div id="body" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 main pull-right">
         
-  <section id="q2-pepsirf-and-q2-autopepsirf-tutorial-multiple-interface-edition">
-<h1>“q2-pepsirf and q2-autopepsirf” tutorial - Multiple Interface Edition<a class="headerlink" href="#q2-pepsirf-and-q2-autopepsirf-tutorial-multiple-interface-edition" title="Permalink to this headline">¶</a></h1>
+  <section id="pepsirf-qiime-2-plugin-tutorial-multiple-interface-edition">
+<h1>PepSIRF Qiime 2 Plugin tutorial - Multiple Interface Edition<a class="headerlink" href="#pepsirf-qiime-2-plugin-tutorial-multiple-interface-edition" title="Permalink to this headline">¶</a></h1>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>This guide is a preview of how you can use q2-pepsirf and q2-autopepsirf.</p>
@@ -53,9 +53,10 @@
 <section id="sample-raw-data">
 <h2>Sample Raw Data<a class="headerlink" href="#sample-raw-data" title="Permalink to this headline">¶</a></h2>
 <span class="usage-selector"></span><p>Before starting the analysis, download the raw data and bin files. These
-<code class="docutils literal notranslate"><span class="pre">IM0032-pA_PV1_subset.qza</span></code> and <code class="docutils literal notranslate"><span class="pre">pA_PV1.5_r1bins_IM25-26.qza</span></code>
-files are used throughout the rest of the tutorial.</p>
+<code class="docutils literal notranslate"><span class="pre">IM0032-pA_PV1_subset.qza</span></code>, <code class="docutils literal notranslate"><span class="pre">pA_PV1.5_r1bins_IM25-26.qza</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">samples_source.tsv</span></code> files are used throughout the rest of the tutorial.</p>
 <div class="artifact-usage highlight-default notranslate" id="usage-0"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiime2</span> <span class="kn">import</span> <span class="n">Artifact</span>
+<span class="kn">from</span> <span class="nn">qiime2</span> <span class="kn">import</span> <span class="n">Metadata</span>
 <span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/IM0032-pA-PV1-subset.qza&#39;</span>
@@ -67,6 +68,11 @@ files are used throughout the rest of the tutorial.</p>
 <span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;pA-PV1.5-r1bins-IM25-26.qza&#39;</span>
 <span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
 <span class="n">pA_PV1_5_r1bins_IM25_26</span> <span class="o">=</span> <span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/samples-source.tsv&#39;</span>
+<span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;samples-source.tsv&#39;</span>
+<span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
+<span class="n">samples_source_md</span> <span class="o">=</span> <span class="n">Metadata</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="cli-usage highlight-default notranslate" id="usage-1"><div class="highlight"><pre><span></span><span class="n">wget</span> \
@@ -76,12 +82,17 @@ files are used throughout the rest of the tutorial.</p>
 <span class="n">wget</span> \
   <span class="o">-</span><span class="n">O</span> <span class="s1">&#39;pA-PV1.5-r1bins-IM25-26.qza&#39;</span> \
   <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/pA-PV1.5-r1bins-IM25-26.qza&#39;</span>
+
+<span class="n">wget</span> \
+  <span class="o">-</span><span class="n">O</span> <span class="s1">&#39;samples-source.tsv&#39;</span> \
+  <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/samples-source.tsv&#39;</span>
 </pre></div>
 </div>
 <div class="exec-usage compound" id="usage-2">
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">IM0032-pA-PV1-subset.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf-tutorial%2FIM0032-pA-PV1-subset.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/IM0032-pA-PV1-subset.qza"><span>download</span></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pA-PV1.5-r1bins-IM25-26.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf-tutorial%2FpA-PV1.5-r1bins-IM25-26.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/pA-PV1.5-r1bins-IM25-26.qza"><span>download</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">samples-source.tsv</span></code><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/samples-source.tsv"><span>download</span></a></p></li>
 </ul>
 </div>
 <p>All data that is used as input to QIIME 2 is in form of QIIME 2 artifacts,
@@ -99,21 +110,23 @@ command (replace pepsirf_binary with how you call pepsirf on your machine):</p>
     <span class="n">bins</span><span class="o">=</span><span class="n">pA_PV1_5_r1bins_IM25_26</span><span class="p">,</span>
     <span class="n">negative_id</span><span class="o">=</span><span class="s1">&#39;SB_&#39;</span><span class="p">,</span>
     <span class="n">exact_z_thresh</span><span class="o">=</span><span class="s1">&#39;6,10&#39;</span><span class="p">,</span>
+    <span class="n">pepsirf_tsv_dir</span><span class="o">=</span><span class="s1">&#39;./testingTSV&#39;</span><span class="p">,</span>
+    <span class="n">tsv_base_str</span><span class="o">=</span><span class="s1">&#39;IM0032-pA_PV1_subset&#39;</span><span class="p">,</span>
     <span class="n">pepsirf_binary</span><span class="o">=</span><span class="s1">&#39;/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux&#39;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">colsum1</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">col_sum</span>
-<span class="n">diff1</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">diff</span>
-<span class="n">diff_ratio1</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">diff_ratio</span>
-<span class="n">zscore1</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">zscore</span>
-<span class="n">zscore_nan1</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">zscore_nan</span>
-<span class="n">sample_names1</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">sample_names</span>
-<span class="n">RC1</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">read_counts</span>
-<span class="n">rcBoxplot1_viz</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">rc_boxplot</span>
-<span class="n">enrichDir1</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">enrich</span>
-<span class="n">enrichBoxplot1_viz</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">enrich_count_boxplot</span>
-<span class="n">zScatter1_viz</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">zscore_scatter</span>
-<span class="n">csScatter1_viz</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">colsum_scatter</span>
-<span class="n">zenrich1_viz</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">zenrich_scatter</span>
+<span class="n">colsum</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">col_sum</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">diff</span>
+<span class="n">diff_ratio</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">diff_ratio</span>
+<span class="n">zscore</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">zscore</span>
+<span class="n">zscore_nan</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">zscore_nan</span>
+<span class="n">sample_names</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">sample_names</span>
+<span class="n">read_counts</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">read_counts</span>
+<span class="n">rcBoxplot_viz</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">rc_boxplot</span>
+<span class="n">enrich</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">enrich</span>
+<span class="n">enrichBoxplot_viz</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">enrich_count_boxplot</span>
+<span class="n">zScatter_viz</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">zscore_scatter</span>
+<span class="n">csScatter_viz</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">colsum_scatter</span>
+<span class="n">zenrich_viz</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">zenrich_scatter</span>
 </pre></div>
 </div>
 <div class="cli-usage highlight-default notranslate" id="usage-4"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">autopepsirf</span> <span class="n">diffEnrich</span> \
@@ -121,6 +134,8 @@ command (replace pepsirf_binary with how you call pepsirf on your machine):</p>
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">bins</span> <span class="n">pA</span><span class="o">-</span><span class="n">PV1</span><span class="mf">.5</span><span class="o">-</span><span class="n">r1bins</span><span class="o">-</span><span class="n">IM25</span><span class="o">-</span><span class="mf">26.</span><span class="n">qza</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">negative</span><span class="o">-</span><span class="nb">id</span> <span class="n">SB_</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">exact</span><span class="o">-</span><span class="n">z</span><span class="o">-</span><span class="n">thresh</span> <span class="mi">6</span><span class="p">,</span><span class="mi">10</span> \
+  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">pepsirf</span><span class="o">-</span><span class="n">tsv</span><span class="o">-</span><span class="nb">dir</span> <span class="o">./</span><span class="n">testingTSV</span> \
+  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">tsv</span><span class="o">-</span><span class="n">base</span><span class="o">-</span><span class="nb">str</span> <span class="n">IM0032</span><span class="o">-</span><span class="n">pA_PV1_subset</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">pepsirf</span><span class="o">-</span><span class="n">binary</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">ANNAB</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">GitHub</span><span class="o">/</span><span class="n">PepSIRF</span><span class="o">/</span><span class="n">precompiled</span><span class="o">/</span><span class="n">linux_mint_19</span><span class="mf">.3</span><span class="o">/</span><span class="n">pepsirf_1</span><span class="mf">.4.0</span><span class="n">_linux</span> \
   <span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="nb">dir</span> <span class="n">autopepsirf</span><span class="o">-</span><span class="n">diffEnrich</span>
 </pre></div>
@@ -141,6 +156,10 @@ command (replace pepsirf_binary with how you call pepsirf on your machine):</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">autopepsirf-diffEnrich/colsum_scatter.qzv</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf-tutorial%2Fautopepsirf-diffEnrich%2Fcolsum_scatter.qzv"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/autopepsirf-diffEnrich/colsum_scatter.qzv"><span>download</span></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">autopepsirf-diffEnrich/zenrich_scatter.qzv</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf-tutorial%2Fautopepsirf-diffEnrich%2Fzenrich_scatter.qzv"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/autopepsirf-diffEnrich/zenrich_scatter.qzv"><span>download</span></a></p></li>
 </ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>TSV outputs will not show up on this page. They are just duplicates of the .qza files in a .tsv format.</p>
 </div>
 </section>
 <section id="pepsirf-normalization">
@@ -169,27 +188,31 @@ call pepsirf on your machine):</p>
 </ul>
 </div>
 </section>
-<section id="ps-plot-tutorial">
-<h2>Ps-plot tutorial<a class="headerlink" href="#ps-plot-tutorial" title="Permalink to this headline">¶</a></h2>
-<span class="usage-selector"></span><p>Here we wil test q2-ps-plot’s norm module by running the following command:</p>
+<section id="ps-plot-repscatters">
+<h2>Ps-plot repScatters<a class="headerlink" href="#ps-plot-repscatters" title="Permalink to this headline">¶</a></h2>
+<span class="usage-selector"></span><p>Here we will test q2-ps-plot’s repScatters module by running the following command:</p>
 <div class="artifact-usage highlight-default notranslate" id="usage-9"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiime2.plugins.ps_plot.actions</span> <span class="k">as</span> <span class="nn">ps_plot_actions</span>
 
-<span class="n">rcBoxplot_viz</span><span class="p">,</span> <span class="o">=</span> <span class="n">ps_plot_actions</span><span class="o">.</span><span class="n">readCountsBoxplot</span><span class="p">(</span>
-    <span class="n">read_counts</span><span class="o">=</span><span class="n">RC1</span><span class="p">,</span>
+<span class="n">samples_col_mdc</span> <span class="o">=</span> <span class="n">samples_source_md</span><span class="o">.</span><span class="n">get_column</span><span class="p">(</span><span class="s1">&#39;source&#39;</span><span class="p">)</span>
+<span class="n">ZRepScatter_viz</span><span class="p">,</span> <span class="o">=</span> <span class="n">ps_plot_actions</span><span class="o">.</span><span class="n">repScatters</span><span class="p">(</span>
+    <span class="n">zscore</span><span class="o">=</span><span class="n">zscore</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="n">samples_col_mdc</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="cli-usage highlight-default notranslate" id="usage-10"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">ps</span><span class="o">-</span><span class="n">plot</span> <span class="n">readCountsBoxplot</span> \
-  <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">read</span><span class="o">-</span><span class="n">counts</span> <span class="n">autopepsirf</span><span class="o">-</span><span class="n">diffEnrich</span><span class="o">/</span><span class="n">read_counts</span><span class="o">.</span><span class="n">qza</span> \
-  <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">visualization</span> <span class="n">rcBoxplot</span><span class="o">.</span><span class="n">qzv</span>
+<div class="cli-usage highlight-default notranslate" id="usage-10"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">ps</span><span class="o">-</span><span class="n">plot</span> <span class="n">repScatters</span> \
+  <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">zscore</span> <span class="n">autopepsirf</span><span class="o">-</span><span class="n">diffEnrich</span><span class="o">/</span><span class="n">zscore</span><span class="o">.</span><span class="n">qza</span> \
+  <span class="o">--</span><span class="n">m</span><span class="o">-</span><span class="n">source</span><span class="o">-</span><span class="n">file</span> <span class="n">samples</span><span class="o">-</span><span class="n">source</span><span class="o">.</span><span class="n">tsv</span> \
+  <span class="o">--</span><span class="n">m</span><span class="o">-</span><span class="n">source</span><span class="o">-</span><span class="n">column</span> <span class="n">source</span> \
+  <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">visualization</span> <span class="n">ZRepScatter</span><span class="o">.</span><span class="n">qzv</span>
 </pre></div>
 </div>
 <div class="exec-usage compound" id="usage-11">
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">rcBoxplot.qzv</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf-tutorial%2FrcBoxplot.qzv"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/rcBoxplot.qzv"><span>download</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ZRepScatter.qzv</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf-tutorial%2FZRepScatter.qzv"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/ZRepScatter.qzv"><span>download</span></a></p></li>
 </ul>
 </div>
-<p>Another ps-plot tutorial is available here: <a class="reference external" href="https://github.com/LadnerLab/q2-ps-plot#tutorial">https://github.com/LadnerLab/q2-ps-plot#tutorial</a></p>
+<p>A ps-plot zenrich module tutorial is available here: <a class="reference external" href="https://github.com/LadnerLab/q2-ps-plot#tutorial">https://github.com/LadnerLab/q2-ps-plot#tutorial</a></p>
 </section>
 </section>
 
@@ -203,7 +226,7 @@ call pepsirf on your machine):</p>
 <h3><a href="../../">Table of Contents</a></h3>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../">Tutorials</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">“q2-pepsirf and q2-autopepsirf” tutorial - Multiple Interface Edition</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PepSIRF Qiime 2 Plugin tutorial - Multiple Interface Edition</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/">Available plugins</a></li>
