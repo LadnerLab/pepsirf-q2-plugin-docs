@@ -83,7 +83,7 @@ command (replace pepsirf_binary with how you call pepsirf on your machine):
     ) 
 
 .. note::
-    TSV outputs will not show up on this page. They are just duplicates of the .qza files in a .tsv format.
+    TSV/PNG outputs will not show up on this page. They are just duplicates of the .qza files in a .tsv format.
 
 Pepsirf Normalization
 ---------------------

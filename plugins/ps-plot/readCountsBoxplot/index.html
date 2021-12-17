@@ -56,21 +56,24 @@
 
 Inputs:
   --i-read-counts ARTIFACT
-    InfoSumOfProbes    InfoSumOfProbes file, The first entry in each column
-                       will be the name of the sample, and the second will be
-                       the sum of the peptide/probe scores for the sample.
+    InfoSumOfProbes     InfoSumOfProbes file, The first entry in each column
+                        will be the name of the sample, and the second will be
+                        the sum of the peptide/probe scores for the sample.
                                                                     [required]
+Parameters:
+  --p-png-out-dir TEXT  The name of the directory to wich to write the .png
+                        output files to                        [default: './']
 Outputs:
   --o-visualization VISUALIZATION
                                                                     [required]
 Miscellaneous:
-  --output-dir PATH    Output unspecified results to a directory
-  --verbose / --quiet  Display verbose output to stdout and/or stderr during
-                       execution of this action. Or silence output if
-                       execution is successful (silence is golden).
-  --example-data PATH  Write example data and exit.
-  --citations          Show citations and exit.
-  --help               Show this message and exit.</pre>
+  --output-dir PATH     Output unspecified results to a directory
+  --verbose / --quiet   Display verbose output to stdout and/or stderr during
+                        execution of this action. Or silence output if
+                        execution is successful (silence is golden).
+  --example-data PATH   Write example data and exit.
+  --citations           Show citations and exit.
+  --help                Show this message and exit.</pre>
     </div>
     <div id="api" class="tab-pane fade">
     <h4>Import:</h4><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>from qiime2.plugins.ps_plot.visualizers import readCountsBoxplot
@@ -87,6 +90,8 @@ read_counts : InfoSumOfProbes
     InfoSumOfProbes file, The first entry in each column will be the name
     of the sample, and the second will be the sum of the peptide/probe
     scores for the sample.
+png_out_dir : Str, optional
+    The name of the directory to wich to write the .png output files to
 
 Returns
 -------

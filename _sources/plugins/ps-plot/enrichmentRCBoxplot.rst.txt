@@ -18,20 +18,23 @@ enrichmentRCBoxplot: Enriched Read Counts BoxPlot
      Creates a boxplot for the read counts of enriched peptides
 
    Inputs:
-     --i-enriched-dir ARTIFACT PairwiseEnrichment
-                          A PairwiseEnrichment semantic type or .qza. This file
-                          is the output of q2-pepsirf's enrich module  [required]
+     --i-enriched-dir ARTIFACT
+       PairwiseEnrichment  A PairwiseEnrichment semantic type or .qza. This file
+                           is the output of q2-pepsirf's enrich module [required]
+   Parameters:
+     --p-png-out-dir TEXT  The name of the directory to wich to write the .png
+                           output files to                        [default: './']
    Outputs:
      --o-visualization VISUALIZATION
                                                                        [required]
    Miscellaneous:
-     --output-dir PATH    Output unspecified results to a directory
-     --verbose / --quiet  Display verbose output to stdout and/or stderr during
-                          execution of this action. Or silence output if
-                          execution is successful (silence is golden).
-     --example-data PATH  Write example data and exit.
-     --citations          Show citations and exit.
-     --help               Show this message and exit.</pre>
+     --output-dir PATH     Output unspecified results to a directory
+     --verbose / --quiet   Display verbose output to stdout and/or stderr during
+                           execution of this action. Or silence output if
+                           execution is successful (silence is golden).
+     --example-data PATH   Write example data and exit.
+     --citations           Show citations and exit.
+     --help                Show this message and exit.</pre>
        </div>
        <div id="api" class="tab-pane fade">
        <h4>Import:</h4>
@@ -53,6 +56,8 @@ enrichmentRCBoxplot: Enriched Read Counts BoxPlot
    enriched_dir : PairwiseEnrichment
        A PairwiseEnrichment semantic type or .qza. This file is the output of
        q2-pepsirf's enrich module
+   png_out_dir : Str, optional
+       The name of the directory to wich to write the .png output files to
 
    Returns
    -------
