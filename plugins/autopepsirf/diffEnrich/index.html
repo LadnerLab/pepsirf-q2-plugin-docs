@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/plugins/autopepsirf/diffEnrich.html" />
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
-    <link rel="next" title="pepsirf" href="../../pepsirf/" />
+    <link rel="next" title="diffEnrich-tsv: diffEnrich tsv Pepsirf Pipeline" href="../diffEnrich-tsv/" />
     <link rel="prev" title="autopepsirf" href="../" />
   <script src="../../../_static/bootstrap.min.js"></script>
   <script src="../../../_static/clipboard.min.js"></script>
@@ -56,12 +56,12 @@
   to determine enriched peptides
 
 Inputs:
-  --i-raw-data ARTIFACT FeatureTable[RawCounts | Normed]
+  --i-raw-data ARTIFACT FeatureTable[RawCounts]
                          Raw data matrix.                           [required]
   --i-bins ARTIFACT      Name of the file containing bins, one bin per line,
     PeptideBins          as output by the bin module. Each bin contains a
                          tab-delimited list of peptide names.       [required]
-  --i-negative-control ARTIFACT FeatureTable[RawCounts | Normed]
+  --i-negative-control ARTIFACT FeatureTable[Normed]
                          Name of FeatureTable matrix file containing data for
                          sb samples.                                [optional]
   --i-thresh-file ARTIFACT
@@ -80,7 +80,11 @@ Parameters:
   --p-exact-z-thresh TEXT
                          Individual Exact z score threshold separated by a
                          comma for creation of threshold file to run pepsirf's
-                         enrich module (Ex: 6,10 or 5,30)           [optional]
+                         enrich module (Ex: 6,10 or 30)             [optional]
+  --p-exact-cs-thresh TEXT
+                         Individual Exact col-sum threshold separated by a
+                         comma for creation of threshold file to run pepsirf's
+                         enrich module (Ex: 6,10 or 30)        [default: '20']
   --p-exact-zenrich-thresh TEXT...
     List[Str]            List of exact z score thresholds either individual
                          or combined. List MUST BE in descending order.
@@ -109,6 +113,15 @@ Parameters:
                          a sample to be included in the analysis.This provides
                          a way to impose a minimum read count for a sample to
                          be evaluated.                       [default: 300000]
+  --p-hdi PROPORTION     Alternative approach for discarding outliers prior
+    Range(0.0, 1.0)      to calculating mean and stdev. If provided, this
+                         argument will override --trim, which trims evenly
+                         from both sides of the distribution. For --hdi, the
+                         user should provide the high density interval to be
+                         used for calculation of mean and stdev. For example,
+                         '--hdi 0.95' would instruct the program to utilize
+                         the 95% highest density interval (from each bin) for
+                         these calculations.                   [default: 0.95]
   --p-pepsirf-binary TEXT
                          The binary to call pepsirf on your system.
                                                           [default: 'pepsirf']
@@ -160,12 +173,12 @@ to determine enriched peptides
 
 Parameters
 ----------
-raw_data : FeatureTable[RawCounts | Normed]
+raw_data : FeatureTable[RawCounts]
     Raw data matrix.
 bins : PeptideBins
     Name of the file containing bins, one bin per line, as output by the
     bin module. Each bin contains a tab-delimited list of peptide names.
-negative_control : FeatureTable[RawCounts | Normed], optional
+negative_control : FeatureTable[Normed], optional
     Name of FeatureTable matrix file containing data for sb samples.
 negative_id : Str, optional
     Optional approach for identifying negative controls. Provide a unique
@@ -179,7 +192,10 @@ thresh_file : EnrichThresh, optional
     matrix.
 exact_z_thresh : Str, optional
     Individual Exact z score threshold separated by a comma for creation of
-    threshold file to run pepsirf's enrich module (Ex: 6,10 or 5,30)
+    threshold file to run pepsirf's enrich module (Ex: 6,10 or 30)
+exact_cs_thresh : Str, optional
+    Individual Exact col-sum threshold separated by a comma for creation of
+    threshold file to run pepsirf's enrich module (Ex: 6,10 or 30)
 exact_zenrich_thresh : List[Str], optional
     List of exact z score thresholds either individual or combined. List
     MUST BE in descending order. (Example argument: '--p-exact-zenrich-
@@ -202,6 +218,14 @@ raw_constraint : Int % Range(0, None), optional
     The minimum total raw count across all peptides for a sample to be
     included in the analysis.This provides a way to impose a minimum read
     count for a sample to be evaluated.
+hdi : Float % Range(0.0, 1.0), optional
+    Alternative approach for discarding outliers prior to calculating mean
+    and stdev. If provided, this argument will override --trim, which trims
+    evenly from both sides of the distribution. For --hdi, the user should
+    provide the high density interval to be used for calculation of mean
+    and stdev. For example, '--hdi 0.95' would instruct the program to
+    utilize the 95% highest density interval (from each bin) for these
+    calculations.
 pepsirf_binary : Str, optional
     The binary to call pepsirf on your system.
 

@@ -95,6 +95,8 @@ Parameters:
   --p-precision INTEGER  Output score precision. The scores written to the
     Range(0, None)       output will be output to this many decimal places.
                                                                   [default: 2]
+  --p-outfile TEXT       The outfile that will produce a list of inputs to
+                         PepSIRF.                      [default: './norm.out']
   --p-pepsirf-binary TEXT
                          The binary to call pepsirf on your system.
                                                           [default: 'pepsirf']
@@ -152,6 +154,8 @@ negative_names : List[Str], optional
 precision : Int % Range(0, None), optional
     Output score precision. The scores written to the output will be output
     to this many decimal places.
+outfile : Str, optional
+    The outfile that will produce a list of inputs to PepSIRF.
 pepsirf_binary : Str, optional
     The binary to call pepsirf on your system.
 

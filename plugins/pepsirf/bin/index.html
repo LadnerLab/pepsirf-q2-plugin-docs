@@ -80,6 +80,8 @@ Parameters:
                         will result in rounding to the nearest integer, while
                         a rounding factor of 1 will result in rounding to the
                         nearest tenth.                            [default: 0]
+  --p-outfile TEXT      The outfile that will produce a list of inputs to
+                        PepSIRF.                        [default: './bin.out']
   --p-pepsirf-binary TEXT
                         The binary to call pepsirf on your system.
                                                           [default: 'pepsirf']
@@ -126,6 +128,8 @@ round_to : Int % Range(0, None), optional
     1/10^x for a rounding factor x. For example, a rounding factor of 0
     will result in rounding to the nearest integer, while a rounding factor
     of 1 will result in rounding to the nearest tenth.
+outfile : Str, optional
+    The outfile that will produce a list of inputs to PepSIRF.
 pepsirf_binary : Str, optional
     The binary to call pepsirf on your system.
 

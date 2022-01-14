@@ -65,6 +65,10 @@ Inputs:
                         FeatureTable containing z scores of the normalized
                         read counts. Fist column header must be 'Sequence
                         Name' as produced by pepsirf.               [optional]
+  --i-col-sum ARTIFACT FeatureTable[Normed]
+                        FeatureTable containing the normalized read counts.
+                        Fist column header must be 'Sequence Name' as produced
+                        by pepsirf.                                 [optional]
   --i-raw-scores ARTIFACT FeatureTable[RawCounts]
                         This matrix must contain the raw counts for each
                         Peptide for every sample of interest. If included,
@@ -77,8 +81,9 @@ Parameters:
                         source groups. Used to create pairs tsv to run pepsirf
                         enrich module.                              [required]
   --p-exact-z-thresh TEXT
-                        Exact z score thresholds either individual or
-                        combined.                                   [optional]
+                        Exact z score thresholds.                   [optional]
+  --p-exact-cs-thresh TEXT
+                        Exact col-sum threholds.                    [optional]
   --p-raw-constraint INTEGER
     Range(0, None)      The minimum total raw count across all peptides for a
                         sample to be included in the analysis.This provides a
@@ -104,6 +109,8 @@ Parameters:
                         samplenames in the output. When this flag is used, the
                         output names will be of the form 'A~B~C~1more', for
                         example.                              [default: False]
+  --p-outfile TEXT      The outfile that will produce a list of inputs to
+                        PepSIRF.                     [default: './enrich.out']
   --p-pepsirf-binary TEXT
                         The binary to call pepsirf on your system.
                                                           [default: 'pepsirf']
@@ -142,8 +149,13 @@ thresh_file : EnrichThresh, optional
 zscores : FeatureTable[Zscore], optional
     FeatureTable containing z scores of the normalized read counts. Fist
     column header must be 'Sequence Name' as produced by pepsirf.
+col_sum : FeatureTable[Normed], optional
+    FeatureTable containing the normalized read counts. Fist column header
+    must be 'Sequence Name' as produced by pepsirf.
 exact_z_thresh : Str, optional
-    Exact z score thresholds either individual or combined.
+    Exact z score thresholds.
+exact_cs_thresh : Str, optional
+    Exact col-sum threholds.
 raw_scores : FeatureTable[RawCounts], optional
     This matrix must contain the raw counts for each Peptide for every
     sample of interest. If included, '--raw_score_constraint' must also be
@@ -167,6 +179,8 @@ truncate : Bool, optional
     to stop the filenames from including more than 3 samplenames in the
     output. When this flag is used, the output names will be of the form
     'A~B~C~1more', for example.
+outfile : Str, optional
+    The outfile that will produce a list of inputs to PepSIRF.
 pepsirf_binary : Str, optional
     The binary to call pepsirf on your system.
 

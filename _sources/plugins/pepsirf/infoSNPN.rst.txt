@@ -27,6 +27,8 @@ infoSNPN: pepsirf info (samples/peptide names) module
      --p-get TEXT Choices('samples', 'probes')
                           Specify weather you want to collect sample names or
                           probe/peptide names                          [required]
+     --p-outfile TEXT     The outfile that will produce a list of inputs to
+                          PepSIRF.                        [default: './info.out']
      --p-pepsirf-binary TEXT
                           The binary to call pepsirf on your system.
                                                              [default: 'pepsirf']
@@ -65,6 +67,8 @@ infoSNPN: pepsirf info (samples/peptide names) module
        An input score matrix to gather information from.
    get : Str % Choices('samples', 'probes')
        Specify weather you want to collect sample names or probe/peptide names
+   outfile : Str, optional
+       The outfile that will produce a list of inputs to PepSIRF.
    pepsirf_binary : Str, optional
        The binary to call pepsirf on your system.
 

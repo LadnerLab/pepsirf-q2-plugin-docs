@@ -66,7 +66,8 @@ Parameters:
   --p-negative-controls TEXT...
     List[Str]             Sample names of the negative controls to be used
                           (Example argument: --p-negative-controls sample1
-                          sample2 sample3).                         [required]
+                          sample2 sample3).                         [optional]
+  --p-negative-id TEXT                                              [optional]
   --m-source-file METADATA
   --m-source-column COLUMN  MetadataColumn[Categorical]
                           Metadata file containing all sample names and their
@@ -78,7 +79,10 @@ Parameters:
                           (Depricated)                              [optional]
   --m-peptide-metadata-file METADATA...
     (multiple arguments   Filename of file that contains peptide metadata
-     will be merged)      related to data to be plotted.            [optional]
+     will be merged)      related to data to be plotted. First column header
+                          must be id or one of the options found on:
+                          https://docs.qiime2.org/2021.11/tutorials/metadata/?
+                          #identifier-column                        [optional]
   --p-tooltip TEXT...     List of title names found in the peptide metadata
     List[Str]             file to be added to the hover tooltip (Parameter is
                           case sensitive. Example argument: --p-tooltip
@@ -87,11 +91,19 @@ Parameters:
                           metadata is not provided just 'Peptide' and
                           'Zscores' will be shown.
                                            [default: ['Species', 'SpeciesID']]
+  --p-color-by TEXT       A column within the metadata file to base the
+                          coloring of the enriched peptide points. This
+                          parameter is case sensitive and the default is the
+                          different zscore thresholds.
+                                                [default: 'z_score_threshold']
   --p-negative-data-filepath TEXT
                           Filepath of .tsv file containing normalized read
                           counts of controls and peptides. First column header
                           must be 'Sequence Name' as produced by pepsirf.
                                                                     [optional]
+  --p-highlighted-probes-filepath TEXT
+                          A InfoSNPN file that contains a list of
+                          probes/peptides to highlight.             [optional]
   --p-step-z-thresh INTEGER
     Range(1, None)        Integar to increment z-score thresholds.
                                                                   [default: 5]
@@ -106,6 +118,9 @@ Parameters:
                           or combined. List MUST BE in descending order.
                           (Example argument: '--p-exact-z-thresh 25 10 3' or
                           '--p-exact-z-thresh 6,25 4,10 1,3')       [optional]
+  --p-exact-cs-thresh TEXT
+                          A single col-sum threshold. Default 20.
+                                                               [default: '20']
   --p-pepsirf-binary TEXT The binary to call pepsirf on your system. Used to
                           call pepsirf enrich module.     [default: 'pepsirf']
 Outputs:
@@ -139,9 +154,10 @@ zscores_filepath : Str
     Filepath of .tsv file containing z scores of the normalized read
     counts. Fist column header must be 'Sequence Name' as produced by
     pepsirf.
-negative_controls : List[Str]
+negative_controls : List[Str], optional
     Sample names of the negative controls to be used (Example argument:
     --p-negative-controls sample1 sample2 sample3).
+negative_id : Str, optional
 source : MetadataColumn[Categorical], optional
     Metadata file containing all sample names and their source groups. Used
     to create pairs tsv to run pepsirf enrich module.
@@ -151,17 +167,24 @@ pn_filepath : Str, optional
     (Depricated)
 peptide_metadata : Metadata, optional
     Filename of file that contains peptide metadata related to data to be
-    plotted.
+    plotted. First column header must be id or one of the options found on:
+    https://docs.qiime2.org/2021.11/tutorials/metadata/?#identifier-column
 tooltip : List[Str], optional
     List of title names found in the peptide metadata file to be added to
     the hover tooltip (Parameter is case sensitive. Example argument:
     --p-tooltip Species SpeciesID). 'Peptide' and 'Zscores' will always be
     added to the list of titles, if peptide metadata is not provided just
     'Peptide' and 'Zscores' will be shown.
+color_by : Str, optional
+    A column within the metadata file to base the coloring of the enriched
+    peptide points. This parameter is case sensitive and the default is the
+    different zscore thresholds.
 negative_data_filepath : Str, optional
     Filepath of .tsv file containing normalized read counts of controls and
     peptides. First column header must be 'Sequence Name' as produced by
     pepsirf.
+highlighted_probes_filepath : Str, optional
+    A InfoSNPN file that contains a list of probes/peptides to highlight.
 step_z_thresh : Int % Range(1, None), optional
     Integar to increment z-score thresholds.
 upper_z_thresh : Int % Range(2, None), optional
@@ -172,6 +195,8 @@ exact_z_thresh : List[Str], optional
     List of exact z score thresholds either individual or combined. List
     MUST BE in descending order. (Example argument: '--p-exact-z-thresh 25
     10 3' or '--p-exact-z-thresh 6,25 4,10 1,3')
+exact_cs_thresh : Str, optional
+    A single col-sum threshold. Default 20.
 pepsirf_binary : Str, optional
     The binary to call pepsirf on your system. Used to call pepsirf enrich
     module.
