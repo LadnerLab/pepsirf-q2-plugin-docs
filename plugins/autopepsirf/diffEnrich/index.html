@@ -70,6 +70,29 @@ Inputs:
                          per line. If providing more than z score matrix.
                                                                     [optional]
 Parameters:
+  --p-infer-pairs-source / --p-no-infer-pairs-source
+                         Infer sample pairs from names. This option assumes
+                         names of replicates will be identical with the
+                         exception of a final string denoted with a '_'. For
+                         example, these names would be considered two
+                         replicates of the same sample: VW_100_1X_A and
+                         VW_100_1X_B                           [default: True]
+  --p-flexible-reps-source / --p-no-flexible-reps-source
+                         will infer the number of replicates for each sample
+                         based on sample names, and will not require any
+                         specific number of replicates for inclusion.
+                         Therefore, some samples may have a single replicate,
+                         some may have 2, 3, 4 etc. And all replicates of a
+                         given sample will be considered for determining
+                         enriched peptides.                   [default: False]
+  --p-s-enrich-source / --p-no-s-enrich-source
+                         All samples will be processed individually as
+                         samples with only one replicate      [default: False]
+  --m-user-defined-source-file METADATA
+  --m-user-defined-source-column COLUMN  MetadataColumn[Categorical]
+                         Metadata file containing all sample names and their
+                         source groups. Used to create pairs tsv to run
+                         pepsirf enrich module.                     [optional]
   --p-negative-id TEXT   Optional approach for identifying negative controls.
                          Provide a unique string at the start of all negative
                          control samples.                           [optional]
@@ -178,6 +201,23 @@ raw_data : FeatureTable[RawCounts]
 bins : PeptideBins
     Name of the file containing bins, one bin per line, as output by the
     bin module. Each bin contains a tab-delimited list of peptide names.
+infer_pairs_source : Bool, optional
+    Infer sample pairs from names. This option assumes names of replicates
+    will be identical with the exception of a final string denoted with a
+    '_'. For example, these names would be considered two replicates of the
+    same sample: VW_100_1X_A and VW_100_1X_B
+flexible_reps_source : Bool, optional
+    will infer the number of replicates for each sample based on sample
+    names, and will not require any specific number of replicates for
+    inclusion. Therefore, some samples may have a single replicate, some
+    may have 2, 3, 4 etc. And all replicates of a given sample will be
+    considered for determining enriched peptides.
+s_enrich_source : Bool, optional
+    All samples will be processed individually as samples with only one
+    replicate
+user_defined_source : MetadataColumn[Categorical], optional
+    Metadata file containing all sample names and their source groups. Used
+    to create pairs tsv to run pepsirf enrich module.
 negative_control : FeatureTable[Normed], optional
     Name of FeatureTable matrix file containing data for sb samples.
 negative_id : Str, optional

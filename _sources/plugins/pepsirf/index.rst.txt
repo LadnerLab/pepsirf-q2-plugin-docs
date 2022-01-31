@@ -15,7 +15,7 @@ pepsirf
        </tr>
        <tr>
          <th scope="row">Version</th>
-         <td>2021.12+23.g98deae5</td>
+         <td>2021.12+32.g86131cd</td>
        </tr>
        <tr>
          <th scope="row">Website</th>
@@ -75,11 +75,17 @@ Methods
    
    bin
    
+   deconv-batch
+   
+   deconv-singluar
+   
    enrich
    
    infoSNPN
    
    infoSumOfProbes
+   
+   link
    
    norm
    

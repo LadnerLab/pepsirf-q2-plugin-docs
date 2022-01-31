@@ -15,7 +15,7 @@ autopepsirf
        </tr>
        <tr>
          <th scope="row">Version</th>
-         <td>2021.12+23.g21d7dd7</td>
+         <td>2021.12+27.gc92bc3c</td>
        </tr>
        <tr>
          <th scope="row">Website</th>
