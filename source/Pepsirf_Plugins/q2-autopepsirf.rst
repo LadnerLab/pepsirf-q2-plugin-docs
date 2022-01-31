@@ -41,7 +41,7 @@ for installation documentation on q2-ps-plot
 q2-autopepsirf Installation:
 ````````````````````````````
 
-Make sure your Qiime2 conda environment is activated by running the command:
+Make sure your Qiime2 conda environment is activated by running the command: 
 
 ``conda activate qiime2-2021.11``
 
