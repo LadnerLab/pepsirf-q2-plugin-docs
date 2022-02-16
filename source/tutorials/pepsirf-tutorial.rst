@@ -63,6 +63,7 @@ command (replace pepsirf_binary with how you call pepsirf on your machine):
         exact_z_thresh = "6,10",
         pepsirf_tsv_dir = "./testingTSV",
         tsv_base_str = "IM0032-pA_PV1_subset",
+        hdi = 0.95,
         pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
     ),
     use.UsageOutputNames(
