@@ -15,7 +15,7 @@ pepsirf
        </tr>
        <tr>
          <th scope="row">Version</th>
-         <td>2021.12+32.g86131cd</td>
+         <td>2021.12+17.g405a01f.dirty</td>
        </tr>
        <tr>
          <th scope="row">Website</th>
@@ -78,6 +78,8 @@ Methods
    deconv-batch
    
    deconv-singluar
+   
+   demux
    
    enrich
    
