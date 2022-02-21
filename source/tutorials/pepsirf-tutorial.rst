@@ -136,7 +136,8 @@ Ps-plot zenrich
 
 .. usage-selector::
 
-Here we will test q2-ps-plot's zenrich module by running the following command:
+Here we will test q2-ps-plot's zenrich module by running the following command
+(replace pepsirf_binary with how you call pepsirf on your machine):
 
 .. usage::
 
