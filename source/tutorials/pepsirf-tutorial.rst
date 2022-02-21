@@ -131,4 +131,25 @@ Here we will test q2-ps-plot's repScatters module by running the following comma
     )
     )
 
-A ps-plot zenrich module tutorial is available here: https://github.com/LadnerLab/q2-ps-plot#tutorial
+Ps-plot zenrich
+-------------------
+
+.. usage-selector::
+
+Here we will test q2-ps-plot's zenrich module by running the following command:
+
+.. usage::
+
+   zenrichScat, = use.action(
+    use.UsageAction(plugin_id='ps_plot', action_id='zenrich'),
+    use.UsageInputs(
+        data = col_sum,
+        zscores = zscore,
+        source = samples_col,
+        negative_controls = ["SB_pA_A","SB_pA_B","SB_pA_D"],
+        pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
+    ),
+    use.UsageOutputNames(
+        visualization = "zenrich_scatter"
+    )
+    )
