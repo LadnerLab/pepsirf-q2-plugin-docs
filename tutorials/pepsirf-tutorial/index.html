@@ -214,7 +214,34 @@ call pepsirf on your machine):</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">ZRepScatter.qzv</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf-tutorial%2FZRepScatter.qzv"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/ZRepScatter.qzv"><span>download</span></a></p></li>
 </ul>
 </div>
-<p>A ps-plot zenrich module tutorial is available here: <a class="reference external" href="https://github.com/LadnerLab/q2-ps-plot#tutorial">https://github.com/LadnerLab/q2-ps-plot#tutorial</a></p>
+</section>
+<section id="ps-plot-zenrich">
+<h2>Ps-plot zenrich<a class="headerlink" href="#ps-plot-zenrich" title="Permalink to this headline">¶</a></h2>
+<span class="usage-selector"></span><p>Here we will test q2-ps-plot’s zenrich module by running the following command:</p>
+<div class="artifact-usage highlight-default notranslate" id="usage-12"><div class="highlight"><pre><span></span><span class="n">zenrich_scatter_viz</span><span class="p">,</span> <span class="o">=</span> <span class="n">ps_plot_actions</span><span class="o">.</span><span class="n">zenrich</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">IM0032_pA_PV1_subset_CS</span><span class="p">,</span>
+    <span class="n">zscores</span><span class="o">=</span><span class="n">zscore</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="n">samples_col_mdc</span><span class="p">,</span>
+    <span class="n">negative_controls</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;SB_pA_A&#39;</span><span class="p">,</span> <span class="s1">&#39;SB_pA_B&#39;</span><span class="p">,</span> <span class="s1">&#39;SB_pA_D&#39;</span><span class="p">],</span>
+    <span class="n">pepsirf_binary</span><span class="o">=</span><span class="s1">&#39;/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="cli-usage highlight-default notranslate" id="usage-13"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">ps</span><span class="o">-</span><span class="n">plot</span> <span class="n">zenrich</span> \
+  <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">data</span> <span class="n">IM0032</span><span class="o">-</span><span class="n">pA</span><span class="o">-</span><span class="n">PV1</span><span class="o">-</span><span class="n">subset</span><span class="o">-</span><span class="n">CS</span><span class="o">.</span><span class="n">qza</span> \
+  <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">zscores</span> <span class="n">autopepsirf</span><span class="o">-</span><span class="n">diffEnrich</span><span class="o">/</span><span class="n">zscore</span><span class="o">.</span><span class="n">qza</span> \
+  <span class="o">--</span><span class="n">m</span><span class="o">-</span><span class="n">source</span><span class="o">-</span><span class="n">file</span> <span class="n">samples</span><span class="o">-</span><span class="n">source</span><span class="o">.</span><span class="n">tsv</span> \
+  <span class="o">--</span><span class="n">m</span><span class="o">-</span><span class="n">source</span><span class="o">-</span><span class="n">column</span> <span class="n">source</span> \
+  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">negative</span><span class="o">-</span><span class="n">controls</span> <span class="n">SB_pA_A</span> <span class="n">SB_pA_B</span> <span class="n">SB_pA_D</span> \
+  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">pepsirf</span><span class="o">-</span><span class="n">binary</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">ANNAB</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">GitHub</span><span class="o">/</span><span class="n">PepSIRF</span><span class="o">/</span><span class="n">precompiled</span><span class="o">/</span><span class="n">linux_mint_19</span><span class="mf">.3</span><span class="o">/</span><span class="n">pepsirf_1</span><span class="mf">.4.0</span><span class="n">_linux</span> \
+  <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">visualization</span> <span class="n">zenrich</span><span class="o">-</span><span class="n">scatter</span><span class="o">.</span><span class="n">qzv</span>
+</pre></div>
+</div>
+<div class="exec-usage compound" id="usage-14">
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">zenrich-scatter.qzv</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf-tutorial%2Fzenrich-scatter.qzv"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/zenrich-scatter.qzv"><span>download</span></a></p></li>
+</ul>
+</div>
 </section>
 </section>
 
