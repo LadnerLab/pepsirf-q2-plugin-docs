@@ -72,6 +72,9 @@ Parameters:
   --p-plot-log / --p-no-plot-log
                         Use if you want axes to be shown on a log-scale.
                                                               [default: False]
+  --p-facet-charts / --p-no-facet-charts
+                        Allows for view of all tables on one page instead of
+                        the available dropdown menu.          [default: False]
 Outputs:
   --o-visualization VISUALIZATION
                                                                     [required]
@@ -106,6 +109,9 @@ zscore : FeatureTable[Zscore], optional
 col_sum : FeatureTable[Normed], optional
     FeatureTable containing normalized read counts of samples and peptides.
     First column header must be 'Sequence Name' as produced by pepsirf.
+facet_charts : Bool, optional
+    Allows for view of all tables on one page instead of the available
+    dropdown menu.
 
 Returns
 -------
