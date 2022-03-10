@@ -11,12 +11,12 @@ Dependencies:
 `````````````
 
 - ``qiime2-2021.11 +``
-- ``PepSIRF``
+- ``PepSIRF v1.4.0``
 
 Qiime2 Installation:
 `````````````````````
 
-Visit: https://docs.qiime2.org/2021.8/install/ for intallation documentation on Qiime2
+Visit: https://docs.qiime2.org/2022.2/install/ for intallation documentation on Qiime2
 
 PepSIRF Installation:
 `````````````````````
@@ -37,6 +37,8 @@ Now you are ready to install q2-pepsirf. Run the following commands:
 ``pip install git+https://github.com/LadnerLab/q2-pepsirf.git``
 
 Run qiime info to check for a successful installation. If installation was successful, you should see pepsirf: version in the list of installed plugins.
+
+Typical Run Time: 4.58 Seconds
 
 Updating
 --------

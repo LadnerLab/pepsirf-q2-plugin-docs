@@ -11,6 +11,8 @@ Introduction
 
 In this tutorial you'll use QIIME 2 to perform an analysis of some data.
 
+Typical Run Time: 5 Minutes
+
 Sample Raw Data
 ---------------
 

@@ -12,14 +12,17 @@ Dependencies:
 `````````````
 
 - ``qiime2-2021.11``
-- ``q2-pepsirf``
-- ``q2-ps-plot``
-- ``PepSIRF``
+- ``q2-pepsirf v2021.12``
+- ``q2-ps-plot v2021.9.15``
+- ``PepSIRF v1.4.0``
+- ``altair v4.1.0``
+- ``altair_saver v0.5.0``
+- ``jsonschema 3.2``
 
 Qiime2 Installation:
 ````````````````````
 
-Visit: https://docs.qiime2.org/2021.8/install/ for intallation documentation on Qiime2
+Visit: https://docs.qiime2.org/2022.2/install/ for intallation documentation on Qiime2
 
 PepSIRF Installation:
 ``````````````````````
@@ -52,6 +55,8 @@ Now you are ready to install q2-autopepsirf. Run the following commands:
 ``pip install git+https://github.com/LadnerLab/q2-autopepsirf.git``
 
 Run qiime info to check for a successful installation. If installation was successful, you should see autopepsirf: version in the list of installed plugins.
+
+Typical Run Time: 4.43 Seconds
 
 Updating
 --------
