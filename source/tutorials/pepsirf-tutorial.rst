@@ -111,6 +111,30 @@ call pepsirf on your machine):
     )
     )
 
+Pepsirf bin
+-----------
+
+.. usage-selector::
+
+Here we wil test q2-pepsirf's bin module by 
+running the following command (replace pepsirf_binary with how you 
+call pepsirf on your machine):
+
+.. usage::
+
+   pepsirf_bin, = use.action(
+    use.UsageAction(plugin_id='pepsirf', action_id='bin'),
+    use.UsageInputs(
+        scores = col_sum,
+        bin_size = 300,
+        round_to = 0,
+        pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
+    ),
+    use.UsageOutputNames(
+        bin_output = "IM0032-pA_PV1_subset_bin"
+    )
+    )
+
 Ps-plot repScatters
 -------------------
 
