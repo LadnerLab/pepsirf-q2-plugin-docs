@@ -1,0 +1,175 @@
+subjoin: pepsirf subjoin module
+===============================
+
+
+
+.. raw:: html
+
+   <div class="tabbed">
+     <ul class="nav nav-tabs">
+       <li class="active"><a data-toggle="tab" href="#cli">Command line interface</a></li>
+       <li><a data-toggle="tab" href="#api">Artifact API</a></li>
+     </ul>
+     <div class="tab-content">
+       <div id="cli" class="tab-pane fade in active">
+         <h4>Docstring:</h4>
+         <pre>Usage: qiime pepsirf subjoin [OPTIONS]
+
+     Manipulate matrix files with pepsirf's subjoin module
+
+   Inputs:
+     --i-multi-file ARTIFACT The name of a tab-delimited file containing score
+       MultiFile             matrix and sample name list filename pairs, one per
+                             line. Each of these pairs must be a score matrix and
+                             a file containing the names of samples (or peptides,
+                             if specified) to keep from the input the score
+                             matrix. The score matrix should be of the format
+                             output by the demux module, with sample names on the
+                             columns and peptide names on the rows. The namelist
+                             must have one name per line, but can optionally have
+                             2, if renaming samples in the subjoin output.
+                             Optionally, a name list can be omitted if all
+                             samples from the input matrix should be included in
+                             the output.                               [optional]
+   Parameters:
+     --p-input-type VALUE Str % Choices('raw')¹ | Str % Choices('col_sum')² |
+       Str % Choices('diff')³ | Str % Choices('diff_ratio')⁴ | Str %
+       Choices('ratio')⁵ | Str % Choices('size_factors')⁶
+                             Specify the type of file being inputted into
+                             subjoin, in order to produce the correct output file
+                             format type. raw = FeatureTable[RawCounts], col_sum
+                             = FeatureTable[Normed], etc.        [default: 'raw']
+     --p-subjoin-input TEXT  Comma-separated filenames (For example:
+                             score_matrix.tsv,sample_names.txt ). Each of these
+                             pairs must be a score matrix and a file containing
+                             the names of samples (or peptides, if specified) to
+                             keep in the score matrix. The score matrix should be
+                             of the format output by the demux module, with
+                             sample names on the columns and peptide names on the
+                             rows. The namelist must have one name per line, but
+                             can optionally have 2. If 2 tab-delimited names are
+                             included on one line, the name in the first column
+                             should match the name in the input matrix file,
+                             while the name in the second column will be output.
+                             Therefore, this allows for the renaming of samples
+                             in the output. To use multiple name lists with
+                             multiple score matrices, include this argument
+                             multiple times. Optionally, a name list can be
+                             omitted if all samples from the input matrix should
+                             be included in the output.                [optional]
+     --p-filter-peptide-names / --p-no-filter-peptide-names
+                             Flag to include if the name lists input to the
+                             input or multi-file options should be treated as
+                             peptide (i.e. row) names instead of sample (i.e.
+                             column) names. With the inclusion of this flag, the
+                             input files will be filtered on peptide names (rows)
+                             instead of sample names (column).   [default: False]
+     --p-duplicate-evaluation TEXT Choices('include', 'combine', 'ignore')
+                             Defines what should be done when sample or peptide
+                             names are not unique across files being joined.
+                             Currently, three different duplicate evaluation
+                             strategies are available: - combine: Combine (with
+                             addition) the values associated with identical
+                             sample/peptide names from different files. -
+                             include: Include each duplicate, adding a suffix to
+                             the duplicate name detailing the file from which the
+                             sample came. - ignore: Ignore the possibility of
+                             duplicates. Behavior is undefined when duplicates
+                             are  encountered in this mode Therefore, this mode
+                             is not recommended.             [default: 'include']
+     --p-outfile TEXT        The outfile that will produce a list of inputs to
+                             PepSIRF.                  [default: './subjoin.out']
+     --p-pepsirf-binary TEXT The binary to call pepsirf on your system.
+                                                             [default: 'pepsirf']
+   Outputs:
+     --o-subjoin-output ARTIFACT RawCounts¹ | Normed² | NormedDifference³ |
+       NormedDiffRatio⁴ | NormedRatio⁵ | NormedSized⁶
+                             Name for the output score matrix file. The output
+                             will be in the form of the input, but with only the
+                             specified values (samplenames or peptides) found in
+                             the namelists.                            [required]
+   Miscellaneous:
+     --output-dir PATH       Output unspecified results to a directory
+     --verbose / --quiet     Display verbose output to stdout and/or stderr
+                             during execution of this action. Or silence output
+                             if execution is successful (silence is golden).
+     --example-data PATH     Write example data and exit.
+     --citations             Show citations and exit.
+     --help                  Show this message and exit.</pre>
+       </div>
+       <div id="api" class="tab-pane fade">
+       <h4>Import:</h4>
+
+.. command-block::
+   :no-exec:
+
+   from qiime2.plugins.pepsirf.methods import subjoin
+
+.. raw:: html
+
+       <h4>Docstring:</h4>
+         <pre>pepsirf subjoin module
+
+   Manipulate matrix files with pepsirf's subjoin module
+
+   Parameters
+   ----------
+   input_type : Str % Choices('raw')¹ | Str % Choices('col_sum')² | Str % Choices('diff')³ | Str % Choices('diff_ratio')⁴ | Str % Choices('ratio')⁵ | Str % Choices('size_factors')⁶, optional
+       Specify the type of file being inputted into subjoin, in order to
+       produce the correct output file format type. raw =
+       FeatureTable[RawCounts], col_sum = FeatureTable[Normed], etc.
+   multi_file : MultiFile, optional
+       The name of a tab-delimited file containing score matrix and sample
+       name list filename pairs, one per line. Each of these pairs must be a
+       score matrix and a file containing the names of samples (or peptides,
+       if specified) to keep from the input the score matrix. The score matrix
+       should be of the format output by the demux module, with sample names
+       on the columns and peptide names on the rows. The namelist must have
+       one name per line, but can optionally have 2, if renaming samples in
+       the subjoin output. Optionally, a name list can be omitted if all
+       samples from the input matrix should be included in the output.
+   subjoin_input : Str, optional
+        Comma-separated filenames (For example:
+       score_matrix.tsv,sample_names.txt ). Each of these pairs must be a
+       score matrix and a file containing the names of samples (or peptides,
+       if specified) to keep in the score matrix. The score matrix should be
+       of the format output by the demux module, with sample names on the
+       columns and peptide names on the rows. The namelist must have one name
+       per line, but can optionally have 2. If 2 tab-delimited names are
+       included on one line, the name in the first column should match the
+       name in the input matrix file, while the name in the second column will
+       be output. Therefore, this allows for the renaming of samples in the
+       output. To use multiple name lists with multiple score matrices,
+       include this argument multiple times. Optionally, a name list can be
+       omitted if all samples from the input matrix should be included in the
+       output.
+   filter_peptide_names : Bool, optional
+       Flag to include if the name lists input to the input or multi_file
+       options should be treated as peptide (i.e. row) names instead of sample
+       (i.e. column) names. With the inclusion of this flag, the input files
+       will be filtered on peptide names (rows) instead of sample names
+       (column).
+   duplicate_evaluation : Str % Choices('include', 'combine', 'ignore'), optional
+       Defines what should be done when sample or peptide names are not unique
+       across files being joined. Currently, three different duplicate
+       evaluation strategies are available: - combine: Combine (with addition)
+       the values associated with identical sample/peptide names from
+       different files. - include: Include each duplicate, adding a suffix to
+       the duplicate name detailing the file from which the sample came. -
+       ignore: Ignore the possibility of duplicates. Behavior is undefined
+       when duplicates are  encountered in this mode Therefore, this mode is
+       not recommended.
+   outfile : Str, optional
+       The outfile that will produce a list of inputs to PepSIRF.
+   pepsirf_binary : Str, optional
+       The binary to call pepsirf on your system.
+
+   Returns
+   -------
+   subjoin_output : RawCounts¹ | Normed² | NormedDifference³ | NormedDiffRatio⁴ | NormedRatio⁵ | NormedSized⁶
+       Name for the output score matrix file. The output will be in the form
+       of the input, but with only the specified values (samplenames or
+       peptides) found in the namelists.</pre>
+       </div>
+     </div>
+   </div>

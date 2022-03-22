@@ -1,0 +1,274 @@
+deconv-singluar: pepsirf deconv singular mode module
+====================================================
+
+
+
+.. raw:: html
+
+   <div class="tabbed">
+     <ul class="nav nav-tabs">
+       <li class="active"><a data-toggle="tab" href="#cli">Command line interface</a></li>
+       <li><a data-toggle="tab" href="#api">Artifact API</a></li>
+     </ul>
+     <div class="tab-content">
+       <div id="cli" class="tab-pane fade in active">
+         <h4>Docstring:</h4>
+         <pre>Usage: qiime pepsirf deconv-singluar [OPTIONS]
+
+     converts a list of enriched peptides into a parsimony-based list of likely
+     taxa to which the assayed individual has likely been exposed with
+     pepsirf's deconv singular mode module
+
+   Inputs:
+     --i-enriched ARTIFACT  single file containing the names of enriched
+       PeptideIDList        peptides, one per line. Each peptide contained in
+                            this file (or files) should have a corresponding
+                            entry in the '--linked' input file.        [required]
+     --i-linked ARTIFACT    Name of linkage map to be used for deconvolution. It
+       Link                 should be in the format output by the 'link' module.
+                                                                       [required]
+     --i-id-name-map ARTIFACT
+       PepsirfDMP           Optional file containing mappings from taxonomic id
+                            to taxon name. This file should be formatted like the
+                            file 'rankedlineage.dmp' from NCBI. It is recommended
+                            to either use this file or a subset of this file that
+                            contains all of the taxon ids linked to peptides of
+                            interest. If included, the output will contain a
+                            column denoting the name of the species as well as
+                            the id.                                    [optional]
+   Parameters:
+     --p-threshold INTEGER  Minimum score that a taxon must obtain in order to
+                            be included in the deconvolution report.   [required]
+     --p-scoring-strategy TEXT Choices('summation', 'integer', 'fraction')
+                            Scoring strategies 'summation', 'integer', or
+                            'fraction' can be specified. By not including this
+                            flag, summation scoring will be used by default. The
+                            --linked file passed must be of the form created by
+                            the link module. This means a file of tab-delimited
+                            values, one per line. Each line is of the form
+                            peptide_name TAB id:score,id:score, and so on. An
+                            error will occurif input is not in this format. For
+                            summation scoring, the score assigned to each
+                            peptide/ID pair is determined by the ':score' portion
+                            of the --linked file. For example, assume a line in
+                            the --linked file looks like the following: peptide_1
+                            TAB 123:4,543:8 The IDs '123' and '543' will receive
+                            scores of 4 and 8 respectively. For integer scoring,
+                            each ID receives a score of 1 for every enriched
+                            peptide to which it is linked (':score' is ignored).
+                            For fractional scoring, the score is assigned to each
+                            peptide/ID pair is defined by 1/n for each peptide,
+                            where n is the number of IDs to which a peptide is
+                            linked. In this method of scoring peptides, a peptide
+                            with fewer linked IDs is worth more points..
+                                                           [default: 'summation']
+     --p-score-filtering / --p-no-score-filtering
+                            Include this option if you want filtering to be done
+                            by the score of each taxon, rather than the count of
+                            linked peptides. If used, any taxon with a score
+                            below '--threshold' will be removed from
+                            consideration, even if it is the highest scoring
+                            taxon. Note that for integer scoring, both score
+                            filtering and count filtering (default) are the same.
+                            If this flag is not included, then any species whose
+                            count falls below '--threshold' will be removed from
+                            consideration. Score filtering is best suited for the
+                            summation scoring method.            [default: False]
+     --p-score-tie-threshold NUMBER
+                            Threshold for two species to be evaluated as a tie.
+                            Note that this value can be either an integer or a
+                            ratio that is in (0,1). When provided as an integer
+                            this value dictates the difference in score that is
+                            allowed for two taxa to be considered as potentially
+                            tied. For example, if this flag is provided with the
+                            value 0, then two or more taxa must have the exact
+                            same score to be tied. If this flag is provided with
+                            the value 4, then the difference between the scores
+                            of two taxa must be no greater than 4 to be
+                            considered tied. For example, if taxon 1 has a score
+                            of 5, and taxon 2 has a score anywhere between the
+                            integer values in [1,9], then these species will be
+                            considered tied, and their tie will be evaluated as
+                            dictated by the specified
+                            '--score-overlap-threshold'. If the argument provided
+                            to this flag is in (0, 1), then the score for a taxon
+                            must be at least this proportion of the score for the
+                            highest scoring taxon, to trigger a tie. So if
+                            species 1 has the highest score with a score of 9,
+                            and species 2 has a score of 5, then this flag must
+                            be provided with value >= 4/5 = 0.8 for the species 1
+                            and 2 to be considered tied. Note that any values
+                            provided to this flag that are in the set { x: x >= 1
+                            } - Z, where Z is the set of integers, will result in
+                            an error. So 4.45 is not a valid value, but both 4
+                            and 0.45 are.                          [default: 0.0]
+     --p-score-overlap-threshold NUMBER
+                            Once two species have been determined to be tied,
+                            according to '--score-tie-threshold', they are then
+                            evaluated as a tie. To use integer tie evaluation,
+                            where species must share an integer number of
+                            peptides, not a ratio of their total peptides,
+                            provide this argument with a value in the interval
+                            [1, inf). For ratio tie evaluation, which is used
+                            when this argument is provided with a value in the
+                            interval (0,1), two taxon must reciprocally share at
+                            least the specified proportion of peptides to be
+                            reported together. For example, suppose species 1
+                            shares half (0.5) of its peptides with species 2, but
+                            species 2 only shares a tenth (0.1) of its peptides
+                            with species 1. These two will only be reported
+                            together if score-overlap-threshold' <= 0.1.
+                                                                   [default: 0.0]
+     --p-single-threaded / --p-no-single-threaded
+                            By default this module uses two threads. Include
+                            this option with no arguments if you only want only
+                            one thread to be used.               [default: False]
+     --p-outfile TEXT       The outfile that will produce a list of inputs to
+                            PepSIRF.                    [default: './deconv.out']
+     --p-pepsirf-binary TEXT
+                            The binary to call pepsirf on your system.
+                                                             [default: 'pepsirf']
+   Outputs:
+     --o-deconv-output ARTIFACT
+       DeconvSingluar       Name of the file to which output is written. Output
+                            will be in the form of a tab-delimited file with a
+                            header.                                    [required]
+     --o-score-per-round ARTIFACT
+       ScorePerRound        Name of directory to write counts/scores to after
+                            every round. If included, the counts and scores for
+                            all remaining taxa will be recorded after every
+                            round. Filenames will be written in the format
+                            '$dir/round_x', where x is the round number. The
+                            original scores will be written to '$dir/round_0'. A
+                            new file will be written to the directory after each
+                            subsequent round. If this flag is included and the
+                            specified directory exists, the program will exit
+                            with an error.                             [required]
+   Miscellaneous:
+     --output-dir PATH      Output unspecified results to a directory
+     --verbose / --quiet    Display verbose output to stdout and/or stderr
+                            during execution of this action. Or silence output if
+                            execution is successful (silence is golden).
+     --example-data PATH    Write example data and exit.
+     --citations            Show citations and exit.
+     --help                 Show this message and exit.</pre>
+       </div>
+       <div id="api" class="tab-pane fade">
+       <h4>Import:</h4>
+
+.. command-block::
+   :no-exec:
+
+   from qiime2.plugins.pepsirf.methods import deconv_singluar
+
+.. raw:: html
+
+       <h4>Docstring:</h4>
+         <pre>pepsirf deconv singular mode module
+
+   converts a list of enriched peptides into a parsimony-based list of likely
+   taxa to which the assayed individual has likely been exposed with pepsirf's
+   deconv singular mode module
+
+   Parameters
+   ----------
+   enriched : PeptideIDList
+       single file containing the names of enriched peptides, one per line.
+       Each peptide contained in this file (or files) should have a
+       corresponding entry in the '--linked' input file.
+   threshold : Int
+       Minimum score that a taxon must obtain in order to be included in the
+       deconvolution report.
+   linked : Link
+       Name of linkage map to be used for deconvolution. It should be in the
+       format output by the 'link' module.
+   scoring_strategy : Str % Choices('summation', 'integer', 'fraction'), optional
+       Scoring strategies 'summation', 'integer', or 'fraction' can be
+       specified. By not including this flag, summation scoring will be used
+       by default. The --linked file passed must be of the form created by the
+       link module. This means a file of tab-delimited values, one per line.
+       Each line is of the form peptide_name TAB id:score,id:score, and so on.
+       An error will occurif input is not in this format. For summation
+       scoring, the score assigned to each peptide/ID pair is determined by
+       the ':score' portion of the --linked file. For example, assume a line
+       in the --linked file looks like the following: peptide_1 TAB
+       123:4,543:8 The IDs '123' and '543' will receive scores of 4 and 8
+       respectively. For integer scoring, each ID receives a score of 1 for
+       every enriched peptide to which it is linked (':score' is ignored). For
+       fractional scoring, the score is assigned to each peptide/ID pair is
+       defined by 1/n for each peptide, where n is the number of IDs to which
+       a peptide is linked. In this method of scoring peptides, a peptide with
+       fewer linked IDs is worth more points..
+   score_filtering : Bool, optional
+       Include this option if you want filtering to be done by the score of
+       each taxon, rather than the count of linked peptides. If used, any
+       taxon with a score below '--threshold' will be removed from
+       consideration, even if it is the highest scoring taxon. Note that for
+       integer scoring, both score filtering and count filtering (default) are
+       the same. If this flag is not included, then any species whose count
+       falls below '--threshold' will be removed from consideration. Score
+       filtering is best suited for the summation scoring method.
+   score_tie_threshold : Float, optional
+       Threshold for two species to be evaluated as a tie. Note that this
+       value can be either an integer or a ratio that is in (0,1). When
+       provided as an integer this value dictates the difference in score that
+       is allowed for two taxa to be considered as potentially tied. For
+       example, if this flag is provided with the value 0, then two or more
+       taxa must have the exact same score to be tied. If this flag is
+       provided with the value 4, then the difference between the scores of
+       two taxa must be no greater than 4 to be considered tied. For example,
+       if taxon 1 has a score of 5, and taxon 2 has a score anywhere between
+       the integer values in [1,9], then these species will be considered
+       tied, and their tie will be evaluated as dictated by the specified '--
+       score_overlap_threshold'. If the argument provided to this flag is in
+       (0, 1), then the score for a taxon must be at least this proportion of
+       the score for the highest scoring taxon, to trigger a tie. So if
+       species 1 has the highest score with a score of 9, and species 2 has a
+       score of 5, then this flag must be provided with value >= 4/5 = 0.8 for
+       the species 1 and 2 to be considered tied. Note that any values
+       provided to this flag that are in the set { x: x >= 1 } - Z, where Z is
+       the set of integers, will result in an error. So 4.45 is not a valid
+       value, but both 4 and 0.45 are.
+   score_overlap_threshold : Float, optional
+       Once two species have been determined to be tied, according to '--
+       score_tie_threshold', they are then evaluated as a tie. To use integer
+       tie evaluation, where species must share an integer number of peptides,
+       not a ratio of their total peptides, provide this argument with a value
+       in the interval [1, inf). For ratio tie evaluation, which is used when
+       this argument is provided with a value in the interval (0,1), two taxon
+       must reciprocally share at least the specified proportion of peptides
+       to be reported together. For example, suppose species 1 shares half
+       (0.5) of its peptides with species 2, but species 2 only shares a tenth
+       (0.1) of its peptides with species 1. These two will only be reported
+       together if score_overlap_threshold' <= 0.1.
+   id_name_map : PepsirfDMP, optional
+       Optional file containing mappings from taxonomic id to taxon name. This
+       file should be formatted like the file 'rankedlineage.dmp' from NCBI.
+       It is recommended to either use this file or a subset of this file that
+       contains all of the taxon ids linked to peptides of interest. If
+       included, the output will contain a column denoting the name of the
+       species as well as the id.
+   single_threaded : Bool, optional
+       By default this module uses two threads. Include this option with no
+       arguments if you only want only one thread to be used.
+   outfile : Str, optional
+       The outfile that will produce a list of inputs to PepSIRF.
+   pepsirf_binary : Str, optional
+       The binary to call pepsirf on your system.
+
+   Returns
+   -------
+   deconv_output : DeconvSingluar
+       Name of the file to which output is written. Output will be in the form
+       of a tab-delimited file with a header.
+   score_per_round : ScorePerRound
+       Name of directory to write counts/scores to after every round. If
+       included, the counts and scores for all remaining taxa will be recorded
+       after every round. Filenames will be written in the format
+       '$dir/round_x', where x is the round number. The original scores will
+       be written to '$dir/round_0'. A new file will be written to the
+       directory after each subsequent round. If this flag is included and the
+       specified directory exists, the program will exit with an error.</pre>
+       </div>
+     </div>
+   </div>

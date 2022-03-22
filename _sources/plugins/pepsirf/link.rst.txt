@@ -1,0 +1,118 @@
+link: pepsirf link module
+=========================
+
+
+
+.. raw:: html
+
+   <div class="tabbed">
+     <ul class="nav nav-tabs">
+       <li class="active"><a data-toggle="tab" href="#cli">Command line interface</a></li>
+       <li><a data-toggle="tab" href="#api">Artifact API</a></li>
+     </ul>
+     <div class="tab-content">
+       <div id="cli" class="tab-pane fade in active">
+         <h4>Docstring:</h4>
+         <pre>Usage: qiime pepsirf link [OPTIONS]
+
+     Defines linkages between taxonomic groups and peptides based on shared
+     kmers with pepsirf's link module
+
+   Inputs:
+     --i-protein-file ARTIFACT
+       ProteinFasta         Name of fasta file containing protein sequences of
+                            interest.                                  [required]
+     --i-peptide-file ARTIFACT
+       PeptideFasta         Name of fasta file containing aa peptides of
+                            interest. These will generally be peptides that are
+                            contained in a particular assay.           [required]
+   Parameters:
+     --p-meta TEXT          Optional method for providing taxonomic information
+                            for each protein contained in '--protein-file'. Three
+                            comma-separated strings should be provided: 1) name
+                            of tab-delimited metadata file, 2) header for column
+                            containing protein sequence name and 3) header for
+                            column containing ID to be used in creatingthe
+                            linkage map.                               [required]
+     --p-kmer-size INTEGER  Kmer size to use when creating the linkage map.
+                                                                       [required]
+     --p-kmer-redundancy-control / --p-no-kmer-redundancy-control
+                            Optional modification to the way scores are
+                            calculated. If this flag is used, then instead of a
+                            peptide receiving one point for each kmer it shares
+                            with proteins of a given taxonomic group, it receives
+                            1 / ( the number of times the kmer appears in the
+                            provided peptides ) points.          [default: False]
+     --p-outfile TEXT       The outfile that will produce a list of inputs to
+                            PepSIRF.                      [default: './link.out']
+     --p-pepsirf-binary TEXT
+                            The binary to call pepsirf on your system.
+                                                             [default: 'pepsirf']
+   Outputs:
+     --o-link-output ARTIFACT
+       Link                 Name of the file to which output is written. Output
+                            will be in the form of a tab-delimited file with a
+                            header. Each entry/row will be of the form:
+                            peptide_name TAB id:score,id:score, and so on. By
+                            default, 'score' is defined as the number of shared
+                            kmers.                                     [required]
+   Miscellaneous:
+     --output-dir PATH      Output unspecified results to a directory
+     --verbose / --quiet    Display verbose output to stdout and/or stderr
+                            during execution of this action. Or silence output if
+                            execution is successful (silence is golden).
+     --example-data PATH    Write example data and exit.
+     --citations            Show citations and exit.
+     --help                 Show this message and exit.</pre>
+       </div>
+       <div id="api" class="tab-pane fade">
+       <h4>Import:</h4>
+
+.. command-block::
+   :no-exec:
+
+   from qiime2.plugins.pepsirf.methods import link
+
+.. raw:: html
+
+       <h4>Docstring:</h4>
+         <pre>pepsirf link module
+
+   Defines linkages between taxonomic groups and peptides based on shared
+   kmers with pepsirf's link module
+
+   Parameters
+   ----------
+   protein_file : ProteinFasta
+       Name of fasta file containing protein sequences of interest.
+   peptide_file : PeptideFasta
+        Name of fasta file containing aa peptides of interest. These will
+       generally be peptides that are contained in a particular assay.
+   meta : Str
+       Optional method for providing taxonomic information for each protein
+       contained in '--protein_file'. Three comma-separated strings should be
+       provided: 1) name of tab-delimited metadata file, 2) header for column
+       containing protein sequence name and 3) header for column containing ID
+       to be used in creatingthe linkage map.
+   kmer_size : Int
+       Kmer size to use when creating the linkage map.
+   kmer_redundancy_control : Bool, optional
+       Optional modification to the way scores are calculated. If this flag is
+       used, then instead of a peptide receiving one point for each kmer it
+       shares with proteins of a given taxonomic group, it receives 1 / ( the
+       number of times the kmer appears in the provided peptides ) points.
+   outfile : Str, optional
+       The outfile that will produce a list of inputs to PepSIRF.
+   pepsirf_binary : Str, optional
+       The binary to call pepsirf on your system.
+
+   Returns
+   -------
+   link_output : Link
+       Name of the file to which output is written. Output will be in the form
+       of a tab-delimited file with a header. Each entry/row will be of the
+       form: peptide_name TAB id:score,id:score, and so on. By default,
+       'score' is defined as the number of shared kmers.</pre>
+       </div>
+     </div>
+   </div>
