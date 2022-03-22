@@ -53,10 +53,10 @@
 </section>
 <section id="sample-raw-data">
 <h2>Sample Raw Data<a class="headerlink" href="#sample-raw-data" title="Permalink to this headline">¶</a></h2>
-<span class="usage-selector"></span><p>Before starting the analysis, download the raw data and bin files. These
+<script id="interfaces" type="application/json">{"default": "cli-usage", "available": {"python3-usage": ["Python 3 API (qiime2)", true], "cli-usage": ["Command Line (q2cli)", true], "galaxy-usage": ["Galaxy (q2galaxy)", true], "raw-usage": ["View Source (qiime2.sdk)", false]}, "classes": [".python3-usage", ".cli-usage", ".galaxy-usage", ".raw-usage"]}</script><span class="usage-selector"></span><p>Before starting the analysis, download the raw data and bin files. These
 <code class="docutils literal notranslate"><span class="pre">IM0032-pA_PV1_subset.qza</span></code>, <code class="docutils literal notranslate"><span class="pre">pA_PV1.5_r1bins_IM25-26.qza</span></code>, and
 <code class="docutils literal notranslate"><span class="pre">samples_source.tsv</span></code> files are used throughout the rest of the tutorial.</p>
-<div class="artifact-usage highlight-default notranslate" id="usage-0"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiime2</span> <span class="kn">import</span> <span class="n">Artifact</span>
+<div class="python3-usage highlight-default notranslate" id="usage-0"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiime2</span> <span class="kn">import</span> <span class="n">Artifact</span>
 <span class="kn">from</span> <span class="nn">qiime2</span> <span class="kn">import</span> <span class="n">Metadata</span>
 <span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
 
@@ -89,7 +89,63 @@
   <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/samples-source.tsv&#39;</span>
 </pre></div>
 </div>
-<div class="exec-usage compound" id="usage-2">
+<div class="raw-usage highlight-default notranslate" id="usage-4"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">raw_factory</span><span class="p">():</span>
+   <span class="kn">import</span> <span class="nn">qiime2</span>
+   <span class="k">return</span> <span class="n">qiime2</span><span class="o">.</span><span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;source/data/IM0032-pA_PV1_subset.qza&quot;</span><span class="p">)</span>
+
+<span class="n">raw_data</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">init_artifact</span><span class="p">(</span><span class="s2">&quot;IM0032-pA_PV1_subset&quot;</span><span class="p">,</span> <span class="n">raw_factory</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">bin_factory</span><span class="p">():</span>
+   <span class="kn">import</span> <span class="nn">qiime2</span>
+   <span class="k">return</span> <span class="n">qiime2</span><span class="o">.</span><span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;source/data/pA_PV1.5_r1bins_IM25-26.qza&quot;</span><span class="p">)</span>
+
+<span class="n">bin_data</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">init_artifact</span><span class="p">(</span><span class="s2">&quot;pA_PV1.5_r1bins_IM25-26&quot;</span><span class="p">,</span> <span class="n">bin_factory</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">metadata_factory</span><span class="p">():</span>
+   <span class="kn">import</span> <span class="nn">qiime2</span>
+   <span class="k">return</span> <span class="n">qiime2</span><span class="o">.</span><span class="n">Metadata</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;source/data/samples_source.tsv&quot;</span><span class="p">)</span>
+
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">init_metadata</span><span class="p">(</span><span class="s1">&#39;samples_source&#39;</span><span class="p">,</span> <span class="n">metadata_factory</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="galaxy-usage compound" id="usage-2">
+<dl class="simple">
+<dt>Using the <code class="docutils literal notranslate"><span class="pre">Upload</span> <span class="pre">Data</span></code> tool:</dt><dd><ol class="arabic simple">
+<li><p>On the first tab (<strong>Regular</strong>), press the <code class="docutils literal notranslate"><span class="pre">Paste/Fetch</span></code> data button at the bottom.</p>
+<ol class="arabic simple">
+<li><p>Set <em>“Name”</em> (first text-field) to: <code class="docutils literal notranslate"><span class="pre">IM0032-pA-PV1-subset.qza</span></code></p></li>
+<li><p>In the larger text-area, copy-and-paste: <a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/IM0032-pA-PV1-subset.qza">https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/IM0032-pA-PV1-subset.qza</a></p></li>
+<li><p>(<em>“Type”</em>, <em>“Genome”</em>, and <em>“Settings”</em> can be ignored)</p></li>
+</ol>
+</li>
+<li><p>Press the <code class="docutils literal notranslate"><span class="pre">Start</span></code> button at the bottom.</p></li>
+</ol>
+</dd>
+<dt>Using the <code class="docutils literal notranslate"><span class="pre">Upload</span> <span class="pre">Data</span></code> tool:</dt><dd><ol class="arabic simple">
+<li><p>On the first tab (<strong>Regular</strong>), press the <code class="docutils literal notranslate"><span class="pre">Paste/Fetch</span></code> data button at the bottom.</p>
+<ol class="arabic simple">
+<li><p>Set <em>“Name”</em> (first text-field) to: <code class="docutils literal notranslate"><span class="pre">pA-PV1.5-r1bins-IM25-26.qza</span></code></p></li>
+<li><p>In the larger text-area, copy-and-paste: <a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/pA-PV1.5-r1bins-IM25-26.qza">https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/pA-PV1.5-r1bins-IM25-26.qza</a></p></li>
+<li><p>(<em>“Type”</em>, <em>“Genome”</em>, and <em>“Settings”</em> can be ignored)</p></li>
+</ol>
+</li>
+<li><p>Press the <code class="docutils literal notranslate"><span class="pre">Start</span></code> button at the bottom.</p></li>
+</ol>
+</dd>
+<dt>Using the <code class="docutils literal notranslate"><span class="pre">Upload</span> <span class="pre">Data</span></code> tool:</dt><dd><ol class="arabic simple">
+<li><p>On the first tab (<strong>Regular</strong>), press the <code class="docutils literal notranslate"><span class="pre">Paste/Fetch</span></code> data button at the bottom.</p>
+<ol class="arabic simple">
+<li><p>Set <em>“Name”</em> (first text-field) to: <code class="docutils literal notranslate"><span class="pre">samples-source.tsv</span></code></p></li>
+<li><p>In the larger text-area, copy-and-paste: <a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/samples-source.tsv">https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/samples-source.tsv</a></p></li>
+<li><p>(<em>“Type”</em>, <em>“Genome”</em>, and <em>“Settings”</em> can be ignored)</p></li>
+</ol>
+</li>
+<li><p>Press the <code class="docutils literal notranslate"><span class="pre">Start</span></code> button at the bottom.</p></li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="exec-usage compound" id="usage-3">
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">IM0032-pA-PV1-subset.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf-tutorial%2FIM0032-pA-PV1-subset.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/IM0032-pA-PV1-subset.qza"><span>download</span></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pA-PV1.5-r1bins-IM25-26.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf-tutorial%2FpA-PV1.5-r1bins-IM25-26.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/pA-PV1.5-r1bins-IM25-26.qza"><span>download</span></a></p></li>
@@ -104,7 +160,7 @@ which contain information about the type of data and the source of the data.</p>
 <span class="usage-selector"></span><p>Once you have downloaded the file, you can automatically run q2-pepsirf and
 q2-ps-plot with q2-autopepsirf. This can be done by running the following
 command (replace pepsirf_binary with how you call pepsirf on your machine):</p>
-<div class="artifact-usage highlight-default notranslate" id="usage-3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiime2.plugins.autopepsirf.actions</span> <span class="k">as</span> <span class="nn">autopepsirf_actions</span>
+<div class="python3-usage highlight-default notranslate" id="usage-5"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiime2.plugins.autopepsirf.actions</span> <span class="k">as</span> <span class="nn">autopepsirf_actions</span>
 
 <span class="n">action_results</span> <span class="o">=</span> <span class="n">autopepsirf_actions</span><span class="o">.</span><span class="n">diffEnrich</span><span class="p">(</span>
     <span class="n">raw_data</span><span class="o">=</span><span class="n">IM0032_pA_PV1_subset</span><span class="p">,</span>
@@ -131,7 +187,7 @@ command (replace pepsirf_binary with how you call pepsirf on your machine):</p>
 <span class="n">zenrich_viz</span> <span class="o">=</span> <span class="n">action_results</span><span class="o">.</span><span class="n">zenrich_scatter</span>
 </pre></div>
 </div>
-<div class="cli-usage highlight-default notranslate" id="usage-4"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">autopepsirf</span> <span class="n">diffEnrich</span> \
+<div class="cli-usage highlight-default notranslate" id="usage-6"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">autopepsirf</span> <span class="n">diffEnrich</span> \
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">raw</span><span class="o">-</span><span class="n">data</span> <span class="n">IM0032</span><span class="o">-</span><span class="n">pA</span><span class="o">-</span><span class="n">PV1</span><span class="o">-</span><span class="n">subset</span><span class="o">.</span><span class="n">qza</span> \
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">bins</span> <span class="n">pA</span><span class="o">-</span><span class="n">PV1</span><span class="mf">.5</span><span class="o">-</span><span class="n">r1bins</span><span class="o">-</span><span class="n">IM25</span><span class="o">-</span><span class="mf">26.</span><span class="n">qza</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">negative</span><span class="o">-</span><span class="nb">id</span> <span class="n">SB_</span> \
@@ -143,7 +199,111 @@ command (replace pepsirf_binary with how you call pepsirf on your machine):</p>
   <span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="nb">dir</span> <span class="n">autopepsirf</span><span class="o">-</span><span class="n">diffEnrich</span>
 </pre></div>
 </div>
-<div class="exec-usage compound" id="usage-5">
+<div class="raw-usage highlight-default notranslate" id="usage-9"><div class="highlight"><pre><span></span><span class="n">col_sum</span><span class="p">,</span> <span class="n">diff</span><span class="p">,</span> <span class="n">diff_ratio</span><span class="p">,</span> <span class="n">zscore</span><span class="p">,</span> <span class="n">zscore_nan</span><span class="p">,</span> <span class="n">sample_names</span><span class="p">,</span> <span class="n">read_counts</span><span class="p">,</span> <span class="n">rcBoxplot</span><span class="p">,</span> <span class="n">enriched</span><span class="p">,</span> <span class="n">enrichBoxplot</span><span class="p">,</span> <span class="n">zScatter</span><span class="p">,</span> <span class="n">csScatter</span><span class="p">,</span> <span class="n">zenrich</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">action</span><span class="p">(</span>
+<span class="n">use</span><span class="o">.</span><span class="n">UsageAction</span><span class="p">(</span><span class="n">plugin_id</span><span class="o">=</span><span class="s1">&#39;autopepsirf&#39;</span><span class="p">,</span> <span class="n">action_id</span><span class="o">=</span><span class="s1">&#39;diffEnrich&#39;</span><span class="p">),</span>
+<span class="n">use</span><span class="o">.</span><span class="n">UsageInputs</span><span class="p">(</span>
+    <span class="n">raw_data</span> <span class="o">=</span> <span class="n">raw_data</span><span class="p">,</span>
+    <span class="n">bins</span> <span class="o">=</span> <span class="n">bin_data</span><span class="p">,</span>
+    <span class="n">negative_id</span> <span class="o">=</span> <span class="s2">&quot;SB_&quot;</span><span class="p">,</span>
+    <span class="n">exact_z_thresh</span> <span class="o">=</span> <span class="s2">&quot;6,10&quot;</span><span class="p">,</span>
+    <span class="n">pepsirf_tsv_dir</span> <span class="o">=</span> <span class="s2">&quot;./testingTSV&quot;</span><span class="p">,</span>
+    <span class="n">tsv_base_str</span> <span class="o">=</span> <span class="s2">&quot;IM0032-pA_PV1_subset&quot;</span><span class="p">,</span>
+    <span class="n">hdi</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">,</span>
+    <span class="n">pepsirf_binary</span> <span class="o">=</span> <span class="s2">&quot;/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux&quot;</span>
+<span class="p">),</span>
+<span class="n">use</span><span class="o">.</span><span class="n">UsageOutputNames</span><span class="p">(</span>
+    <span class="n">col_sum</span> <span class="o">=</span> <span class="s2">&quot;colsum&quot;</span><span class="p">,</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="s2">&quot;diff&quot;</span><span class="p">,</span>
+    <span class="n">diff_ratio</span> <span class="o">=</span> <span class="s2">&quot;diff_ratio&quot;</span><span class="p">,</span>
+    <span class="n">zscore</span> <span class="o">=</span> <span class="s2">&quot;zscore&quot;</span><span class="p">,</span>
+    <span class="n">zscore_nan</span> <span class="o">=</span> <span class="s2">&quot;zscore_nan&quot;</span><span class="p">,</span>
+    <span class="n">sample_names</span> <span class="o">=</span> <span class="s2">&quot;sample_names&quot;</span><span class="p">,</span>
+    <span class="n">read_counts</span> <span class="o">=</span> <span class="s2">&quot;read_counts&quot;</span><span class="p">,</span>
+    <span class="n">rc_boxplot</span> <span class="o">=</span> <span class="s2">&quot;rcBoxplot&quot;</span><span class="p">,</span>
+    <span class="n">enrich</span> <span class="o">=</span> <span class="s2">&quot;enrich&quot;</span><span class="p">,</span>
+    <span class="n">enrich_count_boxplot</span> <span class="o">=</span> <span class="s2">&quot;enrichBoxplot&quot;</span><span class="p">,</span>
+    <span class="n">zscore_scatter</span> <span class="o">=</span> <span class="s2">&quot;zScatter&quot;</span><span class="p">,</span>
+    <span class="n">colsum_scatter</span> <span class="o">=</span> <span class="s2">&quot;csScatter&quot;</span><span class="p">,</span>
+    <span class="n">zenrich_scatter</span> <span class="o">=</span> <span class="s2">&quot;zenrich&quot;</span>
+<span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="galaxy-usage compound" id="usage-7">
+<dl>
+<dt>Using the <code class="docutils literal notranslate"><span class="pre">qiime2</span> <span class="pre">autopepsirf</span> <span class="pre">diffEnrich</span></code> tool:</dt><dd><ol class="arabic simple">
+<li><p>Set <em>“raw_data”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">IM0032-pA-PV1-subset.qza</span></code></p></li>
+<li><p>Set <em>“bins”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">pA-PV1.5-r1bins-IM25-26.qza</span></code></p></li>
+<li><p>Expand the <code class="docutils literal notranslate"><span class="pre">additional</span> <span class="pre">options</span></code> section</p>
+<ol class="arabic simple">
+<li><p>Set <em>“negative_id”</em> to <code class="docutils literal notranslate"><span class="pre">SB_</span></code></p></li>
+<li><p>Set <em>“exact_z_thresh”</em> to <code class="docutils literal notranslate"><span class="pre">6,10</span></code></p></li>
+<li><p>Set <em>“pepsirf_tsv_dir”</em> to <code class="docutils literal notranslate"><span class="pre">./testingTSV</span></code></p></li>
+<li><p>Set <em>“tsv_base_str”</em> to <code class="docutils literal notranslate"><span class="pre">IM0032-pA_PV1_subset</span></code></p></li>
+<li><p>Leave <em>“hdi”</em> as its default value of <code class="docutils literal notranslate"><span class="pre">0.95</span></code></p></li>
+<li><p>Set <em>“pepsirf_binary”</em> to <code class="docutils literal notranslate"><span class="pre">/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux</span></code></p></li>
+</ol>
+</li>
+<li><p>Press the <code class="docutils literal notranslate"><span class="pre">Execute</span></code> button.</p></li>
+</ol>
+</dd>
+<dt>Once completed, for each new entry in your history, use the <code class="docutils literal notranslate"><span class="pre">Edit</span></code> button to set the name as follows:</dt><dd><p>(Renaming is optional, but it will make any subsequent steps easier to complete.)</p>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>History Name</p></th>
+<th class="head"><p><em>“Name”</em> to set (be sure to press <code class="docutils literal notranslate"><span class="pre">Save</span></code>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">autopepsirf</span> <span class="pre">diffEnrich</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">col_sum.qza</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">colsum.qza</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">autopepsirf</span> <span class="pre">diffEnrich</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">diff.qza</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">diff.qza</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">autopepsirf</span> <span class="pre">diffEnrich</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">diff_ratio.qza</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">diff-ratio.qza</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">autopepsirf</span> <span class="pre">diffEnrich</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">zscore.qza</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">zscore.qza</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">autopepsirf</span> <span class="pre">diffEnrich</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">zscore_nan.qza</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">zscore-nan.qza</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">autopepsirf</span> <span class="pre">diffEnrich</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">sample_names.qza</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sample-names.qza</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">autopepsirf</span> <span class="pre">diffEnrich</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">read_counts.qza</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">read-counts.qza</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">autopepsirf</span> <span class="pre">diffEnrich</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">rc_boxplot.qzv</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rcBoxplot.qzv</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">autopepsirf</span> <span class="pre">diffEnrich</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">enrich.qza</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">enrich.qza</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">autopepsirf</span> <span class="pre">diffEnrich</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">enrich_count_boxplot.qzv</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">enrichBoxplot.qzv</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">autopepsirf</span> <span class="pre">diffEnrich</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">zscore_scatter.qzv</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">zScatter.qzv</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">autopepsirf</span> <span class="pre">diffEnrich</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">colsum_scatter.qzv</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">csScatter.qzv</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">autopepsirf</span> <span class="pre">diffEnrich</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">zenrich_scatter.qzv</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">zenrich.qzv</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</div>
+<div class="exec-usage compound" id="usage-8">
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">autopepsirf-diffEnrich/col_sum.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf-tutorial%2Fautopepsirf-diffEnrich%2Fcol_sum.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/autopepsirf-diffEnrich/col_sum.qza"><span>download</span></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">autopepsirf-diffEnrich/diff.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf-tutorial%2Fautopepsirf-diffEnrich%2Fdiff.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/autopepsirf-diffEnrich/diff.qza"><span>download</span></a></p></li>
@@ -171,7 +331,7 @@ command (replace pepsirf_binary with how you call pepsirf on your machine):</p>
 individual files. Here we wil test q2-pepsirf’s norm module by
 running the following command (replace pepsirf_binary with how you
 call pepsirf on your machine):</p>
-<div class="artifact-usage highlight-default notranslate" id="usage-6"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiime2.plugins.pepsirf.actions</span> <span class="k">as</span> <span class="nn">pepsirf_actions</span>
+<div class="python3-usage highlight-default notranslate" id="usage-10"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiime2.plugins.pepsirf.actions</span> <span class="k">as</span> <span class="nn">pepsirf_actions</span>
 
 <span class="n">IM0032_pA_PV1_subset_CS</span><span class="p">,</span> <span class="o">=</span> <span class="n">pepsirf_actions</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span>
     <span class="n">peptide_scores</span><span class="o">=</span><span class="n">IM0032_pA_PV1_subset</span><span class="p">,</span>
@@ -179,13 +339,57 @@ call pepsirf on your machine):</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="cli-usage highlight-default notranslate" id="usage-7"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">pepsirf</span> <span class="n">norm</span> \
+<div class="cli-usage highlight-default notranslate" id="usage-11"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">pepsirf</span> <span class="n">norm</span> \
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">peptide</span><span class="o">-</span><span class="n">scores</span> <span class="n">IM0032</span><span class="o">-</span><span class="n">pA</span><span class="o">-</span><span class="n">PV1</span><span class="o">-</span><span class="n">subset</span><span class="o">.</span><span class="n">qza</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">pepsirf</span><span class="o">-</span><span class="n">binary</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">ANNAB</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">GitHub</span><span class="o">/</span><span class="n">PepSIRF</span><span class="o">/</span><span class="n">precompiled</span><span class="o">/</span><span class="n">linux_mint_19</span><span class="mf">.3</span><span class="o">/</span><span class="n">pepsirf_1</span><span class="mf">.4.0</span><span class="n">_linux</span> \
   <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">qza</span><span class="o">-</span><span class="n">output</span> <span class="n">IM0032</span><span class="o">-</span><span class="n">pA</span><span class="o">-</span><span class="n">PV1</span><span class="o">-</span><span class="n">subset</span><span class="o">-</span><span class="n">CS</span><span class="o">.</span><span class="n">qza</span>
 </pre></div>
 </div>
-<div class="exec-usage compound" id="usage-8">
+<div class="raw-usage highlight-default notranslate" id="usage-14"><div class="highlight"><pre><span></span><span class="n">col_sum</span><span class="p">,</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">action</span><span class="p">(</span>
+ <span class="n">use</span><span class="o">.</span><span class="n">UsageAction</span><span class="p">(</span><span class="n">plugin_id</span><span class="o">=</span><span class="s1">&#39;pepsirf&#39;</span><span class="p">,</span> <span class="n">action_id</span><span class="o">=</span><span class="s1">&#39;norm&#39;</span><span class="p">),</span>
+ <span class="n">use</span><span class="o">.</span><span class="n">UsageInputs</span><span class="p">(</span>
+     <span class="n">peptide_scores</span> <span class="o">=</span> <span class="n">raw_data</span><span class="p">,</span>
+     <span class="n">pepsirf_binary</span> <span class="o">=</span> <span class="s2">&quot;/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux&quot;</span>
+ <span class="p">),</span>
+ <span class="n">use</span><span class="o">.</span><span class="n">UsageOutputNames</span><span class="p">(</span>
+     <span class="n">qza_output</span> <span class="o">=</span> <span class="s2">&quot;IM0032-pA_PV1_subset_CS&quot;</span>
+ <span class="p">)</span>
+ <span class="p">)</span>
+</pre></div>
+</div>
+<div class="galaxy-usage compound" id="usage-12">
+<dl>
+<dt>Using the <code class="docutils literal notranslate"><span class="pre">qiime2</span> <span class="pre">pepsirf</span> <span class="pre">norm</span></code> tool:</dt><dd><ol class="arabic simple">
+<li><p>Set <em>“peptide_scores”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">IM0032-pA-PV1-subset.qza</span></code></p></li>
+<li><p>Expand the <code class="docutils literal notranslate"><span class="pre">additional</span> <span class="pre">options</span></code> section</p>
+<ul class="simple">
+<li><p>Set <em>“pepsirf_binary”</em> to <code class="docutils literal notranslate"><span class="pre">/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux</span></code></p></li>
+</ul>
+</li>
+<li><p>Press the <code class="docutils literal notranslate"><span class="pre">Execute</span></code> button.</p></li>
+</ol>
+</dd>
+<dt>Once completed, for the new entry in your history, use the <code class="docutils literal notranslate"><span class="pre">Edit</span></code> button to set the name as follows:</dt><dd><p>(Renaming is optional, but it will make any subsequent steps easier to complete.)</p>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>History Name</p></th>
+<th class="head"><p><em>“Name”</em> to set (be sure to press <code class="docutils literal notranslate"><span class="pre">Save</span></code>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">pepsirf</span> <span class="pre">norm</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">qza_output.qza</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IM0032-pA-PV1-subset-CS.qza</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</div>
+<div class="exec-usage compound" id="usage-13">
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">IM0032-pA-PV1-subset-CS.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf-tutorial%2FIM0032-pA-PV1-subset-CS.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/IM0032-pA-PV1-subset-CS.qza"><span>download</span></a></p></li>
 </ul>
@@ -196,7 +400,7 @@ call pepsirf on your machine):</p>
 <span class="usage-selector"></span><p>Here we wil test q2-pepsirf’s bin module by
 running the following command (replace pepsirf_binary with how you
 call pepsirf on your machine):</p>
-<div class="artifact-usage highlight-default notranslate" id="usage-9"><div class="highlight"><pre><span></span><span class="n">IM0032_pA_PV1_subset_bin</span><span class="p">,</span> <span class="o">=</span> <span class="n">pepsirf_actions</span><span class="o">.</span><span class="n">bin</span><span class="p">(</span>
+<div class="python3-usage highlight-default notranslate" id="usage-15"><div class="highlight"><pre><span></span><span class="n">IM0032_pA_PV1_subset_bin</span><span class="p">,</span> <span class="o">=</span> <span class="n">pepsirf_actions</span><span class="o">.</span><span class="n">bin</span><span class="p">(</span>
     <span class="n">scores</span><span class="o">=</span><span class="n">IM0032_pA_PV1_subset_CS</span><span class="p">,</span>
     <span class="n">bin_size</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
     <span class="n">round_to</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
@@ -204,7 +408,7 @@ call pepsirf on your machine):</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="cli-usage highlight-default notranslate" id="usage-10"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">pepsirf</span> <span class="nb">bin</span> \
+<div class="cli-usage highlight-default notranslate" id="usage-16"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">pepsirf</span> <span class="nb">bin</span> \
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">scores</span> <span class="n">IM0032</span><span class="o">-</span><span class="n">pA</span><span class="o">-</span><span class="n">PV1</span><span class="o">-</span><span class="n">subset</span><span class="o">-</span><span class="n">CS</span><span class="o">.</span><span class="n">qza</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="nb">bin</span><span class="o">-</span><span class="n">size</span> <span class="mi">300</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="nb">round</span><span class="o">-</span><span class="n">to</span> <span class="mi">0</span> \
@@ -212,7 +416,55 @@ call pepsirf on your machine):</p>
   <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="nb">bin</span><span class="o">-</span><span class="n">output</span> <span class="n">IM0032</span><span class="o">-</span><span class="n">pA</span><span class="o">-</span><span class="n">PV1</span><span class="o">-</span><span class="n">subset</span><span class="o">-</span><span class="nb">bin</span><span class="o">.</span><span class="n">qza</span>
 </pre></div>
 </div>
-<div class="exec-usage compound" id="usage-11">
+<div class="raw-usage highlight-default notranslate" id="usage-19"><div class="highlight"><pre><span></span><span class="n">pepsirf_bin</span><span class="p">,</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">action</span><span class="p">(</span>
+ <span class="n">use</span><span class="o">.</span><span class="n">UsageAction</span><span class="p">(</span><span class="n">plugin_id</span><span class="o">=</span><span class="s1">&#39;pepsirf&#39;</span><span class="p">,</span> <span class="n">action_id</span><span class="o">=</span><span class="s1">&#39;bin&#39;</span><span class="p">),</span>
+ <span class="n">use</span><span class="o">.</span><span class="n">UsageInputs</span><span class="p">(</span>
+     <span class="n">scores</span> <span class="o">=</span> <span class="n">col_sum</span><span class="p">,</span>
+     <span class="n">bin_size</span> <span class="o">=</span> <span class="mi">300</span><span class="p">,</span>
+     <span class="n">round_to</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+     <span class="n">pepsirf_binary</span> <span class="o">=</span> <span class="s2">&quot;/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux&quot;</span>
+ <span class="p">),</span>
+ <span class="n">use</span><span class="o">.</span><span class="n">UsageOutputNames</span><span class="p">(</span>
+     <span class="n">bin_output</span> <span class="o">=</span> <span class="s2">&quot;IM0032-pA_PV1_subset_bin&quot;</span>
+ <span class="p">)</span>
+ <span class="p">)</span>
+</pre></div>
+</div>
+<div class="galaxy-usage compound" id="usage-17">
+<dl>
+<dt>Using the <code class="docutils literal notranslate"><span class="pre">qiime2</span> <span class="pre">pepsirf</span> <span class="pre">bin</span></code> tool:</dt><dd><ol class="arabic simple">
+<li><p>Set <em>“scores”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">IM0032-pA-PV1-subset-CS.qza</span></code></p></li>
+<li><p>Expand the <code class="docutils literal notranslate"><span class="pre">additional</span> <span class="pre">options</span></code> section</p>
+<ol class="arabic simple">
+<li><p>Leave <em>“bin_size”</em> as its default value of <code class="docutils literal notranslate"><span class="pre">300</span></code></p></li>
+<li><p>Leave <em>“round_to”</em> as its default value of <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p>Set <em>“pepsirf_binary”</em> to <code class="docutils literal notranslate"><span class="pre">/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux</span></code></p></li>
+</ol>
+</li>
+<li><p>Press the <code class="docutils literal notranslate"><span class="pre">Execute</span></code> button.</p></li>
+</ol>
+</dd>
+<dt>Once completed, for the new entry in your history, use the <code class="docutils literal notranslate"><span class="pre">Edit</span></code> button to set the name as follows:</dt><dd><p>(Renaming is optional, but it will make any subsequent steps easier to complete.)</p>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>History Name</p></th>
+<th class="head"><p><em>“Name”</em> to set (be sure to press <code class="docutils literal notranslate"><span class="pre">Save</span></code>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">pepsirf</span> <span class="pre">bin</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">bin_output.qza</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IM0032-pA-PV1-subset-bin.qza</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</div>
+<div class="exec-usage compound" id="usage-18">
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">IM0032-pA-PV1-subset-bin.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf-tutorial%2FIM0032-pA-PV1-subset-bin.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/IM0032-pA-PV1-subset-bin.qza"><span>download</span></a></p></li>
 </ul>
@@ -221,7 +473,7 @@ call pepsirf on your machine):</p>
 <section id="ps-plot-repscatters">
 <h2>Ps-plot repScatters<a class="headerlink" href="#ps-plot-repscatters" title="Permalink to this headline">¶</a></h2>
 <span class="usage-selector"></span><p>Here we will test q2-ps-plot’s repScatters module by running the following command:</p>
-<div class="artifact-usage highlight-default notranslate" id="usage-12"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiime2.plugins.ps_plot.actions</span> <span class="k">as</span> <span class="nn">ps_plot_actions</span>
+<div class="python3-usage highlight-default notranslate" id="usage-20"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiime2.plugins.ps_plot.actions</span> <span class="k">as</span> <span class="nn">ps_plot_actions</span>
 
 <span class="n">samples_col_mdc</span> <span class="o">=</span> <span class="n">samples_source_md</span><span class="o">.</span><span class="n">get_column</span><span class="p">(</span><span class="s1">&#39;source&#39;</span><span class="p">)</span>
 <span class="n">ZRepScatter_viz</span><span class="p">,</span> <span class="o">=</span> <span class="n">ps_plot_actions</span><span class="o">.</span><span class="n">repScatters</span><span class="p">(</span>
@@ -230,14 +482,66 @@ call pepsirf on your machine):</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="cli-usage highlight-default notranslate" id="usage-13"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">ps</span><span class="o">-</span><span class="n">plot</span> <span class="n">repScatters</span> \
+<div class="cli-usage highlight-default notranslate" id="usage-21"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">ps</span><span class="o">-</span><span class="n">plot</span> <span class="n">repScatters</span> \
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">zscore</span> <span class="n">autopepsirf</span><span class="o">-</span><span class="n">diffEnrich</span><span class="o">/</span><span class="n">zscore</span><span class="o">.</span><span class="n">qza</span> \
   <span class="o">--</span><span class="n">m</span><span class="o">-</span><span class="n">source</span><span class="o">-</span><span class="n">file</span> <span class="n">samples</span><span class="o">-</span><span class="n">source</span><span class="o">.</span><span class="n">tsv</span> \
   <span class="o">--</span><span class="n">m</span><span class="o">-</span><span class="n">source</span><span class="o">-</span><span class="n">column</span> <span class="n">source</span> \
   <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">visualization</span> <span class="n">ZRepScatter</span><span class="o">.</span><span class="n">qzv</span>
 </pre></div>
 </div>
-<div class="exec-usage compound" id="usage-14">
+<div class="raw-usage highlight-default notranslate" id="usage-24"><div class="highlight"><pre><span></span><span class="n">samples_col</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">get_metadata_column</span><span class="p">(</span><span class="s1">&#39;samples_col&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span>
+
+<span class="n">zScatter</span><span class="p">,</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">action</span><span class="p">(</span>
+ <span class="n">use</span><span class="o">.</span><span class="n">UsageAction</span><span class="p">(</span><span class="n">plugin_id</span><span class="o">=</span><span class="s1">&#39;ps_plot&#39;</span><span class="p">,</span> <span class="n">action_id</span><span class="o">=</span><span class="s1">&#39;repScatters&#39;</span><span class="p">),</span>
+ <span class="n">use</span><span class="o">.</span><span class="n">UsageInputs</span><span class="p">(</span>
+     <span class="n">zscore</span> <span class="o">=</span> <span class="n">zscore</span><span class="p">,</span>
+     <span class="n">source</span> <span class="o">=</span> <span class="n">samples_col</span><span class="p">,</span>
+ <span class="p">),</span>
+ <span class="n">use</span><span class="o">.</span><span class="n">UsageOutputNames</span><span class="p">(</span>
+     <span class="n">visualization</span> <span class="o">=</span> <span class="s2">&quot;ZRepScatter&quot;</span>
+ <span class="p">)</span>
+ <span class="p">)</span>
+</pre></div>
+</div>
+<div class="galaxy-usage compound" id="usage-22">
+<dl>
+<dt>Using the <code class="docutils literal notranslate"><span class="pre">qiime2</span> <span class="pre">ps-plot</span> <span class="pre">repScatters</span></code> tool:</dt><dd><ol class="arabic simple">
+<li><p>For <em>“source”</em>:</p>
+<ol class="arabic simple">
+<li><p>Leave as <code class="docutils literal notranslate"><span class="pre">Metadata</span> <span class="pre">from</span> <span class="pre">TSV</span></code></p></li>
+<li><p>Set <em>“Metadata Source”</em> to <code class="docutils literal notranslate"><span class="pre">samples-source.tsv</span></code></p></li>
+<li><p>Set <em>“Column Name”</em> to <code class="docutils literal notranslate"><span class="pre">source</span></code></p></li>
+</ol>
+</li>
+<li><p>Expand the <code class="docutils literal notranslate"><span class="pre">additional</span> <span class="pre">options</span></code> section</p>
+<ul class="simple">
+<li><p>Set <em>“zscore”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">zscore.qza</span></code></p></li>
+</ul>
+</li>
+<li><p>Press the <code class="docutils literal notranslate"><span class="pre">Execute</span></code> button.</p></li>
+</ol>
+</dd>
+<dt>Once completed, for the new entry in your history, use the <code class="docutils literal notranslate"><span class="pre">Edit</span></code> button to set the name as follows:</dt><dd><p>(Renaming is optional, but it will make any subsequent steps easier to complete.)</p>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>History Name</p></th>
+<th class="head"><p><em>“Name”</em> to set (be sure to press <code class="docutils literal notranslate"><span class="pre">Save</span></code>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">ps-plot</span> <span class="pre">repScatters</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">visualization.qzv</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ZRepScatter.qzv</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</div>
+<div class="exec-usage compound" id="usage-23">
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ZRepScatter.qzv</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf-tutorial%2FZRepScatter.qzv"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/ZRepScatter.qzv"><span>download</span></a></p></li>
 </ul>
@@ -247,7 +551,7 @@ call pepsirf on your machine):</p>
 <h2>Ps-plot zenrich<a class="headerlink" href="#ps-plot-zenrich" title="Permalink to this headline">¶</a></h2>
 <span class="usage-selector"></span><p>Here we will test q2-ps-plot’s zenrich module by running the following command
 (replace pepsirf_binary with how you call pepsirf on your machine):</p>
-<div class="artifact-usage highlight-default notranslate" id="usage-15"><div class="highlight"><pre><span></span><span class="n">zenrich_scatter_viz</span><span class="p">,</span> <span class="o">=</span> <span class="n">ps_plot_actions</span><span class="o">.</span><span class="n">zenrich</span><span class="p">(</span>
+<div class="python3-usage highlight-default notranslate" id="usage-25"><div class="highlight"><pre><span></span><span class="n">zenrich_scatter_viz</span><span class="p">,</span> <span class="o">=</span> <span class="n">ps_plot_actions</span><span class="o">.</span><span class="n">zenrich</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">IM0032_pA_PV1_subset_CS</span><span class="p">,</span>
     <span class="n">zscores</span><span class="o">=</span><span class="n">zscore</span><span class="p">,</span>
     <span class="n">source</span><span class="o">=</span><span class="n">samples_col_mdc</span><span class="p">,</span>
@@ -256,7 +560,7 @@ call pepsirf on your machine):</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="cli-usage highlight-default notranslate" id="usage-16"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">ps</span><span class="o">-</span><span class="n">plot</span> <span class="n">zenrich</span> \
+<div class="cli-usage highlight-default notranslate" id="usage-26"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">ps</span><span class="o">-</span><span class="n">plot</span> <span class="n">zenrich</span> \
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">data</span> <span class="n">IM0032</span><span class="o">-</span><span class="n">pA</span><span class="o">-</span><span class="n">PV1</span><span class="o">-</span><span class="n">subset</span><span class="o">-</span><span class="n">CS</span><span class="o">.</span><span class="n">qza</span> \
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">zscores</span> <span class="n">autopepsirf</span><span class="o">-</span><span class="n">diffEnrich</span><span class="o">/</span><span class="n">zscore</span><span class="o">.</span><span class="n">qza</span> \
   <span class="o">--</span><span class="n">m</span><span class="o">-</span><span class="n">source</span><span class="o">-</span><span class="n">file</span> <span class="n">samples</span><span class="o">-</span><span class="n">source</span><span class="o">.</span><span class="n">tsv</span> \
@@ -266,7 +570,69 @@ call pepsirf on your machine):</p>
   <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">visualization</span> <span class="n">zenrich</span><span class="o">-</span><span class="n">scatter</span><span class="o">.</span><span class="n">qzv</span>
 </pre></div>
 </div>
-<div class="exec-usage compound" id="usage-17">
+<div class="raw-usage highlight-default notranslate" id="usage-29"><div class="highlight"><pre><span></span><span class="n">zenrichScat</span><span class="p">,</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">action</span><span class="p">(</span>
+ <span class="n">use</span><span class="o">.</span><span class="n">UsageAction</span><span class="p">(</span><span class="n">plugin_id</span><span class="o">=</span><span class="s1">&#39;ps_plot&#39;</span><span class="p">,</span> <span class="n">action_id</span><span class="o">=</span><span class="s1">&#39;zenrich&#39;</span><span class="p">),</span>
+ <span class="n">use</span><span class="o">.</span><span class="n">UsageInputs</span><span class="p">(</span>
+     <span class="n">data</span> <span class="o">=</span> <span class="n">col_sum</span><span class="p">,</span>
+     <span class="n">zscores</span> <span class="o">=</span> <span class="n">zscore</span><span class="p">,</span>
+     <span class="n">source</span> <span class="o">=</span> <span class="n">samples_col</span><span class="p">,</span>
+     <span class="n">negative_controls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;SB_pA_A&quot;</span><span class="p">,</span><span class="s2">&quot;SB_pA_B&quot;</span><span class="p">,</span><span class="s2">&quot;SB_pA_D&quot;</span><span class="p">],</span>
+     <span class="n">pepsirf_binary</span> <span class="o">=</span> <span class="s2">&quot;/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux&quot;</span>
+ <span class="p">),</span>
+ <span class="n">use</span><span class="o">.</span><span class="n">UsageOutputNames</span><span class="p">(</span>
+     <span class="n">visualization</span> <span class="o">=</span> <span class="s2">&quot;zenrich_scatter&quot;</span>
+ <span class="p">)</span>
+ <span class="p">)</span>
+</pre></div>
+</div>
+<div class="galaxy-usage compound" id="usage-27">
+<dl>
+<dt>Using the <code class="docutils literal notranslate"><span class="pre">qiime2</span> <span class="pre">ps-plot</span> <span class="pre">zenrich</span></code> tool:</dt><dd><ol class="arabic simple">
+<li><p>Set <em>“data”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">IM0032-pA-PV1-subset-CS.qza</span></code></p></li>
+<li><p>Set <em>“zscores”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">zscore.qza</span></code></p></li>
+<li><p>Expand the <code class="docutils literal notranslate"><span class="pre">additional</span> <span class="pre">options</span></code> section</p>
+<ol class="arabic simple">
+<li><p>For <em>“negative_controls”</em>, use the <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">negative_controls</span></code> button to add the corresponding values:</p>
+<ol class="arabic simple">
+<li><p>Add <em>“element”</em> set to <code class="docutils literal notranslate"><span class="pre">SB_pA_A</span></code></p></li>
+<li><p>Add <em>“element”</em> set to <code class="docutils literal notranslate"><span class="pre">SB_pA_B</span></code></p></li>
+<li><p>Add <em>“element”</em> set to <code class="docutils literal notranslate"><span class="pre">SB_pA_D</span></code></p></li>
+</ol>
+</li>
+<li><p>For <em>“source”</em>:</p>
+<ol class="arabic simple">
+<li><p>Leave as <code class="docutils literal notranslate"><span class="pre">Metadata</span> <span class="pre">from</span> <span class="pre">TSV</span></code></p></li>
+<li><p>Set <em>“Metadata Source”</em> to <code class="docutils literal notranslate"><span class="pre">samples-source.tsv</span></code></p></li>
+<li><p>Set <em>“Column Name”</em> to <code class="docutils literal notranslate"><span class="pre">source</span></code></p></li>
+</ol>
+</li>
+<li><p>Set <em>“pepsirf_binary”</em> to <code class="docutils literal notranslate"><span class="pre">/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux</span></code></p></li>
+</ol>
+</li>
+<li><p>Press the <code class="docutils literal notranslate"><span class="pre">Execute</span></code> button.</p></li>
+</ol>
+</dd>
+<dt>Once completed, for the new entry in your history, use the <code class="docutils literal notranslate"><span class="pre">Edit</span></code> button to set the name as follows:</dt><dd><p>(Renaming is optional, but it will make any subsequent steps easier to complete.)</p>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>History Name</p></th>
+<th class="head"><p><em>“Name”</em> to set (be sure to press <code class="docutils literal notranslate"><span class="pre">Save</span></code>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">ps-plot</span> <span class="pre">zenrich</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">visualization.qzv</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">zenrich-scatter.qzv</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</div>
+<div class="exec-usage compound" id="usage-28">
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">zenrich-scatter.qzv</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf-tutorial%2Fzenrich-scatter.qzv"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf-tutorial/zenrich-scatter.qzv"><span>download</span></a></p></li>
 </ul>
@@ -307,7 +673,7 @@ call pepsirf on your machine):</p>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Ladner Labs.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </div>
   <script src="../../_static/clipboard-driver.js"></script>

@@ -83,7 +83,9 @@ diffEnrich-tsv: diffEnrich tsv Pepsirf Pipeline
      --p-tsv-base-str TEXT  The base name for the output tsv files excluding ay
                             extensions, typcally the raw data filename (EX:
                             --p-tsv-base-str raw_data). Must also provide
-                            pepsirf-tsv-dir                            [optional]
+                            pepsirf-tsv-dir, if pepsirf-tsv-dir provided without
+                            tsv-base-str, the default will be 'aps-output'.
+                                                                       [optional]
      --p-step-z-thresh INTEGER
        Range(1, None)       Integar to increment z-score thresholds. [default: 5]
      --p-upper-z-thresh INTEGER
@@ -214,7 +216,8 @@ diffEnrich-tsv: diffEnrich tsv Pepsirf Pipeline
    tsv_base_str : Str, optional
        The base name for the output tsv files excluding ay extensions,
        typcally the raw data filename (EX: --p-tsv-base-str raw_data). Must
-       also provide pepsirf-tsv-dir
+       also provide pepsirf-tsv-dir, if pepsirf-tsv-dir provided without tsv-
+       base-str, the default will be 'aps-output'.
    step_z_thresh : Int % Range(1, None), optional
        Integar to increment z-score thresholds.
    upper_z_thresh : Int % Range(2, None), optional
