@@ -4,14 +4,15 @@ PepSIRF Qiime 2 Plugin tutorial - Multiple Interface Edition
 Description
 -----------
 
-This guide is a preview of how you can use q2-pepsirf and q2-autopepsirf.
+This guide is a preview of how you can use q2-autopepsirf's diffEnrich module, along with how to use
+the individual modules of q2-pepsirf and q2-ps-plot to accomplish a diffEnrich analysis.
 
 Introduction
 ------------
 
 In this tutorial you'll use QIIME 2 to perform an analysis of some data.
 
-Typical Run Time: 5 Minutes
+Typical Run Time: 12 Minutes
 
 Sample Raw Data
 ---------------
