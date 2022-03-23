@@ -15,7 +15,7 @@ ps-plot
        </tr>
        <tr>
          <th scope="row">Version</th>
-         <td>2021.11.12+52.g7958e0e</td>
+         <td>2021.11.12+56.gf201e57</td>
        </tr>
        <tr>
          <th scope="row">Website</th>

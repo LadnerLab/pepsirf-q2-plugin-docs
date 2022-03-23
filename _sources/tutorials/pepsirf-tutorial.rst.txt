@@ -135,6 +135,76 @@ call pepsirf on your machine):
     )
     )
 
+Pepsirf zscore
+--------------
+
+.. usage-selector::
+
+Here we wil test q2-pepsirf's zscore module by 
+running the following command (replace pepsirf_binary with how you 
+call pepsirf on your machine):
+
+.. usage::
+
+   pepsirf_zscore, pepsirf_nan, = use.action(
+    use.UsageAction(plugin_id='pepsirf', action_id='zscore'),
+    use.UsageInputs(
+        scores = diff,
+        bins = bin_data,
+        hdi = 0.95,
+        pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
+    ),
+    use.UsageOutputNames(
+        zscore_output = "IM0032-pA_PV1_Z-HDI95",
+        nan_report = "IM0032-pA_PV1_Z-HDI95_nan"
+    )
+    )
+
+Pepsirf infoSNPN
+----------------
+
+.. usage-selector::
+
+Here we wil test q2-pepsirf's infoSNPN module by 
+running the following command (replace pepsirf_binary with how you 
+call pepsirf on your machine):
+
+.. usage::
+
+   pepsirf_sample_names, = use.action(
+    use.UsageAction(plugin_id='pepsirf', action_id='infoSNPN'),
+    use.UsageInputs(
+        input = raw_data,
+        get = "samples",
+        pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
+    ),
+    use.UsageOutputNames(
+        snpn_output = "IM0032-pA_PV1_SN",
+    )
+    )
+
+Pepsirf infoSumOfProbes
+-----------------------
+
+.. usage-selector::
+
+Here we wil test q2-pepsirf's infoSumOfProbes module by 
+running the following command (replace pepsirf_binary with how you 
+call pepsirf on your machine):
+
+.. usage::
+
+   pepsirf_read_counts, = use.action(
+    use.UsageAction(plugin_id='pepsirf', action_id='infoSumOfProbes'),
+    use.UsageInputs(
+        input = raw_data,
+        pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
+    ),
+    use.UsageOutputNames(
+        sum_of_probes_output = "IM0032-pA_PV1_RC",
+    )
+    )
+
 Ps-plot repScatters
 -------------------
 
