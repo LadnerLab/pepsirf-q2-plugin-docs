@@ -205,6 +205,73 @@ call pepsirf on your machine):
     )
     )
 
+Pepsirf enrich
+--------------
+
+.. usage-selector::
+
+Here we wil test q2-pepsirf's enrich module by 
+running the following command (replace pepsirf_binary with how you 
+call pepsirf on your machine):
+
+.. usage::
+
+    samples_col = use.get_metadata_column('samples_col', 'source', metadata)
+
+    pepsirf_enrich_dir, = use.action(
+    use.UsageAction(plugin_id='pepsirf', action_id='enrich'),
+    use.UsageInputs(
+        source = samples_col,
+        zscores = zscore,
+        col_sum = col_sum,
+        exact_z_thresh = "6,10",
+        exact_cs_thresh = "20",
+        enrichment_failure = True,
+        pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
+    ),
+    use.UsageOutputNames(
+        dir_fmt_output = "6-10Z-HDI95_20CS_300000raw",
+    )
+    )
+
+Ps-plot readCountsBoxplot
+-------------------------
+
+.. usage-selector::
+
+Here we will test q2-ps-plot's readCountsBoxplot module by running the following command:
+
+.. usage::
+
+   zScatter, = use.action(
+    use.UsageAction(plugin_id='ps_plot', action_id='readCountsBoxplot'),
+    use.UsageInputs(
+        read_counts = read_counts
+    ),
+    use.UsageOutputNames(
+        visualization = "RCBoxplot"
+    )
+    )
+
+Ps-plot enrichmentRCBoxplot
+---------------------------
+
+.. usage-selector::
+
+Here we will test q2-ps-plot's enrichmentRCBoxplot module by running the following command:
+
+.. usage::
+
+   zScatter, = use.action(
+    use.UsageAction(plugin_id='ps_plot', action_id='enrichmentRCBoxplot'),
+    use.UsageInputs(
+        enriched_dir = enriched
+    ),
+    use.UsageOutputNames(
+        visualization = "enrichedBoxplot"
+    )
+    )
+
 Ps-plot repScatters
 -------------------
 
@@ -213,8 +280,6 @@ Ps-plot repScatters
 Here we will test q2-ps-plot's repScatters module by running the following command:
 
 .. usage::
-
-   samples_col = use.get_metadata_column('samples_col', 'source', metadata)
 
    zScatter, = use.action(
     use.UsageAction(plugin_id='ps_plot', action_id='repScatters'),
