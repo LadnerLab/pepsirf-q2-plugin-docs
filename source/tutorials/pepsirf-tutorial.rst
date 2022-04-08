@@ -66,7 +66,7 @@ command (replace pepsirf_binary with how you call pepsirf on your machine):
         pepsirf_tsv_dir = "./testingTSV",
         tsv_base_str = "IM0032-pA_PV1_subset",
         hdi = 0.95,
-        pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
+        pepsirf_binary = "pepsirf"
     ),
     use.UsageOutputNames(
         col_sum = "colsum",
@@ -104,7 +104,7 @@ call pepsirf on your machine):
     use.UsageAction(plugin_id='pepsirf', action_id='norm'),
     use.UsageInputs(
         peptide_scores = raw_data,
-        pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
+        pepsirf_binary = "pepsirf"
     ),
     use.UsageOutputNames(
         qza_output = "IM0032-pA_PV1_subset_CS"
@@ -128,7 +128,7 @@ call pepsirf on your machine):
         scores = col_sum,
         bin_size = 300,
         round_to = 0,
-        pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
+        pepsirf_binary = "pepsirf"
     ),
     use.UsageOutputNames(
         bin_output = "IM0032-pA_PV1_subset_bin"
@@ -158,7 +158,7 @@ Here we will test q2-ps-plot's repScatters module by running the following comma
     )
 
 Ps-plot zenrich
--------------------
+---------------
 
 .. usage-selector::
 
@@ -174,9 +174,51 @@ Here we will test q2-ps-plot's zenrich module by running the following command
         zscores = zscore,
         source = samples_col,
         negative_controls = ["SB_pA_A","SB_pA_B","SB_pA_D"],
-        pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
+        pepsirf_binary = "pepsirf"
     ),
     use.UsageOutputNames(
         visualization = "zenrich_scatter"
+    )
+    )
+
+
+Protein Alignment
+-----------------
+
+.. usage-selector::
+
+.. qiime ps-plot proteinHeatmap --i-enriched-dir 10Z-HDI95_0CS_400000raw_dir.qza --i-protein-alignment alignmentFiles_dir.qza --p-enriched-suffix
+.. '_enriched.txt' --p-align-header 'AlignPos' --p-align-delim '~' --p-color-scheme 'viridis' --o-visualization testingProt
+.. einHeatmap
+
+.. usage::
+     
+   def prot_align_factory():
+      import qiime2
+      return qiime2.Artifact.load("source/data/alignmentFiles_dir.qza")
+
+   prot_align = use.init_artifact("prot_align", prot_align_factory)
+
+   def enrichment_factory():
+      import qiime2
+      return qiime2.Artifact.load("source/data/10Z-HDI95_0CS_400000raw_dir.qza")
+
+   peptide_enrichment = use.init_artifact("peptide_enrichment", enrichment_factory)
+
+
+.. usage::
+   
+   protHeatMap, = use.action(
+    use.UsageAction(plugin_id='ps_plot', action_id='proteinHeatmap'),
+    use.UsageInputs(
+        enriched_dir = peptide_enrichment,
+        protein_alignment = prot_align,
+        enriched_suffix = '_enriched.txt',
+        align_header = 'AlignPos',
+        align_delim = '~',
+        color_scheme = 'viridis'
+    ),
+    use.UsageOutputNames(
+        visualization = "protein_heat_map"
     )
     )
