@@ -168,37 +168,37 @@ Parameters:
                          The binary to call pepsirf on your system.
                                                           [default: 'pepsirf']
 Outputs:
-  --o-map-dir ARTIFACT PeptideAssignmentMap
-                                                                    [required]
-  --o-read-counts ARTIFACT
-    InfoSumOfProbes                                                 [required]
-  --o-diff-ratio ARTIFACT FeatureTable[NormedDiffRatio]
-                                                                    [required]
-  --o-sample-names ARTIFACT
-    InfoSNPN                                                        [required]
-  --o-diff ARTIFACT FeatureTable[NormedDifference]
-                                                                    [required]
+  --o-zscore-nan ARTIFACT
+    ZscoreNan                                                       [required]
   --o-enrich-count-boxplot VISUALIZATION
                                                                     [required]
-  --o-score-per-round ARTIFACT
-    ScorePerRound                                                   [required]
-  --o-enrich ARTIFACT
-    PairwiseEnrichment                                              [required]
-  --o-rc-boxplot VISUALIZATION
+  --o-col-sum ARTIFACT FeatureTable[Normed]
                                                                     [required]
-  --o-zenrich-scatter VISUALIZATION
+  --o-rc-boxplot VISUALIZATION
                                                                     [required]
   --o-zscore ARTIFACT FeatureTable[Zscore]
                                                                     [required]
+  --o-read-counts ARTIFACT
+    InfoSumOfProbes                                                 [required]
+  --o-sample-names ARTIFACT
+    InfoSNPN                                                        [required]
+  --o-score-per-round ARTIFACT
+    ScorePerRound                                                   [required]
   --o-zscore-scatter VISUALIZATION
+                                                                    [required]
+  --o-colsum-scatter VISUALIZATION
+                                                                    [required]
+  --o-zenrich-scatter VISUALIZATION
+                                                                    [required]
+  --o-enrich ARTIFACT
+    PairwiseEnrichment                                              [required]
+  --o-diff-ratio ARTIFACT FeatureTable[NormedDiffRatio]
+                                                                    [required]
+  --o-diff ARTIFACT FeatureTable[NormedDifference]
                                                                     [required]
   --o-dir-out ARTIFACT
     DeconvBatch                                                     [required]
-  --o-zscore-nan ARTIFACT
-    ZscoreNan                                                       [required]
-  --o-col-sum ARTIFACT FeatureTable[Normed]
-                                                                    [required]
-  --o-colsum-scatter VISUALIZATION
+  --o-map-dir ARTIFACT PeptideAssignmentMap
                                                                     [required]
 Miscellaneous:
   --output-dir PATH      Output unspecified results to a directory
@@ -301,22 +301,22 @@ pepsirf_binary : Str, optional
 
 Returns
 -------
-zscore_scatter : Visualization
-zenrich_scatter : Visualization
-dir_out : DeconvBatch
 diff_ratio : FeatureTable[NormedDiffRatio]
-diff : FeatureTable[NormedDifference]
-enrich : PairwiseEnrichment
-sample_names : InfoSNPN
-read_counts : InfoSumOfProbes
-enrich_count_boxplot : Visualization
-col_sum : FeatureTable[Normed]
+zscore_scatter : Visualization
 score_per_round : ScorePerRound
+enrich_count_boxplot : Visualization
 colsum_scatter : Visualization
+enrich : PairwiseEnrichment
+zenrich_scatter : Visualization
+read_counts : InfoSumOfProbes
+sample_names : InfoSNPN
 zscore : FeatureTable[Zscore]
+rc_boxplot : Visualization
+diff : FeatureTable[NormedDifference]
 map_dir : PeptideAssignmentMap
-zscore_nan : ZscoreNan
-rc_boxplot : Visualization</pre>
+dir_out : DeconvBatch
+col_sum : FeatureTable[Normed]
+zscore_nan : ZscoreNan</pre>
     </div>
   </div>
 </div></section>
