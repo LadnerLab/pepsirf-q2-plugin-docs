@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>diffEnrich-deconv: diffEnrich deconv Pepsirf Pipeline &#8212; Q2 Pepsirf Plugin Docs  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/external-links.js"></script>
+    <script src="../../../_static/usage.js"></script>
+    <link rel="canonical" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/plugins/autopepsirf/diffEnrich-deconv.html" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="diffEnrich-tsv: diffEnrich tsv Pepsirf Pipeline" href="../diffEnrich-tsv/" />
+    <link rel="prev" title="diffEnrich: diffEnrich Pepsirf Pipeline" href="../diffEnrich/" />
+  <script src="../../../_static/bootstrap.min.js"></script>
+  <script src="../../../_static/clipboard.min.js"></script>
+  <link rel="icon" href="../../../_static/favicon.ico" type="image/png" />
+  <link rel="stylesheet" href="../../../_static/css/bootstrap.min.css" media="screen" />
+  <link rel="stylesheet" href="../../../_static/css/normalize.css" media="screen">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  </head><body>
+  <div id="wrapper" class="container clearfix">
+    <div id="header">
+      <a href="/pepsirf-q2-plugin-docs/">
+        <img
+          class="img-responsive"
+          src="../../../_static/PepSIRF_Q2.png" alt="QIIME 2 Docs"
+        />
+      </a>
+    </div>
+    <div id="content">
+      
+      <div id="body" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 main pull-right">
+        
+  <section id="diffenrich-deconv-diffenrich-deconv-pepsirf-pipeline">
+<h1>diffEnrich-deconv: diffEnrich deconv Pepsirf Pipeline<a class="headerlink" href="#diffenrich-deconv-diffenrich-deconv-pepsirf-pipeline" title="Permalink to this headline">¶</a></h1>
+<div class="tabbed">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#cli">Command line interface</a></li>
+    <li><a data-toggle="tab" href="#api">Artifact API</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="cli" class="tab-pane fade in active">
+      <h4>Docstring:</h4>
+      <pre>Usage: qiime autopepsirf diffEnrich-deconv [OPTIONS]
+
+  Uses the diff normalization from pepsirf to generate z scores that are
+  used to determine enriched peptidesand **ADD DECONV DESCRIPTION**
+
+Inputs:
+  --i-raw-data ARTIFACT FeatureTable[RawCounts]
+                                                                    [required]
+  --i-bins ARTIFACT
+    PeptideBins                                                     [required]
+  --i-linked ARTIFACT
+    Link                                                            [required]
+  --i-negative-control ARTIFACT FeatureTable[Normed]
+                                                                    [optional]
+  --i-thresh-file ARTIFACT
+    EnrichThresh                                                    [optional]
+  --i-id-name-map ARTIFACT
+    PepsirfDMP                                                      [optional]
+Parameters:
+  --p-deconv-threshold INTEGER
+                                                                    [required]
+  --p-mapfile-suffix TEXT
+                                                                    [required]
+  --p-outfile-suffix TEXT
+                                                                    [required]
+  --p-scoring-strategy TEXT
+                                                        [default: 'summation']
+  --p-infer-pairs-source / --p-no-infer-pairs-source
+                         Infer sample pairs from names. This option assumes
+                         names of replicates will be identical with the
+                         exception of a final string denoted with a '_'. For
+                         example, these names would be considered two
+                         replicates of the same sample: VW_100_1X_A and
+                         VW_100_1X_B                           [default: True]
+  --p-flexible-reps-source / --p-no-flexible-reps-source
+                         will infer the number of replicates for each sample
+                         based on sample names, and will not require any
+                         specific number of replicates for inclusion.
+                         Therefore, some samples may have a single replicate,
+                         some may have 2, 3, 4 etc. And all replicates of a
+                         given sample will be considered for determining
+                         enriched peptides.                   [default: False]
+  --p-s-enrich-source / --p-no-s-enrich-source
+                         All samples will be processed individually as
+                         samples with only one replicate      [default: False]
+  --m-user-defined-source-file METADATA
+  --m-user-defined-source-column COLUMN  MetadataColumn[Categorical]
+                         Metadata file containing all sample names and their
+                         source groups. Used to create pairs tsv to run
+                         pepsirf enrich module.                     [optional]
+  --p-negative-id TEXT   Optional approach for identifying negative controls.
+                         Provide a unique string at the start of all negative
+                         control samples.                           [optional]
+  --p-negative-names TEXT...
+    List[Str]            Optional approach for identifying negative controls.
+                         Space-separated list of negative control sample
+                         names.                                     [optional]
+  --p-exact-z-thresh TEXT
+                         Individual Exact z score threshold separated by a
+                         comma for creation of threshold file to run pepsirf's
+                         enrich module (Ex: 6,10 or 30)             [optional]
+  --p-exact-cs-thresh TEXT
+                         Individual Exact col-sum threshold separated by a
+                         comma for creation of threshold file to run pepsirf's
+                         enrich module (Ex: 6,10 or 30)        [default: '20']
+  --p-exact-zenrich-thresh TEXT...
+    List[Str]            List of exact z score thresholds either individual
+                         or combined. List MUST BE in descending order.
+                         (Example argument: '--p-exact-zenrich-thresh 25 10 3'
+                         or '--p-exact-zenrich-thresh 6,25 4,10 1,3')
+                                                                    [optional]
+  --p-pepsirf-tsv-dir TEXT
+                         Provide a directory path. Must also provide
+                         tsv-base-str for output of tsv verison of qza files.
+                         The source_samples file and png boxplot outputs will
+                         always be put within this directory.  [default: './']
+  --p-tsv-base-str TEXT  The base name for the output tsv files excluding ay
+                         extensions, typcally the raw data filename (EX:
+                         --p-tsv-base-str raw-data). Must also provide
+                         pepsirf-tsv-dir, if pepsirf-tsv-dir provided without
+                         tsv-base-str, the default will be 'aps-output'.
+                                                                    [optional]
+  --p-step-z-thresh INTEGER
+    Range(1, None)       Integar to increment z-score thresholds. [default: 5]
+  --p-upper-z-thresh INTEGER
+    Range(2, None)       Upper limit of z-score thresholds (non-inclusive).
+                                                                 [default: 30]
+  --p-lower-z-thresh INTEGER
+    Range(1, None)       Lower limit of z-score thresholds (inclusive).
+                                                                  [default: 5]
+  --p-raw-constraint INTEGER
+    Range(0, None)       The minimum total raw count across all peptides for
+                         a sample to be included in the analysis.This provides
+                         a way to impose a minimum read count for a sample to
+                         be evaluated.                       [default: 300000]
+  --p-hdi PROPORTION     Alternative approach for discarding outliers prior
+    Range(0.0, 1.0)      to calculating mean and stdev. If provided, this
+                         argument will override --trim, which trims evenly
+                         from both sides of the distribution. For --hdi, the
+                         user should provide the high density interval to be
+                         used for calculation of mean and stdev. For example,
+                         '--hdi 0.95' would instruct the program to utilize
+                         the 95% highest density interval (from each bin) for
+                         these calculations.                   [default: 0.95]
+  --p-score-filtering / --p-no-score-filtering
+                                                              [default: False]
+  --p-score-tie-threshold NUMBER
+                                                                [default: 0.0]
+  --p-score-overlap-threshold NUMBER
+                                                                [default: 0.0]
+  --p-single-threaded / --p-no-single-threaded
+                                                              [default: False]
+  --p-remove-file-types / --p-no-remove-file-types
+                                                              [default: False]
+  --p-pepsirf-binary TEXT
+                         The binary to call pepsirf on your system.
+                                                          [default: 'pepsirf']
+Outputs:
+  --o-map-dir ARTIFACT PeptideAssignmentMap
+                                                                    [required]
+  --o-read-counts ARTIFACT
+    InfoSumOfProbes                                                 [required]
+  --o-diff-ratio ARTIFACT FeatureTable[NormedDiffRatio]
+                                                                    [required]
+  --o-sample-names ARTIFACT
+    InfoSNPN                                                        [required]
+  --o-diff ARTIFACT FeatureTable[NormedDifference]
+                                                                    [required]
+  --o-enrich-count-boxplot VISUALIZATION
+                                                                    [required]
+  --o-score-per-round ARTIFACT
+    ScorePerRound                                                   [required]
+  --o-enrich ARTIFACT
+    PairwiseEnrichment                                              [required]
+  --o-rc-boxplot VISUALIZATION
+                                                                    [required]
+  --o-zenrich-scatter VISUALIZATION
+                                                                    [required]
+  --o-zscore ARTIFACT FeatureTable[Zscore]
+                                                                    [required]
+  --o-zscore-scatter VISUALIZATION
+                                                                    [required]
+  --o-dir-out ARTIFACT
+    DeconvBatch                                                     [required]
+  --o-zscore-nan ARTIFACT
+    ZscoreNan                                                       [required]
+  --o-col-sum ARTIFACT FeatureTable[Normed]
+                                                                    [required]
+  --o-colsum-scatter VISUALIZATION
+                                                                    [required]
+Miscellaneous:
+  --output-dir PATH      Output unspecified results to a directory
+  --verbose / --quiet    Display verbose output to stdout and/or stderr
+                         during execution of this action. Or silence output if
+                         execution is successful (silence is golden).
+  --example-data PATH    Write example data and exit.
+  --citations            Show citations and exit.
+  --help                 Show this message and exit.</pre>
+    </div>
+    <div id="api" class="tab-pane fade">
+    <h4>Import:</h4><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>from qiime2.plugins.autopepsirf.pipelines import diffEnrich_deconv
+</pre></div>
+</div>
+    <h4>Docstring:</h4>
+      <pre>diffEnrich deconv Pepsirf Pipeline
+
+Uses the diff normalization from pepsirf to generate z scores that are used
+to determine enriched peptidesand **ADD DECONV DESCRIPTION**
+
+Parameters
+----------
+raw_data : FeatureTable[RawCounts]
+bins : PeptideBins
+deconv_threshold : Int
+mapfile_suffix : Str
+outfile_suffix : Str
+linked : Link
+scoring_strategy : Str, optional
+infer_pairs_source : Bool, optional
+    Infer sample pairs from names. This option assumes names of replicates
+    will be identical with the exception of a final string denoted with a
+    '_'. For example, these names would be considered two replicates of the
+    same sample: VW_100_1X_A and VW_100_1X_B
+flexible_reps_source : Bool, optional
+    will infer the number of replicates for each sample based on sample
+    names, and will not require any specific number of replicates for
+    inclusion. Therefore, some samples may have a single replicate, some
+    may have 2, 3, 4 etc. And all replicates of a given sample will be
+    considered for determining enriched peptides.
+s_enrich_source : Bool, optional
+    All samples will be processed individually as samples with only one
+    replicate
+user_defined_source : MetadataColumn[Categorical], optional
+    Metadata file containing all sample names and their source groups. Used
+    to create pairs tsv to run pepsirf enrich module.
+negative_control : FeatureTable[Normed], optional
+negative_id : Str, optional
+    Optional approach for identifying negative controls. Provide a unique
+    string at the start of all negative control samples.
+negative_names : List[Str], optional
+    Optional approach for identifying negative controls. Space-separated
+    list of negative control sample names.
+thresh_file : EnrichThresh, optional
+exact_z_thresh : Str, optional
+    Individual Exact z score threshold separated by a comma for creation of
+    threshold file to run pepsirf's enrich module (Ex: 6,10 or 30)
+exact_cs_thresh : Str, optional
+    Individual Exact col-sum threshold separated by a comma for creation of
+    threshold file to run pepsirf's enrich module (Ex: 6,10 or 30)
+exact_zenrich_thresh : List[Str], optional
+    List of exact z score thresholds either individual or combined. List
+    MUST BE in descending order. (Example argument: '--p-exact-zenrich-
+    thresh 25 10 3' or '--p-exact-zenrich-thresh 6,25 4,10 1,3')
+pepsirf_tsv_dir : Str, optional
+    Provide a directory path. Must also provide tsv-base-str for output of
+    tsv verison of qza files. The source_samples file and png boxplot
+    outputs will always be put within this directory.
+tsv_base_str : Str, optional
+    The base name for the output tsv files excluding ay extensions,
+    typcally the raw data filename (EX: --p-tsv-base-str raw_data). Must
+    also provide pepsirf-tsv-dir, if pepsirf-tsv-dir provided without tsv-
+    base-str, the default will be 'aps-output'.
+step_z_thresh : Int % Range(1, None), optional
+    Integar to increment z-score thresholds.
+upper_z_thresh : Int % Range(2, None), optional
+    Upper limit of z-score thresholds (non-inclusive).
+lower_z_thresh : Int % Range(1, None), optional
+    Lower limit of z-score thresholds (inclusive).
+raw_constraint : Int % Range(0, None), optional
+    The minimum total raw count across all peptides for a sample to be
+    included in the analysis.This provides a way to impose a minimum read
+    count for a sample to be evaluated.
+hdi : Float % Range(0.0, 1.0), optional
+    Alternative approach for discarding outliers prior to calculating mean
+    and stdev. If provided, this argument will override --trim, which trims
+    evenly from both sides of the distribution. For --hdi, the user should
+    provide the high density interval to be used for calculation of mean
+    and stdev. For example, '--hdi 0.95' would instruct the program to
+    utilize the 95% highest density interval (from each bin) for these
+    calculations.
+score_filtering : Bool, optional
+score_tie_threshold : Float, optional
+score_overlap_threshold : Float, optional
+id_name_map : PepsirfDMP, optional
+single_threaded : Bool, optional
+remove_file_types : Bool, optional
+pepsirf_binary : Str, optional
+    The binary to call pepsirf on your system.
+
+Returns
+-------
+zscore_scatter : Visualization
+zenrich_scatter : Visualization
+dir_out : DeconvBatch
+diff_ratio : FeatureTable[NormedDiffRatio]
+diff : FeatureTable[NormedDifference]
+enrich : PairwiseEnrichment
+sample_names : InfoSNPN
+read_counts : InfoSumOfProbes
+enrich_count_boxplot : Visualization
+col_sum : FeatureTable[Normed]
+score_per_round : ScorePerRound
+colsum_scatter : Visualization
+zscore : FeatureTable[Zscore]
+map_dir : PeptideAssignmentMap
+zscore_nan : ZscoreNan
+rc_boxplot : Visualization</pre>
+    </div>
+  </div>
+</div></section>
+
+
+      </div>
+      
+
+      
+      <div id="sidebar" class="col-lg-2 col-md-2 col-sm-12 col-xs-12 side pull-left">
+        
+<h3><a href="../../../">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Available plugins</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../">autopepsirf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pepsirf/">pepsirf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ps-plot/">ps-plot</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Pepsirf_Plugins/">Installation</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+      </div>
+      
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Ladner Labs.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.
+    </div>
+  </div>
+  <script src="../../../_static/clipboard-driver.js"></script>
+  <script src="/versions.js" charset="utf-8"></script>
+  </body>
+</html>
