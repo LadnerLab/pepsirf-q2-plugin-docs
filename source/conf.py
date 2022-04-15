@@ -36,6 +36,7 @@ from utils import generate_plugin_rst, cleanup_plugin_rst  # noqa: E402
 # These items generate and cleanup dynamic content required for the build
 # process.
 
+#uses plugins/ directory
 generate_plugin_rst(["pepsirf", "ps-plot", "autopepsirf"])
 
 
