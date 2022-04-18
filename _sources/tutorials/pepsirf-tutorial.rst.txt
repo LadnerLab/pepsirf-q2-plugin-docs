@@ -4,14 +4,15 @@ PepSIRF Qiime 2 Plugin tutorial - Multiple Interface Edition
 Description
 -----------
 
-This guide is a preview of how you can use q2-pepsirf and q2-autopepsirf.
+This guide is a preview of how you can use q2-autopepsirf's diffEnrich module, along with how to use
+the individual modules of q2-pepsirf and q2-ps-plot to accomplish a diffEnrich analysis.
 
 Introduction
 ------------
 
 In this tutorial you'll use QIIME 2 to perform an analysis of some data.
 
-Typical Run Time: 5 Minutes
+Typical Run Time: 12 Minutes
 
 Sample Raw Data
 ---------------
@@ -135,6 +136,143 @@ call pepsirf on your machine):
     )
     )
 
+Pepsirf zscore
+--------------
+
+.. usage-selector::
+
+Here we wil test q2-pepsirf's zscore module by 
+running the following command (replace pepsirf_binary with how you 
+call pepsirf on your machine):
+
+.. usage::
+
+   pepsirf_zscore, pepsirf_nan, = use.action(
+    use.UsageAction(plugin_id='pepsirf', action_id='zscore'),
+    use.UsageInputs(
+        scores = diff,
+        bins = bin_data,
+        hdi = 0.95,
+        pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
+    ),
+    use.UsageOutputNames(
+        zscore_output = "IM0032-pA_PV1_Z-HDI95",
+        nan_report = "IM0032-pA_PV1_Z-HDI95_nan"
+    )
+    )
+
+Pepsirf infoSNPN
+----------------
+
+.. usage-selector::
+
+Here we wil test q2-pepsirf's infoSNPN module by 
+running the following command (replace pepsirf_binary with how you 
+call pepsirf on your machine):
+
+.. usage::
+
+   pepsirf_sample_names, = use.action(
+    use.UsageAction(plugin_id='pepsirf', action_id='infoSNPN'),
+    use.UsageInputs(
+        input = raw_data,
+        get = "samples",
+        pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
+    ),
+    use.UsageOutputNames(
+        snpn_output = "IM0032-pA_PV1_SN",
+    )
+    )
+
+Pepsirf infoSumOfProbes
+-----------------------
+
+.. usage-selector::
+
+Here we wil test q2-pepsirf's infoSumOfProbes module by 
+running the following command (replace pepsirf_binary with how you 
+call pepsirf on your machine):
+
+.. usage::
+
+   pepsirf_read_counts, = use.action(
+    use.UsageAction(plugin_id='pepsirf', action_id='infoSumOfProbes'),
+    use.UsageInputs(
+        input = raw_data,
+        pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
+    ),
+    use.UsageOutputNames(
+        sum_of_probes_output = "IM0032-pA_PV1_RC",
+    )
+    )
+
+Pepsirf enrich
+--------------
+
+.. usage-selector::
+
+Here we wil test q2-pepsirf's enrich module by 
+running the following command (replace pepsirf_binary with how you 
+call pepsirf on your machine):
+
+.. usage::
+
+    samples_col = use.get_metadata_column('samples_col', 'source', metadata)
+
+    pepsirf_enrich_dir, = use.action(
+    use.UsageAction(plugin_id='pepsirf', action_id='enrich'),
+    use.UsageInputs(
+        source = samples_col,
+        zscores = zscore,
+        col_sum = col_sum,
+        exact_z_thresh = "6,10",
+        exact_cs_thresh = "20",
+        enrichment_failure = True,
+        pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
+    ),
+    use.UsageOutputNames(
+        dir_fmt_output = "6-10Z-HDI95_20CS_300000raw",
+    )
+    )
+
+Ps-plot readCountsBoxplot
+-------------------------
+
+.. usage-selector::
+
+Here we will test q2-ps-plot's readCountsBoxplot module by running the following command:
+
+.. usage::
+
+   zScatter, = use.action(
+    use.UsageAction(plugin_id='ps_plot', action_id='readCountsBoxplot'),
+    use.UsageInputs(
+        read_counts = read_counts
+    ),
+    use.UsageOutputNames(
+        visualization = "RCBoxplot"
+    )
+    )
+
+Ps-plot enrichmentRCBoxplot
+---------------------------
+
+.. usage-selector::
+
+Here we will test q2-ps-plot's enrichmentRCBoxplot module by running the following command:
+
+.. usage::
+
+   zScatter, = use.action(
+    use.UsageAction(plugin_id='ps_plot', action_id='enrichmentRCBoxplot'),
+    use.UsageInputs(
+        enriched_dir = enriched
+    ),
+    use.UsageOutputNames(
+        visualization = "enrichedBoxplot"
+    )
+    )
+
 Ps-plot repScatters
 -------------------
 
@@ -143,8 +281,6 @@ Ps-plot repScatters
 Here we will test q2-ps-plot's repScatters module by running the following command:
 
 .. usage::
-
-   samples_col = use.get_metadata_column('samples_col', 'source', metadata)
 
    zScatter, = use.action(
     use.UsageAction(plugin_id='ps_plot', action_id='repScatters'),

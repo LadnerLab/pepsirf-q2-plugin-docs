@@ -168,37 +168,37 @@ Parameters:
                          The binary to call pepsirf on your system.
                                                           [default: 'pepsirf']
 Outputs:
-  --o-zscore-nan ARTIFACT
-    ZscoreNan                                                       [required]
-  --o-enrich-count-boxplot VISUALIZATION
-                                                                    [required]
-  --o-col-sum ARTIFACT FeatureTable[Normed]
-                                                                    [required]
-  --o-rc-boxplot VISUALIZATION
-                                                                    [required]
   --o-zscore ARTIFACT FeatureTable[Zscore]
-                                                                    [required]
-  --o-read-counts ARTIFACT
-    InfoSumOfProbes                                                 [required]
-  --o-sample-names ARTIFACT
-    InfoSNPN                                                        [required]
-  --o-score-per-round ARTIFACT
-    ScorePerRound                                                   [required]
-  --o-zscore-scatter VISUALIZATION
                                                                     [required]
   --o-colsum-scatter VISUALIZATION
                                                                     [required]
-  --o-zenrich-scatter VISUALIZATION
-                                                                    [required]
-  --o-enrich ARTIFACT
-    PairwiseEnrichment                                              [required]
-  --o-diff-ratio ARTIFACT FeatureTable[NormedDiffRatio]
-                                                                    [required]
-  --o-diff ARTIFACT FeatureTable[NormedDifference]
+  --o-rc-boxplot VISUALIZATION
                                                                     [required]
   --o-dir-out ARTIFACT
     DeconvBatch                                                     [required]
   --o-map-dir ARTIFACT PeptideAssignmentMap
+                                                                    [required]
+  --o-read-counts ARTIFACT
+    InfoSumOfProbes                                                 [required]
+  --o-enrich ARTIFACT
+    PairwiseEnrichment                                              [required]
+  --o-zscore-nan ARTIFACT
+    ZscoreNan                                                       [required]
+  --o-zenrich-scatter VISUALIZATION
+                                                                    [required]
+  --o-score-per-round ARTIFACT
+    ScorePerRound                                                   [required]
+  --o-col-sum ARTIFACT FeatureTable[Normed]
+                                                                    [required]
+  --o-sample-names ARTIFACT
+    InfoSNPN                                                        [required]
+  --o-zscore-scatter VISUALIZATION
+                                                                    [required]
+  --o-diff-ratio ARTIFACT FeatureTable[NormedDiffRatio]
+                                                                    [required]
+  --o-diff ARTIFACT FeatureTable[NormedDifference]
+                                                                    [required]
+  --o-enrich-count-boxplot VISUALIZATION
                                                                     [required]
 Miscellaneous:
   --output-dir PATH      Output unspecified results to a directory
@@ -301,22 +301,22 @@ pepsirf_binary : Str, optional
 
 Returns
 -------
-diff_ratio : FeatureTable[NormedDiffRatio]
-zscore_scatter : Visualization
-score_per_round : ScorePerRound
-enrich_count_boxplot : Visualization
-colsum_scatter : Visualization
-enrich : PairwiseEnrichment
 zenrich_scatter : Visualization
-read_counts : InfoSumOfProbes
-sample_names : InfoSNPN
-zscore : FeatureTable[Zscore]
+diff_ratio : FeatureTable[NormedDiffRatio]
 rc_boxplot : Visualization
-diff : FeatureTable[NormedDifference]
-map_dir : PeptideAssignmentMap
 dir_out : DeconvBatch
+read_counts : InfoSumOfProbes
+enrich : PairwiseEnrichment
+diff : FeatureTable[NormedDifference]
+colsum_scatter : Visualization
+zscore_nan : ZscoreNan
+sample_names : InfoSNPN
+enrich_count_boxplot : Visualization
+zscore : FeatureTable[Zscore]
+map_dir : PeptideAssignmentMap
+score_per_round : ScorePerRound
 col_sum : FeatureTable[Normed]
-zscore_nan : ZscoreNan</pre>
+zscore_scatter : Visualization</pre>
     </div>
   </div>
 </div></section>
@@ -338,6 +338,7 @@ zscore_nan : ZscoreNan</pre>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Pepsirf_Plugins/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../export-imports/">Imports and Exports</a></li>
 </ul>
 
 <div id="searchbox" style="display: none" role="search">
@@ -356,7 +357,7 @@ zscore_nan : ZscoreNan</pre>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Ladner Labs.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </div>
   <script src="../../../_static/clipboard-driver.js"></script>
