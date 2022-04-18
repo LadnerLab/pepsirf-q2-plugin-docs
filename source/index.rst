@@ -14,5 +14,6 @@ Table of contents
    tutorials/index
    plugins/index
    Pepsirf_Plugins/index
+   export-imports/index
 
 .. _QIIME 1: http://qiime.org
