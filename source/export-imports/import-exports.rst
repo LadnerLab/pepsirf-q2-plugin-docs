@@ -48,6 +48,7 @@ Library (Demux)                    PepsirfDemuxLibraryFmt       'DemuxLibrary'
 FASTQ file (Demux)                 PepsirfDemuxFastqFmt         'DemuxFastq'
 Diagnostic file (Demux)            PepsirfDemuxDiagnosticFormat 'DemuxDiagnostic'
 Protein Alignment (proteinHeatmap) ProteinAlignmentDirFormat    'ProteinAlignment'
+Mutant Reference file              MutantReferenceFileFmt       'MutantReference'
 ================================== ============================ =================================
 
 Qiime Exports
@@ -91,4 +92,5 @@ Library (Demux)                    PepsirfDemuxLibraryFmt
 FASTQ file (Demux)                 PepsirfDemuxFastqFmt
 Diagnostic file (Demux)            PepsirfDemuxDiagnosticFormat
 Protein Alignment (proteinHeatmap) ProteinAlignmentDirFormat
+Mutant Reference file              MutantReferenceFileFmt
 ================================== ============================
