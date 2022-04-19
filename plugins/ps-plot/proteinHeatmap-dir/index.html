@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>proteinHeatmap-dir: Protein Alignment Heatmap Dir &#8212; Q2 Pepsirf Plugin Docs  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/external-links.js"></script>
+    <script src="../../../_static/usage.js"></script>
+    <link rel="canonical" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/plugins/ps-plot/proteinHeatmap-dir.html" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="repScatters-tsv: Rep Scatter TSV" href="../repScatters-tsv/" />
+    <link rel="prev" title="ps-plot" href="../" />
+  <script src="../../../_static/bootstrap.min.js"></script>
+  <script src="../../../_static/clipboard.min.js"></script>
+  <link rel="icon" href="../../../_static/favicon.ico" type="image/png" />
+  <link rel="stylesheet" href="../../../_static/css/bootstrap.min.css" media="screen" />
+  <link rel="stylesheet" href="../../../_static/css/normalize.css" media="screen">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  </head><body>
+  <div id="wrapper" class="container clearfix">
+    <div id="header">
+      <a href="/pepsirf-q2-plugin-docs/">
+        <img
+          class="img-responsive"
+          src="../../../_static/PepSIRF_Q2.png" alt="QIIME 2 Docs"
+        />
+      </a>
+    </div>
+    <div id="content">
+      
+      <div id="body" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 main pull-right">
+        
+  <section id="proteinheatmap-dir-protein-alignment-heatmap-dir">
+<h1>proteinHeatmap-dir: Protein Alignment Heatmap Dir<a class="headerlink" href="#proteinheatmap-dir-protein-alignment-heatmap-dir" title="Permalink to this headline">¶</a></h1>
+<div class="tabbed">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#cli">Command line interface</a></li>
+    <li><a data-toggle="tab" href="#api">Artifact API</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="cli" class="tab-pane fade in active">
+      <h4>Docstring:</h4>
+      <pre>Usage: qiime ps-plot proteinHeatmap-dir [OPTIONS]
+
+  Creates a heatmap based on the alignment of peptides in the enriched
+  peptides with directory filepaths instead of QZA files
+
+Parameters:
+  --p-enriched-dir-filepath TEXT
+                         Enriched directory filepath. This file is the output
+                         of q2-pepsirf's enrich module              [required]
+  --p-protein-alignment-filepath TEXT
+                         A director containing a tab delimited file
+                         containing the protein and the filepath to the
+                         associated alignment file. The file should start with
+                         the header as 'ProtName' and be named 'manifest.tsv'.
+                         And the files containing the protein alignment
+                         information                                [required]
+  --p-enriched-suffix TEXT
+                         The outfile suffix of the enriched peptide files.
+                                                    [default: '_enriched.txt']
+  --p-align-header TEXT  The name of the header to which identifies the
+                         alignment positions separated by the align-delim
+                         (Example column: '1~2~3~4').    [default: 'AlignPos']
+  --p-align-delim TEXT   The deliminator that separates the alignment
+                         positions.                             [default: '~']
+  --p-color-scheme TEXT  String of the name of a color scheme for the
+                         heatmap. Color schemes can be found here:
+                         https://vega.github.io/vega/docs/schemes/
+                                                          [default: 'viridis']
+Outputs:
+  --o-protein-heatmap-vis VISUALIZATION
+                                                                    [required]
+Miscellaneous:
+  --output-dir PATH      Output unspecified results to a directory
+  --verbose / --quiet    Display verbose output to stdout and/or stderr
+                         during execution of this action. Or silence output if
+                         execution is successful (silence is golden).
+  --example-data PATH    Write example data and exit.
+  --citations            Show citations and exit.
+  --help                 Show this message and exit.</pre>
+    </div>
+    <div id="api" class="tab-pane fade">
+    <h4>Import:</h4><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>from qiime2.plugins.ps_plot.pipelines import proteinHeatmap_dir
+</pre></div>
+</div>
+    <h4>Docstring:</h4>
+      <pre>Protein Alignment Heatmap Dir
+
+Creates a heatmap based on the alignment of peptides in the enriched
+peptides with directory filepaths instead of QZA files
+
+Parameters
+----------
+enriched_dir_filepath : Str
+    Enriched directory filepath. This file is the output of q2-pepsirf's
+    enrich module
+protein_alignment_filepath : Str
+    A director containing a tab delimited file containing the protein and
+    the filepath to the associated alignment file. The file should start
+    with the header as 'ProtName' and be named 'manifest.tsv'. And the
+    files containing the protein alignment information
+enriched_suffix : Str, optional
+    The outfile suffix of the enriched peptide files.
+align_header : Str, optional
+    The name of the header to which identifies the alignment positions
+    separated by the align_delim (Example column: '1~2~3~4').
+align_delim : Str, optional
+    The deliminator that separates the alignment positions.
+color_scheme : Str, optional
+    String of the name of a color scheme for the heatmap. Color schemes can
+    be found here: https://vega.github.io/vega/docs/schemes/
+
+Returns
+-------
+protein_heatmap_vis : Visualization</pre>
+    </div>
+  </div>
+</div></section>
+
+
+      </div>
+      
+
+      
+      <div id="sidebar" class="col-lg-2 col-md-2 col-sm-12 col-xs-12 side pull-left">
+        
+<h3><a href="../../../">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Available plugins</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../autopepsirf/">autopepsirf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pepsirf/">pepsirf</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../">ps-plot</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Pepsirf_Plugins/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../export-imports/">Imports and Exports</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+      </div>
+      
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Ladner Labs.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </div>
+  <script src="../../../_static/clipboard-driver.js"></script>
+  <script src="/versions.js" charset="utf-8"></script>
+  </body>
+</html>
