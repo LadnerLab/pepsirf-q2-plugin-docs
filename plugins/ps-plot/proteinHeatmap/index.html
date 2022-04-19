@@ -61,9 +61,12 @@ Inputs:
                          file is the output of q2-pepsirf's enrich module
                                                                     [required]
   --i-protein-alignment ARTIFACT
-    ProteinAlignment     A tab delimited file containing the protein and the
-                         filepath to the associated alignment file. The file
-                         should start with the header as 'ProtName' [required]
+    ProteinAlignment     A director containing a tab delimited file
+                         containing the protein and the filepath to the
+                         associated alignment file. The file should start with
+                         the header as 'ProtName' and be named 'manifest.tsv'.
+                         And the files containing the protein alignment
+                         information                                [required]
 Parameters:
   --p-enriched-suffix TEXT
                          The outfile suffix of the enriched peptide files.
@@ -105,9 +108,10 @@ enriched_dir : PairwiseEnrichment
     A PairwiseEnrichment semantic type or .qza. This file is the output of
     q2-pepsirf's enrich module
 protein_alignment : ProteinAlignment
-    A tab delimited file containing the protein and the filepath to the
-    associated alignment file. The file should start with the header as
-    'ProtName'
+    A director containing a tab delimited file containing the protein and
+    the filepath to the associated alignment file. The file should start
+    with the header as 'ProtName' and be named 'manifest.tsv'. And the
+    files containing the protein alignment information
 enriched_suffix : Str, optional
     The outfile suffix of the enriched peptide files.
 align_header : Str, optional

@@ -168,37 +168,37 @@ Parameters:
                          The binary to call pepsirf on your system.
                                                           [default: 'pepsirf']
 Outputs:
-  --o-enrich-count-boxplot VISUALIZATION
-                                                                    [required]
-  --o-zscore-scatter VISUALIZATION
-                                                                    [required]
-  --o-enrich ARTIFACT
-    PairwiseEnrichment                                              [required]
+  --o-sample-names ARTIFACT
+    InfoSNPN                                                        [required]
+  --o-read-counts ARTIFACT
+    InfoSumOfProbes                                                 [required]
   --o-zscore ARTIFACT FeatureTable[Zscore]
-                                                                    [required]
-  --o-rc-boxplot VISUALIZATION
                                                                     [required]
   --o-zenrich-scatter VISUALIZATION
                                                                     [required]
+  --o-zscore-scatter VISUALIZATION
+                                                                    [required]
+  --o-rc-boxplot VISUALIZATION
+                                                                    [required]
   --o-dir-out ARTIFACT
     DeconvBatch                                                     [required]
+  --o-map-dir ARTIFACT PeptideAssignmentMap
+                                                                    [required]
   --o-col-sum ARTIFACT FeatureTable[Normed]
                                                                     [required]
-  --o-diff ARTIFACT FeatureTable[NormedDifference]
+  --o-enrich ARTIFACT
+    PairwiseEnrichment                                              [required]
+  --o-enrich-count-boxplot VISUALIZATION
+                                                                    [required]
+  --o-diff-ratio ARTIFACT FeatureTable[NormedDiffRatio]
                                                                     [required]
   --o-score-per-round ARTIFACT
     ScorePerRound                                                   [required]
-  --o-diff-ratio ARTIFACT FeatureTable[NormedDiffRatio]
-                                                                    [required]
   --o-zscore-nan ARTIFACT
     ZscoreNan                                                       [required]
-  --o-sample-names ARTIFACT
-    InfoSNPN                                                        [required]
-  --o-map-dir ARTIFACT PeptideAssignmentMap
-                                                                    [required]
-  --o-read-counts ARTIFACT
-    InfoSumOfProbes                                                 [required]
   --o-colsum-scatter VISUALIZATION
+                                                                    [required]
+  --o-diff ARTIFACT FeatureTable[NormedDifference]
                                                                     [required]
 Miscellaneous:
   --output-dir PATH      Output unspecified results to a directory
@@ -301,21 +301,21 @@ pepsirf_binary : Str, optional
 
 Returns
 -------
-colsum_scatter : Visualization
-diff_ratio : FeatureTable[NormedDiffRatio]
-read_counts : InfoSumOfProbes
-score_per_round : ScorePerRound
-diff : FeatureTable[NormedDifference]
-rc_boxplot : Visualization
 zscore_scatter : Visualization
-enrich_count_boxplot : Visualization
-zscore_nan : ZscoreNan
-zenrich_scatter : Visualization
-enrich : PairwiseEnrichment
-map_dir : PeptideAssignmentMap
+diff : FeatureTable[NormedDifference]
 col_sum : FeatureTable[Normed]
 sample_names : InfoSNPN
+enrich : PairwiseEnrichment
+map_dir : PeptideAssignmentMap
+diff_ratio : FeatureTable[NormedDiffRatio]
+rc_boxplot : Visualization
+zscore_nan : ZscoreNan
+enrich_count_boxplot : Visualization
+colsum_scatter : Visualization
+zenrich_scatter : Visualization
+score_per_round : ScorePerRound
 zscore : FeatureTable[Zscore]
+read_counts : InfoSumOfProbes
 dir_out : DeconvBatch</pre>
     </div>
   </div>

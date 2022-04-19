@@ -54,6 +54,8 @@ Mutant Reference file              MutantReferenceFileFmt       'MutantReference
 Qiime Exports
 -------------
 
+Raw Data Example:
+
 ``qiime tools export --input-path rawData.qza \
 --output-path rawData.tsv \
 --output-format PepsirfContingencyTSVFormat``

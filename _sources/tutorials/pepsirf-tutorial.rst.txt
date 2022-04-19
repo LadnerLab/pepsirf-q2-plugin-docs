@@ -1,4 +1,4 @@
-PepSIRF Qiime 2 Plugin tutorial - Multiple Interface Edition
+DiffEnrich Analysis Tutorial - Multiple Interface Edition
 ============================================================
 
 Description
@@ -317,44 +317,3 @@ Here we will test q2-ps-plot's zenrich module by running the following command
     )
     )
 
-
-Protein Alignment
------------------
-
-.. usage-selector::
-
-.. qiime ps-plot proteinHeatmap --i-enriched-dir 10Z-HDI95_0CS_400000raw_dir.qza --i-protein-alignment alignmentFiles_dir.qza --p-enriched-suffix
-.. '_enriched.txt' --p-align-header 'AlignPos' --p-align-delim '~' --p-color-scheme 'viridis' --o-visualization testingProt
-.. einHeatmap
-
-.. usage::
-     
-   def prot_align_factory():
-      import qiime2
-      return qiime2.Artifact.load("source/data/alignmentFiles_dir.qza")
-
-   prot_align = use.init_artifact("prot_align", prot_align_factory)
-
-   def enrichment_factory():
-      import qiime2
-      return qiime2.Artifact.load("source/data/10Z-HDI95_0CS_400000raw_dir.qza")
-
-   peptide_enrichment = use.init_artifact("peptide_enrichment", enrichment_factory)
-
-
-.. usage::
-   
-   protHeatMap, = use.action(
-    use.UsageAction(plugin_id='ps_plot', action_id='proteinHeatmap'),
-    use.UsageInputs(
-        enriched_dir = peptide_enrichment,
-        protein_alignment = prot_align,
-        enriched_suffix = '_enriched.txt',
-        align_header = 'AlignPos',
-        align_delim = '~',
-        color_scheme = 'viridis'
-    ),
-    use.UsageOutputNames(
-        visualization = "protein_heat_map"
-    )
-    )

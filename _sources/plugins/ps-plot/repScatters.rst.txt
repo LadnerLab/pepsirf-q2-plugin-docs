@@ -42,6 +42,9 @@ repScatters: Rep Scatter
      --p-facet-charts / --p-no-facet-charts
                            Allows for view of all tables on one page instead of
                            the available dropdown menu.          [default: False]
+     --p-xy-threshold INTEGER
+                           Highlight the outliers of the plot and add a
+                           hoverable tooltip to view what they are.    [optional]
    Outputs:
      --o-visualization VISUALIZATION
                                                                        [required]
@@ -89,6 +92,9 @@ repScatters: Rep Scatter
    facet_charts : Bool, optional
        Allows for view of all tables on one page instead of the available
        dropdown menu.
+   xy_threshold : Int, optional
+       Highlight the outliers of the plot and add a hoverable tooltip to view
+       what they are.
 
    Returns
    -------
