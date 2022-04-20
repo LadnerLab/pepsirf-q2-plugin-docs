@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>q2-pepsirf Tutorials - Multiple Interface Edition &#8212; Q2 Pepsirf Plugin Docs  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/external-links.js"></script>
+    <script src="../../_static/usage.js"></script>
+    <link rel="canonical" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/tutorials/pepsirf.html" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Available plugins" href="../../plugins/" />
+    <link rel="prev" title="Ps-plot Tutorials - Multiple Interface Edition" href="../ps-plot/" />
+  <script src="../../_static/bootstrap.min.js"></script>
+  <script src="../../_static/clipboard.min.js"></script>
+  <link rel="icon" href="../../_static/favicon.ico" type="image/png" />
+  <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" media="screen" />
+  <link rel="stylesheet" href="../../_static/css/normalize.css" media="screen">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  </head><body>
+  <div id="wrapper" class="container clearfix">
+    <div id="header">
+      <a href="/pepsirf-q2-plugin-docs/">
+        <img
+          class="img-responsive"
+          src="../../_static/PepSIRF_Q2.png" alt="QIIME 2 Docs"
+        />
+      </a>
+    </div>
+    <div id="content">
+      
+      <div id="body" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 main pull-right">
+        
+  <section id="q2-pepsirf-tutorials-multiple-interface-edition">
+<h1>q2-pepsirf Tutorials - Multiple Interface Edition<a class="headerlink" href="#q2-pepsirf-tutorials-multiple-interface-edition" title="Permalink to this headline">¶</a></h1>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>This guide is a preview of how you can use some of q2-pepsirf’s individual modules.</p>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>In this tutorial you’ll use QIIME 2 to perform an analysis of some data.</p>
+<p>Typical Run Time: TBD Minute</p>
+</section>
+<section id="demux">
+<h2>Demux<a class="headerlink" href="#demux" title="Permalink to this headline">¶</a></h2>
+<script id="interfaces" type="application/json">{"default": "cli-usage", "available": {"python3-usage": ["Python 3 API (qiime2)", true], "cli-usage": ["Command Line (q2cli)", true], "galaxy-usage": ["Galaxy (q2galaxy)", true], "raw-usage": ["View Source (qiime2.sdk)", false]}, "classes": [".python3-usage", ".cli-usage", ".galaxy-usage", ".raw-usage"]}</script><span class="usage-selector"></span><p>Here we will test q2-pepsirf’s demux module by running the following command:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must have the development branch of pepsirf precompiled in order to use this module.</p>
+</div>
+<div class="python3-usage highlight-default notranslate" id="usage-0"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiime2</span> <span class="kn">import</span> <span class="n">Artifact</span>
+<span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/input-r1.qza&#39;</span>
+<span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;input-r1.qza&#39;</span>
+<span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
+<span class="n">input_r1</span> <span class="o">=</span> <span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/input-r2.qza&#39;</span>
+<span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;input-r2.qza&#39;</span>
+<span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
+<span class="n">input_r2</span> <span class="o">=</span> <span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/fif.qza&#39;</span>
+<span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;fif.qza&#39;</span>
+<span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
+<span class="n">fif</span> <span class="o">=</span> <span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/library.qza&#39;</span>
+<span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;library.qza&#39;</span>
+<span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
+<span class="n">library</span> <span class="o">=</span> <span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/sample-list.qza&#39;</span>
+<span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;sample-list.qza&#39;</span>
+<span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
+<span class="n">sample_list</span> <span class="o">=</span> <span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/index.qza&#39;</span>
+<span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;index.qza&#39;</span>
+<span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cli-usage highlight-default notranslate" id="usage-1"><div class="highlight"><pre><span></span><span class="n">wget</span> \
+  <span class="o">-</span><span class="n">O</span> <span class="s1">&#39;input-r1.qza&#39;</span> \
+  <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/input-r1.qza&#39;</span>
+
+<span class="n">wget</span> \
+  <span class="o">-</span><span class="n">O</span> <span class="s1">&#39;input-r2.qza&#39;</span> \
+  <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/input-r2.qza&#39;</span>
+
+<span class="n">wget</span> \
+  <span class="o">-</span><span class="n">O</span> <span class="s1">&#39;fif.qza&#39;</span> \
+  <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/fif.qza&#39;</span>
+
+<span class="n">wget</span> \
+  <span class="o">-</span><span class="n">O</span> <span class="s1">&#39;library.qza&#39;</span> \
+  <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/library.qza&#39;</span>
+
+<span class="n">wget</span> \
+  <span class="o">-</span><span class="n">O</span> <span class="s1">&#39;sample-list.qza&#39;</span> \
+  <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/sample-list.qza&#39;</span>
+
+<span class="n">wget</span> \
+  <span class="o">-</span><span class="n">O</span> <span class="s1">&#39;index.qza&#39;</span> \
+  <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/index.qza&#39;</span>
+</pre></div>
+</div>
+<div class="raw-usage highlight-default notranslate" id="usage-4"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">r1_factory</span><span class="p">():</span>
+   <span class="kn">import</span> <span class="nn">qiime2</span>
+   <span class="k">return</span> <span class="n">qiime2</span><span class="o">.</span><span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;source/data/Undetermined_S0_R1_001_1M.qza&quot;</span><span class="p">)</span>
+
+<span class="n">input_r1</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">init_artifact</span><span class="p">(</span><span class="s2">&quot;input_r1&quot;</span><span class="p">,</span> <span class="n">r1_factory</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">r2_factory</span><span class="p">():</span>
+   <span class="kn">import</span> <span class="nn">qiime2</span>
+   <span class="k">return</span> <span class="n">qiime2</span><span class="o">.</span><span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;source/data/Undetermined_S0_I1_001_1M.qza&quot;</span><span class="p">)</span>
+
+<span class="n">input_r2</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">init_artifact</span><span class="p">(</span><span class="s2">&quot;input_r2&quot;</span><span class="p">,</span> <span class="n">r2_factory</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">fif_factory</span><span class="p">():</span>
+   <span class="kn">import</span> <span class="nn">qiime2</span>
+   <span class="k">return</span> <span class="n">qiime2</span><span class="o">.</span><span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;source/data/demux_flex_2indexes_test.qza&quot;</span><span class="p">)</span>
+
+<span class="n">fif</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">init_artifact</span><span class="p">(</span><span class="s2">&quot;fif&quot;</span><span class="p">,</span> <span class="n">fif_factory</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">library_factory</span><span class="p">():</span>
+   <span class="kn">import</span> <span class="nn">qiime2</span>
+   <span class="k">return</span> <span class="n">qiime2</span><span class="o">.</span><span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;source/data/noDupEncode_NS64_coded_116nt.qza&quot;</span><span class="p">)</span>
+
+<span class="n">library</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">init_artifact</span><span class="p">(</span><span class="s2">&quot;library&quot;</span><span class="p">,</span> <span class="n">library_factory</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">sample_factory</span><span class="p">():</span>
+   <span class="kn">import</span> <span class="nn">qiime2</span>
+   <span class="k">return</span> <span class="n">qiime2</span><span class="o">.</span><span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;source/data/NS64_sample_list_extended.qza&quot;</span><span class="p">)</span>
+
+<span class="n">samplelist</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">init_artifact</span><span class="p">(</span><span class="s2">&quot;sample_list&quot;</span><span class="p">,</span> <span class="n">sample_factory</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">index_factory</span><span class="p">():</span>
+   <span class="kn">import</span> <span class="nn">qiime2</span>
+   <span class="k">return</span> <span class="n">qiime2</span><span class="o">.</span><span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;source/data/BSC_FR_barcodes_Plus.qza&quot;</span><span class="p">)</span>
+
+<span class="n">index</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">init_artifact</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="n">index_factory</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="galaxy-usage compound" id="usage-2">
+<dl class="simple">
+<dt>Using the <code class="docutils literal notranslate"><span class="pre">Upload</span> <span class="pre">Data</span></code> tool:</dt><dd><ol class="arabic simple">
+<li><p>On the first tab (<strong>Regular</strong>), press the <code class="docutils literal notranslate"><span class="pre">Paste/Fetch</span></code> data button at the bottom.</p>
+<ol class="arabic simple">
+<li><p>Set <em>“Name”</em> (first text-field) to: <code class="docutils literal notranslate"><span class="pre">input-r1.qza</span></code></p></li>
+<li><p>In the larger text-area, copy-and-paste: <a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/input-r1.qza">https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/input-r1.qza</a></p></li>
+<li><p>(<em>“Type”</em>, <em>“Genome”</em>, and <em>“Settings”</em> can be ignored)</p></li>
+</ol>
+</li>
+<li><p>Press the <code class="docutils literal notranslate"><span class="pre">Start</span></code> button at the bottom.</p></li>
+</ol>
+</dd>
+<dt>Using the <code class="docutils literal notranslate"><span class="pre">Upload</span> <span class="pre">Data</span></code> tool:</dt><dd><ol class="arabic simple">
+<li><p>On the first tab (<strong>Regular</strong>), press the <code class="docutils literal notranslate"><span class="pre">Paste/Fetch</span></code> data button at the bottom.</p>
+<ol class="arabic simple">
+<li><p>Set <em>“Name”</em> (first text-field) to: <code class="docutils literal notranslate"><span class="pre">input-r2.qza</span></code></p></li>
+<li><p>In the larger text-area, copy-and-paste: <a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/input-r2.qza">https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/input-r2.qza</a></p></li>
+<li><p>(<em>“Type”</em>, <em>“Genome”</em>, and <em>“Settings”</em> can be ignored)</p></li>
+</ol>
+</li>
+<li><p>Press the <code class="docutils literal notranslate"><span class="pre">Start</span></code> button at the bottom.</p></li>
+</ol>
+</dd>
+<dt>Using the <code class="docutils literal notranslate"><span class="pre">Upload</span> <span class="pre">Data</span></code> tool:</dt><dd><ol class="arabic simple">
+<li><p>On the first tab (<strong>Regular</strong>), press the <code class="docutils literal notranslate"><span class="pre">Paste/Fetch</span></code> data button at the bottom.</p>
+<ol class="arabic simple">
+<li><p>Set <em>“Name”</em> (first text-field) to: <code class="docutils literal notranslate"><span class="pre">fif.qza</span></code></p></li>
+<li><p>In the larger text-area, copy-and-paste: <a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/fif.qza">https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/fif.qza</a></p></li>
+<li><p>(<em>“Type”</em>, <em>“Genome”</em>, and <em>“Settings”</em> can be ignored)</p></li>
+</ol>
+</li>
+<li><p>Press the <code class="docutils literal notranslate"><span class="pre">Start</span></code> button at the bottom.</p></li>
+</ol>
+</dd>
+<dt>Using the <code class="docutils literal notranslate"><span class="pre">Upload</span> <span class="pre">Data</span></code> tool:</dt><dd><ol class="arabic simple">
+<li><p>On the first tab (<strong>Regular</strong>), press the <code class="docutils literal notranslate"><span class="pre">Paste/Fetch</span></code> data button at the bottom.</p>
+<ol class="arabic simple">
+<li><p>Set <em>“Name”</em> (first text-field) to: <code class="docutils literal notranslate"><span class="pre">library.qza</span></code></p></li>
+<li><p>In the larger text-area, copy-and-paste: <a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/library.qza">https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/library.qza</a></p></li>
+<li><p>(<em>“Type”</em>, <em>“Genome”</em>, and <em>“Settings”</em> can be ignored)</p></li>
+</ol>
+</li>
+<li><p>Press the <code class="docutils literal notranslate"><span class="pre">Start</span></code> button at the bottom.</p></li>
+</ol>
+</dd>
+<dt>Using the <code class="docutils literal notranslate"><span class="pre">Upload</span> <span class="pre">Data</span></code> tool:</dt><dd><ol class="arabic simple">
+<li><p>On the first tab (<strong>Regular</strong>), press the <code class="docutils literal notranslate"><span class="pre">Paste/Fetch</span></code> data button at the bottom.</p>
+<ol class="arabic simple">
+<li><p>Set <em>“Name”</em> (first text-field) to: <code class="docutils literal notranslate"><span class="pre">sample-list.qza</span></code></p></li>
+<li><p>In the larger text-area, copy-and-paste: <a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/sample-list.qza">https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/sample-list.qza</a></p></li>
+<li><p>(<em>“Type”</em>, <em>“Genome”</em>, and <em>“Settings”</em> can be ignored)</p></li>
+</ol>
+</li>
+<li><p>Press the <code class="docutils literal notranslate"><span class="pre">Start</span></code> button at the bottom.</p></li>
+</ol>
+</dd>
+<dt>Using the <code class="docutils literal notranslate"><span class="pre">Upload</span> <span class="pre">Data</span></code> tool:</dt><dd><ol class="arabic simple">
+<li><p>On the first tab (<strong>Regular</strong>), press the <code class="docutils literal notranslate"><span class="pre">Paste/Fetch</span></code> data button at the bottom.</p>
+<ol class="arabic simple">
+<li><p>Set <em>“Name”</em> (first text-field) to: <code class="docutils literal notranslate"><span class="pre">index.qza</span></code></p></li>
+<li><p>In the larger text-area, copy-and-paste: <a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/index.qza">https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/index.qza</a></p></li>
+<li><p>(<em>“Type”</em>, <em>“Genome”</em>, and <em>“Settings”</em> can be ignored)</p></li>
+</ol>
+</li>
+<li><p>Press the <code class="docutils literal notranslate"><span class="pre">Start</span></code> button at the bottom.</p></li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="exec-usage compound" id="usage-3">
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">input-r1.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Finput-r1.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/input-r1.qza"><span>download</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input-r2.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Finput-r2.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/input-r2.qza"><span>download</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fif.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Ffif.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/fif.qza"><span>download</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">library.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Flibrary.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/library.qza"><span>download</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sample-list.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Fsample-list.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/sample-list.qza"><span>download</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">index.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Findex.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/index.qza"><span>download</span></a></p></li>
+</ul>
+</div>
+<div class="python3-usage highlight-default notranslate" id="usage-5"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiime2.plugins.pepsirf.actions</span> <span class="k">as</span> <span class="nn">pepsirf_actions</span>
+
+<span class="n">demux_diagnostic_output</span><span class="p">,</span> <span class="n">demux_2index_fif_output</span> <span class="o">=</span> <span class="n">pepsirf_actions</span><span class="o">.</span><span class="n">demux</span><span class="p">(</span>
+    <span class="n">input_r1</span><span class="o">=</span><span class="n">input_r1</span><span class="p">,</span>
+    <span class="n">input_r2</span><span class="o">=</span><span class="n">input_r2</span><span class="p">,</span>
+    <span class="n">fif</span><span class="o">=</span><span class="n">fif</span><span class="p">,</span>
+    <span class="n">seq</span><span class="o">=</span><span class="s1">&#39;43,116,2&#39;</span><span class="p">,</span>
+    <span class="n">read_per_loop</span><span class="o">=</span><span class="mi">200000</span><span class="p">,</span>
+    <span class="n">num_threads</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">phred_base</span><span class="o">=</span><span class="mi">33</span><span class="p">,</span>
+    <span class="n">library</span><span class="o">=</span><span class="n">library</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span>
+    <span class="n">samplelist</span><span class="o">=</span><span class="n">sample_list</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="cli-usage highlight-default notranslate" id="usage-6"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">pepsirf</span> <span class="n">demux</span> \
+  <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="n">r1</span> <span class="nb">input</span><span class="o">-</span><span class="n">r1</span><span class="o">.</span><span class="n">qza</span> \
+  <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="n">r2</span> <span class="nb">input</span><span class="o">-</span><span class="n">r2</span><span class="o">.</span><span class="n">qza</span> \
+  <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">fif</span> <span class="n">fif</span><span class="o">.</span><span class="n">qza</span> \
+  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">seq</span> <span class="mi">43</span><span class="p">,</span><span class="mi">116</span><span class="p">,</span><span class="mi">2</span> \
+  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">read</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">loop</span> <span class="mi">200000</span> \
+  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">num</span><span class="o">-</span><span class="n">threads</span> <span class="mi">2</span> \
+  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">phred</span><span class="o">-</span><span class="n">base</span> <span class="mi">33</span> \
+  <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">library</span> <span class="n">library</span><span class="o">.</span><span class="n">qza</span> \
+  <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">index</span> <span class="n">index</span><span class="o">.</span><span class="n">qza</span> \
+  <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">samplelist</span> <span class="n">sample</span><span class="o">-</span><span class="nb">list</span><span class="o">.</span><span class="n">qza</span> \
+  <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">raw</span><span class="o">-</span><span class="n">counts</span><span class="o">-</span><span class="n">output</span> <span class="n">demux</span><span class="o">-</span><span class="n">diagnostic</span><span class="o">-</span><span class="n">output</span><span class="o">.</span><span class="n">qza</span> \
+  <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">diagnostic</span><span class="o">-</span><span class="n">output</span> <span class="n">demux</span><span class="o">-</span><span class="mi">2</span><span class="n">index</span><span class="o">-</span><span class="n">fif</span><span class="o">-</span><span class="n">output</span><span class="o">.</span><span class="n">qza</span>
+</pre></div>
+</div>
+<div class="raw-usage highlight-default notranslate" id="usage-9"><div class="highlight"><pre><span></span><span class="n">rawData</span><span class="p">,</span> <span class="n">diagnosticData</span><span class="p">,</span>  <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">action</span><span class="p">(</span>
+<span class="n">use</span><span class="o">.</span><span class="n">UsageAction</span><span class="p">(</span><span class="n">plugin_id</span><span class="o">=</span><span class="s1">&#39;pepsirf&#39;</span><span class="p">,</span> <span class="n">action_id</span><span class="o">=</span><span class="s1">&#39;demux&#39;</span><span class="p">),</span>
+<span class="n">use</span><span class="o">.</span><span class="n">UsageInputs</span><span class="p">(</span>
+     <span class="n">input_r1</span> <span class="o">=</span> <span class="n">input_r1</span><span class="p">,</span>
+     <span class="n">input_r2</span> <span class="o">=</span> <span class="n">input_r2</span><span class="p">,</span>
+     <span class="n">fif</span> <span class="o">=</span> <span class="n">fif</span><span class="p">,</span>
+     <span class="n">seq</span> <span class="o">=</span> <span class="s2">&quot;43,116,2&quot;</span><span class="p">,</span>
+     <span class="n">read_per_loop</span> <span class="o">=</span> <span class="mi">200000</span><span class="p">,</span>
+     <span class="n">num_threads</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+     <span class="n">phred_base</span> <span class="o">=</span> <span class="mi">33</span><span class="p">,</span>
+     <span class="n">library</span> <span class="o">=</span> <span class="n">library</span><span class="p">,</span>
+     <span class="n">index</span> <span class="o">=</span>  <span class="n">index</span><span class="p">,</span>
+     <span class="n">samplelist</span> <span class="o">=</span> <span class="n">samplelist</span>
+<span class="p">),</span>
+<span class="n">use</span><span class="o">.</span><span class="n">UsageOutputNames</span><span class="p">(</span>
+     <span class="n">raw_counts_output</span> <span class="o">=</span> <span class="s2">&quot;demux_diagnostic_output&quot;</span><span class="p">,</span>
+     <span class="n">diagnostic_output</span> <span class="o">=</span> <span class="s2">&quot;demux_2index_fif_output&quot;</span>
+<span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="galaxy-usage compound" id="usage-7">
+<dl>
+<dt>Using the <code class="docutils literal notranslate"><span class="pre">qiime2</span> <span class="pre">pepsirf</span> <span class="pre">demux</span></code> tool:</dt><dd><ol class="arabic simple">
+<li><p>Set <em>“input_r1”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">input-r1.qza</span></code></p></li>
+<li><p>Set <em>“index”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">index.qza</span></code></p></li>
+<li><p>Set <em>“samplelist”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">sample-list.qza</span></code></p></li>
+<li><p>Set <em>“seq”</em> to <code class="docutils literal notranslate"><span class="pre">43,116,2</span></code></p></li>
+<li><p>Expand the <code class="docutils literal notranslate"><span class="pre">additional</span> <span class="pre">options</span></code> section</p>
+<ol class="arabic simple">
+<li><p>Set <em>“input_r2”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">input-r2.qza</span></code></p></li>
+<li><p>Set <em>“fif”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">fif.qza</span></code></p></li>
+<li><p>Set <em>“library”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">library.qza</span></code></p></li>
+<li><p>Set <em>“read_per_loop”</em> to <code class="docutils literal notranslate"><span class="pre">200000</span></code></p></li>
+<li><p>Leave <em>“num_threads”</em> as its default value of <code class="docutils literal notranslate"><span class="pre">2</span></code></p></li>
+<li><p>Leave <em>“phred_base”</em> as its default value of <code class="docutils literal notranslate"><span class="pre">33</span></code></p></li>
+</ol>
+</li>
+<li><p>Press the <code class="docutils literal notranslate"><span class="pre">Execute</span></code> button.</p></li>
+</ol>
+</dd>
+<dt>Once completed, for each new entry in your history, use the <code class="docutils literal notranslate"><span class="pre">Edit</span></code> button to set the name as follows:</dt><dd><p>(Renaming is optional, but it will make any subsequent steps easier to complete.)</p>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>History Name</p></th>
+<th class="head"><p><em>“Name”</em> to set (be sure to press <code class="docutils literal notranslate"><span class="pre">Save</span></code>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">pepsirf</span> <span class="pre">demux</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">raw_counts_output.qza</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">demux-diagnostic-output.qza</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">pepsirf</span> <span class="pre">demux</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">diagnostic_output.qza</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">demux-2index-fif-output.qza</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</div>
+<div class="exec-usage compound" id="usage-8">
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">demux-diagnostic-output.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Fdemux-diagnostic-output.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/demux-diagnostic-output.qza"><span>download</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">demux-2index-fif-output.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Fdemux-2index-fif-output.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/demux-2index-fif-output.qza"><span>download</span></a></p></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must have the development branch of pepsirf precompiled in order to use this module.</p>
+</div>
+</section>
+</section>
+
+
+      </div>
+      
+
+      
+      <div id="sidebar" class="col-lg-2 col-md-2 col-sm-12 col-xs-12 side pull-left">
+        
+<h3><a href="../../">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../pepsirf-tutorial/">DiffEnrich Analysis Tutorial - Multiple Interface Edition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ps-plot/">Ps-plot Tutorials - Multiple Interface Edition</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">q2-pepsirf Tutorials - Multiple Interface Edition</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../plugins/">Available plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Pepsirf_Plugins/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../export-imports/">QIIME 2 Import and Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tsv-pipelines/">TSV/Dir Pipelines</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+      </div>
+      
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Ladner Labs.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </div>
+  <script src="../../_static/clipboard-driver.js"></script>
+  <script src="/versions.js" charset="utf-8"></script>
+  </body>
+</html>

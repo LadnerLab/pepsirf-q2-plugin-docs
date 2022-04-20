@@ -15,7 +15,7 @@ autopepsirf
        </tr>
        <tr>
          <th scope="row">Version</th>
-         <td>2021.12+45.g9463a45</td>
+         <td>2021.12+37.g7b5cd40</td>
        </tr>
        <tr>
          <th scope="row">Website</th>
@@ -72,8 +72,6 @@ Pipelines
 
    
    diffEnrich
-   
-   diffEnrich-deconv
    
    diffEnrich-tsv
    
