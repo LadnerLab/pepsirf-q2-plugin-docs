@@ -7,3 +7,4 @@ Tutorials
 
    pepsirf-tutorial
    ps-plot
+   pepsirf

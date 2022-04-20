@@ -15,5 +15,6 @@ Table of contents
    plugins/index
    Pepsirf_Plugins/index
    export-imports/index
+   tsv-pipelines/index
 
 .. _QIIME 1: http://qiime.org
