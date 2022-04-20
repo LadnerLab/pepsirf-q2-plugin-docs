@@ -131,35 +131,35 @@ diffEnrich-deconv: diffEnrich deconv Pepsirf Pipeline
                             The binary to call pepsirf on your system.
                                                              [default: 'pepsirf']
    Outputs:
-     --o-sample-names ARTIFACT
-       InfoSNPN                                                        [required]
-     --o-read-counts ARTIFACT
-       InfoSumOfProbes                                                 [required]
-     --o-zscore ARTIFACT FeatureTable[Zscore]
+     --o-map-dir ARTIFACT PeptideAssignmentMap
                                                                        [required]
-     --o-zenrich-scatter VISUALIZATION
-                                                                       [required]
-     --o-zscore-scatter VISUALIZATION
-                                                                       [required]
-     --o-rc-boxplot VISUALIZATION
+     --o-colsum-scatter VISUALIZATION
                                                                        [required]
      --o-dir-out ARTIFACT   
        DeconvBatch                                                     [required]
-     --o-map-dir ARTIFACT PeptideAssignmentMap
-                                                                       [required]
      --o-col-sum ARTIFACT FeatureTable[Normed]
                                                                        [required]
+     --o-zscore-nan ARTIFACT
+       ZscoreNan                                                       [required]
+     --o-read-counts ARTIFACT
+       InfoSumOfProbes                                                 [required]
      --o-enrich ARTIFACT    
        PairwiseEnrichment                                              [required]
+     --o-diff-ratio ARTIFACT FeatureTable[NormedDiffRatio]
+                                                                       [required]
      --o-enrich-count-boxplot VISUALIZATION
                                                                        [required]
-     --o-diff-ratio ARTIFACT FeatureTable[NormedDiffRatio]
+     --o-rc-boxplot VISUALIZATION
                                                                        [required]
      --o-score-per-round ARTIFACT
        ScorePerRound                                                   [required]
-     --o-zscore-nan ARTIFACT
-       ZscoreNan                                                       [required]
-     --o-colsum-scatter VISUALIZATION
+     --o-zscore ARTIFACT FeatureTable[Zscore]
+                                                                       [required]
+     --o-sample-names ARTIFACT
+       InfoSNPN                                                        [required]
+     --o-zscore-scatter VISUALIZATION
+                                                                       [required]
+     --o-zenrich-scatter VISUALIZATION
                                                                        [required]
      --o-diff ARTIFACT FeatureTable[NormedDifference]
                                                                        [required]
@@ -270,21 +270,21 @@ diffEnrich-deconv: diffEnrich deconv Pepsirf Pipeline
 
    Returns
    -------
-   zscore_scatter : Visualization
-   diff : FeatureTable[NormedDifference]
-   col_sum : FeatureTable[Normed]
-   sample_names : InfoSNPN
-   enrich : PairwiseEnrichment
-   map_dir : PeptideAssignmentMap
-   diff_ratio : FeatureTable[NormedDiffRatio]
-   rc_boxplot : Visualization
-   zscore_nan : ZscoreNan
    enrich_count_boxplot : Visualization
-   colsum_scatter : Visualization
-   zenrich_scatter : Visualization
-   score_per_round : ScorePerRound
+   diff_ratio : FeatureTable[NormedDiffRatio]
    zscore : FeatureTable[Zscore]
+   zscore_nan : ZscoreNan
+   rc_boxplot : Visualization
+   enrich : PairwiseEnrichment
    read_counts : InfoSumOfProbes
+   colsum_scatter : Visualization
+   sample_names : InfoSNPN
+   score_per_round : ScorePerRound
+   zscore_scatter : Visualization
+   zenrich_scatter : Visualization
+   diff : FeatureTable[NormedDifference]
+   map_dir : PeptideAssignmentMap
+   col_sum : FeatureTable[Normed]
    dir_out : DeconvBatch</pre>
        </div>
      </div>

@@ -11,7 +11,7 @@ Introduction
 
 In this tutorial you'll use QIIME 2 to perform an analysis of some data.
 
-Typical Run Time: TBD Minutes
+Typical Run Time: 1 Minute 30 Seconds
 
 Protein Alignment
 -----------------
@@ -61,7 +61,7 @@ Mutant Scatters
 
 .. usage-selector::
 
-Here we will test q2-ps-plot's proteinHeatmap module by running the following command:
+Here we will test q2-ps-plot's mutantScatters module by running the following command:
 
 .. usage::
      
