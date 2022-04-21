@@ -83,5 +83,89 @@ Here we will test q2-pepsirf's demux module by running the following command:
    )
    )
 
+Deconv-Batch
+------------
+
+.. usage-selector::
+
+Here we will test q2-pepsirf's deconv-batch module by running the following commands:
+
+.. usage::
+
+   def enriched_factory():
+      import qiime2
+      return qiime2.Artifact.load("source/data/pEnrich_z6-10_sbdr4_n20_r244k_dir.qza")
+
+   enriched_dir = use.init_artifact("enriched_dir", enriched_factory)
+
+   def linked_factory():
+      import qiime2
+      return qiime2.Artifact.load("source/data/full_design_clean_min30_taxtweak_100perc_jingmens_2020-11-23_K7-species.qza")
+
+   linked = use.init_artifact("linked", linked_factory)
+
+   def id_factory():
+      import qiime2
+      return qiime2.Artifact.load("source/data/virus_lineage.qza")
+
+   id_name_map = use.init_artifact("id_name_map", id_factory)
+
 .. note::
-   You must have the development branch of pepsirf precompiled in order to use this module.
+   Some of these files will also be used for deconv-singular.
+   
+.. usage:: 
+
+   deconv, score_per_round, peptide_assignment_map,  = use.action(
+   use.UsageAction(plugin_id='pepsirf', action_id='deconv_batch'),
+   use.UsageInputs(
+        enriched_dir = enriched_dir,
+        score_filtering = True,
+        threshold = 40,
+        score_tie_threshold = 0.95,
+        score_overlap_threshold = 0.7,
+        remove_file_types = True,
+        outfile_suffix = "_ss40.txt",
+        mapfile_suffix = "_ss40.map",
+        linked = linked,
+        id_name_map = id_name_map
+   ),
+   use.UsageOutputNames(
+        deconv_output = "deconv_output",
+        score_per_round = "score_per_round",
+        peptide_assignment_map = "peptide_assignment_map"
+   )
+   )
+
+Deconv-Singular
+---------------
+
+.. usage-selector::
+
+Here we will test q2-pepsirf's deconv-singular module by running the following commands:
+
+.. usage::
+
+   def peptide_factory():
+      import qiime2
+      return qiime2.Artifact.load("source/data/enriched-peptides.qza")
+
+   enriched_peptides = use.init_artifact("enriched_peptides", peptide_factory)
+   
+.. usage:: 
+
+   deconv_sing, score_per_round_sing,  = use.action(
+   use.UsageAction(plugin_id='pepsirf', action_id='deconv_singular'),
+   use.UsageInputs(
+        enriched = enriched_peptides,
+        score_filtering = True,
+        threshold = 40,
+        score_tie_threshold = 0.95,
+        score_overlap_threshold = 0.7,
+        linked = linked,
+        id_name_map = id_name_map
+   ),
+   use.UsageOutputNames(
+        deconv_output = "deconv_output_singular",
+        score_per_round = "score_per_round_singular"
+   )
+   )
