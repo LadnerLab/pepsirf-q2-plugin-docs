@@ -4,7 +4,13 @@ TSV/Dir Pipeline Information
 This is information regarding q2-ps-plot's and q2-autopepsirf's TSV/Dir pipelines, 
 as well as tutorials on how to use the various tsv/dir pipelines.
 
-Available TSV/Dir pipelines
+The TSV/Dir pipelines were built to ease the transition between PepSIRF and QIIME 2 
+by eliminating the need for the user to manually perform a QIIME 2 import every time 
+they switch between the two platforms. These pipelines allow the user to begin with 
+a TSV/Dir readable file type rather than the QIIME 2-specific QZA file format.
+
+
+Available TSV/Dir Pipelines
 ---------------------------
 
 q2-ps-plot:

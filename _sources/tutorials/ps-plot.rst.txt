@@ -1,5 +1,5 @@
-Ps-plot Tutorials - Multiple Interface Edition
-==============================================
+q2-ps-plot Tutorials - Multiple Interface Edition
+=================================================
 
 Description
 -----------

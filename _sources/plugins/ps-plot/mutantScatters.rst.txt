@@ -26,7 +26,7 @@ mutantScatters: Mutant Scatters
                              peptide sequence. Column one header must be
                              'CodeName' that contains the peptide references, and
                              column two must contain the related peptide sequence
-                             to be shown on the x axis.                [required]
+                             to be shown on the x axis.                [optional]
    Parameters:
      --m-source-file METADATA
      --m-source-column COLUMN  MetadataColumn[Categorical]
@@ -36,7 +36,7 @@ mutantScatters: Mutant Scatters
        (multiple arguments   The peptide metadata file that contains all of the
         will be merged)      positions, peptides, references, etc.     [required]
      --p-peptide-header TEXT The name of the header of the pepides.
-                                                            [default: 'SampleID']
+                                                           [default: 'FeatureID']
      --p-reference-header TEXT
                              The name of the header of the references
                                                            [default: 'Reference']
@@ -102,7 +102,7 @@ mutantScatters: Mutant Scatters
    zscore : FeatureTable[Zscore]
        FeatureTable containing z scores of the normalized read counts. Fist
        column header must be 'Sequence Name' as produced by pepsirf.
-   reference_file : MutantReference
+   reference_file : MutantReference, optional
        File containing the reference peptides and the peptide sequence. Column
        one header must be 'CodeName' that contains the peptide references, and
        column two must contain the related peptide sequence to be shown on the
