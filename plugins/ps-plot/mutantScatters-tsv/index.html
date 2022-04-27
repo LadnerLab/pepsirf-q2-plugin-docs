@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>mutantScatters-tsv: Mutant Scatters &#8212; Q2 Pepsirf Plugin Docs  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/external-links.js"></script>
+    <script src="../../../_static/usage.js"></script>
+    <link rel="canonical" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/plugins/ps-plot/mutantScatters-tsv.html" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="proteinHeatmap-dir: Protein Alignment Heatmap Dir" href="../proteinHeatmap-dir/" />
+    <link rel="prev" title="ps-plot" href="../" />
+  <script src="../../../_static/bootstrap.min.js"></script>
+  <script src="../../../_static/clipboard.min.js"></script>
+  <link rel="icon" href="../../../_static/favicon.ico" type="image/png" />
+  <link rel="stylesheet" href="../../../_static/css/bootstrap.min.css" media="screen" />
+  <link rel="stylesheet" href="../../../_static/css/normalize.css" media="screen">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  </head><body>
+  <div id="wrapper" class="container clearfix">
+    <div id="header">
+      <a href="/pepsirf-q2-plugin-docs/">
+        <img
+          class="img-responsive"
+          src="../../../_static/PepSIRF_Q2.png" alt="QIIME 2 Docs"
+        />
+      </a>
+    </div>
+    <div id="content">
+      
+      <div id="body" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 main pull-right">
+        
+  <section id="mutantscatters-tsv-mutant-scatters">
+<h1>mutantScatters-tsv: Mutant Scatters<a class="headerlink" href="#mutantscatters-tsv-mutant-scatters" title="Permalink to this headline">¶</a></h1>
+<div class="tabbed">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#cli">Command line interface</a></li>
+    <li><a data-toggle="tab" href="#api">Artifact API</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="cli" class="tab-pane fade in active">
+      <h4>Docstring:</h4>
+      <pre>Usage: qiime ps-plot mutantScatters-tsv [OPTIONS]
+
+  Creates a scatterplot for mutant peptides with tsv filepaths instead of
+  QZA files
+
+Parameters:
+  --m-source-file METADATA
+  --m-source-column COLUMN  MetadataColumn[Categorical]
+                          Metadata file containing all sample names and their
+                          source groups.                            [required]
+  --m-metadata-file METADATA...
+    (multiple arguments   The peptide metadata file that contains all of the
+     will be merged)      positions, peptides, references, etc.     [required]
+  --p-zscore-filepath TEXT
+                          TSV file containing z scores of the normalized read
+                          counts. Fist column header must be 'Sequence Name'
+                          as produced by pepsirf.                   [required]
+  --p-reference-file-filepath TEXT
+                          A file containing the reference peptide/probe along
+                          with the peptide/probe sequence. Must start with
+                          'CodeName'.                               [optional]
+  --p-peptide-header TEXT The name of the header of the pepides.
+                                                        [default: 'FeatureID']
+  --p-reference-header TEXT
+                          The name of the header of the references
+                                                        [default: 'Reference']
+  --p-x-axis-header TEXT  The name of the header of the x-axis positions to
+                          be plotted                     [default: 'Position']
+  --p-category-header TEXT
+                          The name of the header of the category to color the
+                          points by                      [default: 'Category']
+  --p-label-header TEXT   The name of the header that conatins the label for
+                          the tooltip                       [default: 'Label']
+  --p-x-axis-label TEXT   The name to title the x-axis   [default: 'Position']
+  --p-y-axis-label TEXT   The name to title the y-axis
+                                                      [default: 'Mean Zscore']
+  --p-min-wobble NUMBER   The minimum range of the wobble      [default: -0.4]
+  --p-max-wobble NUMBER   The maximum range of the wobble         [default: 0]
+  --p-wobble / --p-no-wobble
+                          Include this flag if you would like the points to
+                          be on a wobble                      [default: False]
+  --p-scatter-only / --p-no-scatter-only
+                          Include this flag if you only want to view the
+                          scatterplot                          [default: True]
+  --p-scatter-boxplot / --p-no-scatter-boxplot
+                          Include this flag if you want to view the
+                          scatterplot and the corresponding boxplot.
+                                                              [default: False]
+  --p-boxplot-only / --p-no-boxplot-only
+                          Include this flag if you only want to view the
+                          boxplot                             [default: False]
+Outputs:
+  --o-mutant-scatters-vis VISUALIZATION
+                                                                    [required]
+Miscellaneous:
+  --output-dir PATH       Output unspecified results to a directory
+  --verbose / --quiet     Display verbose output to stdout and/or stderr
+                          during execution of this action. Or silence output
+                          if execution is successful (silence is golden).
+  --example-data PATH     Write example data and exit.
+  --citations             Show citations and exit.
+  --help                  Show this message and exit.</pre>
+    </div>
+    <div id="api" class="tab-pane fade">
+    <h4>Import:</h4><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>from qiime2.plugins.ps_plot.pipelines import mutantScatters_tsv
+</pre></div>
+</div>
+    <h4>Docstring:</h4>
+      <pre>Mutant Scatters
+
+Creates a scatterplot for mutant peptides with tsv filepaths instead of QZA
+files
+
+Parameters
+----------
+source : MetadataColumn[Categorical]
+    Metadata file containing all sample names and their source groups.
+metadata : Metadata
+    The peptide metadata file that contains all of the positions, peptides,
+    references, etc.
+zscore_filepath : Str
+    TSV file containing z scores of the normalized read counts. Fist column
+    header must be 'Sequence Name' as produced by pepsirf.
+reference_file_filepath : Str, optional
+    A file containing the reference peptide/probe along with the
+    peptide/probe sequence. Must start with 'CodeName'.
+peptide_header : Str, optional
+    The name of the header of the pepides.
+reference_header : Str, optional
+    The name of the header of the references
+x_axis_header : Str, optional
+    The name of the header of the x-axis positions to be plotted
+category_header : Str, optional
+    The name of the header of the category to color the points by
+label_header : Str, optional
+    The name of the header that conatins the label for the tooltip
+x_axis_label : Str, optional
+    The name to title the x-axis
+y_axis_label : Str, optional
+    The name to title the y-axis
+min_wobble : Float, optional
+    The minimum range of the wobble
+max_wobble : Float, optional
+    The maximum range of the wobble
+wobble : Bool, optional
+    Include this flag if you would like the points to be on a wobble
+scatter_only : Bool, optional
+    Include this flag if you only want to view the scatterplot
+scatter_boxplot : Bool, optional
+    Include this flag if you want to view the scatterplot and the
+    corresponding boxplot.
+boxplot_only : Bool, optional
+    Include this flag if you only want to view the boxplot
+
+Returns
+-------
+mutant_scatters_vis : Visualization</pre>
+    </div>
+  </div>
+</div></section>
+
+
+      </div>
+      
+
+      
+      <div id="sidebar" class="col-lg-2 col-md-2 col-sm-12 col-xs-12 side pull-left">
+        
+<h3><a href="../../../">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Available plugins</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../autopepsirf/">autopepsirf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pepsirf/">pepsirf</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../">ps-plot</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Pepsirf_Plugins/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../export-imports/">QIIME 2 Import and Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tsv-pipelines/">TSV/Dir Pipelines</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+      </div>
+      
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Ladner Labs.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </div>
+  <script src="../../../_static/clipboard-driver.js"></script>
+  <script src="/versions.js" charset="utf-8"></script>
+  </body>
+</html>

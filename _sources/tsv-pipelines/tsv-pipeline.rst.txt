@@ -18,7 +18,7 @@ q2-ps-plot:
 ================================== ==============================
 QZA Modules                        Corresponding TSV/Dir Pipeline
 ================================== ==============================
-mutant_scatter                     *Coming Soon!*
+mutantScatters                     mutantScatters-tsv
 proteinHeatmap                     proteinHeatmap-dir
 repScatters                        repScatters-tsv
 zenrich                            zenrich-tsv
@@ -38,6 +38,18 @@ TSV/Dir Pipeline Tutorials
 Instead of inputting a QZA file in an input (*--i-flag*), a TSV file or directory filepath is inputted into 
 a different parameters flag typically ending in "-filepath" (*--p-flag-filepath*).
 
+**mutantScatters:**
+
+* QZA Module Example:
+  
+  ``qiime ps-plot mutantScatters --i-zscore zscore.qza --i-reference-file reference.qza --m-source-file samples-source.tsv 
+  --m-source-column source --m-metadata-file metadata.tsv --p-wobble --p-scatter-boxplot --o-visualization mutantScatters.qzv``
+
+* TSV/Dir Pipeline Example:
+  
+  ``qiime ps-plot mutantScatters-tsv --p-zscore-filepath zscore.tsv --i-reference-file-filepath reference.tsv --m-source-file samples-source.tsv 
+  --m-source-column source --m-metadata-file metadata.tsv --p-wobble --p-scatter-boxplot --o-mutant-scatters-vis mutantScatters.qzv``
+
 **proteinHeatmap:**
 
 * QZA Module Example:
@@ -55,7 +67,7 @@ a different parameters flag typically ending in "-filepath" (*--p-flag-filepath*
 * QZA Module Example:
   
   ``qiime ps-plot repScatters --i-zscore some-zscore.qza --m-source-file samples-source.tsv --m-source-column 
-  source --o-visualizaion repScatters.qza``
+  source --o-visualizaion repScatters.qzv``
 
 * TSV/Dir Pipeline Example:
   

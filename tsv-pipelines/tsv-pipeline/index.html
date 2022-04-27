@@ -61,8 +61,8 @@ a TSV/Dir readable file type rather than the QIIME 2-specific QZA file format.</
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>mutant_scatter</p></td>
-<td><p><em>Coming Soon!</em></p></td>
+<tr class="row-even"><td><p>mutantScatters</p></td>
+<td><p>mutantScatters-tsv</p></td>
 </tr>
 <tr class="row-odd"><td><p>proteinHeatmap</p></td>
 <td><p>proteinHeatmap-dir</p></td>
@@ -97,6 +97,17 @@ a TSV/Dir readable file type rather than the QIIME 2-specific QZA file format.</
 <h2>TSV/Dir Pipeline Tutorials<a class="headerlink" href="#tsv-dir-pipeline-tutorials" title="Permalink to this headline">¶</a></h2>
 <p>Instead of inputting a QZA file in an input (<em>–i-flag</em>), a TSV file or directory filepath is inputted into
 a different parameters flag typically ending in “-filepath” (<em>–p-flag-filepath</em>).</p>
+<p><strong>mutantScatters:</strong></p>
+<ul>
+<li><p>QZA Module Example:</p>
+<p><code class="docutils literal notranslate"><span class="pre">qiime</span> <span class="pre">ps-plot</span> <span class="pre">mutantScatters</span> <span class="pre">--i-zscore</span> <span class="pre">zscore.qza</span> <span class="pre">--i-reference-file</span> <span class="pre">reference.qza</span> <span class="pre">--m-source-file</span> <span class="pre">samples-source.tsv</span>
+<span class="pre">--m-source-column</span> <span class="pre">source</span> <span class="pre">--m-metadata-file</span> <span class="pre">metadata.tsv</span> <span class="pre">--p-wobble</span> <span class="pre">--p-scatter-boxplot</span> <span class="pre">--o-visualization</span> <span class="pre">mutantScatters.qzv</span></code></p>
+</li>
+<li><p>TSV/Dir Pipeline Example:</p>
+<p><code class="docutils literal notranslate"><span class="pre">qiime</span> <span class="pre">ps-plot</span> <span class="pre">mutantScatters-tsv</span> <span class="pre">--p-zscore-filepath</span> <span class="pre">zscore.tsv</span> <span class="pre">--i-reference-file-filepath</span> <span class="pre">reference.tsv</span> <span class="pre">--m-source-file</span> <span class="pre">samples-source.tsv</span>
+<span class="pre">--m-source-column</span> <span class="pre">source</span> <span class="pre">--m-metadata-file</span> <span class="pre">metadata.tsv</span> <span class="pre">--p-wobble</span> <span class="pre">--p-scatter-boxplot</span> <span class="pre">--o-mutant-scatters-vis</span> <span class="pre">mutantScatters.qzv</span></code></p>
+</li>
+</ul>
 <p><strong>proteinHeatmap:</strong></p>
 <ul>
 <li><p>QZA Module Example:</p>
@@ -112,7 +123,7 @@ a different parameters flag typically ending in “-filepath” (<em>–p-flag-f
 <ul>
 <li><p>QZA Module Example:</p>
 <p><code class="docutils literal notranslate"><span class="pre">qiime</span> <span class="pre">ps-plot</span> <span class="pre">repScatters</span> <span class="pre">--i-zscore</span> <span class="pre">some-zscore.qza</span> <span class="pre">--m-source-file</span> <span class="pre">samples-source.tsv</span> <span class="pre">--m-source-column</span>
-<span class="pre">source</span> <span class="pre">--o-visualizaion</span> <span class="pre">repScatters.qza</span></code></p>
+<span class="pre">source</span> <span class="pre">--o-visualizaion</span> <span class="pre">repScatters.qzv</span></code></p>
 </li>
 <li><p>TSV/Dir Pipeline Example:</p>
 <p><code class="docutils literal notranslate"><span class="pre">qiime</span> <span class="pre">ps-plot</span> <span class="pre">repScatters-tsv</span> <span class="pre">--p-zscore-filepath</span> <span class="pre">some-zscore.tsv</span> <span class="pre">--m-source-file</span> <span class="pre">samples-source.tsv</span> <span class="pre">--m-source-column</span>

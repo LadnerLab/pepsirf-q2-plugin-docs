@@ -1,0 +1,141 @@
+mutantScatters-tsv: Mutant Scatters
+===================================
+
+
+
+.. raw:: html
+
+   <div class="tabbed">
+     <ul class="nav nav-tabs">
+       <li class="active"><a data-toggle="tab" href="#cli">Command line interface</a></li>
+       <li><a data-toggle="tab" href="#api">Artifact API</a></li>
+     </ul>
+     <div class="tab-content">
+       <div id="cli" class="tab-pane fade in active">
+         <h4>Docstring:</h4>
+         <pre>Usage: qiime ps-plot mutantScatters-tsv [OPTIONS]
+
+     Creates a scatterplot for mutant peptides with tsv filepaths instead of
+     QZA files
+
+   Parameters:
+     --m-source-file METADATA
+     --m-source-column COLUMN  MetadataColumn[Categorical]
+                             Metadata file containing all sample names and their
+                             source groups.                            [required]
+     --m-metadata-file METADATA...
+       (multiple arguments   The peptide metadata file that contains all of the
+        will be merged)      positions, peptides, references, etc.     [required]
+     --p-zscore-filepath TEXT
+                             TSV file containing z scores of the normalized read
+                             counts. Fist column header must be 'Sequence Name'
+                             as produced by pepsirf.                   [required]
+     --p-reference-file-filepath TEXT
+                             A file containing the reference peptide/probe along
+                             with the peptide/probe sequence. Must start with
+                             'CodeName'.                               [optional]
+     --p-peptide-header TEXT The name of the header of the pepides.
+                                                           [default: 'FeatureID']
+     --p-reference-header TEXT
+                             The name of the header of the references
+                                                           [default: 'Reference']
+     --p-x-axis-header TEXT  The name of the header of the x-axis positions to
+                             be plotted                     [default: 'Position']
+     --p-category-header TEXT
+                             The name of the header of the category to color the
+                             points by                      [default: 'Category']
+     --p-label-header TEXT   The name of the header that conatins the label for
+                             the tooltip                       [default: 'Label']
+     --p-x-axis-label TEXT   The name to title the x-axis   [default: 'Position']
+     --p-y-axis-label TEXT   The name to title the y-axis
+                                                         [default: 'Mean Zscore']
+     --p-min-wobble NUMBER   The minimum range of the wobble      [default: -0.4]
+     --p-max-wobble NUMBER   The maximum range of the wobble         [default: 0]
+     --p-wobble / --p-no-wobble
+                             Include this flag if you would like the points to
+                             be on a wobble                      [default: False]
+     --p-scatter-only / --p-no-scatter-only
+                             Include this flag if you only want to view the
+                             scatterplot                          [default: True]
+     --p-scatter-boxplot / --p-no-scatter-boxplot
+                             Include this flag if you want to view the
+                             scatterplot and the corresponding boxplot.
+                                                                 [default: False]
+     --p-boxplot-only / --p-no-boxplot-only
+                             Include this flag if you only want to view the
+                             boxplot                             [default: False]
+   Outputs:
+     --o-mutant-scatters-vis VISUALIZATION
+                                                                       [required]
+   Miscellaneous:
+     --output-dir PATH       Output unspecified results to a directory
+     --verbose / --quiet     Display verbose output to stdout and/or stderr
+                             during execution of this action. Or silence output
+                             if execution is successful (silence is golden).
+     --example-data PATH     Write example data and exit.
+     --citations             Show citations and exit.
+     --help                  Show this message and exit.</pre>
+       </div>
+       <div id="api" class="tab-pane fade">
+       <h4>Import:</h4>
+
+.. command-block::
+   :no-exec:
+
+   from qiime2.plugins.ps_plot.pipelines import mutantScatters_tsv
+
+.. raw:: html
+
+       <h4>Docstring:</h4>
+         <pre>Mutant Scatters
+
+   Creates a scatterplot for mutant peptides with tsv filepaths instead of QZA
+   files
+
+   Parameters
+   ----------
+   source : MetadataColumn[Categorical]
+       Metadata file containing all sample names and their source groups.
+   metadata : Metadata
+       The peptide metadata file that contains all of the positions, peptides,
+       references, etc.
+   zscore_filepath : Str
+       TSV file containing z scores of the normalized read counts. Fist column
+       header must be 'Sequence Name' as produced by pepsirf.
+   reference_file_filepath : Str, optional
+       A file containing the reference peptide/probe along with the
+       peptide/probe sequence. Must start with 'CodeName'.
+   peptide_header : Str, optional
+       The name of the header of the pepides.
+   reference_header : Str, optional
+       The name of the header of the references
+   x_axis_header : Str, optional
+       The name of the header of the x-axis positions to be plotted
+   category_header : Str, optional
+       The name of the header of the category to color the points by
+   label_header : Str, optional
+       The name of the header that conatins the label for the tooltip
+   x_axis_label : Str, optional
+       The name to title the x-axis
+   y_axis_label : Str, optional
+       The name to title the y-axis
+   min_wobble : Float, optional
+       The minimum range of the wobble
+   max_wobble : Float, optional
+       The maximum range of the wobble
+   wobble : Bool, optional
+       Include this flag if you would like the points to be on a wobble
+   scatter_only : Bool, optional
+       Include this flag if you only want to view the scatterplot
+   scatter_boxplot : Bool, optional
+       Include this flag if you want to view the scatterplot and the
+       corresponding boxplot.
+   boxplot_only : Bool, optional
+       Include this flag if you only want to view the boxplot
+
+   Returns
+   -------
+   mutant_scatters_vis : Visualization</pre>
+       </div>
+     </div>
+   </div>
