@@ -1,0 +1,86 @@
+TSV/Dir Changing Inputs Reference Tables
+========================================
+
+This is where you'll discover all of the QZA inputs that have a TSV/Dir parameter associated with them.
+
+diffEnrich(-tsv) Changing Inputs/Parameters
+-------------------------------------------
+
+================================== ===============================
+QZA Input                          Corresponding TSV/Dir Parameter
+================================== ===============================
+`--i-raw-data`                     `--p-raw-data-filepath`
+`--i-bins`                         `--p-bins-filepath`
+`--i-negative-control`             `--p-negative-control-filepath`
+`--i-thresh-file`                  `--p-thresh-file-filepath`
+================================== ===============================
+
+.. note::
+   All of diffEnrich's ouputs remain the same for both the QZA module and the TSV/Dir pipeline.
+
+mutantScatters(-tsv) Changing Inputs/Parameters
+-----------------------------------------------
+
+================================== ===============================
+QZA Input                          Corresponding TSV/Dir Parameter
+================================== ===============================
+`--i-zscore`                       `--i-zscore-filepath`
+`--i-reference-file`               `--i-reference-file-filepath`
+================================== ===============================
+
+================================== ===============================
+QZA Module Output                  Corresponding TSV/Dir Output
+================================== ===============================
+`--o-visualization`                `--o-mutant-scatters-vis`
+================================== ===============================
+
+proteinHeatmap(-dir) Changing Inputs/Parameters
+-----------------------------------------------
+
+================================== ================================
+QZA Input                          Corresponding TSV/Dir Parameter
+================================== ================================
+`--i-enriched-dir`                 `--p-enriched-dir-filepath`
+`--i-protein-alignment`            `--p-protein-alignment-filepath`
+================================== ================================
+
+================================== ===============================
+QZA Module Output                  Corresponding TSV/Dir Output
+================================== ===============================
+`--o-visualization`                `--o-protein-heatmap-vis`
+================================== ===============================
+
+repScatters(-tsv) Changing Inputs/Parameters
+--------------------------------------------
+
+================================== ================================
+QZA Input                          Corresponding TSV/Dir Parameter
+================================== ================================
+`--i-zscore`                       `--p-zscore-filepath`
+`--i-col-sum`                      `--p-col-sum-filepath`
+================================== ================================
+
+================================== ===============================
+QZA Module Output                  Corresponding TSV/Dir Output
+================================== ===============================
+`--o-visualization`                `--o-rep-scatters-vis`
+================================== ===============================
+
+zenrich(-tsv) Changing Inputs/Parameters
+----------------------------------------
+
+================================== =================================
+QZA Input                          Corresponding TSV/Dir Parameter
+================================== =================================
+`--i-data`                         `--p-data-filepath`
+`--i-zscores`                      `--p-zscores-filepath`
+`--i-highlight-probes`             `--p-highlighted-probes-filepath`
+`--i-negative-data`                `--p-negative-data-filepath`
+================================== =================================
+
+================================== ===============================
+QZA Module Output                  Corresponding TSV/Dir Output
+================================== ===============================
+`--o-visualization`                `--o-zenrich-vis`
+================================== ===============================
+
