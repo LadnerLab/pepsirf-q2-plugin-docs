@@ -6,3 +6,4 @@ TSV/Dir Pipelines
    :maxdepth: 2
 
    tsv-pipeline
+   tsv-dir-tables
