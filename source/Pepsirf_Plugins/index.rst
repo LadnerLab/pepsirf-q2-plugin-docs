@@ -6,4 +6,5 @@ Installation
 
    q2-pepsirf1
    q2-ps-plot
+   q2-ps-qc
    q2-autopepsirf
