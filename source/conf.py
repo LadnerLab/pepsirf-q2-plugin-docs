@@ -37,7 +37,7 @@ from utils import generate_plugin_rst, cleanup_plugin_rst  # noqa: E402
 # process.
 
 #uses plugins/ directory
-generate_plugin_rst(["pepsirf", "ps-plot", "autopepsirf"])
+generate_plugin_rst(["pepsirf", "ps-plot", "ps-qc", "autopepsirf"])
 
 
 def setup(app):
