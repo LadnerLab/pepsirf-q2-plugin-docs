@@ -54,4 +54,3 @@ Updating
 To update the QC module, run the following command:
 
 ``pip install -U git+https://github.com/LadnerLab/q2-ps-qc.git``
-
