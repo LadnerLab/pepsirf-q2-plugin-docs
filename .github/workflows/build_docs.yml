@@ -25,14 +25,14 @@ jobs:
           path: gh-pages
 
       - name: Install Sphinx requirements
-        working-directory: ${{ github.workspace }}/main/docs
+        working-directory: ${{ github.workspace }}/main/source
         run: |
           sudo apt-get update -y
           sudo apt-get install -y pandoc
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
       - name: Build documentation
-        working-directory: ${{ github.workspace }}/main/docs
+        working-directory: ${{ github.workspace }}/main
         run: make html
 
       - name: Move documentation
