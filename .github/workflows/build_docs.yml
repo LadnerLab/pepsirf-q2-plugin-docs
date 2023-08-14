@@ -24,12 +24,12 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      - name: Install Qiime2
-        working-directory: ${{ github.workspace }}
-        run: |
-          git clone "https://github.com/qiime2/qiime2.git"
-          cd qiime2
-          make install
+      #- name: Install Qiime2
+      # working-directory: ${{ github.workspace }}
+      # run: |
+      #   git clone "https://github.com/qiime2/qiime2.git"
+      #   cd qiime2
+      #   make install
 
       - name: Install Sphinx requirements
         working-directory: ${{ github.workspace }}/main/source
