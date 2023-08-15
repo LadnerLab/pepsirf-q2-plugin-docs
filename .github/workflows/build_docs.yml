@@ -37,16 +37,21 @@ jobs:
           conda install -p ./test-env -q pip
 
       - name: Install Sphinx requirements
-        working-directory: ${{ github.workspace }}/main/source
+        shell: bash -l {0}
         run: |
-          sudo apt-get update -y
-          sudo apt-get install -y pandoc
-          python -m pip install --upgrade pip
-          python -m pip install -r ../requirements.txt
+          source "$CONDA/etc/profile.d/conda.sh"
+          conda activate ./test-env
+          pip install -r requirements.txt
 
       - name: Build documentation
         working-directory: ${{ github.workspace }}/main
-        run: make html
+        shell: bash -l {0}
+        env:
+          SPHINXOPTS: -q
+        run: |
+          source "$CONDA/etc/profile.d/conda.sh"
+          conda activate ./test-env
+          make html
 
       - name: Move documentation
         run: |
