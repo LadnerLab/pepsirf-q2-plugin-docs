@@ -37,11 +37,12 @@ jobs:
           conda install -p ./test-env -q pip
 
       - name: Install Sphinx requirements
+        working-directory: ${{ github.workspace }}/main/source
         shell: bash -l {0}
         run: |
           source "$CONDA/etc/profile.d/conda.sh"
           conda activate ./test-env
-          pip install -r requirements.txt
+          pip install -r ../requirements.txt
 
       - name: Build documentation
         working-directory: ${{ github.workspace }}/main
