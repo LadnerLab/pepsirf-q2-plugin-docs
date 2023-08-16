@@ -51,7 +51,7 @@ jobs:
         run: |
           source "$CONDA/etc/profile.d/conda.sh"
           conda activate ./test-env
-          make clean && make html
+          make html
 
       - name: Move documentation
         run: |
