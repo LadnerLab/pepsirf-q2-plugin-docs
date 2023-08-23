@@ -64,7 +64,6 @@ jobs:
           pip install -r ../requirements.txt
 
       - name: Build documentation
-        working-directory: ${{ github.workspace }}/main
         shell: bash -l {0}
         env:
           SPHINXOPTS: -q
