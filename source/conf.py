@@ -26,6 +26,8 @@ import os
 import sys
 import pathlib
 
+import qiime2
+
 # Required to import from the utils module.
 root = pathlib.Path(__file__).parent.absolute()
 sys.path.insert(0, str(root))
