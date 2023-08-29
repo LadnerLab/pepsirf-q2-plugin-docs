@@ -3,5 +3,5 @@ Sphinx
 Jinja2
 sphinxcontrib-bibtex
 lxml
-q2-pepsirf @ https://github.com/LadnerLab/q2-pepsirf@main
+q2-pepsirf @ git+https://github.com/LadnerLab/q2-pepsirf@main
 https://github.com/qiime2/sphinx-ext-qiime2/archive/master.tar.gz
