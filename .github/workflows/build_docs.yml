@@ -37,9 +37,7 @@ jobs:
         run: |
           source "$CONDA/etc/profile.d/conda.sh"
           conda install -p ./test-env -q pip
-          # Install q2-pepsirf for pepsirf-specific format types
-          pip install git+https://github.com/LadnerLab/q2-pepsirf.git
-
+          
       - name: Install Sphinx requirements
         working-directory: ${{ github.workspace }}/main/source
         shell: bash -l {0}

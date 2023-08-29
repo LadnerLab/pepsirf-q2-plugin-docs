@@ -27,18 +27,12 @@ Here we will test q2-pepsirf's demux module by running the following command:
 
    def r1_factory():
       import qiime2
-      from q2_pepsirf.format_types import(
-          PepsirfDemuxFastqFmt, PepsirfDemuxFastqDirFmt
-      )
       return qiime2.Artifact.load("source/data/Undetermined_S0_R1_001_1M.qza")
 
    input_r1 = use.init_artifact("input_r1", r1_factory)
 
    def r2_factory():
       import qiime2
-      from q2_pepsirf.format_types import(
-          PepsirfDemuxFastqFmt, PepsirfDemuxFastqDirFmt
-      )
       return qiime2.Artifact.load("source/data/Undetermined_S0_I1_001_1M.qza")
 
    input_r2 = use.init_artifact("input_r2", r2_factory)
