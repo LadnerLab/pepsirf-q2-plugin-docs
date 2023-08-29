@@ -24,6 +24,20 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
+      - name: Cache QIIME 2 environment
+        id: cache-qiime2
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-qiime2-env
+        with:
+          # store QIIME 2 cache files in '~/.qiime2' on *nix systems
+          path: ~/.qiime2
+          key: ${{ runner.os }}-build-${{ env.cache-name }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
       - name: Install QIIME 2 core distro
         working-directory: ${{ github.workspace }}/main
         run: |
