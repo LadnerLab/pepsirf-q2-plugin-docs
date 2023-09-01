@@ -7,6 +7,36 @@ on:
   workflow_dispatch:
 
 jobs:
+  build_pepsirf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: LadnerLab/PepSIRF
+          ref: main
+          path: pepsirf-repo
+      - uses: jwlawson/actions-setup-cmake@v1.12
+        with:
+          cmake-version: 3.16.3
+
+    - name: Install Zlib
+      run: sudo apt install zlib1g
+
+    - name: Install Boost library
+      run: |
+        sudo apt update
+        sudo apt install -y libboost-all-dev
+
+    - name: Build PepSIRF
+      working-directory: ${{ github.workspace/pepsirf-repo }}/master
+      run: |
+        mkdir build
+        cd build
+        cmake --version
+        cmake -DCMAKE_BUILD_TYPE=Release ..
+        make pepsirf
+        PATH=$PATH:$PWD/pepsirf
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -23,20 +53,6 @@ jobs:
         with:
           ref: gh-pages
           path: gh-pages
-
-      - name: Cache QIIME 2 environment
-        id: cache-qiime2
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-qiime2-env
-        with:
-          # store QIIME 2 cache files in '~/.qiime2' on *nix systems
-          path: ~/.qiime2
-          key: ${{ runner.os }}-build-${{ env.cache-name }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
 
       - name: Install QIIME 2 core distro
         working-directory: ${{ github.workspace }}/main
