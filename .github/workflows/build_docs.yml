@@ -38,7 +38,10 @@ jobs:
           alias pepsirf=$PWD/pepsirf
 
       - name: Verify PepSIRF install
-        run: pepsirf info -h
+        shell: bash -l {0}
+        run: |
+          which pepsirf
+          pepsirf info -h
 
   build:
     runs-on: ubuntu-latest
