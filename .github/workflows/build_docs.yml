@@ -28,7 +28,7 @@ jobs:
           sudo apt install -y libboost-all-dev
 
       - name: Build PepSIRF
-        working-directory: ${{ github.workspace/pepsirf-repo }}/master
+        working-directory: ${{ github.workspace }}/pepsirf-repo
         run: |
           mkdir build
           cd build
