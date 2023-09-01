@@ -36,6 +36,11 @@ jobs:
           cmake -DCMAKE_BUILD_TYPE=Release ..
           make pepsirf
           PATH=$PATH:$PWD/pepsirf
+          # check where pepsirf is installed
+          echo $PATH
+          which pepsirf
+          # check pepsirf is accessible
+          pepsirf info -h
 
   build:
     runs-on: ubuntu-latest
