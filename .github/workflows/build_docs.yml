@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: LadnerLab/PepSIRF
-          ref: main
+          ref: master
           path: pepsirf-repo
       - uses: jwlawson/actions-setup-cmake@v1.12
         with:
