@@ -19,23 +19,23 @@ jobs:
         with:
           cmake-version: 3.16.3
 
-    - name: Install Zlib
-      run: sudo apt install zlib1g
+      - name: Install Zlib
+        run: sudo apt install zlib1g
 
-    - name: Install Boost library
-      run: |
-        sudo apt update
-        sudo apt install -y libboost-all-dev
+      - name: Install Boost library
+        run: |
+          sudo apt update
+          sudo apt install -y libboost-all-dev
 
-    - name: Build PepSIRF
-      working-directory: ${{ github.workspace/pepsirf-repo }}/master
-      run: |
-        mkdir build
-        cd build
-        cmake --version
-        cmake -DCMAKE_BUILD_TYPE=Release ..
-        make pepsirf
-        PATH=$PATH:$PWD/pepsirf
+      - name: Build PepSIRF
+        working-directory: ${{ github.workspace/pepsirf-repo }}/master
+        run: |
+          mkdir build
+          cd build
+          cmake --version
+          cmake -DCMAKE_BUILD_TYPE=Release ..
+          make pepsirf
+          PATH=$PATH:$PWD/pepsirf
 
   build:
     runs-on: ubuntu-latest
