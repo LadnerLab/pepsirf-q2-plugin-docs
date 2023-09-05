@@ -36,14 +36,10 @@ jobs:
           cmake --version
           cmake -DCMAKE_BUILD_TYPE=Release ..
           make pepsirf
-          echo $PWD
-          alias pepsirf=$PWD/pepsirf
 
       - name: Verify PepSIRF install
         shell: bash -l {0}
-        run: |
-          echo $PWD
-          which pepsirf
+        run: /home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf-repo/build/pepsirf info -h
 
   build:
     runs-on: ubuntu-latest
