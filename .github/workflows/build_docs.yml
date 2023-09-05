@@ -41,7 +41,6 @@ jobs:
         shell: bash -l {0}
         run: |
           which pepsirf
-          pepsirf info -h
 
   build:
     runs-on: ubuntu-latest
