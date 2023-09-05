@@ -36,11 +36,13 @@ jobs:
           cmake --version
           cmake -DCMAKE_BUILD_TYPE=Release ..
           make pepsirf
+          echo $PWD
           alias pepsirf=$PWD/pepsirf
 
       - name: Verify PepSIRF install
         shell: bash -l {0}
         run: |
+          echo $PWD
           which pepsirf
 
   build:
