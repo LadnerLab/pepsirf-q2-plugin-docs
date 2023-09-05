@@ -29,6 +29,7 @@ jobs:
 
       - name: Build PepSIRF
         working-directory: ${{ github.workspace }}/pepsirf-repo
+        shell: bash -l {0}
         run: |
           mkdir build
           cd build
