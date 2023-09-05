@@ -63,8 +63,9 @@ Here we will test q2-pepsirf's demux module by running the following command:
    
 .. usage:: 
 
+   pepsirf = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf-repo/build/pepsirf"
    rawData, diagnosticData,  = use.action(
-   use.UsageAction(plugin_id='pepsirf', action_id='demux'),
+   use.UsageAction(plugin_id=pepsirf, action_id='demux'),
    use.UsageInputs(
         input_r1 = input_r1,
         input_r2 = input_r2,
@@ -115,8 +116,9 @@ Here we will test q2-pepsirf's deconv-batch module by running the following comm
    
 .. usage:: 
 
+   pepsirf = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf-repo/build/pepsirf"
    deconv, score_per_round, peptide_assignment_map,  = use.action(
-   use.UsageAction(plugin_id='pepsirf', action_id='deconv_batch'),
+   use.UsageAction(plugin_id=pepsirf, action_id='deconv_batch'),
    use.UsageInputs(
         enriched_dir = enriched_dir,
         score_filtering = True,
@@ -153,8 +155,9 @@ Here we will test q2-pepsirf's deconv-singular module by running the following c
    
 .. usage:: 
 
+   pepsirf = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf-repo/build/pepsirf"
    deconv_sing, score_per_round_sing,  = use.action(
-   use.UsageAction(plugin_id='pepsirf', action_id='deconv_singular'),
+   use.UsageAction(plugin_id=pepsirf, action_id='deconv_singular'),
    use.UsageInputs(
         enriched = enriched_peptides,
         score_filtering = True,
