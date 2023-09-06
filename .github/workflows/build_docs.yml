@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_pepsirf:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -36,17 +36,13 @@ jobs:
           cmake --version
           cmake -DCMAKE_BUILD_TYPE=Release ..
           make pepsirf
-          mv pepsirf /home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs
+          mv pepsirf ${{ github.workspace }}
 
       - name: Verify PepSIRF install
         shell: bash -l {0}
         run: |
-          ls -al /home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs
-          /home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf info -h
+          ${{ github.workspace }}/pepsirf info -h
 
-  build:
-    runs-on: ubuntu-latest
-    steps:
       - uses: actions/setup-python@v2
         with:
           python-version: 3.8
@@ -108,4 +104,3 @@ jobs:
           git add --all
           git diff-index --quiet HEAD || git commit -m "docs update" -a
           git push
-
