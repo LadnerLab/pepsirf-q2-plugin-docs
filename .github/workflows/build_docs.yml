@@ -36,10 +36,11 @@ jobs:
           cmake --version
           cmake -DCMAKE_BUILD_TYPE=Release ..
           make pepsirf
+          mv pepsirf ${{ github.workspace }}
 
       - name: Verify PepSIRF install
         shell: bash -l {0}
-        run: /home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf-repo/build/pepsirf info -h
+        run: ${{ github.workspace }}/pepsirf info -h
 
   build:
     runs-on: ubuntu-latest
