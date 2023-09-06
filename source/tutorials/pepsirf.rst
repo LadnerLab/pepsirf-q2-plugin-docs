@@ -132,9 +132,9 @@ Here we will test q2-pepsirf's deconv-batch module by running the following comm
         pepsirf_binary = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf"
    ),
    use.UsageOutputNames(
-        deconv_output = "deconv_output",
+        deconv_output = "dir_out",
         score_per_round = "score_per_round",
-        peptide_assignment_map = "peptide_assignment_map"
+        peptide_assignment_map = "map_dir"
    )
    )
 
