@@ -76,7 +76,7 @@ Here we will test q2-pepsirf's demux module by running the following command:
         library = library,
         index =  index,
         samplelist = samplelist,
-        pepsirf_binary = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf-repo/build/pepsirf"
+        pepsirf_binary = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf"
    ),
    use.UsageOutputNames(
         raw_counts_output = "demux_diagnostic_output",
@@ -129,7 +129,7 @@ Here we will test q2-pepsirf's deconv-batch module by running the following comm
         mapfile_suffix = "_ss40.map",
         linked = linked,
         id_name_map = id_name_map,
-        pepsirf_binary = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf-repo/build/pepsirf"
+        pepsirf_binary = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf"
    ),
    use.UsageOutputNames(
         deconv_output = "deconv_output",
@@ -165,7 +165,7 @@ Here we will test q2-pepsirf's deconv-singular module by running the following c
         score_overlap_threshold = 0.7,
         linked = linked,
         id_name_map = id_name_map,
-        pepsirf_binary = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf-repo/build/pepsirf"
+        pepsirf_binary = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf"
    ),
    use.UsageOutputNames(
         deconv_output = "deconv_output_singular",
