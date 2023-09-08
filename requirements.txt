@@ -1,6 +1,6 @@
 # Documentation building requirements.
 Sphinx
-altair
+altair_saver
 Jinja2
 sphinxcontrib-bibtex
 lxml
