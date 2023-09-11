@@ -120,6 +120,7 @@ Here we will test q2-pepsirf's deconv-batch module by running the following comm
    use.UsageAction(plugin_id='pepsirf', action_id='deconv_batch'),
    use.UsageInputs(
         enriched_dir = enriched_dir,
+        enriched_file_ending = "_paired.txt",
         score_filtering = True,
         threshold = 40,
         score_tie_threshold = 0.95,
@@ -159,6 +160,7 @@ Here we will test q2-pepsirf's deconv-singular module by running the following c
    use.UsageAction(plugin_id='pepsirf', action_id='deconv_singular'),
    use.UsageInputs(
         enriched = enriched_peptides,
+        enriched_file_ending = "_paired.txt",
         score_filtering = True,
         threshold = 40,
         score_tie_threshold = 0.95,
