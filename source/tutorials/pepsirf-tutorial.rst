@@ -67,7 +67,7 @@ command (replace pepsirf_binary with how you call pepsirf on your machine):
         pepsirf_tsv_dir = "./testingTSV",
         tsv_base_str = "IM0032-pA_PV1_subset",
         hdi = 0.95,
-        pepsirf_binary = "pepsirf"
+        pepsirf_binary = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf"
     ),
     use.UsageOutputNames(
         col_sum = "colsum",
@@ -105,7 +105,7 @@ call pepsirf on your machine):
     use.UsageAction(plugin_id='pepsirf', action_id='norm'),
     use.UsageInputs(
         peptide_scores = raw_data,
-        pepsirf_binary = "pepsirf"
+        pepsirf_binary = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf"
     ),
     use.UsageOutputNames(
         qza_output = "IM0032-pA_PV1_subset_CS"
@@ -129,7 +129,7 @@ call pepsirf on your machine):
         scores = col_sum,
         bin_size = 300,
         round_to = 0,
-        pepsirf_binary = "pepsirf"
+        pepsirf_binary = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf"
     ),
     use.UsageOutputNames(
         bin_output = "IM0032-pA_PV1_subset_bin"
@@ -153,7 +153,9 @@ call pepsirf on your machine):
         scores = diff,
         bins = bin_data,
         hdi = 0.95,
-        pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
+        pepsirf_binary = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf"
+        # TODO: maybe store a precompiled pepsirf executable in the PepSIRF repository?
+        #pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
     ),
     use.UsageOutputNames(
         zscore_output = "IM0032-pA_PV1_Z-HDI95",
@@ -177,7 +179,7 @@ call pepsirf on your machine):
     use.UsageInputs(
         input = raw_data,
         get = "samples",
-        pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
+        pepsirf_binary = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf"
     ),
     use.UsageOutputNames(
         snpn_output = "IM0032-pA_PV1_SN",
@@ -199,7 +201,7 @@ call pepsirf on your machine):
     use.UsageAction(plugin_id='pepsirf', action_id='infoSumOfProbes'),
     use.UsageInputs(
         input = raw_data,
-        pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
+        pepsirf_binary = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf"
     ),
     use.UsageOutputNames(
         sum_of_probes_output = "IM0032-pA_PV1_RC",
@@ -228,7 +230,7 @@ call pepsirf on your machine):
         exact_z_thresh = "6,10",
         exact_cs_thresh = "20",
         enrichment_failure = True,
-        pepsirf_binary = "/mnt/c/Users/ANNAB/Documents/GitHub/PepSIRF/precompiled/linux_mint_19.3/pepsirf_1.4.0_linux"
+        pepsirf_binary = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf"
     ),
     use.UsageOutputNames(
         dir_fmt_output = "6-10Z-HDI95_20CS_300000raw",
@@ -310,10 +312,9 @@ Here we will test q2-ps-plot's zenrich module by running the following command
         zscores = zscore,
         source = samples_col,
         negative_controls = ["SB_pA_A","SB_pA_B","SB_pA_D"],
-        pepsirf_binary = "pepsirf"
+        pepsirf_binary = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf"
     ),
     use.UsageOutputNames(
         visualization = "zenrich_scatter"
     )
     )
-
