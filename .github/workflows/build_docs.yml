@@ -4,7 +4,7 @@ name: Documentation update
 on:
   push:
     branches:
-      - update-doc-update-workflow
+      - updating-doc-update-workflow
   workflow_dispatch:
 
 jobs:
