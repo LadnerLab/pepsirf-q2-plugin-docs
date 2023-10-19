@@ -4,7 +4,7 @@ Jinja2
 sphinxcontrib-bibtex
 lxml
 https://github.com/qiime2/sphinx-ext-qiime2/archive/master.tar.gz
-# Gets expected file for altair_saver v0.5.0 given altair v5.0.1
+# Get expected file for altair_saver v0.5.0 given altair v5.0.1
 altair_viewer @ git+https://github.com/altair-viz/altair_viewer@master
 
 # Requirements for generating tutorial data
