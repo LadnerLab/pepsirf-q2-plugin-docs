@@ -61,7 +61,7 @@ jobs:
         working-directory: ${{ github.workspace }}/main
         run: |
           # version should change as plugins are updated in accordance to qiime2 version (as needed)
-          envFile=qiime2-2023.7-spares-py38-linux-conda.yml
+          envFile=qiime2-2023.7-py38-linux-conda.yml
           # wget https://raw.githubusercontent.com/qiime2/environment-files/master/2023.7/release/$envFile
           conda env create -q -p ./test-env --file $envFile
           
