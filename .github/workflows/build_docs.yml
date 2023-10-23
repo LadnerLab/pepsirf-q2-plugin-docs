@@ -81,6 +81,8 @@ jobs:
         run: |
           # check pepsirf binary is still where it was moved
           ls -al /home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs
+          # check env file is where it should be
+          ls -al /home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/main
           source "$CONDA/etc/profile.d/conda.sh"
           conda activate ./test-env
           make html
