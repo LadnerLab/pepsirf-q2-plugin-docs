@@ -7,7 +7,6 @@ https://github.com/qiime2/sphinx-ext-qiime2/archive/master.tar.gz
 # Get altair_saver and required versions for ps-plot
 altair_saver==0.5.0
 selenium==4.2.0
-nodejs==18.13.0
 jsonschema==4.2.0
 # Get expected file for altair_saver v0.5.0 given altair v5.0.1
 altair_viewer @ git+https://github.com/altair-viz/altair_viewer@master
