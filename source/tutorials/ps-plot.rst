@@ -42,7 +42,7 @@ Here we will test q2-ps-plot's proteinHeatmap module by running the following co
 .. usage::
    
    protHeatMap, = use.action(
-      use.UsageAction(plugin_id='ps_plot', action_id='proteinHeatmap-dir'),
+      use.UsageAction(plugin_id='ps_plot', action_id='proteinHeatmap_dir'),
       use.UsageInputs(
         enriched_dir_filepath = peptide_enrichment,
         protein_alignment_filepath = prot_align,
