@@ -42,14 +42,14 @@ Here we will test q2-ps-plot's proteinHeatmap module by running the following co
 .. usage::
    
    protHeatMap, = use.action(
-      use.UsageAction(plugin_id='ps_plot', action_id='proteinHeatmap_dir'),
+      use.UsageAction(plugin_id="ps_plot", action_id="proteinHeatmap_dir"),
       use.UsageInputs(
-        enriched_dir_filepath = peptide_enrichment,
-        protein_alignment_filepath = prot_align,
-        enriched_suffix = '_enriched.txt',
-        align_header = 'AlignPos',
-        align_delim = '~',
-        color_scheme = 'viridis'
+        enriched_dir_filepath = "peptide_enrichment",
+        protein_alignment_filepath = "prot_align/manifest.tsv",
+        enriched_suffix = "_enriched.txt",
+        align_header = "AlignPos",
+        align_delim = "~",
+        color_scheme = "viridis"
       ),
       use.UsageOutputNames(
         protein_heatmap_vis = "protein_heat_map"
