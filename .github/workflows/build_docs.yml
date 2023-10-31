@@ -89,8 +89,8 @@ jobs:
 
       - name: Move documentation
         run: |
-          touch main/docs/build/html/.nojekyll
-          cp -a main/docs/build/html/. gh-pages/
+          touch main/build/html/.nojekyll
+          cp -a main/build/html/. gh-pages/
 
       - name: Upload documentation
         working-directory: ${{ github.workspace }}/gh-pages
