@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>PepSIRF Plugins for QIIME 2 User Documentation &#8212; Q2 Pepsirf Plugin Docs  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/style.css" />
-    <script data-url_root="#" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/external-links.js"></script>
-    <script src="_static/usage.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css?v=435814a1" />
+    <script data-url_root="#" id="documentation_options" src="_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/external-links.js?v=a7dd342f"></script>
+    <script src="_static/usage.js?v=858a412f"></script>
     <link rel="canonical" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/index.html" />
     <link rel="index" title="Index" href="genindex/" />
     <link rel="search" title="Search" href="search/" />
@@ -40,17 +39,18 @@
       <div id="body" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 main pull-right">
         
   <section id="pepsirf-plugins-for-qiime-2-user-documentation">
-<h1>PepSIRF Plugins for QIIME 2 User Documentation<a class="headerlink" href="#pepsirf-plugins-for-qiime-2-user-documentation" title="Permalink to this headline">¶</a></h1>
+<h1>PepSIRF Plugins for QIIME 2 User Documentation<a class="headerlink" href="#pepsirf-plugins-for-qiime-2-user-documentation" title="Permalink to this heading">¶</a></h1>
 <p>This site contains the official user documentation for PepSIRF-related plugins for QIIME™ 2: pepsirf,
 ps-plot, and autopepsirf. This documentation includes installation instructions, tutorials,
 and other important information.</p>
 <section id="table-of-contents">
-<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="tutorials/">Tutorials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/pepsirf-tutorial/">DiffEnrich Analysis Tutorial - Multiple Interface Edition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/ps-plot/">q2-ps-plot Tutorials - Multiple Interface Edition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/ps-plot/">Ps-plot Tutorials - Multiple Interface Edition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/ps-qc/">Ps-qc Tutorials - CLI Edition (more to come)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/pepsirf/">q2-pepsirf Tutorials - Multiple Interface Edition</a></li>
 </ul>
 </li>
@@ -63,6 +63,7 @@ and other important information.</p>
 <li class="toctree-l1"><a class="reference internal" href="Pepsirf_Plugins/">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Pepsirf_Plugins/q2-pepsirf1/">q2-pepsirf</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Pepsirf_Plugins/q2-ps-plot/">q2-ps-plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pepsirf_Plugins/q2-ps-qc/">q2-ps-qc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Pepsirf_Plugins/q2-autopepsirf/">q2-autopepsirf</a></li>
 </ul>
 </li>
@@ -73,7 +74,6 @@ and other important information.</p>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tsv-pipelines/">TSV/Dir Pipelines</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tsv-pipelines/tsv-pipeline/">TSV/Dir Pipeline Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tsv-pipelines/tsv-dir-tables/">TSV/Dir Changing Inputs Reference Tables</a></li>
 </ul>
 </li>
 </ul>
@@ -106,14 +106,14 @@ and other important information.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
       </div>
       
     </div>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Ladner Labs.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.
     </div>
   </div>
   <script src="_static/clipboard-driver.js"></script>

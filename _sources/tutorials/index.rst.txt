@@ -7,4 +7,5 @@ Tutorials
 
    pepsirf-tutorial
    ps-plot
+   ps-qc
    pepsirf

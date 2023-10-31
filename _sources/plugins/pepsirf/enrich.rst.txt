@@ -43,6 +43,8 @@ enrich: pepsirf enrich module
                            Metadata file containing all sample names and their
                            source groups. Used to create pairs tsv to run pepsirf
                            enrich module.                              [required]
+     --p-flex-reps / --p-no-flex-reps
+                                                                 [default: False]
      --p-exact-z-thresh TEXT
                            Exact z score thresholds.                   [optional]
      --p-exact-cs-thresh TEXT
@@ -111,6 +113,7 @@ enrich: pepsirf enrich module
    source : MetadataColumn[Categorical]
        Metadata file containing all sample names and their source groups. Used
        to create pairs tsv to run pepsirf enrich module.
+   flex_reps : Bool, optional
    thresh_file : EnrichThresh, optional
         The name of a tab-delimited file containing one tab-delimited matrix
        filename and threshold(s), one per line. If providing more than z score

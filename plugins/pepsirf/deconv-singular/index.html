@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>deconv-singular: pepsirf deconv singular mode module &#8212; Q2 Pepsirf Plugin Docs  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/external-links.js"></script>
-    <script src="../../../_static/usage.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css?v=435814a1" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/external-links.js?v=a7dd342f"></script>
+    <script src="../../../_static/usage.js?v=858a412f"></script>
     <link rel="canonical" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/plugins/pepsirf/deconv-singular.html" />
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
@@ -41,7 +40,7 @@
       <div id="body" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 main pull-right">
         
   <section id="deconv-singular-pepsirf-deconv-singular-mode-module">
-<h1>deconv-singular: pepsirf deconv singular mode module<a class="headerlink" href="#deconv-singular-pepsirf-deconv-singular-mode-module" title="Permalink to this headline">¶</a></h1>
+<h1>deconv-singular: pepsirf deconv singular mode module<a class="headerlink" href="#deconv-singular-pepsirf-deconv-singular-mode-module" title="Permalink to this heading">¶</a></h1>
 <div class="tabbed">
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#cli">Command line interface</a></li>
@@ -53,8 +52,8 @@
       <pre>Usage: qiime pepsirf deconv-singular [OPTIONS]
 
   converts a list of enriched peptides into a parsimony-based list of likely
-  taxa to which the assayed individual has likely been exposed with
-  pepsirf's deconv singular mode module
+  taxa to which the assayed individual has likely been exposed with pepsirf's
+  deconv singular mode module
 
 Inputs:
   --i-enriched ARTIFACT  single file containing the names of enriched
@@ -75,7 +74,11 @@ Inputs:
                          the id.                                    [optional]
 Parameters:
   --p-threshold INTEGER  Minimum score that a taxon must obtain in order to
-                         be included in the deconvolution report.   [required]
+                         beincluded in the deconvolution report.    [required]
+  --p-enriched-file-ending TEXT
+                         Optional flag that specifies what string is expected
+                         at the end of each file containing enriched peptides.
+                                                    [default: '_enriched.txt']
   --p-scoring-strategy TEXT Choices('summation', 'integer', 'fraction')
                          Scoring strategies 'summation', 'integer', or
                          'fraction' can be specified. By not including this
@@ -97,7 +100,7 @@ Parameters:
                          peptide/ID pair is defined by 1/n for each peptide,
                          where n is the number of IDs to which a peptide is
                          linked. In this method of scoring peptides, a peptide
-                         with fewer linked IDs is worth more points..
+                         with fewer linked IDs is worth more points.
                                                         [default: 'summation']
   --p-score-filtering / --p-no-score-filtering
                          Include this option if you want filtering to be done
@@ -191,7 +194,7 @@ Miscellaneous:
   --help                 Show this message and exit.</pre>
     </div>
     <div id="api" class="tab-pane fade">
-    <h4>Import:</h4><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>from qiime2.plugins.pepsirf.methods import deconv_singular
+    <h4>Import:</h4><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>from<span class="w"> </span>qiime2.plugins.pepsirf.methods<span class="w"> </span>import<span class="w"> </span>deconv_singular
 </pre></div>
 </div>
     <h4>Docstring:</h4>
@@ -208,11 +211,14 @@ enriched : PeptideIDList
     Each peptide contained in this file (or files) should have a
     corresponding entry in the '--linked' input file.
 threshold : Int
-    Minimum score that a taxon must obtain in order to be included in the
+    Minimum score that a taxon must obtain in order to beincluded in the
     deconvolution report.
 linked : Link
     Name of linkage map to be used for deconvolution. It should be in the
     format output by the 'link' module.
+enriched_file_ending : Str, optional
+    Optional flag that specifies what string is expected at the end of each
+    file containing enriched peptides.
 scoring_strategy : Str % Choices('summation', 'integer', 'fraction'), optional
     Scoring strategies 'summation', 'integer', or 'fraction' can be
     specified. By not including this flag, summation scoring will be used
@@ -229,7 +235,7 @@ scoring_strategy : Str % Choices('summation', 'integer', 'fraction'), optional
     fractional scoring, the score is assigned to each peptide/ID pair is
     defined by 1/n for each peptide, where n is the number of IDs to which
     a peptide is linked. In this method of scoring peptides, a peptide with
-    fewer linked IDs is worth more points..
+    fewer linked IDs is worth more points.
 score_filtering : Bool, optional
     Include this option if you want filtering to be done by the score of
     each taxon, rather than the count of linked peptides. If used, any
@@ -334,14 +340,14 @@ score_per_round : ScorePerRound
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
       </div>
       
     </div>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Ladner Labs.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.
     </div>
   </div>
   <script src="../../../_static/clipboard-driver.js"></script>

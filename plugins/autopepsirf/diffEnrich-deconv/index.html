@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>diffEnrich-deconv: diffEnrich deconv Pepsirf Pipeline &#8212; Q2 Pepsirf Plugin Docs  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/external-links.js"></script>
-    <script src="../../../_static/usage.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css?v=435814a1" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/external-links.js?v=a7dd342f"></script>
+    <script src="../../../_static/usage.js?v=858a412f"></script>
     <link rel="canonical" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/plugins/autopepsirf/diffEnrich-deconv.html" />
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
-    <link rel="next" title="diffEnrich-tsv: diffEnrich tsv Pepsirf Pipeline" href="../diffEnrich-tsv/" />
+    <link rel="next" title="diffEnrich-deconv-tsv: diffEnrich deconv Pepsirf Pipeline" href="../diffEnrich-deconv-tsv/" />
     <link rel="prev" title="diffEnrich: diffEnrich Pepsirf Pipeline" href="../diffEnrich/" />
   <script src="../../../_static/bootstrap.min.js"></script>
   <script src="../../../_static/clipboard.min.js"></script>
@@ -41,7 +40,7 @@
       <div id="body" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 main pull-right">
         
   <section id="diffenrich-deconv-diffenrich-deconv-pepsirf-pipeline">
-<h1>diffEnrich-deconv: diffEnrich deconv Pepsirf Pipeline<a class="headerlink" href="#diffenrich-deconv-diffenrich-deconv-pepsirf-pipeline" title="Permalink to this headline">¶</a></h1>
+<h1>diffEnrich-deconv: diffEnrich deconv Pepsirf Pipeline<a class="headerlink" href="#diffenrich-deconv-diffenrich-deconv-pepsirf-pipeline" title="Permalink to this heading">¶</a></h1>
 <div class="tabbed">
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#cli">Command line interface</a></li>
@@ -52,8 +51,8 @@
       <h4>Docstring:</h4>
       <pre>Usage: qiime autopepsirf diffEnrich-deconv [OPTIONS]
 
-  Uses the diff normalization from pepsirf to generate z scores that are
-  used to determine enriched peptidesand **ADD DECONV DESCRIPTION**
+  Uses the diff normalization from pepsirf to generate z scores that are used
+  to determine enriched peptides and **ADD DECONV DESCRIPTION**
 
 Inputs:
   --i-raw-data ARTIFACT FeatureTable[RawCounts]
@@ -62,8 +61,8 @@ Inputs:
     PeptideBins                                                     [required]
   --i-linked ARTIFACT
     Link                                                            [required]
-  --i-negative-control ARTIFACT FeatureTable[Normed]
-                                                                    [optional]
+  --i-negative-control ARTIFACT
+    FeatureTable[Normed]                                            [optional]
   --i-thresh-file ARTIFACT
     EnrichThresh                                                    [optional]
   --i-id-name-map ARTIFACT
@@ -71,89 +70,88 @@ Inputs:
 Parameters:
   --p-deconv-threshold INTEGER
                                                                     [required]
-  --p-mapfile-suffix TEXT
-                                                                    [required]
-  --p-outfile-suffix TEXT
-                                                                    [required]
+  --p-mapfile-suffix TEXT                                           [required]
+  --p-outfile-suffix TEXT                                           [required]
   --p-scoring-strategy TEXT
                                                         [default: 'summation']
   --p-infer-pairs-source / --p-no-infer-pairs-source
-                         Infer sample pairs from names. This option assumes
-                         names of replicates will be identical with the
-                         exception of a final string denoted with a '_'. For
-                         example, these names would be considered two
-                         replicates of the same sample: VW_100_1X_A and
-                         VW_100_1X_B                           [default: True]
+                          Infer sample pairs from names. This option assumes
+                          names of replicates will be identical with the
+                          exception of a final string denoted with a '_'. For
+                          example, these names would be considered two
+                          replicates of the same sample: VW_100_1X_A and
+                          VW_100_1X_B                          [default: True]
   --p-flexible-reps-source / --p-no-flexible-reps-source
-                         will infer the number of replicates for each sample
-                         based on sample names, and will not require any
-                         specific number of replicates for inclusion.
-                         Therefore, some samples may have a single replicate,
-                         some may have 2, 3, 4 etc. And all replicates of a
-                         given sample will be considered for determining
-                         enriched peptides.                   [default: False]
+                          Will infer the number of replicates for each sample
+                          based on sample names, and will not require any
+                          specific number of replicates for inclusion.
+                          Therefore, some samples may have a single replicate,
+                          some may have 2, 3, 4 etc. And all replicates of a
+                          given sample will be considered for determining
+                          enriched peptides.                  [default: False]
   --p-s-enrich-source / --p-no-s-enrich-source
-                         All samples will be processed individually as
-                         samples with only one replicate      [default: False]
+                          All samples will be processed individually as
+                          samples with only one replicate     [default: False]
   --m-user-defined-source-file METADATA
   --m-user-defined-source-column COLUMN  MetadataColumn[Categorical]
-                         Metadata file containing all sample names and their
-                         source groups. Used to create pairs tsv to run
-                         pepsirf enrich module.                     [optional]
-  --p-negative-id TEXT   Optional approach for identifying negative controls.
-                         Provide a unique string at the start of all negative
-                         control samples.                           [optional]
+                          Metadata file containing all sample names and their
+                          source groups. Used to create pairs tsv to run
+                          pepsirf enrich module.                    [optional]
+  --p-negative-id TEXT    Optional approach for identifying negative
+                          controls. Provide a unique string at the start of
+                          all negative control samples.             [optional]
   --p-negative-names TEXT...
-    List[Str]            Optional approach for identifying negative controls.
-                         Space-separated list of negative control sample
-                         names.                                     [optional]
-  --p-exact-z-thresh TEXT
-                         Individual Exact z score threshold separated by a
-                         comma for creation of threshold file to run pepsirf's
-                         enrich module (Ex: 6,10 or 30)             [optional]
+    List[Str]             Optional approach for identifying negative
+                          controls. Space-separated list of negative control
+                          sample names.                             [optional]
+  --p-exact-z-thresh TEXT Individual Exact z score threshold separated by a
+                          comma for creation of threshold file to run
+                          pepsirf's enrich module (Ex: 6,10 or 30)  [optional]
   --p-exact-cs-thresh TEXT
-                         Individual Exact col-sum threshold separated by a
-                         comma for creation of threshold file to run pepsirf's
-                         enrich module (Ex: 6,10 or 30)        [default: '20']
+                          Individual Exact col-sum threshold separated by a
+                          comma for creation of threshold file to run
+                          pepsirf's enrich module (Ex: 6,10 or 30)
+                                                               [default: '20']
   --p-exact-zenrich-thresh TEXT...
-    List[Str]            List of exact z score thresholds either individual
-                         or combined. List MUST BE in descending order.
-                         (Example argument: '--p-exact-zenrich-thresh 25 10 3'
-                         or '--p-exact-zenrich-thresh 6,25 4,10 1,3')
+    List[Str]             List of exact z score thresholds either individual
+                          or combined. List MUST BE in descending order.
+                          (Example argument: '--p-exact-zenrich-thresh 25 10
+                          3' or '--p-exact-zenrich-thresh 6,25 4,10 1,3')
                                                                     [optional]
   --p-pepsirf-tsv-dir TEXT
-                         Provide a directory path. Must also provide
-                         tsv-base-str for output of tsv verison of qza files.
-                         The source_samples file and png boxplot outputs will
-                         always be put within this directory.  [default: './']
-  --p-tsv-base-str TEXT  The base name for the output tsv files excluding ay
-                         extensions, typcally the raw data filename (EX:
-                         --p-tsv-base-str raw-data). Must also provide
-                         pepsirf-tsv-dir, if pepsirf-tsv-dir provided without
-                         tsv-base-str, the default will be 'aps-output'.
+                          Provide a directory path. Must also provide
+                          tsv-base-str for output of tsv verison of qza files.
+                          The source_samples file and png boxplot outputs will
+                          always be put within this directory. [default: './']
+  --p-tsv-base-str TEXT   The base name for the output tsv files excluding ay
+                          extensions, typcally the raw data filename (EX:
+                          --p-tsv-base-str raw-data). Must also provide
+                          pepsirf-tsv-dir, if pepsirf-tsv-dir provided without
+                          tsv-base-str, the default will be 'aps-output'.
                                                                     [optional]
   --p-step-z-thresh INTEGER
-    Range(1, None)       Integar to increment z-score thresholds. [default: 5]
+    Range(1, None)        Integar to increment z-score thresholds.
+                                                                  [default: 5]
   --p-upper-z-thresh INTEGER
-    Range(2, None)       Upper limit of z-score thresholds (non-inclusive).
+    Range(2, None)        Upper limit of z-score thresholds (non-inclusive).
                                                                  [default: 30]
   --p-lower-z-thresh INTEGER
-    Range(1, None)       Lower limit of z-score thresholds (inclusive).
+    Range(1, None)        Lower limit of z-score thresholds (inclusive).
                                                                   [default: 5]
   --p-raw-constraint INTEGER
-    Range(0, None)       The minimum total raw count across all peptides for
-                         a sample to be included in the analysis.This provides
-                         a way to impose a minimum read count for a sample to
-                         be evaluated.                       [default: 300000]
-  --p-hdi PROPORTION     Alternative approach for discarding outliers prior
-    Range(0.0, 1.0)      to calculating mean and stdev. If provided, this
-                         argument will override --trim, which trims evenly
-                         from both sides of the distribution. For --hdi, the
-                         user should provide the high density interval to be
-                         used for calculation of mean and stdev. For example,
-                         '--hdi 0.95' would instruct the program to utilize
-                         the 95% highest density interval (from each bin) for
-                         these calculations.                   [default: 0.95]
+    Range(0, None)        The minimum total raw count across all peptides for
+                          a sample to be included in the analysis. This
+                          provides a way to impose a minimum read count for a
+                          sample to be evaluated.            [default: 300000]
+  --p-hdi PROPORTION      Alternative approach for discarding outliers prior
+    Range(0.0, 1.0)       to calculating mean and stdev. If provided, this
+                          argument will override --trim, which trims evenly
+                          from both sides of the distribution. For --hdi, the
+                          user should provide the high density interval to be
+                          used for calculation of mean and stdev. For example,
+                          '--hdi 0.95' would instruct the program to utilize
+                          the 95% highest density interval (from each bin) for
+                          these calculations.                  [default: 0.95]
   --p-score-filtering / --p-no-score-filtering
                                                               [default: False]
   --p-score-tie-threshold NUMBER
@@ -164,60 +162,81 @@ Parameters:
                                                               [default: False]
   --p-remove-file-types / --p-no-remove-file-types
                                                               [default: False]
-  --p-pepsirf-binary TEXT
-                         The binary to call pepsirf on your system.
+  --p-pepsirf-binary TEXT The binary to call pepsirf on your system.
                                                           [default: 'pepsirf']
 Outputs:
-  --o-map-dir ARTIFACT PeptideAssignmentMap
+  --o-dir-out ARTIFACT
+    DeconvBatch                                                     [required]
+  --o-score-per-round ARTIFACT
+    ScorePerRound                                                   [required]
+  --o-map-dir ARTIFACT
+    PeptideAssignmentMap                                            [required]
+  --o-col-sum ARTIFACT
+    FeatureTable[Normed]                                            [required]
+  --o-diff ARTIFACT FeatureTable[NormedDifference]
+                                                                    [required]
+  --o-diff-ratio ARTIFACT FeatureTable[NormedDiffRatio]
+                                                                    [required]
+  --o-zscore ARTIFACT
+    FeatureTable[Zscore]                                            [required]
+  --o-zscore-nan ARTIFACT
+    ZscoreNan                                                       [required]
+  --o-sample-names ARTIFACT
+    InfoSNPN                                                        [required]
+  --o-read-counts ARTIFACT
+    InfoSumOfProbes                                                 [required]
+  --o-rc-boxplot VISUALIZATION
+                                                                    [required]
+  --o-enrich ARTIFACT
+    PairwiseEnrichment                                              [required]
+  --o-enrich-count-boxplot VISUALIZATION
+                                                                    [required]
+  --o-zscore-scatter VISUALIZATION
                                                                     [required]
   --o-colsum-scatter VISUALIZATION
                                                                     [required]
-  --o-dir-out ARTIFACT
-    DeconvBatch                                                     [required]
-  --o-col-sum ARTIFACT FeatureTable[Normed]
-                                                                    [required]
-  --o-zscore-nan ARTIFACT
-    ZscoreNan                                                       [required]
-  --o-read-counts ARTIFACT
-    InfoSumOfProbes                                                 [required]
-  --o-enrich ARTIFACT
-    PairwiseEnrichment                                              [required]
-  --o-diff-ratio ARTIFACT FeatureTable[NormedDiffRatio]
-                                                                    [required]
-  --o-enrich-count-boxplot VISUALIZATION
-                                                                    [required]
-  --o-rc-boxplot VISUALIZATION
-                                                                    [required]
-  --o-score-per-round ARTIFACT
-    ScorePerRound                                                   [required]
-  --o-zscore ARTIFACT FeatureTable[Zscore]
-                                                                    [required]
-  --o-sample-names ARTIFACT
-    InfoSNPN                                                        [required]
-  --o-zscore-scatter VISUALIZATION
-                                                                    [required]
   --o-zenrich-scatter VISUALIZATION
                                                                     [required]
-  --o-diff ARTIFACT FeatureTable[NormedDifference]
-                                                                    [required]
 Miscellaneous:
-  --output-dir PATH      Output unspecified results to a directory
-  --verbose / --quiet    Display verbose output to stdout and/or stderr
-                         during execution of this action. Or silence output if
-                         execution is successful (silence is golden).
-  --example-data PATH    Write example data and exit.
-  --citations            Show citations and exit.
-  --help                 Show this message and exit.</pre>
+  --output-dir PATH       Output unspecified results to a directory
+  --verbose / --quiet     Display verbose output to stdout and/or stderr
+                          during execution of this action. Or silence output
+                          if execution is successful (silence is golden).
+  --recycle-pool TEXT     Use a cache pool for pipeline resumption. QIIME 2
+                          will cache your results in this pool for reuse by
+                          future invocations. These pool are retained until
+                          deleted by the user. If not provided, QIIME 2 will
+                          create a pool which is automatically reused by
+                          invocations of the same action and removed if the
+                          action is successful. Note: these pools are local to
+                          the cache you are using.
+  --no-recycle            Do not recycle results from a previous failed
+                          pipeline run or save the results from this run for
+                          future recycling.
+  --parallel              Execute your action in parallel. This flag will use
+                          your default parallel config.
+  --parallel-config FILE  Execute your action in parallel using a config at
+                          the indicated path.
+  --use-cache DIRECTORY   Specify the cache to be used for the intermediate
+                          work of this pipeline. If not provided, the default
+                          cache under $TMP/qiime2/<uname> will be used.
+                          IMPORTANT FOR HPC USERS: If you are on an HPC system
+                          and are using parallel execution it is important to
+                          set this to a location that is globally accessible
+                          to all nodes in the cluster.
+  --example-data PATH     Write example data and exit.
+  --citations             Show citations and exit.
+  --help                  Show this message and exit.</pre>
     </div>
     <div id="api" class="tab-pane fade">
-    <h4>Import:</h4><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>from qiime2.plugins.autopepsirf.pipelines import diffEnrich_deconv
+    <h4>Import:</h4><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>from<span class="w"> </span>qiime2.plugins.autopepsirf.pipelines<span class="w"> </span>import<span class="w"> </span>diffEnrich_deconv
 </pre></div>
 </div>
     <h4>Docstring:</h4>
       <pre>diffEnrich deconv Pepsirf Pipeline
 
 Uses the diff normalization from pepsirf to generate z scores that are used
-to determine enriched peptidesand **ADD DECONV DESCRIPTION**
+to determine enriched peptides and **ADD DECONV DESCRIPTION**
 
 Parameters
 ----------
@@ -234,7 +253,7 @@ infer_pairs_source : Bool, optional
     '_'. For example, these names would be considered two replicates of the
     same sample: VW_100_1X_A and VW_100_1X_B
 flexible_reps_source : Bool, optional
-    will infer the number of replicates for each sample based on sample
+    Will infer the number of replicates for each sample based on sample
     names, and will not require any specific number of replicates for
     inclusion. Therefore, some samples may have a single replicate, some
     may have 2, 3, 4 etc. And all replicates of a given sample will be
@@ -280,7 +299,7 @@ lower_z_thresh : Int % Range(1, None), optional
     Lower limit of z-score thresholds (inclusive).
 raw_constraint : Int % Range(0, None), optional
     The minimum total raw count across all peptides for a sample to be
-    included in the analysis.This provides a way to impose a minimum read
+    included in the analysis. This provides a way to impose a minimum read
     count for a sample to be evaluated.
 hdi : Float % Range(0.0, 1.0), optional
     Alternative approach for discarding outliers prior to calculating mean
@@ -301,22 +320,22 @@ pepsirf_binary : Str, optional
 
 Returns
 -------
-enrich_count_boxplot : Visualization
+dir_out : DeconvBatch
+score_per_round : ScorePerRound
+map_dir : PeptideAssignmentMap
+col_sum : FeatureTable[Normed]
+diff : FeatureTable[NormedDifference]
 diff_ratio : FeatureTable[NormedDiffRatio]
 zscore : FeatureTable[Zscore]
 zscore_nan : ZscoreNan
+sample_names : InfoSNPN
+read_counts : InfoSumOfProbes
 rc_boxplot : Visualization
 enrich : PairwiseEnrichment
-read_counts : InfoSumOfProbes
-colsum_scatter : Visualization
-sample_names : InfoSNPN
-score_per_round : ScorePerRound
+enrich_count_boxplot : Visualization
 zscore_scatter : Visualization
-zenrich_scatter : Visualization
-diff : FeatureTable[NormedDifference]
-map_dir : PeptideAssignmentMap
-col_sum : FeatureTable[Normed]
-dir_out : DeconvBatch</pre>
+colsum_scatter : Visualization
+zenrich_scatter : Visualization</pre>
     </div>
   </div>
 </div></section>
@@ -339,6 +358,7 @@ dir_out : DeconvBatch</pre>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Pepsirf_Plugins/">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../export-imports/">QIIME 2 Import and Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tsv-pipelines/">TSV/Dir Pipelines</a></li>
 </ul>
 
 <div id="searchbox" style="display: none" role="search">
@@ -350,14 +370,14 @@ dir_out : DeconvBatch</pre>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
       </div>
       
     </div>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Ladner Labs.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.
     </div>
   </div>
   <script src="../../../_static/clipboard-driver.js"></script>

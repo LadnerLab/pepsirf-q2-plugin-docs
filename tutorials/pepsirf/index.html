@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>q2-pepsirf Tutorials - Multiple Interface Edition &#8212; Q2 Pepsirf Plugin Docs  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/external-links.js"></script>
-    <script src="../../_static/usage.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css?v=435814a1" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/external-links.js?v=a7dd342f"></script>
+    <script src="../../_static/usage.js?v=858a412f"></script>
     <link rel="canonical" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/tutorials/pepsirf.html" />
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
     <link rel="next" title="Available plugins" href="../../plugins/" />
-    <link rel="prev" title="q2-ps-plot Tutorials - Multiple Interface Edition" href="../ps-plot/" />
+    <link rel="prev" title="Ps-qc Tutorials - CLI Edition (more to come)" href="../ps-qc/" />
   <script src="../../_static/bootstrap.min.js"></script>
   <script src="../../_static/clipboard.min.js"></script>
   <link rel="icon" href="../../_static/favicon.ico" type="image/png" />
@@ -41,18 +40,18 @@
       <div id="body" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 main pull-right">
         
   <section id="q2-pepsirf-tutorials-multiple-interface-edition">
-<h1>q2-pepsirf Tutorials - Multiple Interface Edition<a class="headerlink" href="#q2-pepsirf-tutorials-multiple-interface-edition" title="Permalink to this headline">¶</a></h1>
+<h1>q2-pepsirf Tutorials - Multiple Interface Edition<a class="headerlink" href="#q2-pepsirf-tutorials-multiple-interface-edition" title="Permalink to this heading">¶</a></h1>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>This guide is a preview of how you can use some of q2-pepsirf’s individual modules.</p>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>In this tutorial you’ll use QIIME 2 to perform an analysis of some data.</p>
-<p>Typical Run Time: 4 Minutes</p>
+<p>Typical Run Time: TBD Minute</p>
 </section>
 <section id="demux">
-<h2>Demux<a class="headerlink" href="#demux" title="Permalink to this headline">¶</a></h2>
+<h2>Demux<a class="headerlink" href="#demux" title="Permalink to this heading">¶</a></h2>
 <script id="interfaces" type="application/json">{"default": "cli-usage", "available": {"python3-usage": ["Python 3 API (qiime2)", true], "cli-usage": ["Command Line (q2cli)", true], "galaxy-usage": ["Galaxy (q2galaxy)", true], "raw-usage": ["View Source (qiime2.sdk)", false]}, "classes": [".python3-usage", ".cli-usage", ".galaxy-usage", ".raw-usage"]}</script><span class="usage-selector"></span><p>Here we will test q2-pepsirf’s demux module by running the following command:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -247,7 +246,7 @@
     <span class="n">library</span><span class="o">=</span><span class="n">library</span><span class="p">,</span>
     <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span>
     <span class="n">samplelist</span><span class="o">=</span><span class="n">sample_list</span><span class="p">,</span>
-    <span class="n">pepsirf_binary</span><span class="o">=</span><span class="s1">&#39;pepsirf&#39;</span><span class="p">,</span>
+    <span class="n">pepsirf_binary</span><span class="o">=</span><span class="s1">&#39;/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf&#39;</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -262,12 +261,12 @@
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">library</span> <span class="n">library</span><span class="o">.</span><span class="n">qza</span> \
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">index</span> <span class="n">index</span><span class="o">.</span><span class="n">qza</span> \
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">samplelist</span> <span class="n">sample</span><span class="o">-</span><span class="nb">list</span><span class="o">.</span><span class="n">qza</span> \
-  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">pepsirf</span><span class="o">-</span><span class="n">binary</span> <span class="n">pepsirf</span> \
+  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">pepsirf</span><span class="o">-</span><span class="n">binary</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">runner</span><span class="o">/</span><span class="n">work</span><span class="o">/</span><span class="n">pepsirf</span><span class="o">-</span><span class="n">q2</span><span class="o">-</span><span class="n">plugin</span><span class="o">-</span><span class="n">docs</span><span class="o">/</span><span class="n">pepsirf</span><span class="o">-</span><span class="n">q2</span><span class="o">-</span><span class="n">plugin</span><span class="o">-</span><span class="n">docs</span><span class="o">/</span><span class="n">pepsirf</span> \
   <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">raw</span><span class="o">-</span><span class="n">counts</span><span class="o">-</span><span class="n">output</span> <span class="n">demux</span><span class="o">-</span><span class="n">diagnostic</span><span class="o">-</span><span class="n">output</span><span class="o">.</span><span class="n">qza</span> \
   <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">diagnostic</span><span class="o">-</span><span class="n">output</span> <span class="n">demux</span><span class="o">-</span><span class="mi">2</span><span class="n">index</span><span class="o">-</span><span class="n">fif</span><span class="o">-</span><span class="n">output</span><span class="o">.</span><span class="n">qza</span>
 </pre></div>
 </div>
-<div class="raw-usage highlight-default notranslate" id="usage-9"><div class="highlight"><pre><span></span><span class="n">rawData</span><span class="p">,</span> <span class="n">diagnosticData</span><span class="p">,</span>  <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">action</span><span class="p">(</span>
+<div class="raw-usage highlight-default notranslate" id="usage-9"><div class="highlight"><pre><span></span><span class="n">rawData</span><span class="p">,</span> <span class="n">diagnosticData</span><span class="p">,</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">action</span><span class="p">(</span>
 <span class="n">use</span><span class="o">.</span><span class="n">UsageAction</span><span class="p">(</span><span class="n">plugin_id</span><span class="o">=</span><span class="s1">&#39;pepsirf&#39;</span><span class="p">,</span> <span class="n">action_id</span><span class="o">=</span><span class="s1">&#39;demux&#39;</span><span class="p">),</span>
 <span class="n">use</span><span class="o">.</span><span class="n">UsageInputs</span><span class="p">(</span>
      <span class="n">input_r1</span> <span class="o">=</span> <span class="n">input_r1</span><span class="p">,</span>
@@ -280,7 +279,7 @@
      <span class="n">library</span> <span class="o">=</span> <span class="n">library</span><span class="p">,</span>
      <span class="n">index</span> <span class="o">=</span>  <span class="n">index</span><span class="p">,</span>
      <span class="n">samplelist</span> <span class="o">=</span> <span class="n">samplelist</span><span class="p">,</span>
-     <span class="n">pepsirf_binary</span> <span class="o">=</span> <span class="s2">&quot;pepsirf&quot;</span>
+     <span class="n">pepsirf_binary</span> <span class="o">=</span> <span class="s2">&quot;/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf&quot;</span>
 <span class="p">),</span>
 <span class="n">use</span><span class="o">.</span><span class="n">UsageOutputNames</span><span class="p">(</span>
      <span class="n">raw_counts_output</span> <span class="o">=</span> <span class="s2">&quot;demux_diagnostic_output&quot;</span><span class="p">,</span>
@@ -304,7 +303,7 @@
 <li><p>Set <em>“read_per_loop”</em> to <code class="docutils literal notranslate"><span class="pre">200000</span></code></p></li>
 <li><p>Leave <em>“num_threads”</em> as its default value of <code class="docutils literal notranslate"><span class="pre">2</span></code></p></li>
 <li><p>Leave <em>“phred_base”</em> as its default value of <code class="docutils literal notranslate"><span class="pre">33</span></code></p></li>
-<li><p>Leave <em>“pepsirf_binary”</em> as its default value of <code class="docutils literal notranslate"><span class="pre">pepsirf</span></code></p></li>
+<li><p>Set <em>“pepsirf_binary”</em> to <code class="docutils literal notranslate"><span class="pre">/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf</span></code></p></li>
 </ol>
 </li>
 <li><p>Press the <code class="docutils literal notranslate"><span class="pre">Execute</span></code> button.</p></li>
@@ -312,10 +311,6 @@
 </dd>
 <dt>Once completed, for each new entry in your history, use the <code class="docutils literal notranslate"><span class="pre">Edit</span></code> button to set the name as follows:</dt><dd><p>(Renaming is optional, but it will make any subsequent steps easier to complete.)</p>
 <table class="docutils align-left">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>History Name</p></th>
 <th class="head"><p><em>“Name”</em> to set (be sure to press <code class="docutils literal notranslate"><span class="pre">Save</span></code>)</p></th>
@@ -341,7 +336,7 @@
 </div>
 </section>
 <section id="deconv-batch">
-<h2>Deconv-Batch<a class="headerlink" href="#deconv-batch" title="Permalink to this headline">¶</a></h2>
+<h2>Deconv-Batch<a class="headerlink" href="#deconv-batch" title="Permalink to this heading">¶</a></h2>
 <span class="usage-selector"></span><p>Here we will test q2-pepsirf’s deconv-batch module by running the following commands:</p>
 <div class="python3-usage highlight-default notranslate" id="usage-10"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/enriched-dir.qza&#39;</span>
 <span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;enriched-dir.qza&#39;</span>
@@ -439,8 +434,9 @@
 <p class="admonition-title">Note</p>
 <p>Some of these files will also be used for deconv-singular.</p>
 </div>
-<div class="python3-usage highlight-default notranslate" id="usage-15"><div class="highlight"><pre><span></span><span class="n">deconv_output</span><span class="p">,</span> <span class="n">score_per_round</span><span class="p">,</span> <span class="n">peptide_assignment_map</span> <span class="o">=</span> <span class="n">pepsirf_actions</span><span class="o">.</span><span class="n">deconv_batch</span><span class="p">(</span>
+<div class="python3-usage highlight-default notranslate" id="usage-15"><div class="highlight"><pre><span></span><span class="n">deconv</span><span class="p">,</span> <span class="n">score_per_round</span><span class="p">,</span> <span class="n">peptide_assignment_map</span> <span class="o">=</span> <span class="n">pepsirf_actions</span><span class="o">.</span><span class="n">deconv_batch</span><span class="p">(</span>
     <span class="n">enriched_dir</span><span class="o">=</span><span class="n">enriched_dir</span><span class="p">,</span>
+    <span class="n">enriched_file_ending</span><span class="o">=</span><span class="s1">&#39;_paired.txt&#39;</span><span class="p">,</span>
     <span class="n">score_filtering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">threshold</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
     <span class="n">score_tie_threshold</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span>
@@ -450,12 +446,13 @@
     <span class="n">mapfile_suffix</span><span class="o">=</span><span class="s1">&#39;_ss40.map&#39;</span><span class="p">,</span>
     <span class="n">linked</span><span class="o">=</span><span class="n">linked</span><span class="p">,</span>
     <span class="n">id_name_map</span><span class="o">=</span><span class="n">id_name_map</span><span class="p">,</span>
-    <span class="n">pepsirf_binary</span><span class="o">=</span><span class="s1">&#39;pepsirf&#39;</span><span class="p">,</span>
+    <span class="n">pepsirf_binary</span><span class="o">=</span><span class="s1">&#39;/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf&#39;</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 <div class="cli-usage highlight-default notranslate" id="usage-16"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">pepsirf</span> <span class="n">deconv</span><span class="o">-</span><span class="n">batch</span> \
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">enriched</span><span class="o">-</span><span class="nb">dir</span> <span class="n">enriched</span><span class="o">-</span><span class="nb">dir</span><span class="o">.</span><span class="n">qza</span> \
+  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">enriched</span><span class="o">-</span><span class="n">file</span><span class="o">-</span><span class="n">ending</span> <span class="n">_paired</span><span class="o">.</span><span class="n">txt</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">score</span><span class="o">-</span><span class="n">filtering</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">threshold</span> <span class="mi">40</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">score</span><span class="o">-</span><span class="n">tie</span><span class="o">-</span><span class="n">threshold</span> <span class="mf">0.95</span> \
@@ -465,8 +462,8 @@
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">mapfile</span><span class="o">-</span><span class="n">suffix</span> <span class="n">_ss40</span><span class="o">.</span><span class="n">map</span> \
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">linked</span> <span class="n">linked</span><span class="o">.</span><span class="n">qza</span> \
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="nb">id</span><span class="o">-</span><span class="n">name</span><span class="o">-</span><span class="nb">map</span> <span class="nb">id</span><span class="o">-</span><span class="n">name</span><span class="o">-</span><span class="nb">map</span><span class="o">.</span><span class="n">qza</span> \
-  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">pepsirf</span><span class="o">-</span><span class="n">binary</span> <span class="n">pepsirf</span> \
-  <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">deconv</span><span class="o">-</span><span class="n">output</span> <span class="n">deconv</span><span class="o">-</span><span class="n">output</span><span class="o">.</span><span class="n">qza</span> \
+  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">pepsirf</span><span class="o">-</span><span class="n">binary</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">runner</span><span class="o">/</span><span class="n">work</span><span class="o">/</span><span class="n">pepsirf</span><span class="o">-</span><span class="n">q2</span><span class="o">-</span><span class="n">plugin</span><span class="o">-</span><span class="n">docs</span><span class="o">/</span><span class="n">pepsirf</span><span class="o">-</span><span class="n">q2</span><span class="o">-</span><span class="n">plugin</span><span class="o">-</span><span class="n">docs</span><span class="o">/</span><span class="n">pepsirf</span> \
+  <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">deconv</span><span class="o">-</span><span class="n">output</span> <span class="n">deconv</span><span class="o">.</span><span class="n">qza</span> \
   <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">score</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="nb">round</span> <span class="n">score</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="nb">round</span><span class="o">.</span><span class="n">qza</span> \
   <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">peptide</span><span class="o">-</span><span class="n">assignment</span><span class="o">-</span><span class="nb">map</span> <span class="n">peptide</span><span class="o">-</span><span class="n">assignment</span><span class="o">-</span><span class="nb">map</span><span class="o">.</span><span class="n">qza</span>
 </pre></div>
@@ -475,6 +472,7 @@
 <span class="n">use</span><span class="o">.</span><span class="n">UsageAction</span><span class="p">(</span><span class="n">plugin_id</span><span class="o">=</span><span class="s1">&#39;pepsirf&#39;</span><span class="p">,</span> <span class="n">action_id</span><span class="o">=</span><span class="s1">&#39;deconv_batch&#39;</span><span class="p">),</span>
 <span class="n">use</span><span class="o">.</span><span class="n">UsageInputs</span><span class="p">(</span>
      <span class="n">enriched_dir</span> <span class="o">=</span> <span class="n">enriched_dir</span><span class="p">,</span>
+     <span class="n">enriched_file_ending</span> <span class="o">=</span> <span class="s2">&quot;_paired.txt&quot;</span><span class="p">,</span>
      <span class="n">score_filtering</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
      <span class="n">threshold</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span>
      <span class="n">score_tie_threshold</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">,</span>
@@ -484,10 +482,10 @@
      <span class="n">mapfile_suffix</span> <span class="o">=</span> <span class="s2">&quot;_ss40.map&quot;</span><span class="p">,</span>
      <span class="n">linked</span> <span class="o">=</span> <span class="n">linked</span><span class="p">,</span>
      <span class="n">id_name_map</span> <span class="o">=</span> <span class="n">id_name_map</span><span class="p">,</span>
-     <span class="n">pepsirf_binary</span> <span class="o">=</span> <span class="s2">&quot;pepsirf&quot;</span>
+     <span class="n">pepsirf_binary</span> <span class="o">=</span> <span class="s2">&quot;/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf&quot;</span>
 <span class="p">),</span>
 <span class="n">use</span><span class="o">.</span><span class="n">UsageOutputNames</span><span class="p">(</span>
-     <span class="n">deconv_output</span> <span class="o">=</span> <span class="s2">&quot;deconv_output&quot;</span><span class="p">,</span>
+     <span class="n">deconv_output</span> <span class="o">=</span> <span class="s2">&quot;deconv&quot;</span><span class="p">,</span>
      <span class="n">score_per_round</span> <span class="o">=</span> <span class="s2">&quot;score_per_round&quot;</span><span class="p">,</span>
      <span class="n">peptide_assignment_map</span> <span class="o">=</span> <span class="s2">&quot;peptide_assignment_map&quot;</span>
 <span class="p">)</span>
@@ -495,7 +493,7 @@
 </pre></div>
 </div>
 <div class="galaxy-usage compound" id="usage-17">
-<dl class="simple">
+<dl>
 <dt>Using the <code class="docutils literal notranslate"><span class="pre">qiime2</span> <span class="pre">pepsirf</span> <span class="pre">deconv-batch</span></code> tool:</dt><dd><ol class="arabic simple">
 <li><p>Set <em>“enriched_dir”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">enriched-dir.qza</span></code></p></li>
 <li><p>Set <em>“linked”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">linked.qza</span></code></p></li>
@@ -505,28 +503,49 @@
 <li><p>Expand the <code class="docutils literal notranslate"><span class="pre">additional</span> <span class="pre">options</span></code> section</p>
 <ol class="arabic simple">
 <li><p>Set <em>“id_name_map”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">id-name-map.qza</span></code></p></li>
+<li><p>Set <em>“enriched_file_ending”</em> to <code class="docutils literal notranslate"><span class="pre">_paired.txt</span></code></p></li>
 <li><p>Set <em>“score_filtering”</em> to <code class="docutils literal notranslate"><span class="pre">Yes</span></code></p></li>
 <li><p>Set <em>“score_tie_threshold”</em> to <code class="docutils literal notranslate"><span class="pre">0.95</span></code></p></li>
 <li><p>Set <em>“score_overlap_threshold”</em> to <code class="docutils literal notranslate"><span class="pre">0.7</span></code></p></li>
 <li><p>Set <em>“remove_file_types”</em> to <code class="docutils literal notranslate"><span class="pre">Yes</span></code></p></li>
-<li><p>Leave <em>“pepsirf_binary”</em> as its default value of <code class="docutils literal notranslate"><span class="pre">pepsirf</span></code></p></li>
+<li><p>Set <em>“pepsirf_binary”</em> to <code class="docutils literal notranslate"><span class="pre">/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf</span></code></p></li>
 </ol>
 </li>
 <li><p>Press the <code class="docutils literal notranslate"><span class="pre">Execute</span></code> button.</p></li>
 </ol>
 </dd>
+<dt>Once completed, for each new entry in your history, use the <code class="docutils literal notranslate"><span class="pre">Edit</span></code> button to set the name as follows:</dt><dd><p>(Renaming is optional, but it will make any subsequent steps easier to complete.)</p>
+<table class="docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>History Name</p></th>
+<th class="head"><p><em>“Name”</em> to set (be sure to press <code class="docutils literal notranslate"><span class="pre">Save</span></code>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">pepsirf</span> <span class="pre">deconv-batch</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">deconv_output.qza</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">deconv.qza</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">pepsirf</span> <span class="pre">deconv-batch</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">score_per_round.qza</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">score-per-round.qza</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">pepsirf</span> <span class="pre">deconv-batch</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">peptide_assignment_map.qza</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">peptide-assignment-map.qza</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</dd>
 </dl>
 </div>
 <div class="exec-usage compound" id="usage-18">
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">deconv-output.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Fdeconv-output.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/deconv-output.qza"><span>download</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">deconv.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Fdeconv.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/deconv.qza"><span>download</span></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">score-per-round.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Fscore-per-round.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/score-per-round.qza"><span>download</span></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">peptide-assignment-map.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Fpeptide-assignment-map.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/peptide-assignment-map.qza"><span>download</span></a></p></li>
 </ul>
 </div>
 </section>
 <section id="deconv-singular">
-<h2>Deconv-Singular<a class="headerlink" href="#deconv-singular" title="Permalink to this headline">¶</a></h2>
+<h2>Deconv-Singular<a class="headerlink" href="#deconv-singular" title="Permalink to this heading">¶</a></h2>
 <span class="usage-selector"></span><p>Here we will test q2-pepsirf’s deconv-singular module by running the following commands:</p>
 <div class="python3-usage highlight-default notranslate" id="usage-20"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/enriched-peptides.qza&#39;</span>
 <span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;enriched-peptides.qza&#39;</span>
@@ -568,25 +587,27 @@
 </div>
 <div class="python3-usage highlight-default notranslate" id="usage-25"><div class="highlight"><pre><span></span><span class="n">deconv_output_singular</span><span class="p">,</span> <span class="n">score_per_round_singular</span> <span class="o">=</span> <span class="n">pepsirf_actions</span><span class="o">.</span><span class="n">deconv_singular</span><span class="p">(</span>
     <span class="n">enriched</span><span class="o">=</span><span class="n">enriched_peptides</span><span class="p">,</span>
+    <span class="n">enriched_file_ending</span><span class="o">=</span><span class="s1">&#39;_paired.txt&#39;</span><span class="p">,</span>
     <span class="n">score_filtering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">threshold</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
     <span class="n">score_tie_threshold</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span>
     <span class="n">score_overlap_threshold</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
     <span class="n">linked</span><span class="o">=</span><span class="n">linked</span><span class="p">,</span>
     <span class="n">id_name_map</span><span class="o">=</span><span class="n">id_name_map</span><span class="p">,</span>
-    <span class="n">pepsirf_binary</span><span class="o">=</span><span class="s1">&#39;pepsirf&#39;</span><span class="p">,</span>
+    <span class="n">pepsirf_binary</span><span class="o">=</span><span class="s1">&#39;/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf&#39;</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 <div class="cli-usage highlight-default notranslate" id="usage-26"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">pepsirf</span> <span class="n">deconv</span><span class="o">-</span><span class="n">singular</span> \
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">enriched</span> <span class="n">enriched</span><span class="o">-</span><span class="n">peptides</span><span class="o">.</span><span class="n">qza</span> \
+  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">enriched</span><span class="o">-</span><span class="n">file</span><span class="o">-</span><span class="n">ending</span> <span class="n">_paired</span><span class="o">.</span><span class="n">txt</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">score</span><span class="o">-</span><span class="n">filtering</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">threshold</span> <span class="mi">40</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">score</span><span class="o">-</span><span class="n">tie</span><span class="o">-</span><span class="n">threshold</span> <span class="mf">0.95</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">score</span><span class="o">-</span><span class="n">overlap</span><span class="o">-</span><span class="n">threshold</span> <span class="mf">0.7</span> \
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">linked</span> <span class="n">linked</span><span class="o">.</span><span class="n">qza</span> \
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="nb">id</span><span class="o">-</span><span class="n">name</span><span class="o">-</span><span class="nb">map</span> <span class="nb">id</span><span class="o">-</span><span class="n">name</span><span class="o">-</span><span class="nb">map</span><span class="o">.</span><span class="n">qza</span> \
-  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">pepsirf</span><span class="o">-</span><span class="n">binary</span> <span class="n">pepsirf</span> \
+  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">pepsirf</span><span class="o">-</span><span class="n">binary</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">runner</span><span class="o">/</span><span class="n">work</span><span class="o">/</span><span class="n">pepsirf</span><span class="o">-</span><span class="n">q2</span><span class="o">-</span><span class="n">plugin</span><span class="o">-</span><span class="n">docs</span><span class="o">/</span><span class="n">pepsirf</span><span class="o">-</span><span class="n">q2</span><span class="o">-</span><span class="n">plugin</span><span class="o">-</span><span class="n">docs</span><span class="o">/</span><span class="n">pepsirf</span> \
   <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">deconv</span><span class="o">-</span><span class="n">output</span> <span class="n">deconv</span><span class="o">-</span><span class="n">output</span><span class="o">-</span><span class="n">singular</span><span class="o">.</span><span class="n">qza</span> \
   <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">score</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="nb">round</span> <span class="n">score</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="nb">round</span><span class="o">-</span><span class="n">singular</span><span class="o">.</span><span class="n">qza</span>
 </pre></div>
@@ -595,13 +616,14 @@
 <span class="n">use</span><span class="o">.</span><span class="n">UsageAction</span><span class="p">(</span><span class="n">plugin_id</span><span class="o">=</span><span class="s1">&#39;pepsirf&#39;</span><span class="p">,</span> <span class="n">action_id</span><span class="o">=</span><span class="s1">&#39;deconv_singular&#39;</span><span class="p">),</span>
 <span class="n">use</span><span class="o">.</span><span class="n">UsageInputs</span><span class="p">(</span>
      <span class="n">enriched</span> <span class="o">=</span> <span class="n">enriched_peptides</span><span class="p">,</span>
+     <span class="n">enriched_file_ending</span> <span class="o">=</span> <span class="s2">&quot;_paired.txt&quot;</span><span class="p">,</span>
      <span class="n">score_filtering</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
      <span class="n">threshold</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span>
      <span class="n">score_tie_threshold</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">,</span>
      <span class="n">score_overlap_threshold</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span>
      <span class="n">linked</span> <span class="o">=</span> <span class="n">linked</span><span class="p">,</span>
      <span class="n">id_name_map</span> <span class="o">=</span> <span class="n">id_name_map</span><span class="p">,</span>
-     <span class="n">pepsirf_binary</span> <span class="o">=</span> <span class="s2">&quot;pepsirf&quot;</span>
+     <span class="n">pepsirf_binary</span> <span class="o">=</span> <span class="s2">&quot;/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf&quot;</span>
 <span class="p">),</span>
 <span class="n">use</span><span class="o">.</span><span class="n">UsageOutputNames</span><span class="p">(</span>
      <span class="n">deconv_output</span> <span class="o">=</span> <span class="s2">&quot;deconv_output_singular&quot;</span><span class="p">,</span>
@@ -619,10 +641,11 @@
 <li><p>Expand the <code class="docutils literal notranslate"><span class="pre">additional</span> <span class="pre">options</span></code> section</p>
 <ol class="arabic simple">
 <li><p>Set <em>“id_name_map”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">id-name-map.qza</span></code></p></li>
+<li><p>Set <em>“enriched_file_ending”</em> to <code class="docutils literal notranslate"><span class="pre">_paired.txt</span></code></p></li>
 <li><p>Set <em>“score_filtering”</em> to <code class="docutils literal notranslate"><span class="pre">Yes</span></code></p></li>
 <li><p>Set <em>“score_tie_threshold”</em> to <code class="docutils literal notranslate"><span class="pre">0.95</span></code></p></li>
 <li><p>Set <em>“score_overlap_threshold”</em> to <code class="docutils literal notranslate"><span class="pre">0.7</span></code></p></li>
-<li><p>Leave <em>“pepsirf_binary”</em> as its default value of <code class="docutils literal notranslate"><span class="pre">pepsirf</span></code></p></li>
+<li><p>Set <em>“pepsirf_binary”</em> to <code class="docutils literal notranslate"><span class="pre">/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf</span></code></p></li>
 </ol>
 </li>
 <li><p>Press the <code class="docutils literal notranslate"><span class="pre">Execute</span></code> button.</p></li>
@@ -630,10 +653,6 @@
 </dd>
 <dt>Once completed, for each new entry in your history, use the <code class="docutils literal notranslate"><span class="pre">Edit</span></code> button to set the name as follows:</dt><dd><p>(Renaming is optional, but it will make any subsequent steps easier to complete.)</p>
 <table class="docutils align-left">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>History Name</p></th>
 <th class="head"><p><em>“Name”</em> to set (be sure to press <code class="docutils literal notranslate"><span class="pre">Save</span></code>)</p></th>
@@ -671,7 +690,8 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../">Tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../pepsirf-tutorial/">DiffEnrich Analysis Tutorial - Multiple Interface Edition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ps-plot/">q2-ps-plot Tutorials - Multiple Interface Edition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ps-plot/">Ps-plot Tutorials - Multiple Interface Edition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ps-qc/">Ps-qc Tutorials - CLI Edition (more to come)</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">q2-pepsirf Tutorials - Multiple Interface Edition</a></li>
 </ul>
 </li>
@@ -690,14 +710,14 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
       </div>
       
     </div>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Ladner Labs.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.
     </div>
   </div>
   <script src="../../_static/clipboard-driver.js"></script>

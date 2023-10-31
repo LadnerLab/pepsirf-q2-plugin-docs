@@ -15,9 +15,9 @@ demux: pepsirf demux module
          <h4>Docstring:</h4>
          <pre>Usage: qiime pepsirf demux [OPTIONS]
 
-     takes the following parameters and outputs counts for each
-     referencesequence (i.e. probe/peptide) for each sample with pepsirf's
-     demux module (MUST precompile pepsirf's develop branch to run this module)
+     takes the following parameters and outputs counts for each reference
+     sequence (i.e. probe/peptide) for each sample with pepsirf's demux module
+     (MUST precompile pepsirf's develop branch to run this module)
 
    Inputs:
      --i-input-r1 ARTIFACT   Fastq-formatted file containing reads with DNA
@@ -166,9 +166,9 @@ demux: pepsirf demux module
        <h4>Docstring:</h4>
          <pre>pepsirf demux module
 
-   takes the following parameters and outputs counts for each
-   referencesequence (i.e. probe/peptide) for each sample with pepsirf's demux
-   module (MUST precompile pepsirf's develop branch to run this module)
+   takes the following parameters and outputs counts for each reference
+   sequence (i.e. probe/peptide) for each sample with pepsirf's demux module
+   (MUST precompile pepsirf's develop branch to run this module)
 
    Parameters
    ----------

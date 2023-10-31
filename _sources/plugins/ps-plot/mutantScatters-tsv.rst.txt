@@ -15,8 +15,8 @@ mutantScatters-tsv: Mutant Scatters
          <h4>Docstring:</h4>
          <pre>Usage: qiime ps-plot mutantScatters-tsv [OPTIONS]
 
-     Creates a scatterplot for mutant peptides with tsv filepaths instead of
-     QZA files
+     Creates a scatterplot for mutant peptides with tsv filepaths instead of QZA
+     files
 
    Parameters:
      --m-source-file METADATA
@@ -31,9 +31,9 @@ mutantScatters-tsv: Mutant Scatters
                              counts. Fist column header must be 'Sequence Name'
                              as produced by pepsirf.                   [required]
      --p-reference-file-filepath TEXT
-                             A file containing the reference peptide/probe along
-                             with the peptide/probe sequence. Must start with
-                             'CodeName'.                               [optional]
+                             A file containing the reference peptide/ probe
+                             along with the peptide/probe sequence. Must start
+                             with 'CodeName'.                          [optional]
      --p-peptide-header TEXT The name of the header of the pepides.
                                                            [default: 'FeatureID']
      --p-reference-header TEXT
@@ -72,6 +72,28 @@ mutantScatters-tsv: Mutant Scatters
      --verbose / --quiet     Display verbose output to stdout and/or stderr
                              during execution of this action. Or silence output
                              if execution is successful (silence is golden).
+     --recycle-pool TEXT     Use a cache pool for pipeline resumption. QIIME 2
+                             will cache your results in this pool for reuse by
+                             future invocations. These pool are retained until
+                             deleted by the user. If not provided, QIIME 2 will
+                             create a pool which is automatically reused by
+                             invocations of the same action and removed if the
+                             action is successful. Note: these pools are local to
+                             the cache you are using.
+     --no-recycle            Do not recycle results from a previous failed
+                             pipeline run or save the results from this run for
+                             future recycling.
+     --parallel              Execute your action in parallel. This flag will use
+                             your default parallel config.
+     --parallel-config FILE  Execute your action in parallel using a config at
+                             the indicated path.
+     --use-cache DIRECTORY   Specify the cache to be used for the intermediate
+                             work of this pipeline. If not provided, the default
+                             cache under $TMP/qiime2/<uname> will be used.
+                             IMPORTANT FOR HPC USERS: If you are on an HPC system
+                             and are using parallel execution it is important to
+                             set this to a location that is globally accessible
+                             to all nodes in the cluster.
      --example-data PATH     Write example data and exit.
      --citations             Show citations and exit.
      --help                  Show this message and exit.</pre>
@@ -103,7 +125,7 @@ mutantScatters-tsv: Mutant Scatters
        TSV file containing z scores of the normalized read counts. Fist column
        header must be 'Sequence Name' as produced by pepsirf.
    reference_file_filepath : Str, optional
-       A file containing the reference peptide/probe along with the
+       A file containing the reference peptide/ probe along with the
        peptide/probe sequence. Must start with 'CodeName'.
    peptide_header : Str, optional
        The name of the header of the pepides.

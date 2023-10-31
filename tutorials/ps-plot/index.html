@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>q2-ps-plot Tutorials - Multiple Interface Edition &#8212; Q2 Pepsirf Plugin Docs  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/external-links.js"></script>
-    <script src="../../_static/usage.js"></script>
+    <title>Ps-plot Tutorials - Multiple Interface Edition &#8212; Q2 Pepsirf Plugin Docs  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css?v=435814a1" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/external-links.js?v=a7dd342f"></script>
+    <script src="../../_static/usage.js?v=858a412f"></script>
     <link rel="canonical" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/tutorials/ps-plot.html" />
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="q2-pepsirf Tutorials - Multiple Interface Edition" href="../pepsirf/" />
+    <link rel="next" title="Ps-qc Tutorials - CLI Edition (more to come)" href="../ps-qc/" />
     <link rel="prev" title="DiffEnrich Analysis Tutorial - Multiple Interface Edition" href="../pepsirf-tutorial/" />
   <script src="../../_static/bootstrap.min.js"></script>
   <script src="../../_static/clipboard.min.js"></script>
@@ -40,19 +39,19 @@
       
       <div id="body" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 main pull-right">
         
-  <section id="q2-ps-plot-tutorials-multiple-interface-edition">
-<h1>q2-ps-plot Tutorials - Multiple Interface Edition<a class="headerlink" href="#q2-ps-plot-tutorials-multiple-interface-edition" title="Permalink to this headline">¶</a></h1>
+  <section id="ps-plot-tutorials-multiple-interface-edition">
+<h1>Ps-plot Tutorials - Multiple Interface Edition<a class="headerlink" href="#ps-plot-tutorials-multiple-interface-edition" title="Permalink to this heading">¶</a></h1>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>This guide is a preview of how you can use some of q2-ps-plot’s individual modules.</p>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>In this tutorial you’ll use QIIME 2 to perform an analysis of some data.</p>
 <p>Typical Run Time: 1 Minute 30 Seconds</p>
 </section>
 <section id="protein-alignment">
-<h2>Protein Alignment<a class="headerlink" href="#protein-alignment" title="Permalink to this headline">¶</a></h2>
+<h2>Protein Alignment<a class="headerlink" href="#protein-alignment" title="Permalink to this heading">¶</a></h2>
 <script id="interfaces" type="application/json">{"default": "cli-usage", "available": {"python3-usage": ["Python 3 API (qiime2)", true], "cli-usage": ["Command Line (q2cli)", true], "galaxy-usage": ["Galaxy (q2galaxy)", true], "raw-usage": ["View Source (qiime2.sdk)", false]}, "classes": [".python3-usage", ".cli-usage", ".galaxy-usage", ".raw-usage"]}</script><span class="usage-selector"></span><p>Here we will test q2-ps-plot’s proteinHeatmap module by running the following command:</p>
 <div class="python3-usage highlight-default notranslate" id="usage-0"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiime2</span> <span class="kn">import</span> <span class="n">Artifact</span>
 <span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
@@ -124,9 +123,9 @@
 </div>
 <div class="python3-usage highlight-default notranslate" id="usage-5"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiime2.plugins.ps_plot.actions</span> <span class="k">as</span> <span class="nn">ps_plot_actions</span>
 
-<span class="n">protein_heat_map_viz</span><span class="p">,</span> <span class="o">=</span> <span class="n">ps_plot_actions</span><span class="o">.</span><span class="n">proteinHeatmap</span><span class="p">(</span>
-    <span class="n">enriched_dir</span><span class="o">=</span><span class="n">peptide_enrichment</span><span class="p">,</span>
-    <span class="n">protein_alignment</span><span class="o">=</span><span class="n">prot_align</span><span class="p">,</span>
+<span class="n">protein_heat_map_viz</span><span class="p">,</span> <span class="o">=</span> <span class="n">ps_plot_actions</span><span class="o">.</span><span class="n">proteinHeatmap_dir</span><span class="p">(</span>
+    <span class="n">enriched_dir_filepath</span><span class="o">=</span><span class="s1">&#39;peptide_enrichment&#39;</span><span class="p">,</span>
+    <span class="n">protein_alignment_filepath</span><span class="o">=</span><span class="s1">&#39;prot_align/manifest.tsv&#39;</span><span class="p">,</span>
     <span class="n">enriched_suffix</span><span class="o">=</span><span class="s1">&#39;_enriched.txt&#39;</span><span class="p">,</span>
     <span class="n">align_header</span><span class="o">=</span><span class="s1">&#39;AlignPos&#39;</span><span class="p">,</span>
     <span class="n">align_delim</span><span class="o">=</span><span class="s1">&#39;~&#39;</span><span class="p">,</span>
@@ -134,37 +133,37 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="cli-usage highlight-default notranslate" id="usage-6"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">ps</span><span class="o">-</span><span class="n">plot</span> <span class="n">proteinHeatmap</span> \
-  <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">enriched</span><span class="o">-</span><span class="nb">dir</span> <span class="n">peptide</span><span class="o">-</span><span class="n">enrichment</span><span class="o">.</span><span class="n">qza</span> \
-  <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">protein</span><span class="o">-</span><span class="n">alignment</span> <span class="n">prot</span><span class="o">-</span><span class="n">align</span><span class="o">.</span><span class="n">qza</span> \
+<div class="cli-usage highlight-default notranslate" id="usage-6"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">ps</span><span class="o">-</span><span class="n">plot</span> <span class="n">proteinHeatmap</span><span class="o">-</span><span class="nb">dir</span> \
+  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">enriched</span><span class="o">-</span><span class="nb">dir</span><span class="o">-</span><span class="n">filepath</span> <span class="n">peptide_enrichment</span> \
+  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">protein</span><span class="o">-</span><span class="n">alignment</span><span class="o">-</span><span class="n">filepath</span> <span class="n">prot_align</span><span class="o">/</span><span class="n">manifest</span><span class="o">.</span><span class="n">tsv</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">enriched</span><span class="o">-</span><span class="n">suffix</span> <span class="n">_enriched</span><span class="o">.</span><span class="n">txt</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">align</span><span class="o">-</span><span class="n">header</span> <span class="n">AlignPos</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">align</span><span class="o">-</span><span class="n">delim</span> <span class="s1">&#39;~&#39;</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">color</span><span class="o">-</span><span class="n">scheme</span> <span class="n">viridis</span> \
-  <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">visualization</span> <span class="n">protein</span><span class="o">-</span><span class="n">heat</span><span class="o">-</span><span class="nb">map</span><span class="o">.</span><span class="n">qzv</span>
+  <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">protein</span><span class="o">-</span><span class="n">heatmap</span><span class="o">-</span><span class="n">vis</span> <span class="n">protein</span><span class="o">-</span><span class="n">heat</span><span class="o">-</span><span class="nb">map</span><span class="o">.</span><span class="n">qzv</span>
 </pre></div>
 </div>
 <div class="raw-usage highlight-default notranslate" id="usage-9"><div class="highlight"><pre><span></span><span class="n">protHeatMap</span><span class="p">,</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">action</span><span class="p">(</span>
- <span class="n">use</span><span class="o">.</span><span class="n">UsageAction</span><span class="p">(</span><span class="n">plugin_id</span><span class="o">=</span><span class="s1">&#39;ps_plot&#39;</span><span class="p">,</span> <span class="n">action_id</span><span class="o">=</span><span class="s1">&#39;proteinHeatmap&#39;</span><span class="p">),</span>
- <span class="n">use</span><span class="o">.</span><span class="n">UsageInputs</span><span class="p">(</span>
-     <span class="n">enriched_dir</span> <span class="o">=</span> <span class="n">peptide_enrichment</span><span class="p">,</span>
-     <span class="n">protein_alignment</span> <span class="o">=</span> <span class="n">prot_align</span><span class="p">,</span>
-     <span class="n">enriched_suffix</span> <span class="o">=</span> <span class="s1">&#39;_enriched.txt&#39;</span><span class="p">,</span>
-     <span class="n">align_header</span> <span class="o">=</span> <span class="s1">&#39;AlignPos&#39;</span><span class="p">,</span>
-     <span class="n">align_delim</span> <span class="o">=</span> <span class="s1">&#39;~&#39;</span><span class="p">,</span>
-     <span class="n">color_scheme</span> <span class="o">=</span> <span class="s1">&#39;viridis&#39;</span>
- <span class="p">),</span>
- <span class="n">use</span><span class="o">.</span><span class="n">UsageOutputNames</span><span class="p">(</span>
-     <span class="n">visualization</span> <span class="o">=</span> <span class="s2">&quot;protein_heat_map&quot;</span>
- <span class="p">)</span>
- <span class="p">)</span>
+   <span class="n">use</span><span class="o">.</span><span class="n">UsageAction</span><span class="p">(</span><span class="n">plugin_id</span><span class="o">=</span><span class="s2">&quot;ps_plot&quot;</span><span class="p">,</span> <span class="n">action_id</span><span class="o">=</span><span class="s2">&quot;proteinHeatmap_dir&quot;</span><span class="p">),</span>
+   <span class="n">use</span><span class="o">.</span><span class="n">UsageInputs</span><span class="p">(</span>
+     <span class="n">enriched_dir_filepath</span> <span class="o">=</span> <span class="s2">&quot;peptide_enrichment&quot;</span><span class="p">,</span>
+     <span class="n">protein_alignment_filepath</span> <span class="o">=</span> <span class="s2">&quot;prot_align/manifest.tsv&quot;</span><span class="p">,</span>
+     <span class="n">enriched_suffix</span> <span class="o">=</span> <span class="s2">&quot;_enriched.txt&quot;</span><span class="p">,</span>
+     <span class="n">align_header</span> <span class="o">=</span> <span class="s2">&quot;AlignPos&quot;</span><span class="p">,</span>
+     <span class="n">align_delim</span> <span class="o">=</span> <span class="s2">&quot;~&quot;</span><span class="p">,</span>
+     <span class="n">color_scheme</span> <span class="o">=</span> <span class="s2">&quot;viridis&quot;</span>
+   <span class="p">),</span>
+   <span class="n">use</span><span class="o">.</span><span class="n">UsageOutputNames</span><span class="p">(</span>
+     <span class="n">protein_heatmap_vis</span> <span class="o">=</span> <span class="s2">&quot;protein_heat_map&quot;</span>
+   <span class="p">)</span>
+   <span class="p">)</span>
 </pre></div>
 </div>
 <div class="galaxy-usage compound" id="usage-7">
 <dl>
-<dt>Using the <code class="docutils literal notranslate"><span class="pre">qiime2</span> <span class="pre">ps-plot</span> <span class="pre">proteinHeatmap</span></code> tool:</dt><dd><ol class="arabic simple">
-<li><p>Set <em>“enriched_dir”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">peptide-enrichment.qza</span></code></p></li>
-<li><p>Set <em>“protein_alignment”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">prot-align.qza</span></code></p></li>
+<dt>Using the <code class="docutils literal notranslate"><span class="pre">qiime2</span> <span class="pre">ps-plot</span> <span class="pre">proteinHeatmap-dir</span></code> tool:</dt><dd><ol class="arabic simple">
+<li><p>Set <em>“enriched_dir_filepath”</em> to <code class="docutils literal notranslate"><span class="pre">peptide_enrichment</span></code></p></li>
+<li><p>Set <em>“protein_alignment_filepath”</em> to <code class="docutils literal notranslate"><span class="pre">prot_align/manifest.tsv</span></code></p></li>
 <li><p>Expand the <code class="docutils literal notranslate"><span class="pre">additional</span> <span class="pre">options</span></code> section</p>
 <ol class="arabic simple">
 <li><p>Leave <em>“enriched_suffix”</em> as its default value of <code class="docutils literal notranslate"><span class="pre">_enriched.txt</span></code></p></li>
@@ -178,17 +177,13 @@
 </dd>
 <dt>Once completed, for the new entry in your history, use the <code class="docutils literal notranslate"><span class="pre">Edit</span></code> button to set the name as follows:</dt><dd><p>(Renaming is optional, but it will make any subsequent steps easier to complete.)</p>
 <table class="docutils align-left">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>History Name</p></th>
 <th class="head"><p><em>“Name”</em> to set (be sure to press <code class="docutils literal notranslate"><span class="pre">Save</span></code>)</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">ps-plot</span> <span class="pre">proteinHeatmap</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">visualization.qzv</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">ps-plot</span> <span class="pre">proteinHeatmap-dir</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">protein_heatmap_vis.qzv</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">protein-heat-map.qzv</span></code></p></td>
 </tr>
 </tbody>
@@ -203,7 +198,7 @@
 </div>
 </section>
 <section id="mutant-scatters">
-<h2>Mutant Scatters<a class="headerlink" href="#mutant-scatters" title="Permalink to this headline">¶</a></h2>
+<h2>Mutant Scatters<a class="headerlink" href="#mutant-scatters" title="Permalink to this heading">¶</a></h2>
 <span class="usage-selector"></span><p>Here we will test q2-ps-plot’s mutantScatters module by running the following command:</p>
 <div class="python3-usage highlight-default notranslate" id="usage-10"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiime2</span> <span class="kn">import</span> <span class="n">Metadata</span>
 
@@ -419,10 +414,6 @@
 </dd>
 <dt>Once completed, for the new entry in your history, use the <code class="docutils literal notranslate"><span class="pre">Edit</span></code> button to set the name as follows:</dt><dd><p>(Renaming is optional, but it will make any subsequent steps easier to complete.)</p>
 <table class="docutils align-left">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>History Name</p></th>
 <th class="head"><p><em>“Name”</em> to set (be sure to press <code class="docutils literal notranslate"><span class="pre">Save</span></code>)</p></th>
@@ -456,7 +447,8 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../">Tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../pepsirf-tutorial/">DiffEnrich Analysis Tutorial - Multiple Interface Edition</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">q2-ps-plot Tutorials - Multiple Interface Edition</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Ps-plot Tutorials - Multiple Interface Edition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ps-qc/">Ps-qc Tutorials - CLI Edition (more to come)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pepsirf/">q2-pepsirf Tutorials - Multiple Interface Edition</a></li>
 </ul>
 </li>
@@ -475,14 +467,14 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
       </div>
       
     </div>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Ladner Labs.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.
     </div>
   </div>
   <script src="../../_static/clipboard-driver.js"></script>

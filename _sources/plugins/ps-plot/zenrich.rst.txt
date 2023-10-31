@@ -15,8 +15,8 @@ zenrich: Z Enrichment Variance Visualizer
          <h4>Docstring:</h4>
          <pre>Usage: qiime ps-plot zenrich [OPTIONS]
 
-     Creates a scatterplot of enriched peptides, points are colored according
-     to the z score thresholds provided. Scatterplot is layered over a heatmap
+     Creates a scatterplot of enriched peptides, points are colored according to
+     the z score thresholds provided. Scatterplot is layered over a heatmap
      containing all of the data.
 
    Inputs:
@@ -29,13 +29,15 @@ zenrich: Z Enrichment Variance Visualizer
                            read counts. Fist column header must be 'Sequence
                            Name' as produced by pepsirf.               [required]
      --i-highlight-probes ARTIFACT
-       InfoSNPN            A InfoSNPN file that contains a list of
-                           probes/peptides to highlight.               [optional]
+       InfoSNPN            A InfoSNPN file that contains a list of probes/
+                           peptides to highlight.                      [optional]
      --i-negative-data ARTIFACT FeatureTable[Normed]
                            FeatureTable containing normalized read counts of
                            controls and peptides. First column header must be
                            'Sequence Name' as produced by pepsirf.     [optional]
    Parameters:
+     --p-flex-reps / --p-no-flex-reps
+                                                                 [default: False]
      --p-negative-controls TEXT...
        List[Str]           Sample names of the negative controls to be used
                            (Example argument: --p-negative-controls sample1
@@ -124,12 +126,13 @@ zenrich: Z Enrichment Variance Visualizer
    zscores : FeatureTable[Zscore]
        FeatureTable containing z scores of the normalized read counts. Fist
        column header must be 'Sequence Name' as produced by pepsirf.
+   flex_reps : Bool, optional
    negative_controls : List[Str], optional
        Sample names of the negative controls to be used (Example argument:
        --p-negative-controls sample1 sample2 sample3).
    negative_id : Str, optional
    highlight_probes : InfoSNPN, optional
-       A InfoSNPN file that contains a list of probes/peptides to highlight.
+       A InfoSNPN file that contains a list of probes/ peptides to highlight.
    source : MetadataColumn[Categorical], optional
        Metadata file containing all sample names and their source groups. Used
        to create pairs tsv to run pepsirf enrich module.

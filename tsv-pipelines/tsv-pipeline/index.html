@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>TSV/Dir Pipeline Information &#8212; Q2 Pepsirf Plugin Docs  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/external-links.js"></script>
-    <script src="../../_static/usage.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css?v=435814a1" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/external-links.js?v=a7dd342f"></script>
+    <script src="../../_static/usage.js?v=858a412f"></script>
     <link rel="canonical" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/tsv-pipelines/tsv-pipeline.html" />
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="TSV/Dir Changing Inputs Reference Tables" href="../tsv-dir-tables/" />
     <link rel="prev" title="TSV/Dir Pipelines" href="../" />
   <script src="../../_static/bootstrap.min.js"></script>
   <script src="../../_static/clipboard.min.js"></script>
@@ -41,29 +39,21 @@
       <div id="body" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 main pull-right">
         
   <section id="tsv-dir-pipeline-information">
-<h1>TSV/Dir Pipeline Information<a class="headerlink" href="#tsv-dir-pipeline-information" title="Permalink to this headline">¶</a></h1>
+<h1>TSV/Dir Pipeline Information<a class="headerlink" href="#tsv-dir-pipeline-information" title="Permalink to this heading">¶</a></h1>
 <p>This is information regarding q2-ps-plot’s and q2-autopepsirf’s TSV/Dir pipelines,
 as well as tutorials on how to use the various tsv/dir pipelines.</p>
-<p>The TSV/Dir pipelines were built to ease the transition between PepSIRF and QIIME 2
-by eliminating the need for the user to manually perform a QIIME 2 import every time
-they switch between the two platforms. These pipelines allow the user to begin with
-a TSV/Dir readable file type rather than the QIIME 2-specific QZA file format.</p>
 <section id="available-tsv-dir-pipelines">
-<h2>Available TSV/Dir Pipelines<a class="headerlink" href="#available-tsv-dir-pipelines" title="Permalink to this headline">¶</a></h2>
+<h2>Available TSV/Dir pipelines<a class="headerlink" href="#available-tsv-dir-pipelines" title="Permalink to this heading">¶</a></h2>
 <p>q2-ps-plot:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 53%" />
-<col style="width: 47%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>QZA Modules</p></th>
 <th class="head"><p>Corresponding TSV/Dir Pipeline</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>mutantScatters</p></td>
-<td><p>mutantScatters-tsv</p></td>
+<tr class="row-even"><td><p>mutant_scatter</p></td>
+<td><p><em>Coming Soon!</em></p></td>
 </tr>
 <tr class="row-odd"><td><p>proteinHeatmap</p></td>
 <td><p>proteinHeatmap-dir</p></td>
@@ -78,10 +68,6 @@ a TSV/Dir readable file type rather than the QIIME 2-specific QZA file format.</
 </table>
 <p>q2-autopepsirf:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 53%" />
-<col style="width: 47%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>QZA Modules</p></th>
 <th class="head"><p>Corresponding TSV/Dir Pipeline</p></th>
@@ -95,20 +81,9 @@ a TSV/Dir readable file type rather than the QIIME 2-specific QZA file format.</
 </table>
 </section>
 <section id="tsv-dir-pipeline-tutorials">
-<h2>TSV/Dir Pipeline Tutorials<a class="headerlink" href="#tsv-dir-pipeline-tutorials" title="Permalink to this headline">¶</a></h2>
+<h2>TSV/Dir Pipeline Tutorials<a class="headerlink" href="#tsv-dir-pipeline-tutorials" title="Permalink to this heading">¶</a></h2>
 <p>Instead of inputting a QZA file in an input (<em>–i-flag</em>), a TSV file or directory filepath is inputted into
 a different parameters flag typically ending in “-filepath” (<em>–p-flag-filepath</em>).</p>
-<p><strong>mutantScatters:</strong></p>
-<ul>
-<li><p>QZA Module Example:</p>
-<p><code class="docutils literal notranslate"><span class="pre">qiime</span> <span class="pre">ps-plot</span> <span class="pre">mutantScatters</span> <span class="pre">--i-zscore</span> <span class="pre">zscore.qza</span> <span class="pre">--i-reference-file</span> <span class="pre">reference.qza</span> <span class="pre">--m-source-file</span> <span class="pre">samples-source.tsv</span>
-<span class="pre">--m-source-column</span> <span class="pre">source</span> <span class="pre">--m-metadata-file</span> <span class="pre">metadata.tsv</span> <span class="pre">--p-wobble</span> <span class="pre">--p-scatter-boxplot</span> <span class="pre">--o-visualization</span> <span class="pre">mutantScatters.qzv</span></code></p>
-</li>
-<li><p>TSV/Dir Pipeline Example:</p>
-<p><code class="docutils literal notranslate"><span class="pre">qiime</span> <span class="pre">ps-plot</span> <span class="pre">mutantScatters-tsv</span> <span class="pre">--p-zscore-filepath</span> <span class="pre">zscore.tsv</span> <span class="pre">--i-reference-file-filepath</span> <span class="pre">reference.tsv</span> <span class="pre">--m-source-file</span> <span class="pre">samples-source.tsv</span>
-<span class="pre">--m-source-column</span> <span class="pre">source</span> <span class="pre">--m-metadata-file</span> <span class="pre">metadata.tsv</span> <span class="pre">--p-wobble</span> <span class="pre">--p-scatter-boxplot</span> <span class="pre">--o-mutant-scatters-vis</span> <span class="pre">mutantScatters.qzv</span></code></p>
-</li>
-</ul>
 <p><strong>proteinHeatmap:</strong></p>
 <ul>
 <li><p>QZA Module Example:</p>
@@ -124,7 +99,7 @@ a different parameters flag typically ending in “-filepath” (<em>–p-flag-f
 <ul>
 <li><p>QZA Module Example:</p>
 <p><code class="docutils literal notranslate"><span class="pre">qiime</span> <span class="pre">ps-plot</span> <span class="pre">repScatters</span> <span class="pre">--i-zscore</span> <span class="pre">some-zscore.qza</span> <span class="pre">--m-source-file</span> <span class="pre">samples-source.tsv</span> <span class="pre">--m-source-column</span>
-<span class="pre">source</span> <span class="pre">--o-visualizaion</span> <span class="pre">repScatters.qzv</span></code></p>
+<span class="pre">source</span> <span class="pre">--o-visualizaion</span> <span class="pre">repScatters.qza</span></code></p>
 </li>
 <li><p>TSV/Dir Pipeline Example:</p>
 <p><code class="docutils literal notranslate"><span class="pre">qiime</span> <span class="pre">ps-plot</span> <span class="pre">repScatters-tsv</span> <span class="pre">--p-zscore-filepath</span> <span class="pre">some-zscore.tsv</span> <span class="pre">--m-source-file</span> <span class="pre">samples-source.tsv</span> <span class="pre">--m-source-column</span>
@@ -173,7 +148,6 @@ a different parameters flag typically ending in “-filepath” (<em>–p-flag-f
 <li class="toctree-l1"><a class="reference internal" href="../../export-imports/">QIIME 2 Import and Export</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../">TSV/Dir Pipelines</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">TSV/Dir Pipeline Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tsv-dir-tables/">TSV/Dir Changing Inputs Reference Tables</a></li>
 </ul>
 </li>
 </ul>
@@ -187,14 +161,14 @@ a different parameters flag typically ending in “-filepath” (<em>–p-flag-f
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
       </div>
       
     </div>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Ladner Labs.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.
     </div>
   </div>
   <script src="../../_static/clipboard-driver.js"></script>

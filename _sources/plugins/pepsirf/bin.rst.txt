@@ -50,7 +50,7 @@ bin: pepsirf bin module
                                                              [default: 'pepsirf']
    Outputs:
      --o-bin-output ARTIFACT
-       PeptideBins¹'²      PeptideBins file that contains  one bin per line and
+       PeptideBins¹'²      PeptideBins file that contains one bin per line and
                            each bin will be a tab-delimited list of the names of
                            the peptides in the bin.                    [required]
    Miscellaneous:
@@ -105,7 +105,7 @@ bin: pepsirf bin module
    Returns
    -------
    bin_output : PeptideBins¹'²
-       PeptideBins file that contains  one bin per line and each bin will be a
+       PeptideBins file that contains one bin per line and each bin will be a
        tab-delimited list of the names of the peptides in the bin.</pre>
        </div>
      </div>

@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>proteinHeatmap-dir: Protein Alignment Heatmap Dir &#8212; Q2 Pepsirf Plugin Docs  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/external-links.js"></script>
-    <script src="../../../_static/usage.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css?v=435814a1" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/external-links.js?v=a7dd342f"></script>
+    <script src="../../../_static/usage.js?v=858a412f"></script>
     <link rel="canonical" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/plugins/ps-plot/proteinHeatmap-dir.html" />
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
@@ -41,7 +40,7 @@
       <div id="body" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 main pull-right">
         
   <section id="proteinheatmap-dir-protein-alignment-heatmap-dir">
-<h1>proteinHeatmap-dir: Protein Alignment Heatmap Dir<a class="headerlink" href="#proteinheatmap-dir-protein-alignment-heatmap-dir" title="Permalink to this headline">¶</a></h1>
+<h1>proteinHeatmap-dir: Protein Alignment Heatmap Dir<a class="headerlink" href="#proteinheatmap-dir-protein-alignment-heatmap-dir" title="Permalink to this heading">¶</a></h1>
 <div class="tabbed">
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#cli">Command line interface</a></li>
@@ -53,63 +52,85 @@
       <pre>Usage: qiime ps-plot proteinHeatmap-dir [OPTIONS]
 
   Creates a heatmap based on the alignment of peptides in the enriched
-  peptides with directory filepaths instead of QZA files
+  peptides with directory filepaths instead of QZA files.
 
 Parameters:
   --p-enriched-dir-filepath TEXT
-                         Enriched directory filepath. This file is the output
-                         of q2-pepsirf's enrich module              [required]
+                          Enriched directory filepath. This file is the
+                          output of q2-pepsirf's enrich module.     [required]
   --p-protein-alignment-filepath TEXT
-                         A director containing a tab delimited file
-                         containing the protein and the filepath to the
-                         associated alignment file. The file should start with
-                         the header as 'ProtName' and be named 'manifest.tsv'.
-                         And the files containing the protein alignment
-                         information                                [required]
+                          Filepath of the protein alignment manifest file.
+                          The manifest file is tab delimited containing a
+                          header with the column names 'ProtName' and
+                          'AlignFile'. Each line specifies the protein and the
+                          filepath to the associated alignment file.
+                                                                    [required]
   --p-enriched-suffix TEXT
-                         The outfile suffix of the enriched peptide files.
+                          The outfile suffix of the enriched peptide files.
                                                     [default: '_enriched.txt']
-  --p-align-header TEXT  The name of the header to which identifies the
-                         alignment positions separated by the align-delim
-                         (Example column: '1~2~3~4').    [default: 'AlignPos']
-  --p-align-delim TEXT   The deliminator that separates the alignment
-                         positions.                             [default: '~']
-  --p-color-scheme TEXT  String of the name of a color scheme for the
-                         heatmap. Color schemes can be found here:
-                         https://vega.github.io/vega/docs/schemes/
+  --p-align-header TEXT   The name of the header to which identifies the
+                          alignment positions separated by the align-delim
+                          (Example column: '1~2~3~4').   [default: 'AlignPos']
+  --p-align-delim TEXT    The deliminator that separates the alignment
+                          positions.                            [default: '~']
+  --p-color-scheme TEXT   String of the name of a color scheme for the
+                          heatmap. Color schemes can be found here:
+                          https://vega.github.io/vega/docs/schemes/
                                                           [default: 'viridis']
 Outputs:
   --o-protein-heatmap-vis VISUALIZATION
                                                                     [required]
 Miscellaneous:
-  --output-dir PATH      Output unspecified results to a directory
-  --verbose / --quiet    Display verbose output to stdout and/or stderr
-                         during execution of this action. Or silence output if
-                         execution is successful (silence is golden).
-  --example-data PATH    Write example data and exit.
-  --citations            Show citations and exit.
-  --help                 Show this message and exit.</pre>
+  --output-dir PATH       Output unspecified results to a directory
+  --verbose / --quiet     Display verbose output to stdout and/or stderr
+                          during execution of this action. Or silence output
+                          if execution is successful (silence is golden).
+  --recycle-pool TEXT     Use a cache pool for pipeline resumption. QIIME 2
+                          will cache your results in this pool for reuse by
+                          future invocations. These pool are retained until
+                          deleted by the user. If not provided, QIIME 2 will
+                          create a pool which is automatically reused by
+                          invocations of the same action and removed if the
+                          action is successful. Note: these pools are local to
+                          the cache you are using.
+  --no-recycle            Do not recycle results from a previous failed
+                          pipeline run or save the results from this run for
+                          future recycling.
+  --parallel              Execute your action in parallel. This flag will use
+                          your default parallel config.
+  --parallel-config FILE  Execute your action in parallel using a config at
+                          the indicated path.
+  --use-cache DIRECTORY   Specify the cache to be used for the intermediate
+                          work of this pipeline. If not provided, the default
+                          cache under $TMP/qiime2/<uname> will be used.
+                          IMPORTANT FOR HPC USERS: If you are on an HPC system
+                          and are using parallel execution it is important to
+                          set this to a location that is globally accessible
+                          to all nodes in the cluster.
+  --example-data PATH     Write example data and exit.
+  --citations             Show citations and exit.
+  --help                  Show this message and exit.</pre>
     </div>
     <div id="api" class="tab-pane fade">
-    <h4>Import:</h4><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>from qiime2.plugins.ps_plot.pipelines import proteinHeatmap_dir
+    <h4>Import:</h4><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>from<span class="w"> </span>qiime2.plugins.ps_plot.pipelines<span class="w"> </span>import<span class="w"> </span>proteinHeatmap_dir
 </pre></div>
 </div>
     <h4>Docstring:</h4>
       <pre>Protein Alignment Heatmap Dir
 
 Creates a heatmap based on the alignment of peptides in the enriched
-peptides with directory filepaths instead of QZA files
+peptides with directory filepaths instead of QZA files.
 
 Parameters
 ----------
 enriched_dir_filepath : Str
     Enriched directory filepath. This file is the output of q2-pepsirf's
-    enrich module
+    enrich module.
 protein_alignment_filepath : Str
-    A director containing a tab delimited file containing the protein and
-    the filepath to the associated alignment file. The file should start
-    with the header as 'ProtName' and be named 'manifest.tsv'. And the
-    files containing the protein alignment information
+    Filepath of the protein alignment manifest file. The manifest file is
+    tab delimited containing a header with the column names 'ProtName' and
+    'AlignFile'. Each line specifies the protein and the filepath to the
+    associated alignment file.
 enriched_suffix : Str, optional
     The outfile suffix of the enriched peptide files.
 align_header : Str, optional
@@ -158,14 +179,14 @@ protein_heatmap_vis : Visualization</pre>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
       </div>
       
     </div>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Ladner Labs.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.
     </div>
   </div>
   <script src="../../../_static/clipboard-driver.js"></script>

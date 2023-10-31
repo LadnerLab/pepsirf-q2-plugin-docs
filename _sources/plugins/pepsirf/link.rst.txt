@@ -15,8 +15,8 @@ link: pepsirf link module
          <h4>Docstring:</h4>
          <pre>Usage: qiime pepsirf link [OPTIONS]
 
-     Defines linkages between taxonomic groups and peptides based on shared
-     kmers with pepsirf's link module
+     Defines linkages between taxonomic groups and peptides based on shared kmers
+     with pepsirf's link module
 
    Inputs:
      --i-protein-file ARTIFACT
@@ -32,7 +32,7 @@ link: pepsirf link module
                             comma-separated strings should be provided: 1) name
                             of tab-delimited metadata file, 2) header for column
                             containing protein sequence name and 3) header for
-                            column containing ID to be used in creatingthe
+                            column containing ID to be used in creating the
                             linkage map.                               [required]
      --p-kmer-size INTEGER  Kmer size to use when creating the linkage map.
                                                                        [required]
@@ -93,7 +93,7 @@ link: pepsirf link module
        contained in '--protein_file'. Three comma-separated strings should be
        provided: 1) name of tab-delimited metadata file, 2) header for column
        containing protein sequence name and 3) header for column containing ID
-       to be used in creatingthe linkage map.
+       to be used in creating the linkage map.
    kmer_size : Int
        Kmer size to use when creating the linkage map.
    kmer_redundancy_control : Bool, optional
