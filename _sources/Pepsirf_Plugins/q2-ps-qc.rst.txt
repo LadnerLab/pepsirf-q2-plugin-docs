@@ -47,7 +47,7 @@ Now you are ready to install ps-qc. Run the following commands:
 
 ``pip install git+https://github.com/LadnerLab/q2-ps-qc.git``
 
-Run ``qiime2 info`` to check for a successful installation. If installation was successful, you will see ``q2-ps-qc: (version)`` in the list of installed plugins
+Run ``qiime2 info`` to check for a successful installation. If installation was successful, you will see q2-ps-qc: version in the list of installed plugins
 
 Updating
 --------

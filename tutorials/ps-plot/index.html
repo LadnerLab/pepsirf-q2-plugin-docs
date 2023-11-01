@@ -53,79 +53,11 @@
 <section id="protein-alignment">
 <h2>Protein Alignment<a class="headerlink" href="#protein-alignment" title="Permalink to this heading">¶</a></h2>
 <script id="interfaces" type="application/json">{"default": "cli-usage", "available": {"python3-usage": ["Python 3 API (qiime2)", true], "cli-usage": ["Command Line (q2cli)", true], "galaxy-usage": ["Galaxy (q2galaxy)", true], "raw-usage": ["View Source (qiime2.sdk)", false]}, "classes": [".python3-usage", ".cli-usage", ".galaxy-usage", ".raw-usage"]}</script><span class="usage-selector"></span><p>Here we will test q2-ps-plot’s proteinHeatmap module by running the following command:</p>
-<div class="python3-usage highlight-default notranslate" id="usage-0"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiime2</span> <span class="kn">import</span> <span class="n">Artifact</span>
-<span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/ps-plot/prot-align.qza&#39;</span>
-<span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;prot-align.qza&#39;</span>
-<span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
-<span class="n">prot_align</span> <span class="o">=</span> <span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/ps-plot/peptide-enrichment.qza&#39;</span>
-<span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;peptide-enrichment.qza&#39;</span>
-<span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
-<span class="n">peptide_enrichment</span> <span class="o">=</span> <span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="cli-usage highlight-default notranslate" id="usage-1"><div class="highlight"><pre><span></span><span class="n">wget</span> \
-  <span class="o">-</span><span class="n">O</span> <span class="s1">&#39;prot-align.qza&#39;</span> \
-  <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/ps-plot/prot-align.qza&#39;</span>
-
-<span class="n">wget</span> \
-  <span class="o">-</span><span class="n">O</span> <span class="s1">&#39;peptide-enrichment.qza&#39;</span> \
-  <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/ps-plot/peptide-enrichment.qza&#39;</span>
-</pre></div>
-</div>
-<div class="raw-usage highlight-default notranslate" id="usage-4"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">prot_align_factory</span><span class="p">():</span>
-   <span class="kn">import</span> <span class="nn">qiime2</span>
-   <span class="k">return</span> <span class="n">qiime2</span><span class="o">.</span><span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;source/data/alignmentFiles_dir.qza&quot;</span><span class="p">)</span>
-
-<span class="n">prot_align</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">init_artifact</span><span class="p">(</span><span class="s2">&quot;prot_align&quot;</span><span class="p">,</span> <span class="n">prot_align_factory</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">enrichment_factory</span><span class="p">():</span>
-   <span class="kn">import</span> <span class="nn">qiime2</span>
-   <span class="k">return</span> <span class="n">qiime2</span><span class="o">.</span><span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;source/data/10Z-HDI95_0CS_400000raw_dir.qza&quot;</span><span class="p">)</span>
-
-<span class="n">peptide_enrichment</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">init_artifact</span><span class="p">(</span><span class="s2">&quot;peptide_enrichment&quot;</span><span class="p">,</span> <span class="n">enrichment_factory</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="galaxy-usage compound" id="usage-2">
-<dl class="simple">
-<dt>Using the <code class="docutils literal notranslate"><span class="pre">Upload</span> <span class="pre">Data</span></code> tool:</dt><dd><ol class="arabic simple">
-<li><p>On the first tab (<strong>Regular</strong>), press the <code class="docutils literal notranslate"><span class="pre">Paste/Fetch</span></code> data button at the bottom.</p>
-<ol class="arabic simple">
-<li><p>Set <em>“Name”</em> (first text-field) to: <code class="docutils literal notranslate"><span class="pre">prot-align.qza</span></code></p></li>
-<li><p>In the larger text-area, copy-and-paste: <a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/ps-plot/prot-align.qza">https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/ps-plot/prot-align.qza</a></p></li>
-<li><p>(<em>“Type”</em>, <em>“Genome”</em>, and <em>“Settings”</em> can be ignored)</p></li>
-</ol>
-</li>
-<li><p>Press the <code class="docutils literal notranslate"><span class="pre">Start</span></code> button at the bottom.</p></li>
-</ol>
-</dd>
-<dt>Using the <code class="docutils literal notranslate"><span class="pre">Upload</span> <span class="pre">Data</span></code> tool:</dt><dd><ol class="arabic simple">
-<li><p>On the first tab (<strong>Regular</strong>), press the <code class="docutils literal notranslate"><span class="pre">Paste/Fetch</span></code> data button at the bottom.</p>
-<ol class="arabic simple">
-<li><p>Set <em>“Name”</em> (first text-field) to: <code class="docutils literal notranslate"><span class="pre">peptide-enrichment.qza</span></code></p></li>
-<li><p>In the larger text-area, copy-and-paste: <a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/ps-plot/peptide-enrichment.qza">https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/ps-plot/peptide-enrichment.qza</a></p></li>
-<li><p>(<em>“Type”</em>, <em>“Genome”</em>, and <em>“Settings”</em> can be ignored)</p></li>
-</ol>
-</li>
-<li><p>Press the <code class="docutils literal notranslate"><span class="pre">Start</span></code> button at the bottom.</p></li>
-</ol>
-</dd>
-</dl>
-</div>
-<div class="exec-usage compound" id="usage-3">
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">prot-align.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fps-plot%2Fprot-align.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/ps-plot/prot-align.qza"><span>download</span></a></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">peptide-enrichment.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fps-plot%2Fpeptide-enrichment.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/ps-plot/peptide-enrichment.qza"><span>download</span></a></p></li>
-</ul>
-</div>
-<div class="python3-usage highlight-default notranslate" id="usage-5"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiime2.plugins.ps_plot.actions</span> <span class="k">as</span> <span class="nn">ps_plot_actions</span>
+<div class="python3-usage highlight-default notranslate" id="usage-0"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiime2.plugins.ps_plot.actions</span> <span class="k">as</span> <span class="nn">ps_plot_actions</span>
 
 <span class="n">protein_heat_map_viz</span><span class="p">,</span> <span class="o">=</span> <span class="n">ps_plot_actions</span><span class="o">.</span><span class="n">proteinHeatmap_dir</span><span class="p">(</span>
-    <span class="n">enriched_dir_filepath</span><span class="o">=</span><span class="s1">&#39;peptide_enrichment&#39;</span><span class="p">,</span>
-    <span class="n">protein_alignment_filepath</span><span class="o">=</span><span class="s1">&#39;prot_align/manifest.tsv&#39;</span><span class="p">,</span>
+    <span class="n">enriched_dir_filepath</span><span class="o">=</span><span class="s1">&#39;source/data/peptide_enrichment&#39;</span><span class="p">,</span>
+    <span class="n">protein_alignment_filepath</span><span class="o">=</span><span class="s1">&#39;source/data/prot_align/manifest.tsv&#39;</span><span class="p">,</span>
     <span class="n">enriched_suffix</span><span class="o">=</span><span class="s1">&#39;_enriched.txt&#39;</span><span class="p">,</span>
     <span class="n">align_header</span><span class="o">=</span><span class="s1">&#39;AlignPos&#39;</span><span class="p">,</span>
     <span class="n">align_delim</span><span class="o">=</span><span class="s1">&#39;~&#39;</span><span class="p">,</span>
@@ -133,9 +65,9 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="cli-usage highlight-default notranslate" id="usage-6"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">ps</span><span class="o">-</span><span class="n">plot</span> <span class="n">proteinHeatmap</span><span class="o">-</span><span class="nb">dir</span> \
-  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">enriched</span><span class="o">-</span><span class="nb">dir</span><span class="o">-</span><span class="n">filepath</span> <span class="n">peptide_enrichment</span> \
-  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">protein</span><span class="o">-</span><span class="n">alignment</span><span class="o">-</span><span class="n">filepath</span> <span class="n">prot_align</span><span class="o">/</span><span class="n">manifest</span><span class="o">.</span><span class="n">tsv</span> \
+<div class="cli-usage highlight-default notranslate" id="usage-1"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">ps</span><span class="o">-</span><span class="n">plot</span> <span class="n">proteinHeatmap</span><span class="o">-</span><span class="nb">dir</span> \
+  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">enriched</span><span class="o">-</span><span class="nb">dir</span><span class="o">-</span><span class="n">filepath</span> <span class="n">source</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">peptide_enrichment</span> \
+  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">protein</span><span class="o">-</span><span class="n">alignment</span><span class="o">-</span><span class="n">filepath</span> <span class="n">source</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">prot_align</span><span class="o">/</span><span class="n">manifest</span><span class="o">.</span><span class="n">tsv</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">enriched</span><span class="o">-</span><span class="n">suffix</span> <span class="n">_enriched</span><span class="o">.</span><span class="n">txt</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">align</span><span class="o">-</span><span class="n">header</span> <span class="n">AlignPos</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">align</span><span class="o">-</span><span class="n">delim</span> <span class="s1">&#39;~&#39;</span> \
@@ -143,11 +75,11 @@
   <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">protein</span><span class="o">-</span><span class="n">heatmap</span><span class="o">-</span><span class="n">vis</span> <span class="n">protein</span><span class="o">-</span><span class="n">heat</span><span class="o">-</span><span class="nb">map</span><span class="o">.</span><span class="n">qzv</span>
 </pre></div>
 </div>
-<div class="raw-usage highlight-default notranslate" id="usage-9"><div class="highlight"><pre><span></span><span class="n">protHeatMap</span><span class="p">,</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">action</span><span class="p">(</span>
+<div class="raw-usage highlight-default notranslate" id="usage-4"><div class="highlight"><pre><span></span><span class="n">protHeatMap</span><span class="p">,</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">action</span><span class="p">(</span>
    <span class="n">use</span><span class="o">.</span><span class="n">UsageAction</span><span class="p">(</span><span class="n">plugin_id</span><span class="o">=</span><span class="s2">&quot;ps_plot&quot;</span><span class="p">,</span> <span class="n">action_id</span><span class="o">=</span><span class="s2">&quot;proteinHeatmap_dir&quot;</span><span class="p">),</span>
    <span class="n">use</span><span class="o">.</span><span class="n">UsageInputs</span><span class="p">(</span>
-     <span class="n">enriched_dir_filepath</span> <span class="o">=</span> <span class="s2">&quot;peptide_enrichment&quot;</span><span class="p">,</span>
-     <span class="n">protein_alignment_filepath</span> <span class="o">=</span> <span class="s2">&quot;prot_align/manifest.tsv&quot;</span><span class="p">,</span>
+     <span class="n">enriched_dir_filepath</span> <span class="o">=</span> <span class="s2">&quot;source/data/peptide_enrichment&quot;</span><span class="p">,</span>
+     <span class="n">protein_alignment_filepath</span> <span class="o">=</span> <span class="s2">&quot;source/data/prot_align/manifest.tsv&quot;</span><span class="p">,</span>
      <span class="n">enriched_suffix</span> <span class="o">=</span> <span class="s2">&quot;_enriched.txt&quot;</span><span class="p">,</span>
      <span class="n">align_header</span> <span class="o">=</span> <span class="s2">&quot;AlignPos&quot;</span><span class="p">,</span>
      <span class="n">align_delim</span> <span class="o">=</span> <span class="s2">&quot;~&quot;</span><span class="p">,</span>
@@ -159,11 +91,11 @@
    <span class="p">)</span>
 </pre></div>
 </div>
-<div class="galaxy-usage compound" id="usage-7">
+<div class="galaxy-usage compound" id="usage-2">
 <dl>
 <dt>Using the <code class="docutils literal notranslate"><span class="pre">qiime2</span> <span class="pre">ps-plot</span> <span class="pre">proteinHeatmap-dir</span></code> tool:</dt><dd><ol class="arabic simple">
-<li><p>Set <em>“enriched_dir_filepath”</em> to <code class="docutils literal notranslate"><span class="pre">peptide_enrichment</span></code></p></li>
-<li><p>Set <em>“protein_alignment_filepath”</em> to <code class="docutils literal notranslate"><span class="pre">prot_align/manifest.tsv</span></code></p></li>
+<li><p>Set <em>“enriched_dir_filepath”</em> to <code class="docutils literal notranslate"><span class="pre">source/data/peptide_enrichment</span></code></p></li>
+<li><p>Set <em>“protein_alignment_filepath”</em> to <code class="docutils literal notranslate"><span class="pre">source/data/prot_align/manifest.tsv</span></code></p></li>
 <li><p>Expand the <code class="docutils literal notranslate"><span class="pre">additional</span> <span class="pre">options</span></code> section</p>
 <ol class="arabic simple">
 <li><p>Leave <em>“enriched_suffix”</em> as its default value of <code class="docutils literal notranslate"><span class="pre">_enriched.txt</span></code></p></li>
@@ -191,7 +123,7 @@
 </dd>
 </dl>
 </div>
-<div class="exec-usage compound" id="usage-8">
+<div class="exec-usage compound" id="usage-3">
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">protein-heat-map.qzv</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fps-plot%2Fprotein-heat-map.qzv"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/ps-plot/protein-heat-map.qzv"><span>download</span></a></p></li>
 </ul>
@@ -200,7 +132,9 @@
 <section id="mutant-scatters">
 <h2>Mutant Scatters<a class="headerlink" href="#mutant-scatters" title="Permalink to this heading">¶</a></h2>
 <span class="usage-selector"></span><p>Here we will test q2-ps-plot’s mutantScatters module by running the following command:</p>
-<div class="python3-usage highlight-default notranslate" id="usage-10"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiime2</span> <span class="kn">import</span> <span class="n">Metadata</span>
+<div class="python3-usage highlight-default notranslate" id="usage-5"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiime2</span> <span class="kn">import</span> <span class="n">Artifact</span>
+<span class="kn">from</span> <span class="nn">qiime2</span> <span class="kn">import</span> <span class="n">Metadata</span>
+<span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/ps-plot/metadata.tsv&#39;</span>
 <span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;metadata.tsv&#39;</span>
@@ -223,7 +157,7 @@
 <span class="n">reference</span> <span class="o">=</span> <span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="cli-usage highlight-default notranslate" id="usage-11"><div class="highlight"><pre><span></span><span class="n">wget</span> \
+<div class="cli-usage highlight-default notranslate" id="usage-6"><div class="highlight"><pre><span></span><span class="n">wget</span> \
   <span class="o">-</span><span class="n">O</span> <span class="s1">&#39;metadata.tsv&#39;</span> \
   <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/ps-plot/metadata.tsv&#39;</span>
 
@@ -240,7 +174,7 @@
   <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/ps-plot/reference.qza&#39;</span>
 </pre></div>
 </div>
-<div class="raw-usage highlight-default notranslate" id="usage-14"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">metadata_factory</span><span class="p">():</span>
+<div class="raw-usage highlight-default notranslate" id="usage-9"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">metadata_factory</span><span class="p">():</span>
    <span class="kn">import</span> <span class="nn">qiime2</span>
    <span class="k">return</span> <span class="n">qiime2</span><span class="o">.</span><span class="n">Metadata</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;source/data/metadata.tsv&quot;</span><span class="p">)</span>
 
@@ -265,7 +199,7 @@
 <span class="n">reference</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">init_artifact</span><span class="p">(</span><span class="s2">&quot;reference&quot;</span><span class="p">,</span> <span class="n">reference_factory</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="galaxy-usage compound" id="usage-12">
+<div class="galaxy-usage compound" id="usage-7">
 <dl class="simple">
 <dt>Using the <code class="docutils literal notranslate"><span class="pre">Upload</span> <span class="pre">Data</span></code> tool:</dt><dd><ol class="arabic simple">
 <li><p>On the first tab (<strong>Regular</strong>), press the <code class="docutils literal notranslate"><span class="pre">Paste/Fetch</span></code> data button at the bottom.</p>
@@ -313,7 +247,7 @@
 </dd>
 </dl>
 </div>
-<div class="exec-usage compound" id="usage-13">
+<div class="exec-usage compound" id="usage-8">
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/ps-plot/metadata.tsv"><span>download</span></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">samples.tsv</span></code><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/ps-plot/samples.tsv"><span>download</span></a></p></li>
@@ -321,7 +255,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">reference.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fps-plot%2Freference.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/ps-plot/reference.qza"><span>download</span></a></p></li>
 </ul>
 </div>
-<div class="python3-usage highlight-default notranslate" id="usage-15"><div class="highlight"><pre><span></span><span class="n">samples_col_mdc</span> <span class="o">=</span> <span class="n">samples_md</span><span class="o">.</span><span class="n">get_column</span><span class="p">(</span><span class="s1">&#39;Source&#39;</span><span class="p">)</span>
+<div class="python3-usage highlight-default notranslate" id="usage-10"><div class="highlight"><pre><span></span><span class="n">samples_col_mdc</span> <span class="o">=</span> <span class="n">samples_md</span><span class="o">.</span><span class="n">get_column</span><span class="p">(</span><span class="s1">&#39;Source&#39;</span><span class="p">)</span>
 <span class="n">mutant_scatter_viz</span><span class="p">,</span> <span class="o">=</span> <span class="n">ps_plot_actions</span><span class="o">.</span><span class="n">mutantScatters</span><span class="p">(</span>
     <span class="n">source</span><span class="o">=</span><span class="n">samples_col_mdc</span><span class="p">,</span>
     <span class="n">metadata</span><span class="o">=</span><span class="n">metadata_md</span><span class="p">,</span>
@@ -337,7 +271,7 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="cli-usage highlight-default notranslate" id="usage-16"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">ps</span><span class="o">-</span><span class="n">plot</span> <span class="n">mutantScatters</span> \
+<div class="cli-usage highlight-default notranslate" id="usage-11"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">ps</span><span class="o">-</span><span class="n">plot</span> <span class="n">mutantScatters</span> \
   <span class="o">--</span><span class="n">m</span><span class="o">-</span><span class="n">source</span><span class="o">-</span><span class="n">file</span> <span class="n">samples</span><span class="o">.</span><span class="n">tsv</span> \
   <span class="o">--</span><span class="n">m</span><span class="o">-</span><span class="n">source</span><span class="o">-</span><span class="n">column</span> <span class="n">Source</span> \
   <span class="o">--</span><span class="n">m</span><span class="o">-</span><span class="n">metadata</span><span class="o">-</span><span class="n">file</span> <span class="n">metadata</span><span class="o">.</span><span class="n">tsv</span> \
@@ -353,7 +287,7 @@
   <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">visualization</span> <span class="n">mutant</span><span class="o">-</span><span class="n">scatter</span><span class="o">.</span><span class="n">qzv</span>
 </pre></div>
 </div>
-<div class="raw-usage highlight-default notranslate" id="usage-19"><div class="highlight"><pre><span></span><span class="n">samples_col</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">get_metadata_column</span><span class="p">(</span><span class="s1">&#39;samples_col&#39;</span><span class="p">,</span> <span class="s1">&#39;Source&#39;</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span>
+<div class="raw-usage highlight-default notranslate" id="usage-14"><div class="highlight"><pre><span></span><span class="n">samples_col</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">get_metadata_column</span><span class="p">(</span><span class="s1">&#39;samples_col&#39;</span><span class="p">,</span> <span class="s1">&#39;Source&#39;</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span>
 
 <span class="n">mutantScatter</span><span class="p">,</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">action</span><span class="p">(</span>
 <span class="n">use</span><span class="o">.</span><span class="n">UsageAction</span><span class="p">(</span><span class="n">plugin_id</span><span class="o">=</span><span class="s1">&#39;ps_plot&#39;</span><span class="p">,</span> <span class="n">action_id</span><span class="o">=</span><span class="s1">&#39;mutantScatters&#39;</span><span class="p">),</span>
@@ -376,7 +310,7 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="galaxy-usage compound" id="usage-17">
+<div class="galaxy-usage compound" id="usage-12">
 <dl>
 <dt>Using the <code class="docutils literal notranslate"><span class="pre">qiime2</span> <span class="pre">ps-plot</span> <span class="pre">mutantScatters</span></code> tool:</dt><dd><ol class="arabic simple">
 <li><p>Set <em>“zscore”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">zscore.qza</span></code></p></li>
@@ -428,7 +362,7 @@
 </dd>
 </dl>
 </div>
-<div class="exec-usage compound" id="usage-18">
+<div class="exec-usage compound" id="usage-13">
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">mutant-scatter.qzv</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fps-plot%2Fmutant-scatter.qzv"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/ps-plot/mutant-scatter.qzv"><span>download</span></a></p></li>
 </ul>
