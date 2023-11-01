@@ -4,3 +4,11 @@ Jinja2
 sphinxcontrib-bibtex
 lxml
 https://github.com/qiime2/sphinx-ext-qiime2/archive/master.tar.gz
+# Get expected file for altair_saver v0.5.0 given altair v5.0.1
+altair_viewer @ git+https://github.com/altair-viz/altair_viewer@master
+
+# Requirements for generating tutorial data
+q2-autopepsirf @ git+https://github.com/LadnerLab/q2-autopepsirf@main
+# will need to update branches when they are merged into main
+q2-pepsirf @ git+https://github.com/LadnerLab/q2-pepsirf@sync-deconv-ISS161
+q2-ps-plot @ git+https://github.com/LadnerLab/q2-ps-plot@upgrade-altair-v5

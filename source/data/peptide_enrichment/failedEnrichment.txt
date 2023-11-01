@@ -1,0 +1,23 @@
+Replicates	Reason
+SB_pG-PV1.7-IM50-B, SB_pG-PV1.7-NH0007-IM34-B	No enriched peptides
+SB_pG-PV1.7-IM50-B, SB_pG-PV1.7-IM63-B	No enriched peptides
+SB_pG-PV1.7-IM63-B, SB_pG-PV1.7-NH0007-IM34-B	No enriched peptides
+SB_pA-PV1.7-IM63-A, SB_pG-PV1.7-NH0007-IM34-B	No enriched peptides
+SB_pG-B-PV1.5-NH0003, SB_pA-A-PV1.5-NH0004	No enriched peptides
+SB_pA-PV1.7-IM63-A, SB_pG-PV1.7-IM50-B	No enriched peptides
+SB_pA-PV1.7-IM63-A, SB_pA-PV1.7-NH0007-IM34-A	No enriched peptides
+SB_pA-A-PV1.5-NH0003, SB_pA-A-PV1.5-NH0004	No enriched peptides
+ZN-172_pG_A-PV1.5-NH0006, ZN-172_pG_B-PV1.5-NH0006	No enriched peptides
+SB_pA-PV1.7-NH0007-IM34-A, SB_pG-PV1.7-IM63-B	No enriched peptides
+SB_pA-PV1.7-NH0007-IM34-A, SB_pG-PV1.7-IM50-B	No enriched peptides
+SB_pA-A-PV1.5-NH0006, SB_pA-A-PV1.5-NH0004	No enriched peptides
+SB_pG-B-PV1.5-NH0003, SB_pA-A-PV1.5-NH0006	No enriched peptides
+NR-19260_pG_A-PV1.5-NH0003, NR-19260_pG_B-PV1.5-NH0003	No enriched peptides
+SB_pG-B-PV1.5-NH0003, SB_pA-A-PV1.5-NH0003	No enriched peptides
+ZN-172_pA_A-PV1.5-NH0006, ZN-172_pA_B-PV1.5-NH0006	No enriched peptides
+SB_pA-PV1.7-NH0007-IM34-A, SB_pG-PV1.7-NH0007-IM34-B	No enriched peptides
+3923_pA_A-PV1.5-NH0004, 3923_pA_B-PV1.5-NH0004	No enriched peptides
+SB_pA-PV1.7-IM63-A, SB_pG-PV1.7-IM63-B	No enriched peptides
+SB_pA-A-PV1.5-NH0006, SB_pA-A-PV1.5-NH0003	No enriched peptides
+9759_pG_A-PV1.5-NH0004, 9759_pG_B-PV1.5-NH0004	No enriched peptides
+10710_pG_A-PV1.5-NH0004, 10710_pG_B-PV1.5-NH0004	No enriched peptides

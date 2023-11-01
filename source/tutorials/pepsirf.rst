@@ -63,7 +63,7 @@ Here we will test q2-pepsirf's demux module by running the following command:
    
 .. usage:: 
 
-   rawData, diagnosticData,  = use.action(
+   rawData, diagnosticData, = use.action(
    use.UsageAction(plugin_id='pepsirf', action_id='demux'),
    use.UsageInputs(
         input_r1 = input_r1,
@@ -75,7 +75,8 @@ Here we will test q2-pepsirf's demux module by running the following command:
         phred_base = 33,
         library = library,
         index =  index,
-        samplelist = samplelist
+        samplelist = samplelist,
+        pepsirf_binary = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf"
    ),
    use.UsageOutputNames(
         raw_counts_output = "demux_diagnostic_output",
@@ -119,6 +120,7 @@ Here we will test q2-pepsirf's deconv-batch module by running the following comm
    use.UsageAction(plugin_id='pepsirf', action_id='deconv_batch'),
    use.UsageInputs(
         enriched_dir = enriched_dir,
+        enriched_file_ending = "_paired.txt",
         score_filtering = True,
         threshold = 40,
         score_tie_threshold = 0.95,
@@ -127,10 +129,11 @@ Here we will test q2-pepsirf's deconv-batch module by running the following comm
         outfile_suffix = "_ss40.txt",
         mapfile_suffix = "_ss40.map",
         linked = linked,
-        id_name_map = id_name_map
+        id_name_map = id_name_map,
+        pepsirf_binary = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf"
    ),
    use.UsageOutputNames(
-        deconv_output = "deconv_output",
+        deconv_output = "deconv",
         score_per_round = "score_per_round",
         peptide_assignment_map = "peptide_assignment_map"
    )
@@ -157,12 +160,14 @@ Here we will test q2-pepsirf's deconv-singular module by running the following c
    use.UsageAction(plugin_id='pepsirf', action_id='deconv_singular'),
    use.UsageInputs(
         enriched = enriched_peptides,
+        enriched_file_ending = "_paired.txt",
         score_filtering = True,
         threshold = 40,
         score_tie_threshold = 0.95,
         score_overlap_threshold = 0.7,
         linked = linked,
-        id_name_map = id_name_map
+        id_name_map = id_name_map,
+        pepsirf_binary = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf"
    ),
    use.UsageOutputNames(
         deconv_output = "deconv_output_singular",
