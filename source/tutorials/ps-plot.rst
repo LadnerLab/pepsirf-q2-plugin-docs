@@ -25,27 +25,12 @@ Protein Alignment
 Here we will test q2-ps-plot's proteinHeatmap module by running the following command:
 
 .. usage::
-     
-   def prot_align_factory():
-      import qiime2
-      return qiime2.Artifact.load("source/data/alignmentFiles_dir.qza")
-
-   prot_align = use.init_artifact("prot_align", prot_align_factory)
-
-   def enrichment_factory():
-      import qiime2
-      return qiime2.Artifact.load("source/data/10Z-HDI95_0CS_400000raw_dir.qza")
-
-   peptide_enrichment = use.init_artifact("peptide_enrichment", enrichment_factory)
-
-
-.. usage::
    
    protHeatMap, = use.action(
       use.UsageAction(plugin_id="ps_plot", action_id="proteinHeatmap_dir"),
       use.UsageInputs(
-        enriched_dir_filepath = "peptide_enrichment",
-        protein_alignment_filepath = "prot_align/manifest.tsv",
+        enriched_dir_filepath = "source/data/peptide_enrichment",
+        protein_alignment_filepath = "source/data/prot_align/manifest.tsv",
         enriched_suffix = "_enriched.txt",
         align_header = "AlignPos",
         align_delim = "~",
