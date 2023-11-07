@@ -42,6 +42,7 @@ jobs:
           sudo apt install -y libboost-all-dev
 
         name: Build pepsirf
+        working-directory: ${{ github.workspace }}/pepsirf
         shell: bash -l {0}
         run: |
           mkdir build
