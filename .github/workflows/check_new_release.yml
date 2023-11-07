@@ -1,0 +1,25 @@
+name: Check Dependencies for New Release
+on:
+  pull_request:
+    branches: master
+  workflow_dispatch:
+
+# cron job
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Cache Dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.docs-depends
+          key: ${{ runner.OS }}-docs-depends
+          restore-keys: |
+            ${{ runner.OS }}-docs-depends
+
+      - name: Install docs dependencies
+        run:

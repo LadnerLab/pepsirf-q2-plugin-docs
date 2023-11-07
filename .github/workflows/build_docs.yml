@@ -2,7 +2,7 @@
 # GitHub pages. Executed when main is pushed to.
 name: Documentation update
 on:
-  pull_request:
+  push:
     branches: master
   workflow_dispatch:
 
