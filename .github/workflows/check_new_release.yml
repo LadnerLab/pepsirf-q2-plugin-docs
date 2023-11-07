@@ -6,19 +6,20 @@ on:
 # cron job
 
 jobs:
-  check-versions:
+  check-pepsirf:
     runs-on: ubuntu-latest
     steps:
-      - name: Check pepsirf
-        id: cache-pepsirf
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           repository: LadnerLab/PepSIRF
           ref: master
           path: pepsirf
-        uses: jwlawson/actions-setup-cmake@v1.12
+      - uses: jwlawson/actions-setup-cmake@v1.12
         with:
           cmake-version: 3.16.3
+
+      - name: Check pepsirf
+        id: cache-pepsirf
         uses: actions/cache@v3
         env:
           cache-name: cache-pepsirf
@@ -29,19 +30,19 @@ jobs:
             ${{ runner.os }}-${{ env.cache-name }}
             ${{ runner.os }}-
 
-        name: Install zlib
+      - name: Install zlib
         shell: bash -l {0}
         run: |
           sudo apt update
           sudo apt install zlib1g
 
-        name: Install Boost library
+      - name: Install Boost library
         shell: bash -l {0}
         run: |
           sudo apt update
           sudo apt install -y libboost-all-dev
 
-        name: Build pepsirf
+      - name: Build pepsirf
         working-directory: ${{ github.workspace }}/pepsirf
         shell: bash -l {0}
         run: |
