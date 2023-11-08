@@ -47,4 +47,4 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ github.workspace }}/pepsirf/build
-          key: ${{ running.os }}-pepsirf
+          key: ${{ runner.os }}-pepsirf
