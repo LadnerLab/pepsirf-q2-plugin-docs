@@ -23,7 +23,7 @@ jobs:
         id: cache-pepsirf-restore
         uses: actions/cache@v3
         with:
-          path: ${{ github.workspace }}
+          path: ${{ github.workspace }}/pepsirf
           key: ${{ runner.os }}-pepsirf
           restore-keys: |
             ${{ runner.os }}-pepsirf
@@ -42,6 +42,8 @@ jobs:
           cmake --version
           cmake -DCMAKE_BUILD_TYPE=Release ..
           make pepsirf
+
+      - name: Cache pepsirf
         uses: actions/cache@v3
         with:
           path: ${{ github.workspace }}/pepsirf/build
