@@ -29,6 +29,11 @@ jobs:
           path: ${{ env.depend-cache }}
           key: ${{ runner.os }}-pepsirf
 
+      - name: Check pepsirf version
+        shell: bash -l {0}
+        run: |
+          ls -al ${{ github.workspace }}
+
       - name: Install pepsirf
         if: steps.cache-pepsirf.outputs.cache-hit != 'true'
         working-directory: ${{ github.workspace }}/pepsirf
