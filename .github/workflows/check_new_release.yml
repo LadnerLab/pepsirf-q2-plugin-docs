@@ -42,3 +42,4 @@ jobs:
           cmake --version
           cmake -DCMAKE_BUILD_TYPE=Release ..
           make pepsirf
+          mkdir ${{ env.depend-cache }}
