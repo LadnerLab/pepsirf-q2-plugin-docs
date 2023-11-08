@@ -5,6 +5,9 @@ on:
 
 # cron job
 
+env:
+  depend-cache: /home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/depend-cache
+
 jobs:
   check-pepsirf:
     runs-on: ubuntu-latest
@@ -23,7 +26,7 @@ jobs:
         id: cache-pepsirf
         uses: actions/cache@v3
         with:
-          path: ~/.pepsirf
+          path: ${{ env.depend-cache }}/pepsirf
           key: ${{ runner.os }}-pepsirf
 
       - name: Check pepsirf version
