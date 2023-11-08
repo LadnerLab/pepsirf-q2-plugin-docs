@@ -5,9 +5,6 @@ on:
 
 # cron job
 
-env:
-  depend-cache: /home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/depend-cache
-
 jobs:
   check-pepsirf:
     runs-on: ubuntu-latest
@@ -22,21 +19,18 @@ jobs:
         with:
           cmake-version: 3.16.3
 
-      - name: Cache pepsirf
-        id: cache-pepsirf
+      - name: Restore pepsirf
+        id: cache-pepsirf-restore
         uses: actions/cache@v3
         with:
-          path: ${{ env.depend-cache }}
+          path: ${{ github.workspace }}
           key: ${{ runner.os }}-pepsirf
+          restore-keys: |
+            ${{ runner.os }}-pepsirf
 
-      - name: Check pepsirf version
-        shell: bash -l {0}
-        run: |
-          ls -al ${{ github.workspace }}/pepsirf
-          ls -al ${{ github.workspace }}/pepsirf/build
-
-      - name: Install pepsirf
-        if: steps.cache-pepsirf.outputs.cache-hit != 'true'
+      - if: ${{ steps.cache-pepsirf-restore.outputs.cache-hit != 'true' }}
+        name: Install pepsirf
+        continue-on-error: true
         working-directory: ${{ github.workspace }}/pepsirf
         shell: bash -l {0}
         run: |
@@ -48,4 +42,7 @@ jobs:
           cmake --version
           cmake -DCMAKE_BUILD_TYPE=Release ..
           make pepsirf
-          mkdir ${{ env.depend-cache }}
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/pepsirf/build
+          key: ${{ running.os }}-pepsirf
