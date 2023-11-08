@@ -26,14 +26,15 @@ jobs:
         id: cache-pepsirf
         uses: actions/cache@v3
         with:
-          path: ${{ env.depend-cache }}/pepsirf
+          path: ${{ env.depend-cache }}
           key: ${{ runner.os }}-pepsirf
 
-      - name: Check pepsirf version
-        if: steps.cache-pepsirf.outputs.cache-hit == 'true'
+      - name: Check pepsirf cache
+        if: steps.cache-pepsirf.outputs.cache-hit != 'true'
+        continue-on-error: true
         shell: bash -l {0}
         run: |
-          ${{ github.workspace }}/pepsirf info -h
+          mkdir ${{ env.depend-cache }}
 
       - name: Install zlib
         shell: bash -l {0}
