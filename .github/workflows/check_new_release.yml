@@ -32,7 +32,8 @@ jobs:
       - name: Check pepsirf version
         shell: bash -l {0}
         run: |
-          ls -al ${{ env.depend-cache }}
+          ls -al ${{ github.workspace }}/pepsirf
+          ls -al ${{ github.workspace }}/pepsirf/build
 
       - name: Install pepsirf
         if: steps.cache-pepsirf.outputs.cache-hit != 'true'
