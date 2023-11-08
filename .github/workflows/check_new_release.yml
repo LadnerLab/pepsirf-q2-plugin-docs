@@ -27,7 +27,7 @@ jobs:
           key: ${{ runner.os }}-pepsirf
 
       - name: Check pepsirf version
-        if: steps.cache-pepsirf.outputs.cache-hit == "true"
+        if: steps.cache-pepsirf.outputs.cache-hit == 'true'
         shell: bash -l {0}
         run: |
           ${{ github.workspace }}/pepsirf info -h
