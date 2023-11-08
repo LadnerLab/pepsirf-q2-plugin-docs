@@ -8,6 +8,7 @@ on:
 jobs:
   check-pepsirf:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -18,17 +19,18 @@ jobs:
         with:
           cmake-version: 3.16.3
 
-      - name: Check pepsirf
+      - name: Cache pepsirf
         id: cache-pepsirf
         uses: actions/cache@v3
-        env:
-          cache-name: cache-pepsirf
         with:
           path: ~/.pepsirf
-          key: ${{ runner.os }}-${{ env.cache-name }}
-          restore-keys: |
-            ${{ runner.os }}-${{ env.cache-name }}
-            ${{ runner.os }}-
+          key: ${{ runner.os }}-pepsirf
+
+      - name: Check pepsirf version
+        if: steps.cache-pepsirf.outputs.cache-hit == "true"
+        shell: bash -l {0}
+        run: |
+          ${{ github.workspace }}/pepsirf info -h
 
       - name: Install zlib
         shell: bash -l {0}
