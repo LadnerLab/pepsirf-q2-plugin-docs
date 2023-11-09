@@ -10,6 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # setup python
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+      # checkout main branch
+      - uses: actions/checkout@v4
+        with:
+          path: main
+      
       - name: Check qiime2 cache
         id: cache-qiime-restore
         uses: actions/cache@v3
@@ -21,6 +30,7 @@ jobs:
         if: ${{ steps.cache-qiime-restore.outputs.cache-hit != 'true' }}
         continue-on-error: true
         working-directory: ${{ github.workspace }}/main
+        shell: bash -l {0}
         run: |
           env_file=qiime2-2023.7-py38-linux-conda.yml
           conda env create -q -p ./qiime-env --file $env_file
