@@ -19,18 +19,15 @@ jobs:
         with:
           cmake-version: 3.16.3
 
-      - name: Restore pepsirf
+      - name: Cache pepsirf
         id: cache-pepsirf-restore
         uses: actions/cache@v3
         with:
-          path: ${{ github.workspace }}/pepsirf
+          path: ${{ github.workspace }}/pepsirf/build
           key: ${{ runner.os }}-pepsirf
-          restore-keys: |
-            ${{ runner.os }}-pepsirf
 
       - if: ${{ steps.cache-pepsirf-restore.outputs.cache-hit != 'true' }}
         name: Install pepsirf
-        continue-on-error: true
         working-directory: ${{ github.workspace }}/pepsirf
         shell: bash -l {0}
         run: |
@@ -42,9 +39,3 @@ jobs:
           cmake --version
           cmake -DCMAKE_BUILD_TYPE=Release ..
           make pepsirf
-
-      - name: Cache pepsirf
-        uses: actions/cache@v3
-        with:
-          path: ${{ github.workspace }}/pepsirf/build
-          key: ${{ runner.os }}-pepsirf
