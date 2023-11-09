@@ -23,11 +23,12 @@ jobs:
         id: cache-pepsirf-restore
         uses: actions/cache@v3
         with:
-          path: ${{ github.workspace }}/pepsirf/build
+          path: ${{ github.workspace }}/pepsirf/build/pepsirf
           key: ${{ runner.os }}-pepsirf
 
       - if: ${{ steps.cache-pepsirf-restore.outputs.cache-hit == 'true' }}
         name: Check pepsirf version
+        continue-on-error: true
         working-directory: ${{ github.workspace }}
         shell: bash -l {0}
         run: |
