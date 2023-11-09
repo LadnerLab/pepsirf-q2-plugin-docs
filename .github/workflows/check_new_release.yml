@@ -6,6 +6,24 @@ on:
 # cron job
 
 jobs:
+  check-qiime:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check qiime2 cache
+        id: cache-qiime-restore
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/qiime-env
+          key: ${{ runner.os }}-qiime2
+
+      - if: ${{ steps.cache-qiime-restore.outputs.cache-hit != 'true' }}
+        name: Install qiime2 core distro
+        working-directory: ${{ github.workspace }}/main
+        run: |
+          env_file=qiime2-2023.7-py38-linux-conda.yml
+          conda env create -q -p ./qiime-env --file $env_file
+
   check-pepsirf:
     runs-on: ubuntu-latest
 
@@ -19,7 +37,7 @@ jobs:
         with:
           cmake-version: 3.16.3
 
-      - name: Cache pepsirf
+      - name: Check pepsirf cache
         id: cache-pepsirf-restore
         uses: actions/cache@v3
         with:
