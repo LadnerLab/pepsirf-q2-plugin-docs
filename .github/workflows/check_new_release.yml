@@ -2,8 +2,8 @@ name: Check Dependencies for New Release
 on:
   pull_request:
     branches: master
-
-# cron job
+  schedule:
+    - cron: '0 0 1 6 *'
 
 jobs:
   check-qiime:
