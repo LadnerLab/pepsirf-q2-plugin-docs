@@ -48,10 +48,71 @@
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>In this tutorial you’ll use QIIME 2 to perform an analysis of some data.</p>
+<p>Typical Runtime: 0 Minutes 15.43 Seconds</p>
 </section>
 <section id="generate-a-correlation-matrix">
 <h2>Generate a Correlation Matrix<a class="headerlink" href="#generate-a-correlation-matrix" title="Permalink to this heading">¶</a></h2>
 <script id="interfaces" type="application/json">{"default": "cli-usage", "available": {"python3-usage": ["Python 3 API (qiime2)", true], "cli-usage": ["Command Line (q2cli)", true], "galaxy-usage": ["Galaxy (q2galaxy)", true], "raw-usage": ["View Source (qiime2.sdk)", false]}, "classes": [".python3-usage", ".cli-usage", ".galaxy-usage", ".raw-usage"]}</script><span class="usage-selector"></span><p>Here we will test q2-ps-qc’s generate-corr-matrix module by running the following command:</p>
+<div class="python3-usage highlight-default notranslate" id="usage-0"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiime2.plugins.q2_ps_qc.actions</span> <span class="k">as</span> <span class="nn">q2_ps_qc_actions</span>
+
+<span class="n">bad_corr_viz</span><span class="p">,</span> <span class="n">good_corr_viz</span> <span class="o">=</span> <span class="n">q2_ps_qc_actions</span><span class="o">.</span><span class="n">generate_corr_matrix</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="s1">&#39;source/data/IM0032-pA_PV1_subset_CS.tsv&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="cli-usage highlight-default notranslate" id="usage-1"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">q2</span><span class="o">-</span><span class="n">ps</span><span class="o">-</span><span class="n">qc</span> <span class="n">generate</span><span class="o">-</span><span class="n">corr</span><span class="o">-</span><span class="n">matrix</span> \
+  <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">data</span> <span class="n">source</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">IM0032</span><span class="o">-</span><span class="n">pA_PV1_subset_CS</span><span class="o">.</span><span class="n">tsv</span> \
+  <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">bad</span><span class="o">-</span><span class="n">output</span> <span class="n">bad</span><span class="o">-</span><span class="n">corr</span><span class="o">.</span><span class="n">qzv</span> \
+  <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">good</span><span class="o">-</span><span class="n">output</span> <span class="n">good</span><span class="o">-</span><span class="n">corr</span><span class="o">.</span><span class="n">qzv</span>
+</pre></div>
+</div>
+<div class="raw-usage highlight-default notranslate" id="usage-4"><div class="highlight"><pre><span></span><span class="n">bad_corr_vis</span><span class="p">,</span> <span class="n">good_corr_vis</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">action</span><span class="p">(</span>
+        <span class="n">use</span><span class="o">.</span><span class="n">UsageAction</span><span class="p">(</span>
+                <span class="n">plugin_id</span><span class="o">=</span><span class="s2">&quot;q2_ps_qc&quot;</span><span class="p">,</span>
+                <span class="n">action_id</span><span class="o">=</span><span class="s2">&quot;generate_corr_matrix&quot;</span>
+        <span class="p">),</span>
+        <span class="n">use</span><span class="o">.</span><span class="n">UsageInputs</span><span class="p">(</span>
+                <span class="n">data</span><span class="o">=</span><span class="s2">&quot;source/data/IM0032-pA_PV1_subset_CS.tsv&quot;</span>
+        <span class="p">),</span>
+        <span class="n">use</span><span class="o">.</span><span class="n">UsageOutputNames</span><span class="p">(</span>
+                <span class="n">bad_output</span><span class="o">=</span><span class="s2">&quot;bad_corr&quot;</span><span class="p">,</span>
+                <span class="n">good_output</span><span class="o">=</span><span class="s2">&quot;good_corr&quot;</span>
+        <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="galaxy-usage compound" id="usage-2">
+<dl>
+<dt>Using the <code class="docutils literal notranslate"><span class="pre">qiime2</span> <span class="pre">q2-ps-qc</span> <span class="pre">generate-corr-matrix</span></code> tool:</dt><dd><ol class="arabic simple">
+<li><p>Set <em>“data”</em> to <code class="docutils literal notranslate"><span class="pre">source/data/IM0032-pA_PV1_subset_CS.tsv</span></code></p></li>
+<li><p>Press the <code class="docutils literal notranslate"><span class="pre">Execute</span></code> button.</p></li>
+</ol>
+</dd>
+<dt>Once completed, for each new entry in your history, use the <code class="docutils literal notranslate"><span class="pre">Edit</span></code> button to set the name as follows:</dt><dd><p>(Renaming is optional, but it will make any subsequent steps easier to complete.)</p>
+<table class="docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>History Name</p></th>
+<th class="head"><p><em>“Name”</em> to set (be sure to press <code class="docutils literal notranslate"><span class="pre">Save</span></code>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">q2-ps-qc</span> <span class="pre">generate-corr-matrix</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">bad_output.qzv</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bad-corr.qzv</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">qiime2</span> <span class="pre">q2-ps-qc</span> <span class="pre">generate-corr-matrix</span> <span class="pre">[...]</span> <span class="pre">:</span> <span class="pre">good_output.qzv</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">good-corr.qzv</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</div>
+<div class="exec-usage compound" id="usage-3">
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bad-corr.qzv</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fps-qc%2Fbad-corr.qzv"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/ps-qc/bad-corr.qzv"><span>download</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">good-corr.qzv</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fps-qc%2Fgood-corr.qzv"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/ps-qc/good-corr.qzv"><span>download</span></a></p></li>
+</ul>
+</div>
 </section>
 </section>
 
