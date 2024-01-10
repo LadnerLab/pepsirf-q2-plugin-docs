@@ -1,0 +1,87 @@
+# This workflow automatically generates the Sphinx documentation required for
+# GitHub pages. Executed when main is pushed to.
+name: Test docs
+on:
+  pull_request:
+    branches: master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: LadnerLab/PepSIRF
+          ref: master
+          path: pepsirf-repo
+      - uses: jwlawson/actions-setup-cmake@v1.12
+        with:
+          cmake-version: 3.16.3
+
+      - name: Install Zlib
+        run: sudo apt install zlib1g
+
+      - name: Install Boost library
+        run: |
+          sudo apt update
+          sudo apt install -y libboost-all-dev
+
+      - name: Build PepSIRF
+        working-directory: ${{ github.workspace }}/pepsirf-repo
+        shell: bash -l {0}
+        run: |
+          mkdir build
+          cd build
+          cmake --version
+          cmake -DCMAKE_BUILD_TYPE=Release ..
+          make pepsirf
+          mv pepsirf ${{ github.workspace }}
+
+      - name: Verify PepSIRF install
+        shell: bash -l {0}
+        run: |
+          ${{ github.workspace }}/pepsirf info -h
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      # Checkout the main branch (docs will be built from this)
+      - uses: actions/checkout@v2
+        with:
+          path: main
+      # Checkout the documentation branch (docs will be pushed to this)
+      - uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Install QIIME 2 core distro
+        working-directory: ${{ github.workspace }}/main
+        run: |
+          # version should change as plugins are updated in accordance to qiime2 version (as needed)
+          envFile=qiime2-2023.7-py38-linux-conda.yml
+          # wget https://raw.githubusercontent.com/qiime2/environment-files/master/2023.7/release/$envFile
+          conda env create -q -p ./test-env --file $envFile
+          
+      - name: Install Sphinx requirements
+        working-directory: ${{ github.workspace }}/main/source
+        shell: bash -l {0}
+        run: |
+          source "$CONDA/etc/profile.d/conda.sh"
+          conda activate ../test-env
+          pip install -r ../requirements.txt
+
+      - name: Dummy docs
+        working-directory: ${{ github.workspace }}/main
+        shell: bash -l {0}
+        env:
+          SPHINXOPTS: -q
+        run: |
+          # check pepsirf binary is still where it was moved
+          ls -al /home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs
+          # check env file is where it should be
+          ls -al /home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/main
+          source "$CONDA/etc/profile.d/conda.sh"
+          conda activate ./test-env
+          make dummy

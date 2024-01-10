@@ -26,7 +26,7 @@ Here we will test q2-ps-qc's generate-corr-matrix module by running the followin
 
 .. usage::
 
-	corr-matrix, = use.action(
+	bad_corr_vis, good_corr_vis = use.action(
 		use.UsageAction(
 			plugin_id="q2_ps_qc",
 			action_id="generate_corr_matrix"
@@ -35,7 +35,7 @@ Here we will test q2-ps-qc's generate-corr-matrix module by running the followin
 			data="source/data/IM0032-pA_PV1_subset_CS.tsv"
 		),
 		use.UsageOutputNames(
-			bad_outputs="bad_corr",
-			good_outputs="good_corr"
+			bad_output="bad_corr",
+			good_output="good_corr"
 		)
 	)

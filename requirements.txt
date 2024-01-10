@@ -12,3 +12,4 @@ q2-autopepsirf @ git+https://github.com/LadnerLab/q2-autopepsirf@main
 # will need to update branches when they are merged into main
 q2-pepsirf @ git+https://github.com/LadnerLab/q2-pepsirf@sync-deconv-ISS161
 q2-ps-plot @ git+https://github.com/LadnerLab/q2-ps-plot@upgrade-altair-v5
+q2-ps-qc @ git+https://github.com/LadnerLab/q2-ps-qc@main
