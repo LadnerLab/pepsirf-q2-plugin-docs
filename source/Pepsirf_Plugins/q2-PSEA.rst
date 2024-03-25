@@ -27,8 +27,7 @@ R Dependencies:
 - ``r-ggraph``
 - ``r-ggforce``
 - ``r-scatterpie``
-- ``r-ggplot2 v3.3``
-- ``pillow v9.4``
+- ``r-ggplot2``
 - ``r-biocmanager``
 - ``bioconductor-ggtree``
 - ``bioconductor-enrichplot``
@@ -64,8 +63,8 @@ Make sure your Qiime2 conda environment is activated by running the command:
 You can replace qiime2-2023.7 above with whichever version of QIIME 2 you have currently installed.
 
 To help make installing R dependencies easier, please use this command if you have trouble:
-``conda install -c conda-forge r-base r-essentials rpy2 r-biocmanager``
-``conda install -c conda-forge bioconductor-clusterprofiler``
+``conda install -c conda-forge r-base r-essentials r-igraph r-ggraph r-ggforce r-scatterpie r-ggplot2 rpy2 r-biocmanager``
+``conda install -c bioconda bioconductor-ggtree bioconductor-enrichplot``
 
 You will need to install clusterProfiler through R to avoid conflicting versions with some packages:
 Please download the custom R script to do so here: https://github.com/LadnerLab/q2-PSEA/blob/main/install_r_packages.R
