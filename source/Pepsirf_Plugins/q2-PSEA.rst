@@ -14,21 +14,22 @@ Dependencies:
 - ``qiime2-2023.7 or later``
 - ``q2-pepsirf``
 - ``q2-ps-plot``
-- ``altair v5.0.0``
-- ``altair_saver v0.5.0``
+- ``altair v5.0.0 or later``
+- ``altair_saver v0.5.0 or later``
 - ``rpy2 v3.5.11 or later``
 
 R Dependencies:
 ```````````````
 
 - ``r-base``
+- ``r-biocmanager``
 - ``r-essentials``
 - ``r-igraph``
 - ``r-ggraph``
 - ``r-ggforce``
 - ``r-scatterpie``
 - ``r-ggplot2``
-- ``r-biocmanager``
+- ``r-splines2``
 - ``bioconductor-ggtree``
 - ``bioconductor-enrichplot``
 - ``bioconductor-clusterprofiler``
@@ -63,7 +64,7 @@ Make sure your Qiime2 conda environment is activated by running the command:
 You can replace qiime2-2023.7 above with whichever version of QIIME 2 you have currently installed.
 
 To help make installing R dependencies easier, please use this command if you have trouble:
-``conda install -c conda-forge r-base r-essentials r-igraph r-ggraph r-ggforce r-scatterpie r-ggplot2 rpy2 r-biocmanager``
+``conda install -c conda-forge r-base r-essentials r-igraph r-ggraph r-ggforce r-scatterpie rpy2 r-biocmanager r-splines2``
 ``conda install -c bioconda bioconductor-ggtree bioconductor-enrichplot``
 
 You will need to install clusterProfiler through R to avoid conflicting versions with some packages:
