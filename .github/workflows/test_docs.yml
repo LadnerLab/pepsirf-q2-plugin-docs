@@ -63,6 +63,14 @@ jobs:
           envFile=qiime2-2023.7-py38-linux-conda.yml
           # wget https://raw.githubusercontent.com/qiime2/environment-files/master/2023.7/release/$envFile
           conda env create -q -p ./test-env --file $envFile
+
+      - name: Install R requirements
+        working-directory: ${{ github.workspace }}/main
+        shell: bash -l {0}
+        run: |
+          source "$CONDA/etc/profile.d/conda.sh"
+          conda activate ../test-env
+          Rscript install_r_packages.R
           
       - name: Install Sphinx requirements
         working-directory: ${{ github.workspace }}/main/source
