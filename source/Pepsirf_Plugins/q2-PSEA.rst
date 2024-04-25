@@ -21,18 +21,16 @@ Dependencies:
 R Dependencies:
 ```````````````
 
-- ``r-base``
+- ``r-base v4.2.2 or later``
 - ``r-biocmanager``
-- ``r-essentials``
-- ``r-igraph``
-- ``r-ggraph``
-- ``r-ggforce``
-- ``r-scatterpie``
-- ``r-ggplot2``
-- ``r-splines2``
-- ``bioconductor-ggtree``
-- ``bioconductor-enrichplot``
-- ``bioconductor-clusterprofiler``
+- ``r-essentials v1.7.0 or later``
+- ``r-igraph v1.4.2 or later``
+- ``r-ggraph v2.1.0 or later``
+- ``r-ggforce v0.4.1 or later``
+- ``r-scatterpie v0.2.1 or later``
+- ``r-splines2 v0.5.1 or later``
+- ``bioconductor-ggtree v3.6.0 or later``
+- ``bioconductor-enrichplot v1.18.0 or later``
 
 Qiime2 Installation:
 ````````````````````
