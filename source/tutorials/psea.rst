@@ -100,8 +100,8 @@ Here we will use the "cubic" option to fit a spline by running the following com
 			table_dir="psea-example-tables"
 		),
 		use.UsageOutputNames(
-			scatter_plot="scatter_plot",
-			volcano_plot="volcano_plot"
+			scatter_plot="scatter_plot_with_cubic_spline",
+			volcano_plot="volcano_plot_with_cubic_spline"
 		)
 	)
 
