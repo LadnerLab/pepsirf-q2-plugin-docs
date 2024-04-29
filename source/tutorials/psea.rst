@@ -35,20 +35,19 @@ Here we will test q2-PSEA's generate-vis module by running the following command
 
 	scatter_plot, volcano_plot = use.action(
 		use.UsageAction(
-			plugin_id="q2_PSEA",
-			action_id="generate_vis"
+			plugin_id="psea",
+			action_id="make_psea_table"
 		),
 		use.UsageInputs(
 			scores_file="source/data/IM0031_PV2T_25nt_raw_2mm_i1mm_Z-HDI75.tsv",
 			pairs_file="source/data/pairs.tsv",
 			peptide_sets_file="source/data/input.gmt",
-			theshold=0.750000,
+			threshold=0.750000,
 			species_taxa_file="source/data/species_taxa.tsv",
 			min_size=3,
 			max_size=5000,
 			permutation_num=10000,
-			table_dir="psea-example-tables",
-	        pepsirf_binary = "/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf"
+			table_dir="psea-example-tables"
 		),
 		use.UsageOutputNames(
 			scatter_plot="scatter_plot",

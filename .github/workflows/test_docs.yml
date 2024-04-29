@@ -64,16 +64,25 @@ jobs:
         run: |
           # version should change as plugins are updated in accordance to qiime2 version (as needed)
           envFile=qiime2-2023.7-py38-linux-conda.yml
-          # wget https://raw.githubusercontent.com/qiime2/environment-files/master/2023.7/release/$envFile
           conda env create -q -p ./test-env --file $envFile
 
       - name: Install R requirements
         working-directory: ${{ github.workspace }}/main
         shell: bash -l {0}
         run: |
+          source "$CONDA/etc/profile.d/conda.sh"
+          conda activate ../test-env
+          conda install -c conda-forge r-base r-essentials r-igraph r-ggraph r-ggforce r-scatterpie rpy2 r-biocmanager r-splines2
+          conda install -c bioconda bioconductor-ggtree bioconductor-enrichplot
+
+      - name: Install clusterProfiler package
+        working-directory: ${{ github.workspace }}/main
+        shell: bash -l {0}
+        run: |
           which Rscript
           source "$CONDA/etc/profile.d/conda.sh"
           conda activate ../test-env
+          # TODO: update install_r_packages.R as needed
           Rscript install_r_packages.R
           
       - name: Install Sphinx requirements
