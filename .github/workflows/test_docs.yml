@@ -70,7 +70,7 @@ jobs:
         working-directory: ${{ github.workspace }}/main
         run: |
           source "$CONDA/etc/profile.d/conda.sh"
-          conda activate ../test-env
+          conda activate ./test-env
           qiime info
 
       - name: Install clusterProfiler package
@@ -79,7 +79,7 @@ jobs:
         run: |
           which Rscript
           source "$CONDA/etc/profile.d/conda.sh"
-          conda activate ../test-env
+          conda activate ./test-env
           # TODO: update install_r_packages.R as needed
           Rscript install_r_packages.R
           
