@@ -72,8 +72,8 @@ jobs:
         run: |
           source "$CONDA/etc/profile.d/conda.sh"
           conda activate ../test-env
-          conda install -c conda-forge r-base r-essentials r-igraph r-ggraph r-ggforce r-scatterpie rpy2 r-biocmanager r-splines2
-          conda install -c bioconda bioconductor-ggtree bioconductor-enrichplot
+          conda install -c conda-forge r-base r-essentials r-igraph r-ggraph r-ggforce r-scatterpie rpy2 r-biocmanager r-splines2 --solver classic
+          conda install -c bioconda bioconductor-ggtree bioconductor-enrichplot --solver classic
 
       - name: Install clusterProfiler package
         working-directory: ${{ github.workspace }}/main
