@@ -76,7 +76,7 @@ Now you are ready to install q2-PSEA. Run the following commands:
 
 Run qiime info to check for a successful installation. If installation was successful, you should see psea: version in the list of installed plugins.
 
-Using provided example data, average run time for 3 trials was: 25.26s
+Using provided example data, average run time for 3 trials was: 1 Minute 21 Seconds
 
 Updating
 --------
