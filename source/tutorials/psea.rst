@@ -18,10 +18,10 @@ Generate Visualizations of PSEA results
 
 .. usage-selector::
 
-.. qiime psea make-psea-table --p-scores-file source/data/psea-example/IM0031_PV2T_25nt_raw_2mm_i1mm_Z-HDI75.tsv
-.. --p-pairs-file source/data/psea-example/pairs.tsv
-.. --p-peptide-sets-file source/data/psea-example/input.gmt
-.. --p-species-taxa-file source/data/psea-example/species_taxa.tsv
+.. qiime psea make-psea-table --p-scores-file source/data/psea-example-data/IM0031_PV2T_25nt_raw_2mm_i1mm_Z-HDI75.tsv
+.. --p-pairs-file source/data/psea-example-data/pairs.tsv
+.. --p-peptide-sets-file source/data/psea-example-data/input.gmt
+.. --p-species-taxa-file source/data/psea-example-data/species_taxa.tsv
 .. --p-threshold 0.750000
 .. --p-min-size 3
 .. --p-max-size 5000
@@ -60,16 +60,16 @@ Using Different Methods To Fit A Spline
 
 .. usage-selector::
 
-.. qiime psea make-psea-table --p-scores-file source/data/psea-example/IM0031_PV2T_25nt_raw_2mm_i1mm_Z-HDI75.tsv
-.. --p-pairs-file source/data/psea-example/pairs.tsv
-.. --p-peptide-sets-file source/data/psea-example/input.gmt
-.. --p-species-taxa-file source/data/psea-example/species_taxa.tsv
+.. qiime psea make-psea-table --p-scores-file source/data/psea-example-data/IM0031_PV2T_25nt_raw_2mm_i1mm_Z-HDI75.tsv
+.. --p-pairs-file source/data/psea-example-data/pairs.tsv
+.. --p-peptide-sets-file source/data/psea-example-data/input.gmt
+.. --p-species-taxa-file source/data/psea-example-data/species_taxa.tsv
 .. --p-threshold 0.750000
 .. --p-min-size 3
 .. --p-max-size 5000
 .. --p-permutation-num 10000
 .. --p-spline-type cubic
-.. --p-table-dir psea-example-tables
+.. --p-table-dir psea-cubic-spline-example-tables
 .. --output-dir psea-example-outdir
 
 A number of different methods to fit a spline have also been provided to the user. These options include the following:
@@ -97,7 +97,7 @@ Here we will use the "cubic" option to fit a spline by running the following com
 			max_size=5000,
 			permutation_num=10000,
 			spline_type="cubic",
-			table_dir="psea-example-tables"
+			table_dir="psea-cubic-spline-example-tables"
 		),
 		use.UsageOutputNames(
 			scatter_plot="scatter_plot_with_cubic_spline",
