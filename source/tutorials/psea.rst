@@ -106,3 +106,49 @@ Here we will use the "cubic" option to fit a spline by running the following com
 	)
 
 Keep in mind, when using the "cubic" spline approach, you are also afforded some extra customization with the "degree" and "dof" (degree of freedom) options to get the best spline fit.
+
+Running Iterative Peptide Analysis
+----------------------------------
+
+.. usage-selector::
+
+.. qiime psea make-psea-table --p-scores-file source/data/psea-example-data/IM0031_PV2T_25nt_raw_2mm_i1mm_Z-HDI75.tsv
+.. --p-pairs-file source/data/psea-example-data/pairs.tsv
+.. --p-peptide-sets-file source/data/psea-example-data/input.gmt
+.. --p-species-taxa-file source/data/psea-example-data/species_taxa.tsv
+.. --p-threshold 0.750000
+.. --p-min-size 3
+.. --p-max-size 5000
+.. --p-permutation-num 10000
+.. --p-iterative-analysis True
+.. --p-table-dir psea-example-tables
+.. --output-dir psea-example-outdir
+
+Here we will visualize the results of the iterative PSEA operation by running the following command:
+
+.. usage::
+
+	scatter_plot, volcano_plot = use.action(
+		use.UsageAction(
+			plugin_id="psea",
+			action_id="make_psea_table"
+		),
+		use.UsageInputs(
+			scores_file="source/data/psea-example-data/IM0031_PV2T_25nt_raw_2mm_i1mm_Z-HDI75.tsv",
+			pairs_file="source/data/psea-example-data/pairs.tsv",
+			peptide_sets_file="source/data/psea-example-data/input.gmt",
+			threshold=0.750000,
+			species_taxa_file="source/data/psea-example-data/species_taxa.tsv",
+			min_size=3,
+			max_size=5000,
+			permutation_num=10000,
+			iterative_analysis=True,
+			table_dir="psea-example-tables"
+		),
+		use.UsageOutputNames(
+			scatter_plot="scatter_plot",
+			volcano_plot="volcano_plot"
+		)
+	)
+
+Running iterative peptide analysis will multiply the runtime estimation by the number of iterations, which varies depending on the amount of significant species.
