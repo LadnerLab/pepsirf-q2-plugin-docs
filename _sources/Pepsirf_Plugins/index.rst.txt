@@ -8,3 +8,4 @@ Installation
    q2-ps-plot
    q2-ps-qc
    q2-autopepsirf
+   q2-PSEA

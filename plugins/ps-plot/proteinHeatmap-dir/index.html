@@ -73,6 +73,11 @@ Parameters:
                           (Example column: '1~2~3~4').   [default: 'AlignPos']
   --p-align-delim TEXT    The deliminator that separates the alignment
                           positions.                            [default: '~']
+  --p-include-species / --p-no-include-species
+                          Use if alignment file(s) include a 'Species'
+                          column.                             [default: False]
+  --p-species-header TEXT The name of the header to which identifies the
+                          species column                  [default: 'Species']
   --p-color-scheme TEXT   String of the name of a color scheme for the
                           heatmap. Color schemes can be found here:
                           https://vega.github.io/vega/docs/schemes/
@@ -138,6 +143,10 @@ align_header : Str, optional
     separated by the align_delim (Example column: '1~2~3~4').
 align_delim : Str, optional
     The deliminator that separates the alignment positions.
+include_species : Bool, optional
+    Use if alignment file(s) include a 'Species' column.
+species_header : Str, optional
+    The name of the header to which identifies the species column
 color_scheme : Str, optional
     String of the name of a color scheme for the heatmap. Color schemes can
     be found here: https://vega.github.io/vega/docs/schemes/

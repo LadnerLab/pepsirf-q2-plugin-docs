@@ -20,7 +20,7 @@ Generate a Correlation Matrix
 
 .. qiime q2-ps-qc generate-corr-matrix --p-data IM0032-pA_PV1_subset_CS.tsv
 .. --output-dir tut-ps-qc
-.. --verbose > corr_mat_gen.out
+.. --verbose
 
 Here we will test q2-ps-qc's generate-corr-matrix module by running the following command:
 

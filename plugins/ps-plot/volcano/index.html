@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>volcano: Volcano Visualizer &#8212; Q2 Pepsirf Plugin Docs  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css?v=435814a1" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/external-links.js?v=a7dd342f"></script>
+    <script src="../../../_static/usage.js?v=858a412f"></script>
+    <link rel="canonical" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/plugins/ps-plot/volcano.html" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="zenrich: Z Enrichment Variance Visualizer" href="../zenrich/" />
+    <link rel="prev" title="repScatters: Rep Scatter" href="../repScatters/" />
+  <script src="../../../_static/bootstrap.min.js"></script>
+  <script src="../../../_static/clipboard.min.js"></script>
+  <link rel="icon" href="../../../_static/favicon.ico" type="image/png" />
+  <link rel="stylesheet" href="../../../_static/css/bootstrap.min.css" media="screen" />
+  <link rel="stylesheet" href="../../../_static/css/normalize.css" media="screen">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  </head><body>
+  <div id="wrapper" class="container clearfix">
+    <div id="header">
+      <a href="/pepsirf-q2-plugin-docs/">
+        <img
+          class="img-responsive"
+          src="../../../_static/PepSIRF_Q2.png" alt="QIIME 2 Docs"
+        />
+      </a>
+    </div>
+    <div id="content">
+      
+      <div id="body" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 main pull-right">
+        
+  <section id="volcano-volcano-visualizer">
+<h1>volcano: Volcano Visualizer<a class="headerlink" href="#volcano-volcano-visualizer" title="Permalink to this heading">¶</a></h1>
+<div class="tabbed">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#cli">Command line interface</a></li>
+    <li><a data-toggle="tab" href="#api">Artifact API</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="cli" class="tab-pane fade in active">
+      <h4>Docstring:</h4>
+      <pre>Usage: qiime ps-plot volcano [OPTIONS]
+
+  Generates a volcano plot given x and y values. Significant points will be
+  highlighted is identifiers are provided.
+
+Parameters:
+  --p-x NUMBERS...        Coordinates along the x-axis at which to plot
+    List[Float]           points.                                   [optional]
+  --p-y NUMBERS...        Coordinates along the y-axis at which to plot
+    List[Float]           points.                                   [optional]
+  --p-taxa TEXT...        List of identifiers, positionally associated with
+    List[Str]             passed p-values and enrichment scores. These
+                          identifiers will be displayed when the user mouses
+                          over a point in the chart.                [optional]
+  --p-xy-dir TEXT         Directory containing tab delimited (TSV) files with
+                          plotting data. Provide this as an alternative if
+                          many plots are required.                  [optional]
+  --p-xy-access TEXT...   List with column names in the tables collected in
+    List[Str]             the 'xy-dir' which should be used to grab x and y
+                          values, respectively. Refer to default as an
+                          example. Only list length of 2 is supported.
+                                                         [default: ['x', 'y']]
+  --p-taxa-access TEXT    Column name in tables collected in the 'xy-dir'
+                          which should be used to grab highlighting
+                          information.                              [optional]
+  --p-x-threshold NUMBER  Specifies the minimum ES a taxa can have in order
+                          to be highlighted in the plot. If a taxa's ES is
+                          less than the provided threshold, then the taxa is
+                          not eligible to be highlighted. Please note the taxa
+                          must also have a p-value less than the provided
+                          p-value threshold to also be eligible for
+                          highlighting.                         [default: 0.4]
+  --p-y-threshold NUMBER  Specifies the maximum p-value a taxa can have in
+                          order to be highlighted in the plot. If a taxa's
+                          p-value is greater than the provided threshold, then
+                          the taxa is not eligible to be highlighted. Please
+                          note the taxa must also have an ES greater than the
+                          provided ES threshold to also be eligible for
+                          highlighting.                        [default: 0.05]
+  --p-log / --p-no-log    Specifies whether to or not transform y values. If
+                          True, the log (base 10) of the y values will be
+                          plotted in ascending order; otherwise, the passed y
+                          values will be plotted in descending order.
+                                                               [default: True]
+  --p-xy-labels TEXT...   Name of plot's x- and y-axis labels, respectively.
+    List[Str]                                            [default: ['x', 'y']]
+  --p-titles TEXT...      List of chart titles. These will be used to
+    List[Str]             determine the names in the drop down which is used
+                          to change chart views.               [default: ['']]
+Outputs:
+  --o-visualization VISUALIZATION
+                                                                    [required]
+Miscellaneous:
+  --output-dir PATH       Output unspecified results to a directory
+  --verbose / --quiet     Display verbose output to stdout and/or stderr
+                          during execution of this action. Or silence output
+                          if execution is successful (silence is golden).
+  --example-data PATH     Write example data and exit.
+  --citations             Show citations and exit.
+  --help                  Show this message and exit.</pre>
+    </div>
+    <div id="api" class="tab-pane fade">
+    <h4>Import:</h4><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>from<span class="w"> </span>qiime2.plugins.ps_plot.visualizers<span class="w"> </span>import<span class="w"> </span>volcano
+</pre></div>
+</div>
+    <h4>Docstring:</h4>
+      <pre>Volcano Visualizer
+
+Generates a volcano plot given x and y values. Significant points will be
+highlighted is identifiers are provided.
+
+Parameters
+----------
+x : List[Float], optional
+    Coordinates along the x-axis at which to plot points.
+y : List[Float], optional
+    Coordinates along the y-axis at which to plot points.
+taxa : List[Str], optional
+    List of identifiers, positionally associated with passed p-values and
+    enrichment scores. These identifiers will be displayed when the user
+    mouses over a point in the chart.
+xy_dir : Str, optional
+    Directory containing tab delimited (TSV) files with plotting data.
+    Provide this as an alternative if many plots are required.
+xy_access : List[Str], optional
+    List with column names in the tables collected in the 'xy_dir' which
+    should be used to grab x and y values, respectively. Refer to default
+    as an example. Only list length of 2 is supported.
+taxa_access : Str, optional
+    Column name in tables collected in the 'xy_dir' which should be used to
+    grab highlighting information.
+x_threshold : Float, optional
+    Specifies the minimum ES a taxa can have in order to be highlighted in
+    the plot. If a taxa's ES is less than the provided threshold, then the
+    taxa is not eligible to be highlighted. Please note the taxa must also
+    have a p-value less than the provided p-value threshold to also be
+    eligible for highlighting.
+y_threshold : Float, optional
+    Specifies the maximum p-value a taxa can have in order to be
+    highlighted in the plot. If a taxa's p-value is greater than the
+    provided threshold, then the taxa is not eligible to be highlighted.
+    Please note the taxa must also have an ES greater than the provided ES
+    threshold to also be eligible for highlighting.
+log : Bool, optional
+    Specifies whether to or not transform y values. If True, the log (base
+    10) of the y values will be plotted in ascending order; otherwise, the
+    passed y values will be plotted in descending order.
+xy_labels : List[Str], optional
+    Name of plot's x- and y-axis labels, respectively.
+titles : List[Str], optional
+    List of chart titles. These will be used to determine the names in the
+    drop down which is used to change chart views.
+
+Returns
+-------
+visualization : Visualization</pre>
+    </div>
+  </div>
+</div></section>
+
+
+      </div>
+      
+
+      
+      <div id="sidebar" class="col-lg-2 col-md-2 col-sm-12 col-xs-12 side pull-left">
+        
+<h3><a href="../../../">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Available plugins</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../autopepsirf/">autopepsirf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pepsirf/">pepsirf</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../">ps-plot</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Pepsirf_Plugins/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../export-imports/">QIIME 2 Import and Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tsv-pipelines/">TSV/Dir Pipelines</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+      </div>
+      
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Ladner Labs.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.
+    </div>
+  </div>
+  <script src="../../../_static/clipboard-driver.js"></script>
+  <script src="/versions.js" charset="utf-8"></script>
+  </body>
+</html>

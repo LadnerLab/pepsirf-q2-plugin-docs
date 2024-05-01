@@ -9,3 +9,4 @@ Tutorials
    ps-plot
    ps-qc
    pepsirf
+   psea

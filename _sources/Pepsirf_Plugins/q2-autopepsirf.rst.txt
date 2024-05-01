@@ -61,6 +61,6 @@ Typical Run Time: 4.43 Seconds
 Updating
 --------
 
-To update q2-pepsirf, run the following command:
+To update q2-autopepsirf, run the following command:
 
 ``pip install -U git+https://github.com/LadnerLab/q2-autopepsirf.git``

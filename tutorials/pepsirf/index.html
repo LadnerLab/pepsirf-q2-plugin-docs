@@ -16,7 +16,7 @@
     <link rel="canonical" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/tutorials/pepsirf.html" />
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="Available plugins" href="../../plugins/" />
+    <link rel="next" title="PSEA Tutorials - CLI Edition (more to come)" href="../psea/" />
     <link rel="prev" title="Ps-qc Tutorials - CLI Edition (more to come)" href="../ps-qc/" />
   <script src="../../_static/bootstrap.min.js"></script>
   <script src="../../_static/clipboard.min.js"></script>
@@ -52,7 +52,7 @@
 </section>
 <section id="demux">
 <h2>Demux<a class="headerlink" href="#demux" title="Permalink to this heading">¶</a></h2>
-<script id="interfaces" type="application/json">{"default": "cli-usage", "available": {"python3-usage": ["Python 3 API (qiime2)", true], "cli-usage": ["Command Line (q2cli)", true], "galaxy-usage": ["Galaxy (q2galaxy)", true], "raw-usage": ["View Source (qiime2.sdk)", false]}, "classes": [".python3-usage", ".cli-usage", ".galaxy-usage", ".raw-usage"]}</script><span class="usage-selector"></span><p>Here we will test q2-pepsirf’s demux module by running the following command:</p>
+<script id="interfaces" type="application/json">{"default": "cli-usage", "available": {"python3-usage": ["Python 3 API (qiime2)", true], "r-usage": ["R API (qiime2)", true], "cli-usage": ["Command Line (q2cli)", true], "galaxy-usage": ["Galaxy (q2galaxy)", true], "raw-usage": ["View Source (qiime2.sdk)", false]}, "classes": [".python3-usage", ".r-usage", ".cli-usage", ".galaxy-usage", ".raw-usage"]}</script><span class="usage-selector"></span><p>Here we will test q2-pepsirf’s demux module by running the following command:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You must have the development branch of pepsirf precompiled in order to use this module.</p>
@@ -91,7 +91,43 @@
 <span class="n">index</span> <span class="o">=</span> <span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="cli-usage highlight-default notranslate" id="usage-1"><div class="highlight"><pre><span></span><span class="n">wget</span> \
+<div class="r-usage highlight-default notranslate" id="usage-1"><div class="highlight"><pre><span></span>library(reticulate)
+
+Artifact &lt;- import(&quot;qiime2&quot;)$Artifact
+request &lt;- import(&quot;urllib&quot;)$request
+
+url &lt;- &#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/input-r1.qza&#39;
+fn &lt;- &#39;input-r1.qza&#39;
+request$urlretrieve(url, fn)
+input_r1 &lt;- Artifact$load(fn)
+
+url &lt;- &#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/input-r2.qza&#39;
+fn &lt;- &#39;input-r2.qza&#39;
+request$urlretrieve(url, fn)
+input_r2 &lt;- Artifact$load(fn)
+
+url &lt;- &#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/fif.qza&#39;
+fn &lt;- &#39;fif.qza&#39;
+request$urlretrieve(url, fn)
+fif &lt;- Artifact$load(fn)
+
+url &lt;- &#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/library.qza&#39;
+fn &lt;- &#39;library.qza&#39;
+request$urlretrieve(url, fn)
+library &lt;- Artifact$load(fn)
+
+url &lt;- &#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/sample-list.qza&#39;
+fn &lt;- &#39;sample-list.qza&#39;
+request$urlretrieve(url, fn)
+sample_list &lt;- Artifact$load(fn)
+
+url &lt;- &#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/index.qza&#39;
+fn &lt;- &#39;index.qza&#39;
+request$urlretrieve(url, fn)
+index &lt;- Artifact$load(fn)
+</pre></div>
+</div>
+<div class="cli-usage highlight-default notranslate" id="usage-2"><div class="highlight"><pre><span></span><span class="n">wget</span> \
   <span class="o">-</span><span class="n">O</span> <span class="s1">&#39;input-r1.qza&#39;</span> \
   <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/input-r1.qza&#39;</span>
 
@@ -116,7 +152,7 @@
   <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/index.qza&#39;</span>
 </pre></div>
 </div>
-<div class="raw-usage highlight-default notranslate" id="usage-4"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">r1_factory</span><span class="p">():</span>
+<div class="raw-usage highlight-default notranslate" id="usage-5"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">r1_factory</span><span class="p">():</span>
    <span class="kn">import</span> <span class="nn">qiime2</span>
    <span class="k">return</span> <span class="n">qiime2</span><span class="o">.</span><span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;source/data/Undetermined_S0_R1_001_1M.qza&quot;</span><span class="p">)</span>
 
@@ -153,7 +189,7 @@
 <span class="n">index</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">init_artifact</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="n">index_factory</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="galaxy-usage compound" id="usage-2">
+<div class="galaxy-usage compound" id="usage-3">
 <dl class="simple">
 <dt>Using the <code class="docutils literal notranslate"><span class="pre">Upload</span> <span class="pre">Data</span></code> tool:</dt><dd><ol class="arabic simple">
 <li><p>On the first tab (<strong>Regular</strong>), press the <code class="docutils literal notranslate"><span class="pre">Paste/Fetch</span></code> data button at the bottom.</p>
@@ -223,7 +259,7 @@
 </dd>
 </dl>
 </div>
-<div class="exec-usage compound" id="usage-3">
+<div class="exec-usage compound" id="usage-4">
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">input-r1.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Finput-r1.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/input-r1.qza"><span>download</span></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">input-r2.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Finput-r2.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/input-r2.qza"><span>download</span></a></p></li>
@@ -233,7 +269,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">index.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Findex.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/index.qza"><span>download</span></a></p></li>
 </ul>
 </div>
-<div class="python3-usage highlight-default notranslate" id="usage-5"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiime2.plugins.pepsirf.actions</span> <span class="k">as</span> <span class="nn">pepsirf_actions</span>
+<div class="python3-usage highlight-default notranslate" id="usage-6"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiime2.plugins.pepsirf.actions</span> <span class="k">as</span> <span class="nn">pepsirf_actions</span>
 
 <span class="n">demux_diagnostic_output</span><span class="p">,</span> <span class="n">demux_2index_fif_output</span> <span class="o">=</span> <span class="n">pepsirf_actions</span><span class="o">.</span><span class="n">demux</span><span class="p">(</span>
     <span class="n">input_r1</span><span class="o">=</span><span class="n">input_r1</span><span class="p">,</span>
@@ -250,7 +286,26 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="cli-usage highlight-default notranslate" id="usage-6"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">pepsirf</span> <span class="n">demux</span> \
+<div class="r-usage highlight-default notranslate" id="usage-7"><div class="highlight"><pre><span></span>pepsirf_actions &lt;- import(&quot;qiime2.plugins.pepsirf.actions&quot;)
+
+action_results &lt;- pepsirf_actions$demux(
+    input_r1=input_r1,
+    input_r2=input_r2,
+    fif=fif,
+    seq=&#39;43,116,2&#39;,
+    read_per_loop=200000L,
+    num_threads=2L,
+    phred_base=33L,
+    library=library,
+    index=index,
+    samplelist=sample_list,
+    pepsirf_binary=&#39;/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf&#39;,
+)
+demux_diagnostic_output &lt;- action_results$raw_counts_output
+demux_2index_fif_output &lt;- action_results$diagnostic_output
+</pre></div>
+</div>
+<div class="cli-usage highlight-default notranslate" id="usage-8"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">pepsirf</span> <span class="n">demux</span> \
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="n">r1</span> <span class="nb">input</span><span class="o">-</span><span class="n">r1</span><span class="o">.</span><span class="n">qza</span> \
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="n">r2</span> <span class="nb">input</span><span class="o">-</span><span class="n">r2</span><span class="o">.</span><span class="n">qza</span> \
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">fif</span> <span class="n">fif</span><span class="o">.</span><span class="n">qza</span> \
@@ -266,7 +321,7 @@
   <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">diagnostic</span><span class="o">-</span><span class="n">output</span> <span class="n">demux</span><span class="o">-</span><span class="mi">2</span><span class="n">index</span><span class="o">-</span><span class="n">fif</span><span class="o">-</span><span class="n">output</span><span class="o">.</span><span class="n">qza</span>
 </pre></div>
 </div>
-<div class="raw-usage highlight-default notranslate" id="usage-9"><div class="highlight"><pre><span></span><span class="n">rawData</span><span class="p">,</span> <span class="n">diagnosticData</span><span class="p">,</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">action</span><span class="p">(</span>
+<div class="raw-usage highlight-default notranslate" id="usage-11"><div class="highlight"><pre><span></span><span class="n">rawData</span><span class="p">,</span> <span class="n">diagnosticData</span><span class="p">,</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">action</span><span class="p">(</span>
 <span class="n">use</span><span class="o">.</span><span class="n">UsageAction</span><span class="p">(</span><span class="n">plugin_id</span><span class="o">=</span><span class="s1">&#39;pepsirf&#39;</span><span class="p">,</span> <span class="n">action_id</span><span class="o">=</span><span class="s1">&#39;demux&#39;</span><span class="p">),</span>
 <span class="n">use</span><span class="o">.</span><span class="n">UsageInputs</span><span class="p">(</span>
      <span class="n">input_r1</span> <span class="o">=</span> <span class="n">input_r1</span><span class="p">,</span>
@@ -288,7 +343,7 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="galaxy-usage compound" id="usage-7">
+<div class="galaxy-usage compound" id="usage-9">
 <dl>
 <dt>Using the <code class="docutils literal notranslate"><span class="pre">qiime2</span> <span class="pre">pepsirf</span> <span class="pre">demux</span></code> tool:</dt><dd><ol class="arabic simple">
 <li><p>Set <em>“input_r1”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">input-r1.qza</span></code></p></li>
@@ -328,7 +383,7 @@
 </dd>
 </dl>
 </div>
-<div class="exec-usage compound" id="usage-8">
+<div class="exec-usage compound" id="usage-10">
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">demux-diagnostic-output.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Fdemux-diagnostic-output.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/demux-diagnostic-output.qza"><span>download</span></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">demux-2index-fif-output.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Fdemux-2index-fif-output.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/demux-2index-fif-output.qza"><span>download</span></a></p></li>
@@ -338,7 +393,7 @@
 <section id="deconv-batch">
 <h2>Deconv-Batch<a class="headerlink" href="#deconv-batch" title="Permalink to this heading">¶</a></h2>
 <span class="usage-selector"></span><p>Here we will test q2-pepsirf’s deconv-batch module by running the following commands:</p>
-<div class="python3-usage highlight-default notranslate" id="usage-10"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/enriched-dir.qza&#39;</span>
+<div class="python3-usage highlight-default notranslate" id="usage-12"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/enriched-dir.qza&#39;</span>
 <span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;enriched-dir.qza&#39;</span>
 <span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
 <span class="n">enriched_dir</span> <span class="o">=</span> <span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
@@ -354,7 +409,23 @@
 <span class="n">id_name_map</span> <span class="o">=</span> <span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="cli-usage highlight-default notranslate" id="usage-11"><div class="highlight"><pre><span></span><span class="n">wget</span> \
+<div class="r-usage highlight-default notranslate" id="usage-13"><div class="highlight"><pre><span></span>url &lt;- &#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/enriched-dir.qza&#39;
+fn &lt;- &#39;enriched-dir.qza&#39;
+request$urlretrieve(url, fn)
+enriched_dir &lt;- Artifact$load(fn)
+
+url &lt;- &#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/linked.qza&#39;
+fn &lt;- &#39;linked.qza&#39;
+request$urlretrieve(url, fn)
+linked &lt;- Artifact$load(fn)
+
+url &lt;- &#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/id-name-map.qza&#39;
+fn &lt;- &#39;id-name-map.qza&#39;
+request$urlretrieve(url, fn)
+id_name_map &lt;- Artifact$load(fn)
+</pre></div>
+</div>
+<div class="cli-usage highlight-default notranslate" id="usage-14"><div class="highlight"><pre><span></span><span class="n">wget</span> \
   <span class="o">-</span><span class="n">O</span> <span class="s1">&#39;enriched-dir.qza&#39;</span> \
   <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/enriched-dir.qza&#39;</span>
 
@@ -367,7 +438,7 @@
   <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/id-name-map.qza&#39;</span>
 </pre></div>
 </div>
-<div class="raw-usage highlight-default notranslate" id="usage-14"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">enriched_factory</span><span class="p">():</span>
+<div class="raw-usage highlight-default notranslate" id="usage-17"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">enriched_factory</span><span class="p">():</span>
    <span class="kn">import</span> <span class="nn">qiime2</span>
    <span class="k">return</span> <span class="n">qiime2</span><span class="o">.</span><span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;source/data/pEnrich_z6-10_sbdr4_n20_r244k_dir.qza&quot;</span><span class="p">)</span>
 
@@ -386,7 +457,7 @@
 <span class="n">id_name_map</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">init_artifact</span><span class="p">(</span><span class="s2">&quot;id_name_map&quot;</span><span class="p">,</span> <span class="n">id_factory</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="galaxy-usage compound" id="usage-12">
+<div class="galaxy-usage compound" id="usage-15">
 <dl class="simple">
 <dt>Using the <code class="docutils literal notranslate"><span class="pre">Upload</span> <span class="pre">Data</span></code> tool:</dt><dd><ol class="arabic simple">
 <li><p>On the first tab (<strong>Regular</strong>), press the <code class="docutils literal notranslate"><span class="pre">Paste/Fetch</span></code> data button at the bottom.</p>
@@ -423,7 +494,7 @@
 </dd>
 </dl>
 </div>
-<div class="exec-usage compound" id="usage-13">
+<div class="exec-usage compound" id="usage-16">
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">enriched-dir.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Fenriched-dir.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/enriched-dir.qza"><span>download</span></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">linked.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Flinked.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/linked.qza"><span>download</span></a></p></li>
@@ -434,7 +505,7 @@
 <p class="admonition-title">Note</p>
 <p>Some of these files will also be used for deconv-singular.</p>
 </div>
-<div class="python3-usage highlight-default notranslate" id="usage-15"><div class="highlight"><pre><span></span><span class="n">deconv</span><span class="p">,</span> <span class="n">score_per_round</span><span class="p">,</span> <span class="n">peptide_assignment_map</span> <span class="o">=</span> <span class="n">pepsirf_actions</span><span class="o">.</span><span class="n">deconv_batch</span><span class="p">(</span>
+<div class="python3-usage highlight-default notranslate" id="usage-18"><div class="highlight"><pre><span></span><span class="n">deconv</span><span class="p">,</span> <span class="n">score_per_round</span><span class="p">,</span> <span class="n">peptide_assignment_map</span> <span class="o">=</span> <span class="n">pepsirf_actions</span><span class="o">.</span><span class="n">deconv_batch</span><span class="p">(</span>
     <span class="n">enriched_dir</span><span class="o">=</span><span class="n">enriched_dir</span><span class="p">,</span>
     <span class="n">enriched_file_ending</span><span class="o">=</span><span class="s1">&#39;_paired.txt&#39;</span><span class="p">,</span>
     <span class="n">score_filtering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -450,7 +521,26 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="cli-usage highlight-default notranslate" id="usage-16"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">pepsirf</span> <span class="n">deconv</span><span class="o">-</span><span class="n">batch</span> \
+<div class="r-usage highlight-default notranslate" id="usage-19"><div class="highlight"><pre><span></span>action_results &lt;- pepsirf_actions$deconv_batch(
+    enriched_dir=enriched_dir,
+    enriched_file_ending=&#39;_paired.txt&#39;,
+    score_filtering=TRUE,
+    threshold=40L,
+    score_tie_threshold=0.95,
+    score_overlap_threshold=0.7,
+    remove_file_types=TRUE,
+    outfile_suffix=&#39;_ss40.txt&#39;,
+    mapfile_suffix=&#39;_ss40.map&#39;,
+    linked=linked,
+    id_name_map=id_name_map,
+    pepsirf_binary=&#39;/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf&#39;,
+)
+deconv &lt;- action_results$deconv_output
+score_per_round &lt;- action_results$score_per_round
+peptide_assignment_map &lt;- action_results$peptide_assignment_map
+</pre></div>
+</div>
+<div class="cli-usage highlight-default notranslate" id="usage-20"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">pepsirf</span> <span class="n">deconv</span><span class="o">-</span><span class="n">batch</span> \
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">enriched</span><span class="o">-</span><span class="nb">dir</span> <span class="n">enriched</span><span class="o">-</span><span class="nb">dir</span><span class="o">.</span><span class="n">qza</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">enriched</span><span class="o">-</span><span class="n">file</span><span class="o">-</span><span class="n">ending</span> <span class="n">_paired</span><span class="o">.</span><span class="n">txt</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">score</span><span class="o">-</span><span class="n">filtering</span> \
@@ -468,7 +558,7 @@
   <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">peptide</span><span class="o">-</span><span class="n">assignment</span><span class="o">-</span><span class="nb">map</span> <span class="n">peptide</span><span class="o">-</span><span class="n">assignment</span><span class="o">-</span><span class="nb">map</span><span class="o">.</span><span class="n">qza</span>
 </pre></div>
 </div>
-<div class="raw-usage highlight-default notranslate" id="usage-19"><div class="highlight"><pre><span></span><span class="n">deconv</span><span class="p">,</span> <span class="n">score_per_round</span><span class="p">,</span> <span class="n">peptide_assignment_map</span><span class="p">,</span>  <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">action</span><span class="p">(</span>
+<div class="raw-usage highlight-default notranslate" id="usage-23"><div class="highlight"><pre><span></span><span class="n">deconv</span><span class="p">,</span> <span class="n">score_per_round</span><span class="p">,</span> <span class="n">peptide_assignment_map</span><span class="p">,</span>  <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">action</span><span class="p">(</span>
 <span class="n">use</span><span class="o">.</span><span class="n">UsageAction</span><span class="p">(</span><span class="n">plugin_id</span><span class="o">=</span><span class="s1">&#39;pepsirf&#39;</span><span class="p">,</span> <span class="n">action_id</span><span class="o">=</span><span class="s1">&#39;deconv_batch&#39;</span><span class="p">),</span>
 <span class="n">use</span><span class="o">.</span><span class="n">UsageInputs</span><span class="p">(</span>
      <span class="n">enriched_dir</span> <span class="o">=</span> <span class="n">enriched_dir</span><span class="p">,</span>
@@ -492,7 +582,7 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="galaxy-usage compound" id="usage-17">
+<div class="galaxy-usage compound" id="usage-21">
 <dl>
 <dt>Using the <code class="docutils literal notranslate"><span class="pre">qiime2</span> <span class="pre">pepsirf</span> <span class="pre">deconv-batch</span></code> tool:</dt><dd><ol class="arabic simple">
 <li><p>Set <em>“enriched_dir”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">enriched-dir.qza</span></code></p></li>
@@ -536,7 +626,7 @@
 </dd>
 </dl>
 </div>
-<div class="exec-usage compound" id="usage-18">
+<div class="exec-usage compound" id="usage-22">
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">deconv.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Fdeconv.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/deconv.qza"><span>download</span></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">score-per-round.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Fscore-per-round.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/score-per-round.qza"><span>download</span></a></p></li>
@@ -547,25 +637,31 @@
 <section id="deconv-singular">
 <h2>Deconv-Singular<a class="headerlink" href="#deconv-singular" title="Permalink to this heading">¶</a></h2>
 <span class="usage-selector"></span><p>Here we will test q2-pepsirf’s deconv-singular module by running the following commands:</p>
-<div class="python3-usage highlight-default notranslate" id="usage-20"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/enriched-peptides.qza&#39;</span>
+<div class="python3-usage highlight-default notranslate" id="usage-24"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/enriched-peptides.qza&#39;</span>
 <span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;enriched-peptides.qza&#39;</span>
 <span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
 <span class="n">enriched_peptides</span> <span class="o">=</span> <span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="cli-usage highlight-default notranslate" id="usage-21"><div class="highlight"><pre><span></span><span class="n">wget</span> \
+<div class="r-usage highlight-default notranslate" id="usage-25"><div class="highlight"><pre><span></span>url &lt;- &#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/enriched-peptides.qza&#39;
+fn &lt;- &#39;enriched-peptides.qza&#39;
+request$urlretrieve(url, fn)
+enriched_peptides &lt;- Artifact$load(fn)
+</pre></div>
+</div>
+<div class="cli-usage highlight-default notranslate" id="usage-26"><div class="highlight"><pre><span></span><span class="n">wget</span> \
   <span class="o">-</span><span class="n">O</span> <span class="s1">&#39;enriched-peptides.qza&#39;</span> \
   <span class="s1">&#39;https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/enriched-peptides.qza&#39;</span>
 </pre></div>
 </div>
-<div class="raw-usage highlight-default notranslate" id="usage-24"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">peptide_factory</span><span class="p">():</span>
+<div class="raw-usage highlight-default notranslate" id="usage-29"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">peptide_factory</span><span class="p">():</span>
    <span class="kn">import</span> <span class="nn">qiime2</span>
    <span class="k">return</span> <span class="n">qiime2</span><span class="o">.</span><span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;source/data/enriched-peptides.qza&quot;</span><span class="p">)</span>
 
 <span class="n">enriched_peptides</span> <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">init_artifact</span><span class="p">(</span><span class="s2">&quot;enriched_peptides&quot;</span><span class="p">,</span> <span class="n">peptide_factory</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="galaxy-usage compound" id="usage-22">
+<div class="galaxy-usage compound" id="usage-27">
 <dl class="simple">
 <dt>Using the <code class="docutils literal notranslate"><span class="pre">Upload</span> <span class="pre">Data</span></code> tool:</dt><dd><ol class="arabic simple">
 <li><p>On the first tab (<strong>Regular</strong>), press the <code class="docutils literal notranslate"><span class="pre">Paste/Fetch</span></code> data button at the bottom.</p>
@@ -580,12 +676,12 @@
 </dd>
 </dl>
 </div>
-<div class="exec-usage compound" id="usage-23">
+<div class="exec-usage compound" id="usage-28">
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">enriched-peptides.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Fenriched-peptides.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/enriched-peptides.qza"><span>download</span></a></p></li>
 </ul>
 </div>
-<div class="python3-usage highlight-default notranslate" id="usage-25"><div class="highlight"><pre><span></span><span class="n">deconv_output_singular</span><span class="p">,</span> <span class="n">score_per_round_singular</span> <span class="o">=</span> <span class="n">pepsirf_actions</span><span class="o">.</span><span class="n">deconv_singular</span><span class="p">(</span>
+<div class="python3-usage highlight-default notranslate" id="usage-30"><div class="highlight"><pre><span></span><span class="n">deconv_output_singular</span><span class="p">,</span> <span class="n">score_per_round_singular</span> <span class="o">=</span> <span class="n">pepsirf_actions</span><span class="o">.</span><span class="n">deconv_singular</span><span class="p">(</span>
     <span class="n">enriched</span><span class="o">=</span><span class="n">enriched_peptides</span><span class="p">,</span>
     <span class="n">enriched_file_ending</span><span class="o">=</span><span class="s1">&#39;_paired.txt&#39;</span><span class="p">,</span>
     <span class="n">score_filtering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -598,7 +694,22 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="cli-usage highlight-default notranslate" id="usage-26"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">pepsirf</span> <span class="n">deconv</span><span class="o">-</span><span class="n">singular</span> \
+<div class="r-usage highlight-default notranslate" id="usage-31"><div class="highlight"><pre><span></span>action_results &lt;- pepsirf_actions$deconv_singular(
+    enriched=enriched_peptides,
+    enriched_file_ending=&#39;_paired.txt&#39;,
+    score_filtering=TRUE,
+    threshold=40L,
+    score_tie_threshold=0.95,
+    score_overlap_threshold=0.7,
+    linked=linked,
+    id_name_map=id_name_map,
+    pepsirf_binary=&#39;/home/runner/work/pepsirf-q2-plugin-docs/pepsirf-q2-plugin-docs/pepsirf&#39;,
+)
+deconv_output_singular &lt;- action_results$deconv_output
+score_per_round_singular &lt;- action_results$score_per_round
+</pre></div>
+</div>
+<div class="cli-usage highlight-default notranslate" id="usage-32"><div class="highlight"><pre><span></span><span class="n">qiime</span> <span class="n">pepsirf</span> <span class="n">deconv</span><span class="o">-</span><span class="n">singular</span> \
   <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">enriched</span> <span class="n">enriched</span><span class="o">-</span><span class="n">peptides</span><span class="o">.</span><span class="n">qza</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">enriched</span><span class="o">-</span><span class="n">file</span><span class="o">-</span><span class="n">ending</span> <span class="n">_paired</span><span class="o">.</span><span class="n">txt</span> \
   <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">score</span><span class="o">-</span><span class="n">filtering</span> \
@@ -612,7 +723,7 @@
   <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">score</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="nb">round</span> <span class="n">score</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="nb">round</span><span class="o">-</span><span class="n">singular</span><span class="o">.</span><span class="n">qza</span>
 </pre></div>
 </div>
-<div class="raw-usage highlight-default notranslate" id="usage-29"><div class="highlight"><pre><span></span><span class="n">deconv_sing</span><span class="p">,</span> <span class="n">score_per_round_sing</span><span class="p">,</span>  <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">action</span><span class="p">(</span>
+<div class="raw-usage highlight-default notranslate" id="usage-35"><div class="highlight"><pre><span></span><span class="n">deconv_sing</span><span class="p">,</span> <span class="n">score_per_round_sing</span><span class="p">,</span>  <span class="o">=</span> <span class="n">use</span><span class="o">.</span><span class="n">action</span><span class="p">(</span>
 <span class="n">use</span><span class="o">.</span><span class="n">UsageAction</span><span class="p">(</span><span class="n">plugin_id</span><span class="o">=</span><span class="s1">&#39;pepsirf&#39;</span><span class="p">,</span> <span class="n">action_id</span><span class="o">=</span><span class="s1">&#39;deconv_singular&#39;</span><span class="p">),</span>
 <span class="n">use</span><span class="o">.</span><span class="n">UsageInputs</span><span class="p">(</span>
      <span class="n">enriched</span> <span class="o">=</span> <span class="n">enriched_peptides</span><span class="p">,</span>
@@ -632,7 +743,7 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="galaxy-usage compound" id="usage-27">
+<div class="galaxy-usage compound" id="usage-33">
 <dl>
 <dt>Using the <code class="docutils literal notranslate"><span class="pre">qiime2</span> <span class="pre">pepsirf</span> <span class="pre">deconv-singular</span></code> tool:</dt><dd><ol class="arabic simple">
 <li><p>Set <em>“enriched”</em> to <code class="docutils literal notranslate"><span class="pre">#:</span> <span class="pre">enriched-peptides.qza</span></code></p></li>
@@ -670,7 +781,7 @@
 </dd>
 </dl>
 </div>
-<div class="exec-usage compound" id="usage-28">
+<div class="exec-usage compound" id="usage-34">
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">deconv-output-singular.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Fdeconv-output-singular.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/deconv-output-singular.qza"><span>download</span></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">score-per-round-singular.qza</span></code><span> | </span><a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fladnerlab.github.io%2Fpepsirf-q2-plugin-docs%2Fdata%2Ftutorials%2Fpepsirf%2Fscore-per-round-singular.qza"><span>view</span></a><span> | </span><a class="reference external" href="https://ladnerlab.github.io/pepsirf-q2-plugin-docs/data/tutorials/pepsirf/score-per-round-singular.qza"><span>download</span></a></p></li>
@@ -693,6 +804,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../ps-plot/">Ps-plot Tutorials - Multiple Interface Edition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ps-qc/">Ps-qc Tutorials - CLI Edition (more to come)</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">q2-pepsirf Tutorials - Multiple Interface Edition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../psea/">PSEA Tutorials - CLI Edition (more to come)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../plugins/">Available plugins</a></li>

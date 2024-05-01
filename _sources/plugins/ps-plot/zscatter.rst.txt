@@ -1,0 +1,105 @@
+zscatter: Z Score Scatter Visualization
+=======================================
+
+
+
+.. raw:: html
+
+   <div class="tabbed">
+     <ul class="nav nav-tabs">
+       <li class="active"><a data-toggle="tab" href="#cli">Command line interface</a></li>
+       <li><a data-toggle="tab" href="#api">Artifact API</a></li>
+     </ul>
+     <div class="tab-content">
+       <div id="cli" class="tab-pane fade in active">
+         <h4>Docstring:</h4>
+         <pre>Usage: qiime ps-plot zscatter [OPTIONS]
+
+     Creates a scatter plot using Z scores from two samples. A spline line can
+     also be added. Significant points can also be highlighted by passing
+     metadata, as well.
+
+   Inputs:
+     --i-zscores ARTIFACT FeatureTable[Zscore]
+                            Matrix of Z scores.                        [required]
+   Parameters:
+     --p-pairs-file TEXT    Tab delimited (TSV) file with a pair of sample
+                            replicates on each line.                   [required]
+     --p-p-val-access TEXT  Column name with data to compare to
+                            'highlight-threshold' which will be considered for
+                            highlighting.                              [optional]
+     --p-le-peps-access TEXT
+                            Column name with data to use in tooltip.   [optional]
+     --p-taxa-access TEXT   Column name with taxa names to use when
+                            highlighting.                              [optional]
+     --p-spline-file TEXT   Tab delimited (TSV) file with spline results. The
+                            first timepoint provides the x coordinates, and the
+                            second provides the y coordinates.         [optional]
+     --p-highlight-data TEXT
+                            Path to a file or a directory with multiple files
+                            which contain information needed to highlight
+                            significant taxa. The file(s) should be tab delimited
+                            (TSV format).                              [optional]
+     --p-highlight-threshold NUMBER
+                            Maximum p-value a taxa can have to be highlighted.
+                            Anything above this threshold will not be considered
+                            'significant'.                        [default: 0.05]
+   Outputs:
+     --o-visualization VISUALIZATION
+                                                                       [required]
+   Miscellaneous:
+     --output-dir PATH      Output unspecified results to a directory
+     --verbose / --quiet    Display verbose output to stdout and/or stderr
+                            during execution of this action. Or silence output if
+                            execution is successful (silence is golden).
+     --example-data PATH    Write example data and exit.
+     --citations            Show citations and exit.
+     --help                 Show this message and exit.</pre>
+       </div>
+       <div id="api" class="tab-pane fade">
+       <h4>Import:</h4>
+
+.. command-block::
+   :no-exec:
+
+   from qiime2.plugins.ps_plot.visualizers import zscatter
+
+.. raw:: html
+
+       <h4>Docstring:</h4>
+         <pre>Z Score Scatter Visualization
+
+   Creates a scatter plot using Z scores from two samples. A spline line can
+   also be added. Significant points can also be highlighted by passing
+   metadata, as well.
+
+   Parameters
+   ----------
+   zscores : FeatureTable[Zscore]
+       Matrix of Z scores.
+   pairs_file : Str
+       Tab delimited (TSV) file with a pair of sample replicates on each line.
+   p_val_access : Str, optional
+       Column name with data to compare to 'highlight_threshold' which will be
+       considered for highlighting.
+   le_peps_access : Str, optional
+       Column name with data to use in tooltip.
+   taxa_access : Str, optional
+       Column name with taxa names to use when highlighting.
+   spline_file : Str, optional
+       Tab delimited (TSV) file with spline results. The first timepoint
+       provides the x coordinates, and the second provides the y coordinates.
+   highlight_data : Str, optional
+       Path to a file or a directory with multiple files which contain
+       information needed to highlight significant taxa. The file(s) should be
+       tab delimited (TSV format).
+   highlight_threshold : Float, optional
+       Maximum p-value a taxa can have to be highlighted. Anything above this
+       threshold will not be considered 'significant'.
+
+   Returns
+   -------
+   visualization : Visualization</pre>
+       </div>
+     </div>
+   </div>
