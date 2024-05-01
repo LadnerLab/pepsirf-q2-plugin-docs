@@ -61,14 +61,14 @@ Make sure your Qiime2 conda environment is activated by running the command:
 
 You can replace qiime2-2023.7 above with whichever version of QIIME 2 you have currently installed.
 
-To help make installing R dependencies easier, please use this command if you have trouble:
-- ``conda install -c conda-forge r-base r-essentials r-igraph r-ggraph r-ggforce r-scatterpie rpy2 r-biocmanager r-splines2``
-- ``conda install -c bioconda bioconductor-ggtree bioconductor-enrichplot``
+| To help make installing R dependencies easier, please use this command if you have trouble:
+| ``conda install -c conda-forge r-base r-essentials r-igraph r-ggraph r-ggforce r-scatterpie rpy2 r-biocmanager r-splines2``
+| ``conda install -c bioconda bioconductor-ggtree bioconductor-enrichplot``
 
-You will need to install clusterProfiler through R to avoid conflicting versions with some packages:
-Please download the custom R script to do so here: https://github.com/LadnerLab/q2-PSEA/blob/main/install_r_packages.R
-- ``Rscript path/to/install_r_packages.R``
-- ``rm path/to/install_r_packages.R``
+| You will need to install clusterProfiler through R to avoid conflicting versions with some packages:
+| Please download the custom R script to do so here: https://github.com/LadnerLab/q2-PSEA/blob/main/install_r_packages.R
+| ``Rscript path/to/install_r_packages.R``
+| ``rm path/to/install_r_packages.R``
 
 Now you are ready to install q2-PSEA. Run the following commands:
 
