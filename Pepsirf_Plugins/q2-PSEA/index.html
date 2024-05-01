@@ -91,12 +91,12 @@ for installation documentation on q2-ps-plot</p>
 <p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">qiime2-2023.7</span></code></p>
 <p>You can replace qiime2-2023.7 above with whichever version of QIIME 2 you have currently installed.</p>
 <p>To help make installing R dependencies easier, please use this command if you have trouble:
-<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">r-base</span> <span class="pre">r-essentials</span> <span class="pre">r-igraph</span> <span class="pre">r-ggraph</span> <span class="pre">r-ggforce</span> <span class="pre">r-scatterpie</span> <span class="pre">rpy2</span> <span class="pre">r-biocmanager</span> <span class="pre">r-splines2</span></code>
-<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">bioconda</span> <span class="pre">bioconductor-ggtree</span> <span class="pre">bioconductor-enrichplot</span></code></p>
+- <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">r-base</span> <span class="pre">r-essentials</span> <span class="pre">r-igraph</span> <span class="pre">r-ggraph</span> <span class="pre">r-ggforce</span> <span class="pre">r-scatterpie</span> <span class="pre">rpy2</span> <span class="pre">r-biocmanager</span> <span class="pre">r-splines2</span></code>
+- <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">bioconda</span> <span class="pre">bioconductor-ggtree</span> <span class="pre">bioconductor-enrichplot</span></code></p>
 <p>You will need to install clusterProfiler through R to avoid conflicting versions with some packages:
 Please download the custom R script to do so here: <a class="reference external" href="https://github.com/LadnerLab/q2-PSEA/blob/main/install_r_packages.R">https://github.com/LadnerLab/q2-PSEA/blob/main/install_r_packages.R</a>
-<code class="docutils literal notranslate"><span class="pre">Rscript</span> <span class="pre">path/to/install_r_packages.R</span></code>
-<code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">path/to/install_r_packages.R</span></code></p>
+- <code class="docutils literal notranslate"><span class="pre">Rscript</span> <span class="pre">path/to/install_r_packages.R</span></code>
+- <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">path/to/install_r_packages.R</span></code></p>
 <p>Now you are ready to install q2-PSEA. Run the following commands:</p>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">git+https://github.com/LadnerLab/q2-PSEA.git</span></code></p>
 <p>Run qiime info to check for a successful installation. If installation was successful, you should see psea: version in the list of installed plugins.</p>
