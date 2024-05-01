@@ -89,7 +89,7 @@ Here we will use the "cubic" option to fit a spline by running the following com
 		),
 		use.UsageInputs(
 			scores_file="source/data/psea-example-data/IM0031_PV2T_25nt_raw_2mm_i1mm_Z-HDI75.tsv",
-			pairs_file="source/data/psea-example-data/psea-example-data/pairs.tsv",
+			pairs_file="source/data/psea-example-data/pairs.tsv",
 			peptide_sets_file="source/data/psea-example-data/input.gmt",
 			threshold=0.750000,
 			species_taxa_file="source/data/psea-example-data/species_taxa.tsv",
