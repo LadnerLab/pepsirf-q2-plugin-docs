@@ -1,17 +1,17 @@
 Ps-qc Tutorials - CLI Edition (more to come)
 ============================================
 
-Description
------------
-
-This guide is a preview of how you can use some of q2-ps-qc's individual modules.
-
 Introduction
 ------------
 
 In this tutorial you'll use QIIME 2 to perform an analysis of some data.
 
 Typical Runtime: 0 Minutes 15.43 Seconds
+
+Description
+-----------
+
+This guide is a preview of how you can use some of q2-ps-qc's individual modules.
 
 Generate a Correlation Matrix
 -----------------------------

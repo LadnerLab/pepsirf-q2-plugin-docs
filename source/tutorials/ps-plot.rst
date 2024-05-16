@@ -1,17 +1,17 @@
 Ps-plot Tutorials - Multiple Interface Edition
 ==============================================
 
-Description
------------
-
-This guide is a preview of how you can use some of q2-ps-plot's individual modules.
-
 Introduction
 ------------
 
 In this tutorial you'll use QIIME 2 to perform an analysis of some data.
 
 Typical Run Time: 1 Minute 30 Seconds
+
+Description
+-----------
+
+This guide is a preview of how you can use some of q2-ps-plot's individual modules.
 
 Protein Alignment
 -----------------

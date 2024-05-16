@@ -1,17 +1,17 @@
 PSEA Tutorials - CLI Edition (more to come)
 ===========================================
 
-Description
------------
-
-This guide is a preview of how you can use some of the q2-PSEA's individual modules.
-
 Intorudction
 ------------
 
 In this tutorial you'll use QIIME 2 to perform an analysis of some data.
 
 Typical Runtime: 1 Minunte 20 Seconds
+
+Description
+-----------
+
+This guide is a preview of how you can use some of the q2-PSEA's individual modules.
 
 Automated PSEA Analysis with Visualizations
 -------------------------------------------
