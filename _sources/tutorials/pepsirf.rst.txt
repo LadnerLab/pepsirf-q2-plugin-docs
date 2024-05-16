@@ -1,17 +1,17 @@
 q2-pepsirf Tutorials - Multiple Interface Edition
 =================================================
 
-Description
------------
-
-This guide is a preview of how you can use some of q2-pepsirf's individual modules.
-
 Introduction
 ------------
 
 In this tutorial you'll use QIIME 2 to perform an analysis of some data.
 
 Typical Run Time: TBD Minute
+
+Description
+-----------
+
+This guide is a preview of how you can use some of q2-pepsirf's individual modules.
 
 Demux
 -----
