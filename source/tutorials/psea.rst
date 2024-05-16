@@ -13,8 +13,8 @@ In this tutorial you'll use QIIME 2 to perform an analysis of some data.
 
 Typical Runtime: 1 Minunte 20 Seconds
 
-Generate Visualizations of PSEA results
----------------------------------------
+Automated PSEA Analysis with Visualizations
+-------------------------------------------
 
 .. usage-selector::
 
