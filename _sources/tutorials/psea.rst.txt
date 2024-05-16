@@ -1,7 +1,7 @@
 PSEA Tutorials - CLI Edition (more to come)
 ===========================================
 
-Intorudction
+Introduction
 ------------
 
 In this tutorial you'll use QIIME 2 to perform an analysis of some data.
